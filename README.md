@@ -20,12 +20,15 @@
 ├── README.md               # Trang mục lục dạng Markdown (file này)
 ├── index.html              # Trang chủ dạng website
 ├── assets/style.css        # Giao diện dùng chung cho website
-└── docs/
-    ├── base44-quy-trinh-lam-web.md    # Nội dung gốc (Markdown, dễ chỉnh sửa)
-    ├── base44-quy-trinh-lam-web.html  # Bản hiển thị dạng website
-    ├── base44-tao-web-ai-nhanh.md
-    ├── base44-tao-web-ai-nhanh.html
-    └── ...                            # các tài liệu mới sẽ thêm vào đây
+├── docs/                   # Tài liệu quy trình (mỗi tài liệu có .md + .html)
+│   ├── base44-quy-trinh-lam-web.md
+│   ├── base44-quy-trinh-lam-web.html
+│   ├── base44-tao-web-ai-nhanh.md
+│   ├── base44-tao-web-ai-nhanh.html
+│   └── ...
+└── web-mau/                # Kho web mẫu nội bộ (1 mẫu = 1 folder con)
+    ├── README.md           # Hướng dẫn cấu trúc & quy ước đặt tên
+    └── ...                 # các web mẫu sẽ thêm vào đây
 ```
 
 Mỗi tài liệu có 2 bản: **Markdown** (`.md`, để đọc/chỉnh sửa nhanh trên GitHub) và **HTML** (`.html`, để xem dạng website đẹp tại link ở trên).
