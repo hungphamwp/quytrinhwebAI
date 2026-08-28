@@ -9,6 +9,7 @@
 | Chủ đề | Công cụ/Nền tảng | Trang web | Markdown |
 |---|---|---|---|
 | Quy trình làm web mẫu bằng AI, dành cho khách hàng không rành kỹ thuật | [Base44](https://app.base44.com/) | [Xem online](https://hungphamwp.github.io/quytrinhwebAI/docs/base44-quy-trinh-lam-web.html) | [docs/base44-quy-trinh-lam-web.md](docs/base44-quy-trinh-lam-web.md) |
+| Quy trình tạo web AI nhanh trong 1 ngày (phiên bản rút gọn) | [Base44](https://app.base44.com/) | [Xem online](https://hungphamwp.github.io/quytrinhwebAI/docs/base44-tao-web-ai-nhanh.html) | [docs/base44-tao-web-ai-nhanh.md](docs/base44-tao-web-ai-nhanh.md) |
 
 *(Danh sách sẽ tiếp tục được bổ sung theo thời gian.)*
 
@@ -22,6 +23,8 @@
 └── docs/
     ├── base44-quy-trinh-lam-web.md    # Nội dung gốc (Markdown, dễ chỉnh sửa)
     ├── base44-quy-trinh-lam-web.html  # Bản hiển thị dạng website
+    ├── base44-tao-web-ai-nhanh.md
+    ├── base44-tao-web-ai-nhanh.html
     └── ...                            # các tài liệu mới sẽ thêm vào đây
 ```
 

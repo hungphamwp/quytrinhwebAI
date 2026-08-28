@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Base44 — Quy trình tạo Web AI nhanh trong 1 ngày</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* Trang này luôn dùng theme sáng, chuyên nghiệp */
+  .light-page {
+    --bg: #ffffff;
+    --bg-elevated: #ffffff;
+    --text: #1f2937;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #2563eb;
+    --accent-soft: #eff6ff;
+    --code-bg: #f9fafb;
+    --sidebar-bg: #f8fafc;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.04);
+  }
+  .light-page h2 { border-top-color: #e5e7eb; }
+  .light-page .sidebar { border-right-color: #e5e7eb; }
+
+  /* Mermaid container */
+  .diagram {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px 20px;
+    margin: 24px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+    overflow-x: auto;
+  }
+  .diagram-caption {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-top: 12px;
+    text-align: center;
+    font-style: italic;
+  }
+  /* Mermaid label readable on light bg */
+  .mermaid { font-family: var(--font-sans) !important; }
+  .mermaid .nodeLabel, .mermaid .edgeLabel { color: #1f2937 !important; }
+  .mermaid .edgeLabel { background: #ffffff !important; }
+  .mermaid .edgeLabel rect { fill: #ffffff !important; }
+
+  /* Legend chip */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 16px 0 24px;
+    font-size: 0.88rem;
+  }
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      themeVariables: {
+        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        fontSize: '14px',
+        primaryColor: '#ffffff',
+        primaryBorderColor: '#cbd5e1',
+        primaryTextColor: '#1f2937',
+        lineColor: '#64748b',
+        secondaryColor: '#f1f5f9',
+        tertiaryColor: '#f8fafc'
+      },
+      flowchart: { curve: 'basis', padding: 14, htmlLabels: true }
+    });
+  });
+</script>
+</head>
+<body class="light-page">
+<div class="layout">
+  <aside class="sidebar">
+    <a class="sidebar-brand" href="../index.html">Quy trình Web AI</a>
+    <span class="sidebar-tagline">Kho tài liệu tích lũy</span>
+
+    <div class="sidebar-section-title">Trang chủ</div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Tổng quan kho tài liệu</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-section-title">Công cụ &amp; Nền tảng</div>
+    <nav>
+      <ul>
+        <li><a href="base44-quy-trinh-lam-web.html">Base44 — Quy trình làm web mẫu</a></li>
+        <li><a href="base44-tao-web-ai-nhanh.html" class="active">Base44 — Tạo web AI nhanh (1 ngày)</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="content-inner">
+      <div class="breadcrumb"><a href="../index.html">Trang chủ</a> / Base44 / Tạo web nhanh</div>
+
+      <header class="page-header">
+        <h1>Quy trình tạo Web AI nhanh với Base44 (trong 1 ngày)</h1>
+      </header>
+
+      <p class="page-lede">
+        Phiên bản <strong>rút gọn</strong> của quy trình làm web bằng <a href="https://app.base44.com/" target="_blank" rel="noopener">Base44</a>,
+        tập trung vào mục tiêu <strong>ra sản phẩm chạy được trong vòng 1 ngày làm việc</strong>.
+        Phù hợp cho landing page giới thiệu, trang bán hàng đơn giản, trang đặt lịch, hoặc bản mẫu
+        cần demo gấp cho khách hàng/sếp xem. Dành cho người <strong>không rành kỹ thuật</strong>.
+      </p>
+
+      <blockquote>
+        <strong>Khi nào nên dùng quy trình này?</strong> Khi bạn cần một trang web <em>đơn giản, chạy được, nhìn ổn</em>
+        trong thời gian ngắn. Nếu dự án phức tạp (nhiều tính năng, tích hợp thanh toán, quản lý đơn hàng...),
+        hãy dùng <a href="base44-quy-trinh-lam-web.html">quy trình 6 bước đầy đủ</a>.
+      </blockquote>
+
+      <h3>Sơ đồ chọn quy trình phù hợp</h3>
+      <div class="diagram">
+<pre class="mermaid">
+flowchart TD
+    Start([Bạn cần làm web bằng AI]) --> Q1{Web phức tạp?<br/>nhiều tính năng,<br/>tích hợp thanh toán,<br/>quản lý đơn hàng?}
+    Q1 -->|Có| Full[Quy trình 6 bước<br/>đầy đủ<br/>3–7 ngày]
+    Q1 -->|Không| Q2{Cần demo gấp<br/>trong 1 ngày?}
+    Q2 -->|Có| Fast[Quy trình 1 ngày<br/>rút gọn<br/>⬇ Bạn đang ở đây]
+    Q2 -->|Không| Full
+    Fast --> Note[/Phù hợp: landing page,<br/>trang bán hàng đơn giản,<br/>trang đặt lịch/]
+    Full --> Note2[/Phù hợp: web app,<br/>SaaS, thương mại điện tử<br/>đầy đủ/]
+
+    style Start fill:#e8f1ff,stroke:#2563eb,stroke-width:2px,color:#1e3a8a
+    style Q1 fill:#fff4e6,stroke:#ea580c,stroke-width:2px,color:#7c2d12
+    style Q2 fill:#fff4e6,stroke:#ea580c,stroke-width:2px,color:#7c2d12
+    style Fast fill:#dcfce7,stroke:#16a34a,stroke-width:3px,color:#14532d
+    style Full fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#1f2937
+    style Note fill:#f0fdf4,stroke:#86efac,stroke-width:1px,color:#166534
+    style Note2 fill:#f9fafb,stroke:#9ca3af,stroke-width:1px,color:#374151
+</pre>
+        <div class="diagram-caption">Hình 1 — Chọn quy trình phù hợp dựa trên độ phức tạp và thời gian cần ra sản phẩm</div>
+      </div>
+
+      <h2 id="tong-quan">1. Tổng quan 4 bước trong 1 ngày</h2>
+      <div class="steps-grid">
+        <div class="step-chip"><span class="num">1</span>Chốt ý tưởng (30 phút)</div>
+        <div class="step-chip"><span class="num">2</span>Viết prompt &amp; tạo web (2–4 giờ)</div>
+        <div class="step-chip"><span class="num">3</span>Xem, góp ý, sửa nhanh (1–2 giờ)</div>
+        <div class="step-chip"><span class="num">4</span>Xuất bản &amp; chia sẻ (30 phút)</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>Bước</th><th>Bạn làm gì</th><th>Đội dự án làm gì</th><th>Thời gian</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Mô tả ý tưởng bằng lời, gửi 2–3 web mẫu tham khảo</td><td>Lắng nghe, ghi nhận yêu cầu</td><td>~30 phút</td></tr>
+          <tr><td>2</td><td>Chờ</td><td>Viết prompt, dựng web trên Base44, gửi link xem thử</td><td>2–4 giờ</td></tr>
+          <tr><td>3</td><td>Xem link, góp ý bằng ngôn ngữ đời thường</td><td>Chỉnh sửa theo góp ý (1 vòng)</td><td>1–2 giờ</td></tr>
+          <tr><td>4</td><td>Duyệt và nhận link chia sẻ</td><td>Xuất bản, gửi lại link chính thức</td><td>~30 phút</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Sơ đồ tổng quan quy trình</h3>
+      <div class="legend">
+        <span class="legend-item"><span class="legend-dot" style="background:#2563eb"></span>Bạn (khách hàng) thực hiện</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#d97706"></span>Đội dự án thực hiện</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#ea580c"></span>Điểm quyết định</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#16a34a"></span>Hoàn thành</span>
+      </div>
+      <div class="diagram">
+<pre class="mermaid">
+flowchart LR
+    subgraph S1["Bước 1 — Bạn · 30 phút"]
+        A1["Mô tả ý tưởng<br/>bằng lời"] --> A2["Gửi 2–3 web<br/>tham khảo"]
+    end
+
+    subgraph S2["Bước 2 — Đội dự án · 2–4 giờ"]
+        B1["Viết prompt<br/>chi tiết"] --> B2["AI dựng web<br/>trên Base44"] --> B3["Gửi bạn link<br/>xem thử"]
+    end
+
+    subgraph S3["Bước 3 — Bạn + Đội dự án · 1–2 giờ"]
+        C1["Bạn xem &amp;<br/>góp ý"] --> C2["Đội dự án<br/>chỉnh sửa"] --> C3{"Bạn<br/>ưng?"}
+    end
+
+    subgraph S4["Bước 4 — Đội dự án · 30 phút"]
+        D1["Xuất bản<br/>lên Base44"] --> D2["Gửi link<br/>chính thức"]
+    end
+
+    A2 ==> B1
+    B3 ==> C1
+    C3 -->|Chưa| C2
+    C3 -->|Ưng rồi| D1
+    D2 ==> E(["🎉 Xong!<br/>Web chạy được"])
+
+    style A1 fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style A2 fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style B1 fill:#fef3c7,stroke:#d97706,color:#78350f
+    style B2 fill:#fef3c7,stroke:#d97706,color:#78350f
+    style B3 fill:#fef3c7,stroke:#d97706,color:#78350f
+    style C1 fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style C2 fill:#fef3c7,stroke:#d97706,color:#78350f
+    style C3 fill:#fff4e6,stroke:#ea580c,color:#7c2d12
+    style D1 fill:#fef3c7,stroke:#d97706,color:#78350f
+    style D2 fill:#fef3c7,stroke:#d97706,color:#78350f
+    style E fill:#dcfce7,stroke:#16a34a,stroke-width:3px,color:#14532d
+</pre>
+        <div class="diagram-caption">Hình 2 — Dòng chảy 4 bước trong 1 ngày, có vòng lặp chỉnh sửa ở Bước 3</div>
+      </div>
+
+      <h2 id="buoc-1">2. Bước 1 — Chốt ý tưởng (30 phút)</h2>
+      <p>Bạn không cần viết gì dài dòng. Chỉ cần trả lời <strong>4 câu hỏi</strong> sau (có thể nhắn tin/gọi nói cũng được):</p>
+      <ol>
+        <li><strong>Web này để làm gì?</strong> (giới thiệu công ty, bán sản phẩm, đặt lịch hẹn, landing page cho chiến dịch...)</li>
+        <li><strong>Ai sẽ là người xem?</strong> (khách hàng cá nhân, doanh nghiệp, học sinh/sinh viên...)</li>
+        <li><strong>Có những mục nào trên trang?</strong> (ví dụ: Trang chủ, Giới thiệu, Sản phẩm, Liên hệ, Đặt lịch...)</li>
+        <li><strong>Có mẫu nào bạn thích?</strong> (gửi 2–3 link website tham khảo, nói rõ thích điểm nào: màu sắc, bố cục, phong cách...)</li>
+      </ol>
+      <p><strong>Mẹo tiết kiệm thời gian:</strong> Chuẩn bị sẵn logo, ảnh sản phẩm, và đoạn giới thiệu ngắn gửi kèm. Nếu chưa có thì dùng tạm placeholder, sau này thay sau.</p>
+
+      <h2 id="buoc-2">3. Bước 2 — Viết prompt &amp; tạo web (2–4 giờ)</h2>
+      <p>Đội dự án sẽ:</p>
+      <ul>
+        <li>Chuyển câu trả lời của bạn thành một <strong>đoạn mô tả chi tiết</strong> (gọi là <em>prompt</em>) để gửi cho AI.</li>
+        <li>Đăng nhập <a href="https://app.base44.com/" target="_blank" rel="noopener">Base44</a>, nhập prompt.</li>
+        <li>AI sẽ tự dựng giao diện và các trang. Đội dự án kiểm tra lại, chỉnh sửa những chỗ rõ ràng sai sót.</li>
+        <li>Gửi lại bạn <strong>1 link xem thử</strong> (dạng <code>*.base44.app</code>) qua Zalo/email.</li>
+      </ul>
+      <p>Trong thời gian chờ, bạn không cần làm gì — cứ làm việc khác, khi nào có link thì mở ra xem.</p>
+
+      <h2 id="buoc-3">4. Bước 3 — Xem, góp ý, sửa nhanh (1–2 giờ)</h2>
+      <p>Mở link trên trình duyệt (Chrome, Safari...) hoặc điện thoại. Xem thoải mái như đang lướt web bình thường.</p>
+      <p><strong>Bạn chỉ cần nói cho đội dự án biết 3 thứ:</strong></p>
+      <ol>
+        <li><strong>Phần nào ưng?</strong> — để giữ nguyên.</li>
+        <li><strong>Phần nào chưa ưng?</strong> — mô tả bằng lời đời thường, ví dụ:
+          <ul>
+            <li><em>"Cái nút bấm đặt lịch nhỏ quá, làm to lên"</em></li>
+            <li><em>"Màu nền nên dùng xanh dương đậm thay vì xám"</em></li>
+            <li><em>"Thêm một mục 'Câu hỏi thường gặp' ở trang chủ"</em></li>
+          </ul>
+        </li>
+        <li><strong>Phần nào thiếu?</strong> — ví dụ: <em>"Tôi chưa thấy mục Liên hệ"</em>.</li>
+      </ol>
+      <p>Đội dự án sẽ cập nhật lại trong vòng 1–2 giờ. Vì đây là bản mẫu nhanh, quy trình này chỉ bao gồm <strong>1 vòng góp ý</strong>. Nếu cần chỉnh thêm, xem <a href="base44-quy-trinh-lam-web.html">quy trình đầy đủ</a>.</p>
+
+      <h2 id="buoc-4">5. Bước 4 — Xuất bản &amp; chia sẻ (30 phút)</h2>
+      <p>Sau khi bạn duyệt, đội dự án sẽ:</p>
+      <ul>
+        <li><strong>Xuất bản (publish)</strong> web lên Base44 để có link chính thức, hoạt động 24/7.</li>
+        <li>Gửi lại bạn link để dán vào Zalo, email, bio Facebook, hoặc gửi cho bất kỳ ai cần xem.</li>
+      </ul>
+      <p>Link có dạng <code>ten-ban-chon.base44.app</code>, ai cũng mở được, không cần đăng nhập.</p>
+
+      <h2 id="dau-ra">6. Bạn sẽ nhận được gì sau 1 ngày?</h2>
+      <div class="diagram">
+<pre class="mermaid">
+flowchart LR
+    subgraph Co["Có ngay ✅"]
+        C1["Website chạy được<br/>responsive"]
+        C2["Link chia sẻ<br/>công khai"]
+    end
+
+    subgraph Tuy["Tùy bạn ⚠️"]
+        T1["Nội dung thật<br/>ảnh, chữ, logo"]
+    end
+
+    subgraph Khong["Chưa có ❌"]
+        K1["Tên miền riêng<br/>tencongty.vn"]
+        K2["SEO, tốc độ<br/>chuẩn production"]
+        K3["Thanh toán<br/>CRM, quản lý đơn"]
+    end
+
+    style C1 fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style C2 fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style T1 fill:#fef9c3,stroke:#ca8a04,color:#713f12
+    style K1 fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style K2 fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style K3 fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+</pre>
+        <div class="diagram-caption">Hình 3 — Phân loại những gì có thể nhận được trong phạm vi 1 ngày</div>
+      </div>
+      <table>
+        <thead><tr><th>Hạng mục</th><th>Có / Không</th><th>Ghi chú</th></tr></thead>
+        <tbody>
+          <tr><td>1 website chạy được trên trình duyệt &amp; điện thoại</td><td>✅ Có</td><td>Responsive, xem ổn trên mọi thiết bị</td></tr>
+          <tr><td>Link chia sẻ công khai</td><td>✅ Có</td><td>Link <code>*.base44.app</code>, gửi ai cũng mở được</td></tr>
+          <tr><td>Nội dung thật (ảnh, chữ, logo)</td><td>⚠️ Tùy</td><td>Nếu bạn cung cấp đủ ở Bước 1, AI sẽ gắn vào. Nếu không, dùng tạm placeholder để thay sau</td></tr>
+          <tr><td>Tên miền riêng (ví dụ: <code>tencongty.vn</code>)</td><td>❌ Không</td><td>Tốn thêm thời gian &amp; chi phí mua tên miền, làm ở giai đoạn sau</td></tr>
+          <tr><td>SSL (https), tốc độ tải nhanh, SEO chuẩn</td><td>❌ Không</td><td>Làm ở giai đoạn xây dựng bản chính thức</td></tr>
+          <tr><td>Tích hợp thanh toán / quản lý đơn hàng / CRM</td><td>❌ Không</td><td>Vượt quá phạm vi "1 ngày", dùng quy trình đầy đủ</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="checklist">7. Checklist chuẩn bị trước khi bắt đầu</h2>
+      <p>Để quy trình trơn tru, bạn cần chuẩn bị sẵn (nếu có):</p>
+      <ul>
+        <li>☐ Logo (file PNG/SVG, nền trong suốt càng tốt)</li>
+        <li>☐ 3–5 ảnh sản phẩm/dịch vụ chính</li>
+        <li>☐ Đoạn giới thiệu ngắn về công ty/cá nhân (3–5 dòng)</li>
+        <li>☐ Số điện thoại, email, địa chỉ muốn hiển thị trên web</li>
+        <li>☐ 2–3 link website tham khảo + ghi chú thích điểm nào</li>
+        <li>☐ Tên gợi ý cho link web (ví dụ: <code>hoatuoi-hanoi.base44.app</code>)</li>
+      </ul>
+      <p><em>Không có cũng không sao — AI sẽ dùng nội dung tạm, bạn thay sau cũng được.</em></p>
+
+      <h2 id="faq">8. Câu hỏi thường gặp</h2>
+
+      <p><strong>Hỏi: Tôi chưa có logo thì sao?</strong><br>
+      Không sao. AI sẽ dùng tên thương hiệu thay thế. Khi nào có logo thật, gửi đội dự án để cập nhật.</p>
+
+      <p><strong>Hỏi: Tôi muốn thay đổi nhiều lần, mỗi lần đều mất 1 ngày à?</strong><br>
+      Không. Quy trình 1 ngày này chỉ tính cho <strong>1 vòng đầu tiên</strong>. Sau khi có bản mẫu, những chỉnh sửa nhỏ tiếp theo thường chỉ mất 1–3 giờ.</p>
+
+      <p><strong>Hỏi: Bản web làm trong 1 ngày có dùng được lâu dài không?</strong><br>
+      Được, với điều kiện bạn chấp nhận dùng link <code>*.base44.app</code> và không cần tên miền riêng, SEO cao, hay tích hợp hệ thống phức tạp. Nếu sau này cần, sẽ nâng cấp lên bản chính thức.</p>
+
+      <p><strong>Hỏi: Tôi muốn tự thao tác trên Base44 có được không?</strong><br>
+      Được, nhưng cần học cách viết prompt hiệu quả. Nếu muốn tự làm, đội dự án có thể hướng dẫn thêm (tính phí riêng).</p>
+
+      <p><strong>Hỏi: Chi phí cho quy trình 1 ngày này là bao nhiêu?</strong><br>
+      Liên hệ trực tiếp đội dự án để nhận báo giá. Chi phí thường thấp hơn nhiều so với quy trình đầy đủ vì giới hạn phạm vi.</p>
+
+      <h2 id="lien-quan">9. Tài liệu liên quan</h2>
+      <ul>
+        <li><a href="base44-quy-trinh-lam-web.html">Base44 — Quy trình làm web mẫu (6 bước, đầy đủ)</a>: dùng khi dự án phức tạp, cần nhiều vòng góp ý, muốn ra bản chính thức.</li>
+      </ul>
+
+      <div class="page-footer">
+        Tài liệu rút gọn — cập nhật ngày 28/08/2026. Mọi thắc mắc xin liên hệ trực tiếp đội dự án.
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
