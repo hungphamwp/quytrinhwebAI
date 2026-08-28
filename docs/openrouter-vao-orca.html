@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tích hợp OpenRouter vào Orca — Dùng model miễn phí cho Claude Code</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* Các thành phần trực quan bổ sung riêng cho tài liệu này */
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 8px;
+    margin: 20px 0;
+  }
+  .flow-box {
+    flex: 1 1 150px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 14px;
+    text-align: center;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow);
+  }
+  .flow-box .icon { font-size: 1.5rem; display: block; margin-bottom: 6px; }
+  .flow-box .name { font-weight: 700; display: block; }
+  .flow-box .note { color: var(--text-muted); font-size: 0.78rem; display: block; margin-top: 4px; }
+  .flow-arrow {
+    align-self: center;
+    color: var(--accent);
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 0 2px;
+  }
+  .steps-grid { margin-top: 8px; }
+  .env-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+    margin: 14px 0;
+  }
+  .env-card .env-name {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .env-card .env-name:last-child { border-bottom: none; }
+  .env-card .k { font-weight: 600; min-width: 220px; }
+  .env-card .v { color: var(--accent); }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+  .pill {
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    font-family: var(--font-mono);
+  }
+  .pill.ok { outline: 2px solid #3f9d63; }
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="sidebar-brand" href="../index.html">Quy trình Web AI</a>
+    <span class="sidebar-tagline">Kho tài liệu tích lũy</span>
+
+    <div class="sidebar-section-title">Trang chủ</div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Tổng quan kho tài liệu</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-section-title">Công cụ &amp; Nền tảng</div>
+    <nav>
+      <ul>
+        <li><a href="base44-quy-trinh-lam-web.html">Base44 — Quy trình làm web mẫu</a></li>
+        <li><a href="openrouter-vao-orca.html" class="active">OpenRouter trong Orca</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="content-inner">
+      <div class="breadcrumb"><a href="../index.html">Trang chủ</a> / OpenRouter trong Orca</div>
+
+      <header class="page-header">
+        <h1>Tích hợp OpenRouter vào Orca</h1>
+      </header>
+
+      <p class="page-lede">
+        Hướng dẫn cấu hình để <strong>Claude Code chạy trong Orca</strong> dùng các
+        <strong>model miễn phí của OpenRouter</strong> thay cho tài khoản Anthropic trả phí.
+        Ví dụ dưới đây dùng model <code>minimax/minimax-m3:free</code> (miễn phí, hỗ trợ
+        tool-calling) — <strong>đã kiểm chứng chạy được</strong>.
+      </p>
+
+      <blockquote>
+        <strong>Bản chất quan trọng:</strong> Orca là ứng dụng <strong>điều phối các AI agent</strong>
+        (Claude Code, Codex, Kimi…). Nó <strong>không tự host model</strong> — nó chỉ khởi chạy agent.
+        Vì vậy, muốn đổi model cho Claude Code, ta cấu hình <strong>trong chính Claude Code</strong>
+        (file <code>~/.claude/settings.json</code>). Orca đọc file này mỗi lần khởi chạy agent,
+        nên cấu hình tự áp dụng mà không cần chỉnh Orca.
+      </blockquote>
+
+      <h2 id="luong-hoat-dong">1. Luồng hoạt động</h2>
+      <div class="flow">
+        <div class="flow-box">
+          <span class="icon">🪟</span>
+          <span class="name">Orca</span>
+          <span class="note">Khởi chạy Claude Code</span>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <span class="icon">🤖</span>
+          <span class="name">Claude Code</span>
+          <span class="note">Đọc ~/.claude/settings.json</span>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <span class="icon">🔌</span>
+          <span class="name">OpenRouter</span>
+          <span class="note">Endpoint Anthropic-compatible</span>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <span class="icon">🧠</span>
+          <span class="name">Model miễn phí</span>
+          <span class="note">VD minimax-m3:free</span>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <span class="icon">✅</span>
+          <span class="name">Trả lời</span>
+          <span class="note">Có tool-calling</span>
+        </div>
+      </div>
+
+      <h2 id="tong-quan">2. Tổng quan</h2>
+      <table>
+        <thead><tr><th>Mục</th><th>Nội dung</th></tr></thead>
+        <tbody>
+          <tr><td>Ứng dụng</td><td><strong>Orca</strong> (điều phối AI agent)</td></tr>
+          <tr><td>Agent được cấu hình</td><td><strong>Claude Code</strong> (phiên bản CLI)</td></tr>
+          <tr><td>Provider</td><td><strong>OpenRouter</strong> — cổng tập hợp nhiều model, có bản miễn phí</td></tr>
+          <tr><td>File cấu hình</td><td><code>~/.claude/settings.json</code></td></tr>
+          <tr><td>Model mặc định</td><td><code>minimax/minimax-m3:free</code></td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="cac-buoc">3. Các bước thực hiện</h2>
+      <div class="steps-grid">
+        <div class="step-chip"><span class="num">1</span>Lấy API key OpenRouter</div>
+        <div class="step-chip"><span class="num">2</span>Mở ~/.claude/settings.json</div>
+        <div class="step-chip"><span class="num">3</span>Thêm cấu hình env</div>
+        <div class="step-chip"><span class="num">4</span>Chọn model miễn phí</div>
+        <div class="step-chip"><span class="num">5</span>Mở lại agent trong Orca</div>
+        <div class="step-chip"><span class="num">6</span>Kiểm tra</div>
+      </div>
+
+      <h3>Bước 1 — Lấy API key OpenRouter</h3>
+      <p>Đăng nhập <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">openrouter.ai/keys</a> → <strong>Create Key</strong>. Copy key dạng <code>sk-or-v1-...</code>.</p>
+
+      <h3>Bước 2 — Mở file cấu hình Claude Code</h3>
+      <pre><code>nano ~/.claude/settings.json</code></pre>
+
+      <h3>Bước 3 — Thêm cấu hình vào block <code>env</code></h3>
+      <div class="env-card">
+        <div class="env-name"><span class="k">ANTHROPIC_BASE_URL</span> <span class="v">https://openrouter.ai/api</span></div>
+        <div class="env-name"><span class="k">ANTHROPIC_AUTH_TOKEN</span> <span class="v">sk-or-v1-...</span></div>
+        <div class="env-name"><span class="k">ANTHROPIC_API_KEY</span> <span class="v">""</span> <span style="color:var(--text-muted);font-size:.78rem;">(đặt rỗng)</span></div>
+        <div class="env-name"><span class="k">ANTHROPIC_MODEL</span> <span class="v">minimax/minimax-m3:free</span></div>
+        <div class="env-name"><span class="k">ANTHROPIC_SMALL_FAST_MODEL</span> <span class="v">minimax/minimax-m3:free</span></div>
+        <div class="env-name"><span class="k">ANTHROPIC_DEFAULT_HAIKU_MODEL</span> <span class="v">minimax/minimax-m3:free</span></div>
+      </div>
+      <p>Ví dụ đầy đủ trong <code>settings.json</code>:</p>
+      <pre><code>{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
+    "ANTHROPIC_AUTH_TOKEN": "sk-or-v1-...",
+    "ANTHROPIC_API_KEY": "",
+    "ANTHROPIC_MODEL": "minimax/minimax-m3:free",
+    "ANTHROPIC_SMALL_FAST_MODEL": "minimax/minimax-m3:free",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "minimax/minimax-m3:free"
+  }
+}</code></pre>
+
+      <blockquote>
+        💡 Nên đặt cả 3 biến <code>*_MODEL</code> về <strong>cùng một model free</strong> để mọi tác vụ
+        (chính + nền) đều gọi được trên OpenRouter. Nếu để model Anthropic (như
+        <code>claude-haiku-...</code>) ở slot nền mà base URL là OpenRouter, các tác vụ nền sẽ lỗi vì
+        model đó không tồn tại trên OpenRouter.
+      </blockquote>
+
+      <h3>Bước 4 — Chọn model miễn phí</h3>
+      <p>Liệt kê model hiện có (lọc model <code>:free</code>):</p>
+      <pre><code>curl -sS "https://openrouter.ai/api/v1/models" |
+  python3 -c "import json,sys; d=json.load(sys.stdin); [print(m['id']) for m in d['data'] if m['id'].endswith(':free')]"</code></pre>
+
+      <p><strong>Một số model miễn phí (kiểm tra được tool-calling):</strong></p>
+      <div class="pill-row">
+        <span class="pill ok">minimax/minimax-m3:free</span>
+        <span class="pill ok">cohere/north-mini-code:free</span>
+        <span class="pill ok">nvidia/nemotron-3-super-120b-a12b:free</span>
+        <span class="pill">z-ai/glm-5.2:free</span>
+        <span class="pill">google/gemma-4-31b-it:free</span>
+        <span class="pill">nvidia/nemotron-3-ultra-550b-a55b:free</span>
+      </div>
+      <p class="page-lede" style="padding:12px 16px; font-size:0.9rem;">
+        ⚠️ <strong>DeepSeek / Qwen / Kimi hiện không còn bản <code>:free</code></strong> trên OpenRouter
+        (đã chuyển trả phí, dù rất rẻ). Model cần <strong>hỗ trợ tool-calling</strong> (Claude Code bắt
+        buộc) — hầu hết model <code>:free</code> đều hỗ trợ.
+      </p>
+
+      <h3>Bước 5 — Áp dụng (mở lại agent trong Orca)</h3>
+      <p>Cấu hình chỉ có hiệu lực khi <strong>khởi chạy mới</strong>. Đóng tab/pane Claude Code đang mở trong Orca rồi mở lại.</p>
+
+      <h3>Bước 6 — Kiểm tra</h3>
+      <p>Gửi thử một yêu cầu. Nếu muốn kiểm tra từ dòng lệnh trước:</p>
+      <pre><code>curl -sS -X POST "https://openrouter.ai/api/v1/messages" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"minimax/minimax-m3:free","max_tokens":64,"messages":[{"role":"user","content":"Say hi"}]}'</code></pre>
+
+      <h2 id="doi-model">4. Đổi model sau này</h2>
+      <p>Mở <code>~/.claude/settings.json</code>, sửa 3 dòng <code>*_MODEL</code> sang ID model free khác (theo danh sách ở Bước 4).</p>
+
+      <h2 id="su-co">5. Xử lý sự cố (Troubleshooting)</h2>
+      <table>
+        <thead><tr><th>Vấn đề</th><th>Nguyên nhân</th><th>Cách xử lý</th></tr></thead>
+        <tbody>
+          <tr><td>Lỗi <code>rate_limit_exceeded</code></td><td>Model free dùng chung pool, tạm bị giới hạn</td><td>Chờ vài phút; đổi model free khác; hoặc thêm BYOK lên OpenRouter.</td></tr>
+          <tr><td>Vẫn dùng tài khoản Anthropic</td><td><code>ANTHROPIC_API_KEY</code> chưa được đặt rỗng</td><td>Đặt <code>"ANTHROPIC_API_KEY": ""</code>.</td></tr>
+          <tr><td>Model không tồn tại / lỗi ở tác vụ nền</td><td>Slot haiku trỏ tới model Anthropic-only</td><td>Đặt cả 3 biến <code>*_MODEL</code> về cùng model free.</td></tr>
+          <tr><td>Chạy <code>claude-proxy</code> không dùng OpenRouter</td><td>Trong <code>~/.zshrc</code> có alias đặt <code>ANTHROPIC_BASE_URL</code> khác</td><td>Chạy <code>claude</code> thường (hoặc do Orca khởi chạy) thay vì alias.</td></tr>
+          <tr><td>Muốn chỉ cấu hình cho 1 dự án</td><td>Đặt cấu hình trong <code>.claude/settings.json</code> của dự án đó</td><td>Dùng file project-local, hoặc biến môi trường khi chạy.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="bao-mat">6. Lưu ý bảo mật</h2>
+      <ul>
+        <li>API key được lưu <strong>dạng thuần văn bản</strong> trong <code>~/.claude/settings.json</code>. Đây là cách chuẩn của Claude Code cho provider tùy chỉnh, nhưng hãy đảm bảo file không bị chia sẻ/commit.</li>
+        <li>Nên tạo <strong>backup</strong> trước khi sửa: <code>cp ~/.claude/settings.json ~/.claude/settings.json.bak</code>.</li>
+      </ul>
+
+      <div class="page-footer">
+        Tài liệu này được cập nhật liên tục theo quy trình thực tế. Mọi thắc mắc xin liên hệ trực tiếp đội dự án.
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
