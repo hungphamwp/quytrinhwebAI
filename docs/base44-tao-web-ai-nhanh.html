@@ -116,6 +116,19 @@
     <div class="content-inner">
       <div class="breadcrumb"><a href="../index.html">Trang chủ</a> / Base44 / Tạo web nhanh</div>
 
+      <nav style="margin-bottom: 24px; padding: 12px 16px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; font-size: 0.92rem;">
+        <strong style="color: var(--accent);">Mục lục nhanh:</strong>
+        <a href="#tong-quan" style="margin-left: 8px;">1. Tổng quan</a> ·
+        <a href="#buoc-1">2. Bước 1</a> ·
+        <a href="#buoc-2">3. Bước 2</a> ·
+        <a href="#buoc-3">4. Bước 3</a> ·
+        <a href="#buoc-4">5. Bước 4</a> ·
+        <a href="#dau-ra">6. Bạn nhận được gì</a> ·
+        <a href="#nang-cao">7. DeepSeek + WordPress</a> ·
+        <a href="#checklist">8. Checklist</a> ·
+        <a href="#faq">9. FAQ</a>
+      </nav>
+
       <header class="page-header">
         <h1>Quy trình tạo Web AI nhanh với Base44 (trong 1 ngày)</h1>
       </header>
@@ -234,14 +247,26 @@ flowchart LR
       <p><strong>Mẹo tiết kiệm thời gian:</strong> Chuẩn bị sẵn logo, ảnh sản phẩm, và đoạn giới thiệu ngắn gửi kèm. Nếu chưa có thì dùng tạm placeholder, sau này thay sau.</p>
 
       <h2 id="buoc-2">3. Bước 2 — Viết prompt &amp; tạo web (2–4 giờ)</h2>
-      <p>Đội dự án sẽ:</p>
+      <p>Đội dự án sẽ chọn <strong>1 trong 2 công cụ AI</strong> để dựng giao diện:</p>
+
+      <h3>Phương án 1 — Base44 (mặc định, cho ra demo nhanh)</h3>
       <ul>
         <li>Chuyển câu trả lời của bạn thành một <strong>đoạn mô tả chi tiết</strong> (gọi là <em>prompt</em>) để gửi cho AI.</li>
         <li>Đăng nhập <a href="https://app.base44.com/" target="_blank" rel="noopener">Base44</a>, nhập prompt.</li>
         <li>AI sẽ tự dựng giao diện và các trang. Đội dự án kiểm tra lại, chỉnh sửa những chỗ rõ ràng sai sót.</li>
         <li>Gửi lại bạn <strong>1 link xem thử</strong> (dạng <code>*.base44.app</code>) qua Zalo/email.</li>
+        <li>Thường phù hợp khi: cần demo gấp, hoặc khách muốn dùng link Base44 luôn (xem <a href="#nang-cao">phương án nâng cao</a> nếu sau này muốn chuyển sang WordPress).</li>
       </ul>
-      <p>Trong thời gian chờ, bạn không cần làm gì — cứ làm việc khác, khi nào có link thì mở ra xem.</p>
+
+      <h3>Phương án 2 — DeepSeek (cho ra file HTML thuần)</h3>
+      <ul>
+        <li>Đội dự án viết prompt chi tiết cho <a href="https://chat.deepseek.com/" target="_blank" rel="noopener">DeepSeek</a> (hỗ trợ tiếng Việt tốt, có thể kèm ảnh mẫu tham khảo).</li>
+        <li>DeepSeek sinh ra <strong>file HTML + CSS thuần</strong> (1 file <code>index.html</code> hoặc tách <code>style.css</code> riêng).</li>
+        <li>Mở thử trên trình duyệt, chỉnh sửa đến khi ưng.</li>
+        <li>Thường phù hợp khi: cần file HTML độc lập để <strong>mang đi cài lên WordPress</strong> (có tên miền riêng), hoặc đưa cho dev khác tiếp tục.</li>
+      </ul>
+
+      <p>Trong thời gian chờ, bạn không cần làm gì — cứ làm việc khác, khi nào có sản phẩm thì mở ra xem.</p>
 
       <h2 id="buoc-3">4. Bước 3 — Xem, góp ý, sửa nhanh (1–2 giờ)</h2>
       <p>Mở link trên trình duyệt (Chrome, Safari...) hoặc điện thoại. Xem thoải mái như đang lướt web bình thường.</p>
@@ -307,7 +332,125 @@ flowchart LR
         </tbody>
       </table>
 
-      <h2 id="checklist">7. Checklist chuẩn bị trước khi bắt đầu</h2>
+      <h2 id="nang-cao">7. Phương án nâng cao: DeepSeek + chuyển sang WordPress</h2>
+      <p>
+        Ngoài quy trình 4 bước với Base44 ở trên (ra sản phẩm demo trên <code>*.base44.app</code>),
+        nếu bạn cần <strong>web chính thức có tên miền riêng, dễ tự chỉnh sửa nội dung sau này</strong>,
+        có thể dùng phương án nâng cao với <strong>DeepSeek</strong> + <strong>WordPress</strong> (kèm ACF).
+        Có 2 cách dùng DeepSeek, tuỳ tình huống:
+      </p>
+
+      <h3>Cách A — DeepSeek viết code HTML thuần (rồi chuyển sang WordPress)</h3>
+      <p>
+        Phù hợp khi bạn muốn <strong>file HTML độc lập, không phụ thuộc Base44</strong>, sau đó đội kỹ thuật
+        mang đi cài lên hosting WordPress thật, gắn tên miền riêng, làm SEO chuẩn.
+      </p>
+      <ol>
+        <li>Đội dự án viết prompt chi tiết cho <a href="https://chat.deepseek.com/" target="_blank" rel="noopener">DeepSeek</a> (tiếng Việt ok, có thể kèm ảnh mẫu tham khảo).</li>
+        <li>DeepSeek sinh ra <strong>file HTML + CSS thuần</strong> (1 file <code>index.html</code> hoặc tách <code>style.css</code> riêng).</li>
+        <li>Mở thử trên trình duyệt, chỉnh sửa cho đến khi ưng.</li>
+        <li>Đội kỹ thuật <strong>chuyển file HTML đó thành WordPress page template (PHP)</strong> bằng skill <code>devvn-html-to-wp-acf</code>:
+          <ul>
+            <li>Tách từng phần nội dung (heading, đoạn văn, ảnh, danh sách...) thành các <strong>trường ACF</strong> (Advanced Custom Fields).</li>
+            <li>Đăng ký field group trong <code>functions.php</code> bằng PHP (không cần import JSON).</li>
+            <li>Tạo page template <code>page-xxx.php</code> dùng <code>get_field()</code> / <code>have_rows()</code> để render.</li>
+            <li>Minify CSS inline, strip asset thừa của WP để giữ tốc độ tải nhanh.</li>
+          </ul>
+        </li>
+        <li>Khách hàng <strong>tự chỉnh sửa nội dung</strong> trong wp-admin → Pages → sửa trực tiếp vào ACF, không cần đụng code.</li>
+      </ol>
+
+      <h3>Cách B — DeepSeek hỗ trợ Base44</h3>
+      <p>Phù hợp khi bạn đã dùng Base44 ra demo và cần <em>nâng cấp thành web chính thức trên WordPress</em>:</p>
+      <ol>
+        <li>Dùng Base44 ra bản demo nhanh (quy trình 4 bước ở trên).</li>
+        <li>Dùng <strong>DeepSeek</strong> để:
+          <ul>
+            <li>Viết prompt tốt hơn cho Base44 (nếu muốn sinh thêm section).</li>
+            <li>Sinh code HTML thuần từ bản Base44 (copy giao diện, viết lại bằng HTML/CSS sạch).</li>
+            <li>Sinh snippet PHP/ACF mẫu để đội kỹ thuật tham khảo khi chuyển sang WordPress.</li>
+          </ul>
+        </li>
+        <li>Đội kỹ thuật lấy HTML thuần đó, áp skill <code>devvn-html-to-wp-acf</code> để chuyển sang WordPress.</li>
+      </ol>
+
+      <h3>Sơ đồ pipeline: từ giao diện code sang WordPress</h3>
+      <div class="diagram">
+<pre class="mermaid">
+flowchart LR
+    subgraph Input["Đầu vào"]
+        I1["Mô tả yêu cầu<br/>(tiếng Việt)"]
+    end
+
+    subgraph Gen["Sinh giao diện"]
+        G1["DeepSeek<br/>chat.deepseek.com"]
+        G2["Base44<br/>app.base44.com"]
+    end
+
+    subgraph HTML["HTML thuần"]
+        H1["index.html<br/>+ style.css"]
+    end
+
+    subgraph WP["Chuyển sang WordPress<br/>(skill devvn-html-to-wp-acf)"]
+        W1["Phân tích cấu trúc<br/>section / field"]
+        W2["Đăng ký ACF field<br/>(PHP thuần)"]
+        W3["Viết page template<br/>(PHP + get_field)"]
+        W4["Minify CSS<br/>+ strip asset"]
+    end
+
+    subgraph Out["Sản phẩm cuối"]
+        O1["Website WordPress<br/>tên miền riêng"]
+        O2["Khách tự sửa nội dung<br/>qua wp-admin + ACF"]
+    end
+
+    I1 --> G1
+    I1 --> G2
+    G1 --> H1
+    G2 -.Demo.-> H1
+    H1 --> W1 --> W2 --> W3 --> W4 --> O1 --> O2
+
+    style I1 fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style G1 fill:#fef3c7,stroke:#d97706,color:#78350f
+    style G2 fill:#fef3c7,stroke:#d97706,color:#78350f
+    style H1 fill:#e0e7ff,stroke:#4f46e5,color:#312e81
+    style W1 fill:#fce7f3,stroke:#db2777,color:#831843
+    style W2 fill:#fce7f3,stroke:#db2777,color:#831843
+    style W3 fill:#fce7f3,stroke:#db2777,color:#831843
+    style W4 fill:#fce7f3,stroke:#db2777,color:#831843
+    style O1 fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style O2 fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style Input fill:#eff6ff,stroke:#93c5fd,color:#1e3a8a
+    style Gen fill:#fffbeb,stroke:#fcd34d,color:#78350f
+    style HTML fill:#eef2ff,stroke:#a5b4fc,color:#312e81
+    style WP fill:#fdf2f8,stroke:#f9a8d4,color:#831843
+    style Out fill:#f0fdf4,stroke:#86efac,color:#166534
+</pre>
+        <div class="diagram-caption">Hình 4 — Pipeline DeepSeek / Base44 → HTML thuần → WordPress page template (ACF) → website chính thức</div>
+      </div>
+
+      <div class="legend">
+        <span class="legend-item"><span class="legend-dot" style="background:#2563eb"></span>Đầu vào</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#d97706"></span>AI sinh giao diện</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#4f46e5"></span>HTML thuần (output)</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#db2777"></span>Skill devvn-html-to-wp-acf</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#16a34a"></span>WordPress chính thức</span>
+      </div>
+
+      <h3>Vì sao cần chuyển qua WordPress (ACF)?</h3>
+      <ul>
+        <li><strong>Khách tự sửa được</strong>: thay ảnh, đổi chữ, thêm sản phẩm — không cần nhờ dev, không sợ hỏng layout.</li>
+        <li><strong>Tên miền riêng</strong> (vd: <code>tencongty.vn</code>), hosting riêng, SEO chuẩn WordPress.</li>
+        <li><strong>Mở rộng dễ</strong>: thêm form liên hệ (CF7, WPForms), thanh toán (WooCommerce), đa ngôn ngữ, blog...</li>
+        <li><strong>Tốc độ tải tốt</strong> nhờ minify CSS + strip asset thừa (theo skill <code>devvn-html-to-wp-acf</code>).</li>
+        <li><strong>Bảo trì độc lập</strong>: web có thể sống nhiều năm, đổi người quản trị vẫn vận hành được.</li>
+      </ul>
+
+      <blockquote>
+        <strong>Lưu ý:</strong> Bước chuyển HTML → WordPress cần <em>đội kỹ thuật</em> thực hiện (không phải AI tự làm xong).
+        DeepSeek có thể sinh code PHP/ACF mẫu để tham khảo, nhưng dev người thật sẽ kiểm tra, fix lỗi, tối ưu trước khi đưa lên production.
+      </blockquote>
+
+      <h2 id="checklist">8. Checklist chuẩn bị trước khi bắt đầu</h2>
       <p>Để quy trình trơn tru, bạn cần chuẩn bị sẵn (nếu có):</p>
       <ul>
         <li>☐ Logo (file PNG/SVG, nền trong suốt càng tốt)</li>
@@ -319,7 +462,7 @@ flowchart LR
       </ul>
       <p><em>Không có cũng không sao — AI sẽ dùng nội dung tạm, bạn thay sau cũng được.</em></p>
 
-      <h2 id="faq">8. Câu hỏi thường gặp</h2>
+      <h2 id="faq">9. Câu hỏi thường gặp</h2>
 
       <p><strong>Hỏi: Tôi chưa có logo thì sao?</strong><br>
       Không sao. AI sẽ dùng tên thương hiệu thay thế. Khi nào có logo thật, gửi đội dự án để cập nhật.</p>
@@ -336,7 +479,27 @@ flowchart LR
       <p><strong>Hỏi: Chi phí cho quy trình 1 ngày này là bao nhiêu?</strong><br>
       Liên hệ trực tiếp đội dự án để nhận báo giá. Chi phí thường thấp hơn nhiều so với quy trình đầy đủ vì giới hạn phạm vi.</p>
 
-      <h2 id="lien-quan">9. Tài liệu liên quan</h2>
+      <p><strong>Hỏi: Nên dùng Base44 hay DeepSeek?</strong><br>
+      <em>Base44</em> cho ra link demo nhanh, xem được ngay trên trình duyệt, phù hợp khi cần demo gấp.<br>
+      <em>DeepSeek</em> cho ra file HTML thuần, phù hợp khi cần mang đi cài lên WordPress, hosting riêng, tên miền riêng.<br>
+      Xem chi tiết ở <a href="#nang-cao">mục 7 — Phương án nâng cao</a>.</p>
+
+      <p><strong>Hỏi: Tôi có thể dùng cả Base44 lẫn DeepSeek không?</strong><br>
+      Được. Thường làm Base44 trước (ra demo nhanh để duyệt ý tưởng), rồi dùng DeepSeek sinh HTML sạch từ bản Base44 để chuyển sang WordPress.</p>
+
+      <p><strong>Hỏi: Chuyển HTML sang WordPress mất bao lâu?</strong><br>
+      Tuỳ độ phức tạp của giao diện. Trang đơn giản (1–2 section) thường 1–2 ngày. Landing page nhiều section, repeater nhiều, form phức tạp có thể 3–5 ngày. Đội kỹ thuật sẽ báo cụ thể sau khi nhận HTML.</p>
+
+      <p><strong>Hỏi: Sau khi chuyển sang WordPress, tôi tự sửa nội dung được không?</strong><br>
+      Được — đó là lý do chính dùng ACF. Bạn vào <code>wp-admin → Pages</code>, mở trang, sửa trực tiếp các trường (tiêu đề, đoạn văn, ảnh, danh sách...). Không cần đụng code.</p>
+
+      <h2 id="lien-quan">10. Tài liệu liên quan</h2>
+      <ul>
+        <li><a href="base44-quy-trinh-lam-web.html">Base44 — Quy trình làm web mẫu (6 bước, đầy đủ)</a>: dùng khi dự án phức tạp, cần nhiều vòng góp ý, muốn ra bản chính thức.</li>
+        <li>Skill <code>devvn-html-to-wp-acf</code>: hướng dẫn chi tiết kỹ thuật chuyển HTML thuần → WordPress page template (PHP) + ACF. Dùng nội bộ đội kỹ thuật.</li>
+        <li><a href="https://chat.deepseek.com/" target="_blank" rel="noopener">DeepSeek Chat</a>: công cụ AI sinh code HTML/CSS/JS từ prompt tiếng Việt.</li>
+        <li><a href="https://app.base44.com/" target="_blank" rel="noopener">Base44</a>: công cụ AI sinh web app hoàn chỉnh, có link demo công khai.</li>
+      </ul>
       <ul>
         <li><a href="base44-quy-trinh-lam-web.html">Base44 — Quy trình làm web mẫu (6 bước, đầy đủ)</a>: dùng khi dự án phức tạp, cần nhiều vòng góp ý, muốn ra bản chính thức.</li>
       </ul>

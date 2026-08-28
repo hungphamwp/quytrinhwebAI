@@ -105,14 +105,24 @@ Bạn không cần viết gì dài dòng. Chỉ cần trả lời **4 câu hỏi
 
 ## 3. Bước 2 — Viết prompt & tạo web (2–4 giờ)
 
-Đội dự án sẽ:
+Đội dự án sẽ chọn **1 trong 2 công cụ AI** để dựng giao diện:
+
+### Phương án 1 — Base44 (mặc định, cho ra demo nhanh)
 
 - Chuyển câu trả lời của bạn thành một **đoạn mô tả chi tiết** (gọi là *prompt*) để gửi cho AI.
 - Đăng nhập [Base44](https://app.base44.com/), nhập prompt.
 - AI sẽ tự dựng giao diện và các trang. Đội dự án kiểm tra lại, chỉnh sửa những chỗ rõ ràng sai sót.
 - Gửi lại bạn **1 link xem thử** (dạng `*.base44.app`) qua Zalo/email.
+- Thường phù hợp khi: cần demo gấp, hoặc khách muốn dùng link Base44 luôn (xem [phương án nâng cao](#7-phương-án-nâng-cao-deepseek--chuyển-sang-wordpress) nếu sau này muốn chuyển sang WordPress).
 
-Trong thời gian chờ, bạn không cần làm gì — cứ làm việc khác, khi nào có link thì mở ra xem.
+### Phương án 2 — DeepSeek (cho ra file HTML thuần)
+
+- Đội dự án viết prompt chi tiết cho [DeepSeek](https://chat.deepseek.com/) (hỗ trợ tiếng Việt tốt, có thể kèm ảnh mẫu tham khảo).
+- DeepSeek sinh ra **file HTML + CSS thuần** (1 file `index.html` hoặc tách `style.css` riêng).
+- Mở thử trên trình duyệt, chỉnh sửa đến khi ưng.
+- Thường phù hợp khi: cần file HTML độc lập để **mang đi cài lên WordPress** (có tên miền riêng), hoặc đưa cho dev khác tiếp tục.
+
+Trong thời gian chờ, bạn không cần làm gì — cứ làm việc khác, khi nào có sản phẩm thì mở ra xem.
 
 ---
 
@@ -185,7 +195,104 @@ flowchart LR
 
 ---
 
-## 7. Checklist chuẩn bị trước khi bắt đầu
+## 7. Phương án nâng cao: DeepSeek + chuyển sang WordPress
+
+Ngoài quy trình 4 bước với Base44 ở trên (ra sản phẩm demo trên `*.base44.app`), nếu bạn cần **web chính thức có tên miền riêng, dễ tự chỉnh sửa nội dung sau này**, có thể dùng phương án nâng cao với **DeepSeek** + **WordPress** (kèm ACF). Có 2 cách dùng DeepSeek, tuỳ tình huống:
+
+### Cách A — DeepSeek viết code HTML thuần (rồi chuyển sang WordPress)
+
+Phù hợp khi bạn muốn **file HTML độc lập, không phụ thuộc Base44**, sau đó đội kỹ thuật mang đi cài lên hosting WordPress thật, gắn tên miền riêng, làm SEO chuẩn.
+
+1. Đội dự án viết prompt chi tiết cho [DeepSeek](https://chat.deepseek.com/) (tiếng Việt ok, có thể kèm ảnh mẫu tham khảo).
+2. DeepSeek sinh ra **file HTML + CSS thuần** (1 file `index.html` hoặc tách `style.css` riêng).
+3. Mở thử trên trình duyệt, chỉnh sửa cho đến khi ưng.
+4. Đội kỹ thuật **chuyển file HTML đó thành WordPress page template (PHP)** bằng skill `devvn-html-to-wp-acf`:
+   - Tách từng phần nội dung (heading, đoạn văn, ảnh, danh sách...) thành các **trường ACF** (Advanced Custom Fields).
+   - Đăng ký field group trong `functions.php` bằng PHP (không cần import JSON).
+   - Tạo page template `page-xxx.php` dùng `get_field()` / `have_rows()` để render.
+   - Minify CSS inline, strip asset thừa của WP để giữ tốc độ tải nhanh.
+5. Khách hàng **tự chỉnh sửa nội dung** trong wp-admin → Pages → sửa trực tiếp vào ACF, không cần đụng code.
+
+### Cách B — DeepSeek hỗ trợ Base44
+
+Phù hợp khi bạn đã dùng Base44 ra demo và cần *nâng cấp thành web chính thức trên WordPress*:
+
+1. Dùng Base44 ra bản demo nhanh (quy trình 4 bước ở trên).
+2. Dùng **DeepSeek** để:
+   - Viết prompt tốt hơn cho Base44 (nếu muốn sinh thêm section).
+   - Sinh code HTML thuần từ bản Base44 (copy giao diện, viết lại bằng HTML/CSS sạch).
+   - Sinh snippet PHP/ACF mẫu để đội kỹ thuật tham khảo khi chuyển sang WordPress.
+3. Đội kỹ thuật lấy HTML thuần đó, áp skill `devvn-html-to-wp-acf` để chuyển sang WordPress.
+
+### Sơ đồ pipeline: từ giao diện code sang WordPress
+
+```mermaid
+flowchart LR
+    subgraph Input["Đầu vào"]
+        I1["Mô tả yêu cầu<br/>(tiếng Việt)"]
+    end
+
+    subgraph Gen["Sinh giao diện"]
+        G1["DeepSeek<br/>chat.deepseek.com"]
+        G2["Base44<br/>app.base44.com"]
+    end
+
+    subgraph HTML["HTML thuần"]
+        H1["index.html<br/>+ style.css"]
+    end
+
+    subgraph WP["Chuyển sang WordPress<br/>(skill devvn-html-to-wp-acf)"]
+        W1["Phân tích cấu trúc<br/>section / field"]
+        W2["Đăng ký ACF field<br/>(PHP thuần)"]
+        W3["Viết page template<br/>(PHP + get_field)"]
+        W4["Minify CSS<br/>+ strip asset"]
+    end
+
+    subgraph Out["Sản phẩm cuối"]
+        O1["Website WordPress<br/>tên miền riêng"]
+        O2["Khách tự sửa nội dung<br/>qua wp-admin + ACF"]
+    end
+
+    I1 --> G1
+    I1 --> G2
+    G1 --> H1
+    G2 -.Demo.-> H1
+    H1 --> W1 --> W2 --> W3 --> W4 --> O1 --> O2
+
+    style I1 fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style G1 fill:#fef3c7,stroke:#d97706,color:#78350f
+    style G2 fill:#fef3c7,stroke:#d97706,color:#78350f
+    style H1 fill:#e0e7ff,stroke:#4f46e5,color:#312e81
+    style W1 fill:#fce7f3,stroke:#db2777,color:#831843
+    style W2 fill:#fce7f3,stroke:#db2777,color:#831843
+    style W3 fill:#fce7f3,stroke:#db2777,color:#831843
+    style W4 fill:#fce7f3,stroke:#db2777,color:#831843
+    style O1 fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style O2 fill:#dcfce7,stroke:#16a34a,color:#14532d
+```
+
+**Chú thích màu:**
+- 🟦 **Xanh dương** = Đầu vào
+- 🟨 **Vàng cam** = AI sinh giao diện
+- 🟪 **Tím** = HTML thuần (output)
+- 🟥 **Hồng** = Skill devvn-html-to-wp-acf
+- 🟩 **Xanh lá** = WordPress chính thức
+
+### Vì sao cần chuyển qua WordPress (ACF)?
+
+- **Khách tự sửa được**: thay ảnh, đổi chữ, thêm sản phẩm — không cần nhờ dev, không sợ hỏng layout.
+- **Tên miền riêng** (vd: `tencongty.vn`), hosting riêng, SEO chuẩn WordPress.
+- **Mở rộng dễ**: thêm form liên hệ (CF7, WPForms), thanh toán (WooCommerce), đa ngôn ngữ, blog...
+- **Tốc độ tải tốt** nhờ minify CSS + strip asset thừa (theo skill `devvn-html-to-wp-acf`).
+- **Bảo trì độc lập**: web có thể sống nhiều năm, đổi người quản trị vẫn vận hành được.
+
+> **Lưu ý:** Bước chuyển HTML → WordPress cần *đội kỹ thuật* thực hiện (không phải AI tự làm xong). DeepSeek có thể sinh code PHP/ACF mẫu để tham khảo, nhưng dev người thật sẽ kiểm tra, fix lỗi, tối ưu trước khi đưa lên production.
+
+---
+
+---
+
+## 8. Checklist chuẩn bị trước khi bắt đầu
 
 Để quy trình trơn tru, bạn cần chuẩn bị sẵn (nếu có):
 
@@ -200,7 +307,7 @@ flowchart LR
 
 ---
 
-## 8. Câu hỏi thường gặp
+## 9. Câu hỏi thường gặp
 
 **Hỏi: Tôi chưa có logo thì sao?**
 Không sao. AI sẽ dùng tên thương hiệu thay thế. Khi nào có logo thật, gửi đội dự án để cập nhật.
@@ -217,11 +324,28 @@ Không. Quy trình 1 ngày này chỉ tính cho **1 vòng đầu tiên**. Sau kh
 **Hỏi: Chi phí cho quy trình 1 ngày này là bao nhiêu?**
 Liên hệ trực tiếp đội dự án để nhận báo giá. Chi phí thường thấp hơn nhiều so với quy trình đầy đủ vì giới hạn phạm vi.
 
+**Hỏi: Nên dùng Base44 hay DeepSeek?**
+*Base44* cho ra link demo nhanh, xem được ngay trên trình duyệt, phù hợp khi cần demo gấp.
+*DeepSeek* cho ra file HTML thuần, phù hợp khi cần mang đi cài lên WordPress, hosting riêng, tên miền riêng.
+Xem chi tiết ở [mục 7 — Phương án nâng cao](#7-phương-án-nâng-cao-deepseek--chuyển-sang-wordpress).
+
+**Hỏi: Tôi có thể dùng cả Base44 lẫn DeepSeek không?**
+Được. Thường làm Base44 trước (ra demo nhanh để duyệt ý tưởng), rồi dùng DeepSeek sinh HTML sạch từ bản Base44 để chuyển sang WordPress.
+
+**Hỏi: Chuyển HTML sang WordPress mất bao lâu?**
+Tuỳ độ phức tạp của giao diện. Trang đơn giản (1–2 section) thường 1–2 ngày. Landing page nhiều section, repeater nhiều, form phức tạp có thể 3–5 ngày. Đội kỹ thuật sẽ báo cụ thể sau khi nhận HTML.
+
+**Hỏi: Sau khi chuyển sang WordPress, tôi tự sửa nội dung được không?**
+Được — đó là lý do chính dùng ACF. Bạn vào `wp-admin → Pages`, mở trang, sửa trực tiếp các trường (tiêu đề, đoạn văn, ảnh, danh sách...). Không cần đụng code.
+
 ---
 
-## 9. Tài liệu liên quan
+## 10. Tài liệu liên quan
 
 - [Base44 — Quy trình làm web mẫu (6 bước, đầy đủ)](./base44-quy-trinh-lam-web.md): dùng khi dự án phức tạp, cần nhiều vòng góp ý, muốn ra bản chính thức.
+- Skill `devvn-html-to-wp-acf`: hướng dẫn chi tiết kỹ thuật chuyển HTML thuần → WordPress page template (PHP) + ACF. Dùng nội bộ đội kỹ thuật.
+- [DeepSeek Chat](https://chat.deepseek.com/): công cụ AI sinh code HTML/CSS/JS từ prompt tiếng Việt.
+- [Base44](https://app.base44.com/): công cụ AI sinh web app hoàn chỉnh, có link demo công khai.
 
 ---
 
