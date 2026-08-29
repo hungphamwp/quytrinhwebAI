@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dùng Canva MCP trong Claude Code để thiết kế banner bằng AI</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* Các thành phần trực quan bổ sung riêng cho tài liệu này */
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 8px;
+    margin: 20px 0;
+  }
+  .flow-box {
+    flex: 1 1 150px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 14px;
+    text-align: center;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow);
+  }
+  .flow-box .icon { font-size: 1.5rem; display: block; margin-bottom: 6px; }
+  .flow-box .name { font-weight: 700; display: block; }
+  .flow-box .note { color: var(--text-muted); font-size: 0.78rem; display: block; margin-top: 4px; }
+  .flow-arrow {
+    align-self: center;
+    color: var(--accent);
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 0 2px;
+  }
+  .steps-grid { margin-top: 8px; }
+  .checklist { list-style: none; padding-left: 0; margin: 14px 0; }
+  .checklist li {
+    position: relative;
+    padding: 8px 0 8px 30px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 1.1rem;
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="sidebar-brand" href="../index.html">Quy trình Web AI</a>
+    <span class="sidebar-tagline">Kho tài liệu tích lũy</span>
+
+    <div class="sidebar-section-title">Trang chủ</div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Tổng quan kho tài liệu</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-section-title">Công cụ &amp; Nền tảng</div>
+    <nav>
+      <ul>
+        <li><a href="base44-quy-trinh-lam-web.html">Base44 — Quy trình làm web mẫu</a></li>
+        <li><a href="openrouter-vao-orca.html">OpenRouter trong Orca</a></li>
+        <li><a href="canva-mcp-thiet-ke-banner.html" class="active">Canva MCP — Thiết kế banner</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="content-inner">
+      <div class="breadcrumb"><a href="../index.html">Trang chủ</a> / Canva MCP — Thiết kế banner</div>
+
+      <header class="page-header">
+        <h1>Dùng Canva MCP trong Claude Code để thiết kế banner bằng AI</h1>
+      </header>
+
+      <p class="page-lede">
+        Hướng dẫn dùng connector <strong>Canva MCP</strong> ngay trong Claude Code để
+        <strong>tạo, chỉnh sửa và xuất banner quảng cáo</strong> (Facebook Ads, Instagram, poster...)
+        bằng AI — từ mô tả bằng lời tới file ảnh hoàn chỉnh, không cần mở app Canva thủ công.
+      </p>
+
+      <h2 id="tong-quan">1. Tổng quan</h2>
+      <table>
+        <thead><tr><th>Thành phần</th><th>Vai trò</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Canva MCP</strong></td><td>Connector kết nối Claude Code với tài khoản Canva của bạn</td></tr>
+          <tr><td><code>generate-design</code></td><td>Sinh nhiều phương án thiết kế từ một đoạn mô tả (prompt)</td></tr>
+          <tr><td><code>create-design-from-candidate</code></td><td>Biến 1 phương án AI sinh ra thành design <strong>chỉnh sửa được</strong></td></tr>
+          <tr><td><code>read-design</code> / <code>edit-design</code></td><td>Đọc cấu trúc design (text, ảnh, vị trí...) và sửa từng phần tử</td></tr>
+          <tr><td><code>create-design-from-brand-template</code></td><td>Tạo design từ một <strong>template có sẵn</strong> trên Canva (kể cả link công khai)</td></tr>
+          <tr><td><code>upload-asset-from-url</code></td><td>Tải ảnh (vd: logo) từ một URL công khai vào thư viện Canva</td></tr>
+          <tr><td><code>export-design</code></td><td>Xuất design ra file (PNG, PDF, JPG...) để tải về máy</td></tr>
+        </tbody>
+      </table>
+      <p>Toàn bộ thao tác đều qua chat — Claude Code gọi các tool này thay bạn, bạn chỉ cần mô tả yêu cầu và duyệt kết quả.</p>
+
+      <h2 id="quy-trinh-moi">2. Quy trình tạo banner mới bằng AI</h2>
+
+      <h3>2.1 Sơ đồ luồng hoạt động</h3>
+      <div class="flow">
+        <div class="flow-box">
+          <span class="icon">🧑</span>
+          <span class="name">Mô tả banner</span>
+          <span class="note">Nội dung, bố cục, màu sắc</span>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <span class="icon">🎨</span>
+          <span class="name">generate-design</span>
+          <span class="note">Sinh 3-4 phương án</span>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <span class="icon">👀</span>
+          <span class="name">Duyệt thumbnail</span>
+          <span class="note">Chọn bản gần đúng nhất</span>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <span class="icon">📄</span>
+          <span class="name">create-design-from-candidate</span>
+          <span class="note">Thành design sửa được</span>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <span class="icon">✏️</span>
+          <span class="name">edit-design</span>
+          <span class="note">Sửa text/ảnh/vị trí</span>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">
+          <span class="icon">📤</span>
+          <span class="name">export-design</span>
+          <span class="note">Xuất PNG/PDF</span>
+        </div>
+      </div>
+
+      <h3>2.2 Bước 1 — Mô tả banner thật chi tiết</h3>
+      <p>Prompt cho <code>generate-design</code> càng chi tiết, kết quả càng sát yêu cầu. Nên mô tả rõ:</p>
+      <ul>
+        <li><strong>Bố cục</strong>: chia layout thế nào (trái/phải, trên/dưới), phần nào là điểm nhấn lớn nhất</li>
+        <li><strong>Nội dung chữ</strong>: tiêu đề, slogan, danh sách lợi ích, nút CTA, thông tin liên hệ — viết rõ <strong>nguyên văn</strong> câu chữ muốn có</li>
+        <li><strong>Màu sắc</strong>: mã màu chủ đạo (hex), màu phối, có gradient hay không</li>
+        <li><strong>Phong cách</strong>: hiện đại/cổ điển, sang trọng/trẻ trung, tránh phong cách gì</li>
+        <li><code>design_type</code>: chọn loại gần với kích thước cần (vd <code>instagram_post</code> ra đúng 1080×1350px tỷ lệ 4:5, <code>facebook_cover</code> ra banner ngang...)</li>
+      </ul>
+      <blockquote>
+        💡 <strong>Kinh nghiệm:</strong> mô tả tiếng Việt có dấu đầy đủ trong prompt để AI ưu tiên sinh chữ tiếng Việt đúng.
+        Vẫn nên <strong>kiểm tra lại chính tả</strong> ở bước sau vì thỉnh thoảng AI viết sai dấu hoặc dịch lẫn sang tiếng Anh.
+      </blockquote>
+
+      <h3>2.3 Bước 2 — Duyệt các candidate trước khi chọn</h3>
+      <p>
+        <code>generate-design</code> luôn trả về <strong>nhiều phương án</strong> (thường 4). Mỗi phương án chỉ là ảnh xem
+        trước (thumbnail), <strong>chưa</strong> phải design thật. Nên mở từng thumbnail bằng trình duyệt để so sánh, vì:
+      </p>
+      <ul>
+        <li>Các bản có thể rất khác nhau về bố cục dù cùng 1 prompt</li>
+        <li>Có bản bị lỗi chữ tiếng Việt (sai dấu, vỡ font)</li>
+        <li>Có bản thiếu nội dung hoặc bố cục không đúng ý</li>
+      </ul>
+      <p>Chỉ sau khi chọn được bản ưng ý nhất mới gọi <code>create-design-from-candidate</code> để biến nó thành design thật (có <code>design_id</code>) — từ lúc này mới sửa được.</p>
+
+      <h3>2.4 Bước 3 — Sửa nội dung bằng <code>edit-design</code></h3>
+      <p>Quy trình sửa một trang design:</p>
+      <div class="steps-grid">
+        <div class="step-chip"><span class="num">1</span>read-design (open_transaction: true)</div>
+        <div class="step-chip"><span class="num">2</span>edit-design với operations</div>
+        <div class="step-chip"><span class="num">3</span>Xem thumbnail sau mỗi lần sửa</div>
+        <div class="step-chip"><span class="num">4</span>finalize: "commit" để lưu</div>
+      </div>
+      <ol>
+        <li><code>read-design</code> với <code>open_transaction: true</code> → nhận về <code>transaction_id</code> và toàn bộ cấu trúc trang (mỗi phần tử có 1 <code>locator_id</code> riêng)</li>
+        <li>Gọi <code>edit-design</code> với danh sách <code>operations</code>, ví dụ:
+          <ul>
+            <li><code>replace_text</code> — đổi nội dung chữ</li>
+            <li><code>format_text</code> — đổi cỡ chữ, đậm/nhạt, màu, căn lề...</li>
+            <li><code>position_element</code> / <code>resize_element</code> — di chuyển, đổi kích thước</li>
+            <li><code>insert_fill</code> — chèn ảnh mới (vd logo) vào một vị trí</li>
+            <li><code>delete_element</code> — xoá phần tử (vd chữ placeholder "your logo")</li>
+          </ul>
+        </li>
+        <li>Sau <strong>mỗi lần sửa</strong>, tool trả về thumbnail mới — luôn xem lại thumbnail để phát hiện lỗi (chữ tràn khung, xuống dòng sai chỗ, chồng chữ...) trước khi sửa tiếp</li>
+        <li>Khi đã ưng ý, gọi lại <code>edit-design</code> với <code>finalize: "commit"</code> (không kèm <code>operations</code>) để <strong>lưu vĩnh viễn</strong> — bước này không thể hoàn tác</li>
+      </ol>
+      <blockquote>
+        ⚠️ <strong>Lỗi hay gặp:</strong> hộp chữ có độ rộng cố định — nếu thay bằng câu dài hơn, chữ sẽ tự xuống dòng và làm
+        lệch với icon/bullet đi kèm. Nên rút ngắn câu hoặc tăng <code>width</code> của hộp chữ, rồi kiểm tra lại thumbnail.
+      </blockquote>
+
+      <h3>2.5 Bước 4 — Xuất file</h3>
+      <pre><code>export-design(design_id, format: { type: "png", export_quality: "pro" })</code></pre>
+      <p>Trả về link tải tạm thời → tải file này về máy (vd bằng <code>curl</code>) rồi gửi cho người dùng.</p>
+
+      <h2 id="template-co-san">3. Dùng template có sẵn trên Canva + chèn logo riêng</h2>
+      <p>
+        Khi đã có sẵn 1 template ưng ý (tự chọn trên canva.com, hoặc người dùng gửi link), quy trình gọn hơn nhiều vì
+        không cần AI sinh từ đầu.
+      </p>
+
+      <h3>3.1 Mở template thành design chỉnh sửa được</h3>
+      <pre><code>create-design-from-brand-template(brand_template_id: "EAxxxxxxxxx")</code></pre>
+      <p>
+        <code>brand_template_id</code> là đoạn ID trong link Canva, ví dụ link
+        <code>https://www.canva.com/templates/EAHE2xPawrU/</code> → ID là <code>EAHE2xPawrU</code>.
+      </p>
+      <blockquote>
+        Lưu ý: trang tìm kiếm template (<code>canva.com/s/templates?query=...</code>) yêu cầu đăng nhập nên Claude Code
+        <strong>không tự duyệt được</strong> danh sách kết quả. Cách nhanh nhất: người dùng tự chọn 1 mẫu ưng ý trên
+        trình duyệt của họ rồi gửi link cho Claude Code mở đúng mẫu đó.
+      </blockquote>
+
+      <h3>3.2 Chèn logo/ảnh riêng vào template</h3>
+      <p>
+        Muốn chèn ảnh từ máy (vd logo công ty), Canva chỉ nhận <strong>URL công khai</strong> — không có đường nào để
+        tải thẳng file local. Quy trình:
+      </p>
+      <div class="steps-grid">
+        <div class="step-chip"><span class="num">1</span>Xin phép người dùng</div>
+        <div class="step-chip"><span class="num">2</span>Upload lên host tạm</div>
+        <div class="step-chip"><span class="num">3</span>upload-asset-from-url</div>
+        <div class="step-chip"><span class="num">4</span>insert_fill vào vị trí logo</div>
+        <div class="step-chip"><span class="num">5</span>commit → export-design</div>
+      </div>
+      <ol>
+        <li><strong>Xin phép người dùng rõ ràng</strong> trước khi đưa file riêng tư của họ lên mạng, dù chỉ tạm thời</li>
+        <li>Tải file lên một host tạm (vd <code>tmpfiles.org</code>, có đặt thời gian hết hạn) → lấy URL tải trực tiếp
+          (chú ý: một số host trả về trang xem trước dạng HTML thay vì file gốc — cần lấy đúng link <em>raw</em>/<em>dl</em>)</li>
+        <li><code>upload-asset-from-url(url, name)</code> → Canva tải ảnh về thư viện, trả về <code>asset_id</code></li>
+        <li>Dùng <code>edit-design</code> với operation <code>insert_fill</code> (hoặc <code>update_fill</code> nếu thay logo
+          có sẵn) để đặt ảnh vào đúng vị trí — nhiều template có sẵn ô placeholder dạng chữ "your logo", tìm đúng
+          <code>locator_id</code> của nó qua <code>read-design</code> rồi <code>delete_element</code> chữ đó sau khi chèn ảnh</li>
+        <li><code>commit</code> → <code>export-design</code> như bình thường</li>
+      </ol>
+      <blockquote>
+        🔒 <strong>Bảo mật:</strong> vì bước 2 khiến file tạm thời công khai trên internet, luôn hỏi ý kiến người dùng
+        trước, ưu tiên host có tự xoá sau X giờ, và có thể xoá file thủ công ngay sau khi Canva đã tải xong (bước 3).
+      </blockquote>
+
+      <h2 id="bang-tool">4. Bảng tool hay dùng</h2>
+      <table>
+        <thead><tr><th>Tool</th><th>Khi nào dùng</th></tr></thead>
+        <tbody>
+          <tr><td><code>generate-design</code></td><td>Tạo banner/design mới hoàn toàn từ mô tả</td></tr>
+          <tr><td><code>create-design-from-candidate</code></td><td>Biến 1 candidate AI sinh ra thành design sửa được</td></tr>
+          <tr><td><code>create-design-from-brand-template</code></td><td>Mở 1 template có sẵn (biết <code>brand_template_id</code>)</td></tr>
+          <tr><td><code>read-design</code> (<code>open_transaction: true</code>)</td><td>Lấy cấu trúc + <code>locator_id</code> để chuẩn bị sửa</td></tr>
+          <tr><td><code>edit-design</code></td><td>Sửa text/ảnh/vị trí, hoặc <code>commit</code>/<code>cancel</code> để chốt</td></tr>
+          <tr><td><code>upload-asset-from-url</code></td><td>Đưa ảnh từ URL công khai vào thư viện Canva</td></tr>
+          <tr><td><code>export-design</code></td><td>Xuất file cuối cùng (PNG/PDF/JPG...)</td></tr>
+          <tr><td><code>list-brand-kits</code></td><td>Kiểm tra tài khoản đã có brand kit (logo, màu, font) sẵn chưa</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="checklist">5. Checklist trước khi giao banner cho người dùng</h2>
+      <ul class="checklist">
+        <li>Căn chỉnh bố cục cân đối, không chồng chữ</li>
+        <li>Khoảng cách giữa các khối hợp lý, không quá dày đặc</li>
+        <li>Chính tả tiếng Việt đúng (đặc biệt các từ có dấu dễ gõ nhầm khi AI sinh chữ)</li>
+        <li>Cỡ chữ đủ lớn để đọc được trên điện thoại</li>
+        <li>Đúng kích thước/tỷ lệ theo yêu cầu (vd 1080×1350 cho Facebook/Instagram feed)</li>
+        <li>Nếu có logo/thông tin riêng của khách hàng: đã thay đúng, không còn placeholder mẫu</li>
+      </ul>
+
+      <h2 id="tham-khao">6. Tham khảo</h2>
+      <ul>
+        <li>Trang chủ Canva: <a href="https://www.canva.com" target="_blank" rel="noopener">canva.com</a></li>
+        <li>Danh sách template công khai: <a href="https://www.canva.com/templates" target="_blank" rel="noopener">canva.com/templates</a></li>
+      </ul>
+
+      <div class="page-footer">
+        Tài liệu này được cập nhật liên tục theo quy trình thực tế. Mọi thắc mắc xin liên hệ trực tiếp đội dự án.
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
