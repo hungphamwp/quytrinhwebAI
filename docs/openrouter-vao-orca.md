@@ -1,129 +1,197 @@
-# Tích hợp OpenRouter vào Orca (dùng model miễn phí cho Claude Code)
+# Tích hợp OpenRouter vào Claude Code trong Orca
 
-Hướng dẫn cấu hình để **Claude Code chạy trong Orca** dùng các **model miễn phí của OpenRouter**
-thay vì tài khoản Anthropic trả phí. Ví dụ cụ thể dưới đây dùng model
-`minimax/minimax-m3:free` (miễn phí, hỗ trợ tool-calling).
-
-> **Bản chất:** Orca là một ứng dụng điều phối các AI agent (Claude Code, Codex, Kimi…). Nó **không
-> tự host model** — nó chỉ khởi chạy agent. Vì vậy, muốn đổi model cho Claude Code, ta cấu hình
-> **trong chính Claude Code** (file `~/.claude/settings.json`). Orca đọc file này mỗi lần khởi chạy
-> agent, nên cấu hình sẽ tự áp dụng.
+> **Mục đích:** Dùng các model AI **miễn phí** của OpenRouter (MiniMax, Gemma, Nvidia Nemotron...) bên trong **vỏ Claude Code** — giữ nguyên toàn bộ tính năng agent (đọc file, sửa code, chạy lệnh) mà không tốn credit Anthropic.
 
 ---
 
 ## 1. Tổng quan
 
-| Mục | Nội dung |
+| Thành phần | Vai trò |
 |---|---|
-| Ứng dụng | **Orca** (điều phối AI agent) |
-| Agent được cấu hình | **Claude Code** (phiên bản CLI) |
-| Provider | **OpenRouter** (cổng tập hợp nhiều model, có bản miễn phí) |
-| File cấu hình | `~/.claude/settings.json` |
-| Model mặc định | `minimax/minimax-m3:free` |
+| **Orca** | App điều phối AI agent trên macOS |
+| **Claude Code** | Shell/agent — đọc file, chạy lệnh, sửa code |
+| **OpenRouter** | Cổng API tổng hợp nhiều model, có bản miễn phí |
+| **or-proxy** | Proxy local chạy ở `localhost:8318` |
+| `~/.openrouter/config` | File cấu hình riêng, độc lập với Claude |
 
-## 2. Điều kiện cần có (Prerequisites)
+---
 
-- Đã cài **Orca** và **Claude Code** (CLI).
-- Tài khoản và **API key OpenRouter**: lấy tại <https://openrouter.ai/keys> (có bản miễn phí).
-- Quyền ghi vào `~/.claude/settings.json`.
+## 2. Cơ chế hoạt động
 
-## 3. Các bước thực hiện
+### 2.1 Tại sao model OpenRouter lại "chạy trong vỏ Claude Code"?
 
-### Bước 1 — Lấy API key OpenRouter
+Claude Code là một **phần mềm agent** (không phải model AI). Nó chỉ biết:
+- Đọc file trong folder
+- Chạy terminal command
+- Gọi API để lấy câu trả lời
 
-Đăng nhập <https://openrouter.ai/keys> → **Create Key**. Copy key dạng `sk-or-v1-...`.
+Phần **"trí thông minh"** (suy nghĩ, trả lời) được gọi qua HTTP tới một URL. Mặc định là `api.anthropic.com`, nhưng ta có thể **chỉ định lại URL khác** bằng biến môi trường:
 
-### Bước 2 — Mở file cấu hình Claude Code
+```
+ANTHROPIC_BASE_URL  → URL server AI
+ANTHROPIC_AUTH_TOKEN → API key xác thực
+ANTHROPIC_MODEL     → Tên model dùng
+```
+
+OpenRouter **giả lập đúng định dạng API của Anthropic** → Claude Code không phân biệt được, cứ gọi như bình thường.
+
+### 2.2 Sơ đồ luồng hoạt động
+
+```mermaid
+flowchart TD
+    A["🧑 Bạn gõ: claude-or"] --> B
+
+    B["📄 Script claude-or\n─────────────────\nĐọc ~/.openrouter/config\nHiện menu chọn model\nKhởi động or-proxy nếu chưa chạy\nSet 3 biến môi trường:\n  ANTHROPIC_BASE_URL=localhost:8318\n  ANTHROPIC_AUTH_TOKEN=local-proxy\n  ANTHROPIC_MODEL=minimax/...:free\n─────────────────\nexec claude"] --> C
+
+    C["🤖 Claude Code\n(VỎ AGENT)\nĐọc file, chạy lệnh\nGọi API khi cần"] --> D
+
+    D["🔀 or-proxy\nlocalhost:8318\nĐọc config REALTIME\nGhi đè model trong request"] --> E
+
+    E["🌐 OpenRouter API\nopenrouter.ai/api"] --> F
+
+    F["🧠 Model Free\nMiniMax / Gemma / Nvidia\nsuy nghĩ thật sự"] --> E --> D --> C
+
+    G["🔄 switch-or\nCập nhật ~/.openrouter/config\nProxy tự pick up model mới\nKHÔNG cần restart Claude Code"] -.->|"đổi model giữa chừng"| D
+```
+
+### 2.3 So sánh: Claude gốc vs claude-or
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│  CLAUDE BÌNH THƯỜNG                                          │
+│                                                              │
+│  Bạn → claude → api.anthropic.com → Claude Sonnet/Opus      │
+│                        ↑                                     │
+│                  (tốn credit $$$)                            │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│  CLAUDE-OR (OpenRouter Free)                                 │
+│                                                              │
+│  Bạn → claude-or → or-proxy:8318 → openrouter.ai → Model    │
+│              ↑           ↑                                   │
+│         chọn model   đọc config realtime (switch-or)        │
+│         lúc khởi động                                        │
+│                                                              │
+│                       MIỄN PHÍ 100%                          │
+└──────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 3. Cấu trúc file
+
+```
+~/.openrouter/
+  └── config              ← API key + model mặc định
+
+~/.local/bin/
+  ├── or-proxy            ← Proxy server Python (localhost:8318)
+  ├── claude-or           ← Lệnh khởi động (menu chọn model)
+  └── switch-or           ← Đổi model giữa chừng (không restart)
+
+~/.claude/
+  └── settings.json       ← Cấu hình Claude GỐC (KHÔNG bị đụng tới)
+```
+
+### Nội dung `~/.openrouter/config`
 
 ```bash
-nano ~/.claude/settings.json
+# OpenRouter Configuration
+OPENROUTER_API_KEY="sk-or-v1-..."
+OPENROUTER_BASE_URL="https://openrouter.ai/api/v1"
+OPENROUTER_DEFAULT_MODEL="minimax/minimax-m3:free"
 ```
 
-### Bước 3 — Thêm cấu hình vào block `env`
+---
 
-Thêm (hoặc gộp) các biến sau vào đối tượng `env` của `settings.json`:
+## 4. Hướng dẫn sử dụng
 
-```json
-{
-  "env": {
-    "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
-    "ANTHROPIC_AUTH_TOKEN": "sk-or-v1-...",
-    "ANTHROPIC_API_KEY": "",
-    "ANTHROPIC_MODEL": "minimax/minimax-m3:free",
-    "ANTHROPIC_SMALL_FAST_MODEL": "minimax/minimax-m3:free",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "minimax/minimax-m3:free"
-  }
-}
-```
-
-**Ý nghĩa các biến:**
-
-| Biến | Giá trị | Vai trò |
-|---|---|---|
-| `ANTHROPIC_BASE_URL` | `https://openrouter.ai/api` | Trỏ Claude Code tới endpoint Anthropic-compatible của OpenRouter (Claude Code tự thêm `/v1/messages`). |
-| `ANTHROPIC_AUTH_TOKEN` | API key OpenRouter | Định danh khi gọi API. |
-| `ANTHROPIC_API_KEY` | `""` (rỗng) | Ép dùng custom endpoint, không dùng subscription Anthropic mặc định. |
-| `ANTHROPIC_MODEL` | ID model free | Model chính cho tác vụ. |
-| `ANTHROPIC_SMALL_FAST_MODEL` | ID model free | Model "nhanh" cho các tác vụ nền. |
-| `ANTHROPIC_DEFAULT_HAIKU_MODEL` | ID model free | Model slot haiku. |
-
-> 💡 Nên đặt cả 3 biến `*_MODEL` về cùng một model free để mọi tác vụ (chính + nền) đều gọi được trên
-> OpenRouter. Nếu để model Anthropic (như `claude-haiku-...`) ở slot nền mà base URL là OpenRouter,
-> các tác vụ nền sẽ lỗi vì model đó không tồn tại trên OpenRouter.
-
-### Bước 4 — Chọn model miễn phí
-
-Liệt kê model hiện có (lọc model `:free`):
+### 4.1 Khởi động Claude Code với OpenRouter
 
 ```bash
-curl -sS "https://openrouter.ai/api/v1/models" |
-  python3 -c "import json,sys; d=json.load(sys.stdin); [print(m['id']) for m in d['data'] if m['id'].endswith(':free')]"
+claude-or
 ```
 
-> ⚠️ **Lưu ý quan trọng:** DeepSeek / Qwen / Kimi **hiện không còn bản `:free`** trên OpenRouter
-> (đã chuyển sang trả phí, dù rất rẻ). Các model thực sự miễn phí ở thời điểm viết tài liệu gồm
-> MiniMax, GLM, Nvidia Nemotron, Gemma, Cohere North, Dots, Liquid...
+Menu hiện ra → chọn số → nhấn **Enter** → Claude Code khởi động với model đã chọn.
 
-Model cần **hỗ trợ tool-calling** (Claude Code bắt buộc). Hầu hết model `:free` đều hỗ trợ; kiểm tra
-bằng cách xem `supported_parameters` có chứa `tools`/`tool_choice` hay không.
-
-### Bước 5 — Áp dụng (mở lại agent trong Orca)
-
-Cấu hình chỉ có hiệu lực khi **khởi chạy mới**. Đóng tab/pane Claude Code đang mở trong Orca rồi mở lại.
-
-### Bước 6 — Kiểm tra
-
-Gửi thử một yêu cầu. Nếu muốn kiểm tra từ dòng lệnh trước:
+### 4.2 Khởi động nhanh không qua menu
 
 ```bash
-curl -sS -X POST "https://openrouter.ai/api/v1/messages" \
-  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"model":"minimax/minimax-m3:free","max_tokens":64,"messages":[{"role":"user","content":"Say hi"}]}'
+claude-or --model google/gemma-4-31b-it:free
 ```
 
-## 4. Đổi model sau này
+### 4.3 Đổi model GIỮA CHỪNG (không cần thoát)
 
-Mở `~/.claude/settings.json`, sửa 3 dòng `*_MODEL` sang ID model free khác (theo danh sách ở Bước 4).
+Trong ô chat của Claude Code, gõ:
 
-## 5. Xử lý sự cố (Troubleshooting)
+```
+!switch-or
+```
+
+> ⚠️ Phải có dấu `!` phía trước — đây là cú pháp chạy shell command trong Claude Code.
+
+Menu hiện ra → chọn model → **request tiếp theo tự dùng model mới ngay**.
+
+### 4.4 Chạy chat tương tác đơn giản (không cần Claude Code)
+
+```bash
+openrouter          # giao diện chat
+or "câu hỏi nhanh"  # hỏi 1 câu
+```
+
+Trong chat, dùng `/models` để đổi model.
+
+---
+
+## 5. Danh sách model Free (08/2026)
+
+| # | Model ID | Context | Đặc điểm |
+|---|---|---|---|
+| 1 | `minimax/minimax-m3:free` | 1M | ⭐ Mặc định, đa năng |
+| 2 | `thinkingmachines/inkling:free` | 1M | Multimodal MoE |
+| 3 | `nvidia/nemotron-3-ultra-550b-a55b:free` | 1M | 🔥 550B mạnh nhất |
+| 4 | `nvidia/nemotron-3-super-120b-a12b:free` | 262K | 120B, mạnh |
+| 5 | `nvidia/nemotron-3.5-lightning:free` | 1M | Nhanh |
+| 6 | `google/gemma-4-31b-it:free` | 262K | Google 31B |
+| 7 | `google/gemma-4-26b-a4b-it:free` | 262K | Google MoE |
+| 8 | `poolside/laguna-s-2.1:free` | 262K | 💻 Chuyên coding |
+| 9 | `poolside/laguna-xs-2.1:free` | 262K | Coding nhẹ |
+| 10 | `z-ai/glm-5.2:free` | 256K | Reasoning |
+| 11 | `cohere/north-mini-code:free` | 256K | Cohere coding |
+| 12 | `minimax/minimax-m2.7:free` | 196K | Agent |
+| 13 | `nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free` | 256K | Omni reasoning |
+
+> Lấy danh sách model free mới nhất:
+> ```bash
+> curl -sS "https://openrouter.ai/api/v1/models" | python3 -c "
+> import json,sys; d=json.load(sys.stdin)
+> [print(m['id']) for m in d['data'] if m['id'].endswith(':free')]"
+> ```
+
+---
+
+## 6. Xử lý sự cố
 
 | Vấn đề | Nguyên nhân | Cách xử lý |
 |---|---|---|
-| Lỗi `rate_limit_exceeded` | Model free dùng chung pool, tạm bị giới hạn | Chờ vài phút; hoặc đổi model free khác; hoặc thêm BYOK lên OpenRouter. |
-| Vẫn dùng tài khoản Anthropic | `ANTHROPIC_API_KEY` chưa được đặt rỗng | Đặt `"ANTHROPIC_API_KEY": ""`. |
-| Model không tồn tại / lỗi ở tác vụ nền | Slot haiku trỏ tới model Anthropic-only | Đặt cả 3 biến `*_MODEL` về cùng model free. |
-| Chạy `claude-proxy` không dùng OpenRouter | Trong `~/.zshrc` có alias đặt `ANTHROPIC_BASE_URL` khác | Chạy `claude` thường (hoặc do Orca khởi chạy) thay vì alias. |
-| Muốn cấu hình chỉ cho 1 dự án | Đặt cấu hình trong `.claude/settings.json` của dự án đó | Dùng file project-local (nếu có), hoặc biến môi trường khi chạy. |
+| `500 HTTP Error 429` | Model bị rate limit | Dùng `!switch-or` chọn model khác |
+| `claude.ai connectors are disabled` | `ANTHROPIC_API_KEY` trống | **Bình thường**, bỏ qua |
+| `switch-or` không hiện menu | Gõ thiếu `!` | Gõ `!switch-or` (có dấu `!`) |
+| Claude Code vẫn dùng Anthropic | Dùng `claude` thay vì `claude-or` | Gõ `claude-or` thay thế |
+| Proxy không chạy | Port 8318 bị chiếm | `pkill -f or-proxy && claude-or` |
 
-## 6. Lưu ý bảo mật
+---
 
-- API key được lưu **dạng thuần văn bản** trong `~/.claude/settings.json`. Đây là cách chuẩn của
-  Claude Code cho provider tùy chỉnh, nhưng hãy đảm bảo file không bị chia sẻ/commit.
-- Nên tạo **backup** trước khi sửa: `cp ~/.claude/settings.json ~/.claude/settings.json.bak`.
+## 7. Chú ý bảo mật
 
-## 7. Tham khảo thêm
+> [!WARNING]
+> API key của OpenRouter được lưu dạng **văn bản thuần** trong `~/.openrouter/config`. Không commit file này lên Git, không share với người khác.
 
-- Danh sách model: <https://openrouter.ai/models>
-- API key: <https://openrouter.ai/keys>
-- Trang chủ Orca: ứng dụng quản lý agent trên máy của bạn.
+---
+
+## 8. Tham khảo
+
+- Lấy API key: https://openrouter.ai/keys
+- Danh sách model: https://openrouter.ai/models
+- Trang chủ Orca: https://www.orca.dev
