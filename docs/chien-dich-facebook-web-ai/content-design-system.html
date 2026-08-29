@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hệ thống Content &amp; Design — Chiến lược 2 tầng</title>
+<style>
+  :root{--bg:#f5f7fa;--card:#fff;--ink:#1f2328;--muted:#6a737d;--brand:#2f81f7;--brand-soft:#e7f5ff;--ok:#1f883d;--ok-soft:#dafbe1;--warn:#d4a72c;--warn-soft:#fff8c5;--red:#d1242f;--red-soft:#ffebe9;--purple:#6f42c1;--purple-soft:#f3edff;--line:#d0d7de;--shadow:0 8px 24px rgba(31,35,40,.08)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;line-height:1.6}
+  .wrap{max-width:1000px;margin:0 auto;padding:22px 18px 60px}
+
+  .hero{text-align:center;padding:32px 22px;background:linear-gradient(135deg,#4a1e8a,#6f42c1);color:#fff;border-radius:20px;box-shadow:var(--shadow)}
+  .hero h1{margin:0 0 9px;font-size:26px}
+  .hero p{margin:0;opacity:.93;font-size:15px;max-width:780px;margin-inline:auto}
+  .hero .tags{margin-top:15px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .hero .tags span{background:rgba(255,255,255,.16);padding:5px 12px;border-radius:999px;font-size:13px}
+
+  .tabs{display:flex;gap:8px;margin:20px 0 14px;flex-wrap:wrap}
+  .tab-btn{flex:1;min-width:120px;border:none;background:#eef1f4;color:var(--ink);font-size:14px;font-weight:700;padding:13px 14px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:.15s;box-shadow:var(--shadow)}
+  .tab-btn:hover{background:var(--purple-soft)}
+  .tab-btn.active{background:var(--purple);color:#fff;border-color:var(--purple)}
+  .panel{display:none}.panel.show{display:block}
+
+  h2.sec{font-size:20px;margin:0 0 6px;display:flex;align-items:center;gap:11px;padding-bottom:10px;border-bottom:2px solid var(--line)}
+  h2.sec .num{background:var(--purple);color:#fff;width:32px;height:32px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex:none}
+  .sub{color:var(--muted);font-size:14px;margin:2px 0 14px}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);margin-bottom:16px}
+  .card h3{margin:0 0 10px;font-size:17px}
+  .card h4{margin:0 0 8px;font-size:15.5px}
+  .card p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px}
+  th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+  th{background:#f0f3f6;font-weight:700}
+  tr:nth-child(even) td{background:#fbfcfd}
+
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+  .pill.b{background:var(--brand-soft);color:#0a3069}
+  .pill.p{background:var(--purple-soft);color:#4a1e8a}
+  .pill.g{background:var(--ok-soft);color:var(--ok)}
+  .pill.y{background:var(--warn-soft);color:#6f5700}
+
+  .lead{border-left:4px solid var(--brand);background:var(--brand-soft);padding:12px 14px;border-radius:0 12px 12px 0;font-size:14px}
+  .warn{border-left:4px solid var(--warn);background:var(--warn-soft);padding:12px 14px;border-radius:0 12px 12px 0;font-size:14px}
+  .danger{border-left:4px solid var(--red);background:var(--red-soft);padding:12px 14px;border-radius:0 12px 12px 0;font-size:14px}
+  .quote{border-left:4px solid var(--purple);background:var(--purple-soft);padding:14px 16px;border-radius:0 12px 12px 0;font-size:15px;font-weight:600}
+
+  .tier{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:680px){.tier{grid-template-columns:1fr}}
+  .tier-card{border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+  .tier-card.t1{background:linear-gradient(160deg,#eef6ff,#f6f8fa);border:2px solid var(--brand)}
+  .tier-card.t2{background:linear-gradient(160deg,#f3edff,#f6f8fa);border:2px solid var(--purple)}
+  .tier-card h3{margin:0 0 4px;font-size:18px}
+  .tier-card .badge{display:inline-block;padding:3px 11px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:10px}
+  .tier-card .badge.b1{background:var(--brand);color:#fff}
+  .tier-card .badge.b2{background:var(--purple);color:#fff}
+  .tier-card ul{margin:0;padding-left:18px}
+  .tier-card li{margin:5px 0;font-size:14px}
+
+  .check{list-style:none;padding-left:0;margin:6px 0}
+  .check li{margin:7px 0;padding-left:30px;position:relative}
+  .check li::before{content:"";position:absolute;left:0;top:2px;width:18px;height:18px;border:2px solid var(--ok);border-radius:5px}
+  .check li.checked::after{content:"✓";position:absolute;left:3px;top:1px;color:var(--ok);font-weight:800;font-size:14px}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+
+  .func{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;background:#0d1117;color:#c9d1d9;border-radius:8px;padding:10px 12px;white-space:pre;overflow:auto;line-height:1.5}
+  .func b{color:#7ee787}
+
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:8px}
+  .kpi .k{background:#f0f3f6;border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+  .kpi .k .v{font-size:22px;font-weight:800;color:var(--purple)}
+  .kpi .k .l{font-size:12.5px;color:var(--muted)}
+
+  .agenda{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px}
+  .agenda .a{background:#f6f8fa;border:1px solid var(--line);border-radius:12px;padding:14px}
+  .agenda .a .n{font-size:22px;font-weight:800;color:var(--purple)}
+  .agenda .a .t{font-size:14px;font-weight:700;margin:2px 0 4px}
+  .agenda .a .d{font-size:12.5px;color:var(--muted)}
+
+  footer{text-align:center;margin-top:40px;color:var(--muted);font-size:13px}
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(30px);background:#1f2328;color:#fff;padding:11px 18px;border-radius:12px;font-size:14px;opacity:0;transition:.25s;z-index:50;box-shadow:var(--shadow)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🧠 HỆ THỐNG CONTENT &amp; DESIGN — CHIẾN LƯỢC 2 TẦNG</h1>
+    <p>Bản chiến lược tổng thể: <b>định vị chuyên gia</b> bằng cách đăng <b>xen kẽ 2 tầng</b> — tầng Pro (chỉ show off) &amp; tầng Free (chỉ cách làm) — để thu hút chú ý, xây uy tín, và chuyển hoá khách hàng.</p>
+    <div class="tags"><span>🟦 Tầng Free</span><span>🟪 Tầng Pro</span><span>🔄 Đăng xen kẽ</span><span>🎬 Full-option thứ 7</span><span>⚙️ Automation</span></div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="t1">🎯 Cốt lõi</button>
+    <button class="tab-btn" data-tab="t2">🟦 Tầng 1 (Free)</button>
+    <button class="tab-btn" data-tab="t3">🟪 Tầng 2 (Pro)</button>
+    <button class="tab-btn" data-tab="t4">🔄 Đăng xen kẽ</button>
+    <button class="tab-btn" data-tab="t5">🧰 Bộ công cụ</button>
+    <button class="tab-btn" data-tab="t6">🎬 Thuyết trình thứ 7</button>
+    <button class="tab-btn" data-tab="t7">⚙️ Automation</button>
+    <button class="tab-btn" data-tab="t8">📈 Kết quả &amp; KPI</button>
+  </div>
+
+  <!-- T1: CỐT LÕI -->
+  <div class="panel show" id="t1">
+    <h2 class="sec"><span class="num">1</span>Cốt lõi chiến lược</h2>
+    <p class="sub">Một câu tóm tắt toàn bộ hệ thống.</p>
+    <div class="quote">"Ngày chẵn đăng <span style="color:#6f42c1">xịn</span> để khoe (không chỉ cách) → ngày lẻ đăng <span style="color:#2f81f7">cách làm bằng free</span> để dạy. Tầng Pro giữ uy tín &amp; kéo chú ý, tầng Free tạo tương tác &amp; hướng dẫn — <b>hai tầng bổ trợ nhau, không mâu thuẫn.</b>"</div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>🎯 Vì sao chiến lược này hoạt động</h3>
+      <ul class="clean">
+        <li><b>Tầng Pro</b> → chứng minh bạn <b>giỏi</b> (khách tin, khách khao khát).</li>
+        <li><b>Tầng Free</b> → chứng minh bạn <b>hào phóng &amp; có chuyên môn</b> (khách thấy giá trị, muốn hợp tác).</li>
+        <li>Khi khách có nhu cầu thật → họ nghĩ đến <b>bạn đầu tiên</b>.</li>
+        <li>Càng giữ "bí quyết" ở tầng Pro, bạn càng <b>định vị cao</b>.</li>
+      </ul>
+      <div class="warn" style="margin-top:12px">⚠️ <b>Nguyên tắc vàng:</b> KHÔNG bao giờ chỉ cách làm sản phẩm Tầng 2. Càng "kín" ở tầng xịn, càng đắt giá. Tầng 1 chỉ cách để chứng minh mình hào phóng, nhưng sản phẩm tốt nhất luôn thuộc về Tầng 2.</div>
+    </div>
+
+    <div class="card">
+      <h3>🧭 Vị trí &amp; mục tiêu</h3>
+      <table>
+        <tr><th>Yếu tố</th><th>Giá trị</th></tr>
+        <tr><td>Vai trò</td><td>Freelancer thiết kế web / landing</td></tr>
+        <tr><td>Đối tượng</td><td>Chủ shop/doanh nghiệp nhỏ · Dân Marketing/Freelancer/DEV · Cộng đồng làm web/design · Người mới bắt đầu</td></tr>
+        <tr><td>Mục tiêu dài hạn</td><td>Định vị chuyên gia → thu hút khách → chuyển hoá từ nhóm DEV về mình → bán dịch vụ cao cấp</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T2: TẦNG 1 -->
+  <div class="panel" id="t2">
+    <h2 class="sec"><span class="num">2</span>Tầng 1 — "AI cũng làm được" (Free / Phổ thông)</h2>
+    <p class="sub">Dùng cho các bài HƯỚNG DẪN, chỉ cách làm bằng công cụ miễn phí.</p>
+    <div class="tier">
+      <div class="tier-card t1">
+        <span class="badge b1">🟦 TẦNG 1 — FREE</span>
+        <h3>Ai cũng làm được</h3>
+        <ul>
+          <li><b>Sản phẩm:</b> web, landing, HTML giao diện đẹp, thẩm mỹ, <b>không đại trà</b>.</li>
+          <li><b>Công cụ:</b> chỉ dùng web AI miễn phí + công cụ free (Canva, CapCut, Figma free...).</li>
+          <li><b>Độ khó:</b> thấp, không cần code.</li>
+          <li><b>Vai trò:</b> <b>gieo hạt + hướng dẫn</b> — đưa nguồn làm từ đâu, dạy người khác tự làm.</li>
+          <li><b>Mục tiêu:</b> kéo đại chúng, tạo tương tác, xây cộng đồng, chứng tỏ giá trị.</li>
+        </ul>
+      </div>
+      <div class="card" style="margin:0">
+        <h4>🎯 Nội dung bạn SẢN XUẤT (tầng này)</h4>
+        <p><b>Sản phẩm:</b> Web, landing HTML giao diện đẹp, thẩm mỹ, <b>không đại trà</b> — được chọn làm vì <b>ai cũng làm được</b>.</p>
+        <p><b>Mục tiêu:</b> <b>Đưa nguồn làm từ đâu</b> + hướng dẫn cho người khác làm.</p>
+        <div class="lead" style="margin-top:10px">💡 Càng "chỉ cách tận nơi", khách càng thấy bạn hào phóng &amp; đáng hợp tác. Đây là "mồi" để kéo tương tác.</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:20px">
+      <h3>Examples bài Tầng 1 (chỉ cách)</h3>
+      <ul class="clean">
+        <li>"Cách tạo landing đẹp bằng web AI miễn phí trong 10 phút"</li>
+        <li>"3 công cụ free ai cũng làm được banner đẹp"</li>
+        <li>"Cách dựng video giới thiệu bằng CapCut"</li>
+        <li>"Nguồn tải template mockup miễn phí"</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- T3: TẦNG 2 -->
+  <div class="panel" id="t3">
+    <h2 class="sec"><span class="num">3</span>Tầng 2 — "Chỉ mình làm được" (Pro / Cao cấp)</h2>
+    <p class="sub">Dùng cho các bài SHOW OFF — bạn chỉ khoe, không tiết lộ cách làm.</p>
+    <div class="tier">
+      <div class="tier-card t2">
+        <span class="badge b2">🟪 TẦNG 2 — PRO</span>
+        <h3>Chỉ mình làm được</h3>
+        <ul>
+          <li><b>Sản phẩm:</b> giao diện <b>xịn sò</b>, hiệu ứng mượt, thương hiệu đẹp, sản phẩm "đắt".</li>
+          <li><b>Công cụ:</b> <b>trả phí</b> hoặc đòi hỏi <b>kỹ thuật cao, setup nhiều</b>.</li>
+          <li><b>Độ khó:</b> rất cao, cần kỹ năng chuyên sâu.</li>
+          <li><b>Vai trò:</b> <b>chỉ SHOW OFF</b> — KHÔNG chỉ cách. Bạn <b>nắm quy trình nội bộ</b>.</li>
+          <li><b>Mục tiêu:</b> định vị <b>Level chuyên gia</b>, thu hút sự chú ý, tạo khao khát.</li>
+        </ul>
+      </div>
+      <div class="card" style="margin:0">
+        <h4>🎯 Nội dung bạn SẢN XUẤT (tầng này)</h4>
+        <p><b>Giao diện xịn sò</b> — bạn làm bằng công cụ trả phí, đòi hỏi kỹ thuật cao, setup nhiều.</p>
+        <p><b>Quy tắc:</b> <b>Không chỉ cách.</b> Bạn nắm quy trình nội bộ, giữ bí quyết.</p>
+        <div class="danger" style="margin-top:10px">🚫 <b>Đừng bao giờ</b> tiết lộ cách làm sản phẩm tầng này — đó chính là "hàng rào" bảo vệ định vị chuyên gia của bạn.</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:20px">
+      <h3>Examples bài Tầng 2 (show off)</h3>
+      <ul class="clean">
+        <li>Landing animation mượt mà — chỉ để ngắm, không hướng dẫn</li>
+        <li>Bộ nhận diện thương hiệu "đắt" — khoe kết quả</li>
+        <li>Mockup 3D sản phẩm đẹp — cảm nhận trình độ</li>
+        <li>Video intro motion graphics — thể hiện năng lực</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- T4: ĐĂNG XEN KẼ -->
+  <div class="panel" id="t4">
+    <h2 class="sec"><span class="num">4</span>Chiến thuật đăng xen kẽ (Interleaving)</h2>
+    <p class="sub">Nhịp đăng để hai tầng bổ trợ nhau — khoe rồi dạy, dạy rồi lại khoe.</p>
+
+    <div class="card">
+      <h3>4.1 Nhịp đăng mẫu chuẩn</h3>
+      <table>
+        <tr><th>Ngày</th><th>Tầng</th><th>Nội dung</th><th>Mục đích</th></tr>
+        <tr><td><b>Ngày A</b></td><td><span class="pill p">Tầng 2 Pro</span></td><td>Đăng 1 giao diện thực sự pro — KHÔNG chỉ cách</td><td>Thu hút sự chú ý, định vị chuyên gia</td></tr>
+        <tr><td><b>Ngày B</b></td><td><span class="pill b">Tầng 1 Free</span></td><td>Đăng CHỈ CÁCH làm landing tương tự bằng công cụ free</td><td>Gieo hạt, hướng dẫn, kéo tương tác</td></tr>
+        <tr><td><b>Ngày C</b></td><td><span class="pill p">Tầng 2 Pro</span></td><td>1 sản phẩm xịn mới — show off</td><td>Giữ uy tín, gây "wow"</td></tr>
+        <tr><td><b>Ngày D</b></td><td><span class="pill b">Tầng 1 Free</span></td><td>1 bài hướng dẫn khác (banner/video/mockup free)</td><td>Đa dạng, giữ nhịp</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>4.2 Nhịp 14 ngày gợi ý</h3>
+      <div class="grid2">
+        <div>
+          <table>
+            <tr><th>Ngày</th><th>Tầng</th><th>Chủ đề</th></tr>
+            <tr><td>1</td><td><span class="pill p">Pro</span></td><td>Landing "wow" hiệu ứng mượt</td></tr>
+            <tr><td>2</td><td><span class="pill b">Free</span></td><td>Cách làm landing gần giống bằng web AI</td></tr>
+            <tr><td>3</td><td><span class="pill p">Pro</span></td><td>Banner thương hiệu "đắt"</td></tr>
+            <tr><td>4</td><td><span class="pill b">Free</span></td><td>Cách làm banner bằng Canva</td></tr>
+            <tr><td>5</td><td><span class="pill p">Pro</span></td><td>Mockup 3D đẹp</td></tr>
+            <tr><td>6</td><td><span class="pill b">Free</span></td><td>Cách dựng mockup template free</td></tr>
+            <tr><td>7</td><td><span class="pill p">Pro</span></td><td>Video giới thiệu mượt</td></tr>
+          </table>
+        </div>
+        <div>
+          <table>
+            <tr><th>Ngày</th><th>Tầng</th><th>Chủ đề</th></tr>
+            <tr><td>8</td><td><span class="pill b">Free</span></td><td>Cách làm video bằng CapCut</td></tr>
+            <tr><td>9</td><td><span class="pill p">Pro</span></td><td>Landing pro #2 — góc nhìn khác</td></tr>
+            <tr><td>10</td><td><span class="pill b">Free</span></td><td>Cách dựng landing pro #2 bằng công cụ free</td></tr>
+            <tr><td>11</td><td><span class="pill p">Pro</span></td><td>Bộ nhận diện thương hiệu (show off)</td></tr>
+            <tr><td>12</td><td><span class="pill b">Free</span></td><td>Cách chọn font/màu đẹp</td></tr>
+            <tr><td>13</td><td><span class="pill p">Pro</span></td><td>"Behind the scene" mình làm gì (ẩn bớt)</td></tr>
+            <tr><td>14</td><td><span class="pill b">Free</span></td><td>Tổng hợp 5 công cụ free ai cũng dùng được</td></tr>
+          </table>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:10px">💡 Nguyên tắc: mỗi "landing pro" đều có một "bài chỉ cách" tương ứng ngày hôm sau → tạo chuỗi nội dung liền mạch, dễ theo dõi.</p>
+    </div>
+
+    <div class="card">
+      <h3>4.3 Kết quả chiến thuật này mang lại</h3>
+      <table>
+        <tr><th>Kết quả</th><th>Mô tả</th></tr>
+        <tr><td><b>1. Định vị chuyên gia</b></td><td>Có 1 nhóm khách hàng <b>để ý</b> và nhận diện <b>Level chuyên gia</b> của bạn → họ <b>liên hệ khi cần</b> (ngay lúc đó hoặc sau này).</td></tr>
+        <tr><td><b>2. Chuyển hoá từ nhóm DEV</b></td><td>Khách đến từ nhóm làm dev/thiết kế → <b>"MÌNH"</b> — bạn trở thành người họ tin để giao việc / học hỏi / hợp tác.</td></tr>
+        <tr><td><b>3. Nhiều cái hay nữa</b></td><td>Xây authority, tạo lead lâu dài, bán dịch vụ cao cấp, mở cộng đồng, hợp tác đối tác, tuyển cộng sự.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T5: BỘ CÔNG CỤ -->
+  <div class="panel" id="t5">
+    <h2 class="sec"><span class="num">5</span>Bộ công cụ theo từng tầng</h2>
+    <p class="sub">Công cụ Free dùng để chỉ cách (Tầng 1). Công cụ Pro dùng để show off (Tầng 2) — giữ quy trình nội bộ.</p>
+
+    <div class="card">
+      <h3>🌐 Web / Landing</h3>
+      <table>
+        <tr><th>🟦 Free (chỉ cách)</th><th>🟪 Pro (show off)</th></tr>
+        <tr><td>Hostinger Horizons · Framer (free) · Wix ADI · Carrd · 10Web · Google Sites</td><td>Webflow (paid) · Framer (paid) · Custom code (HTML/CSS/JS/React) · Next.js/Tailwind</td></tr>
+      </table>
+      <h3 style="margin-top:16px">🎨 Banner / Ảnh / Mockup</h3>
+      <table>
+        <tr><th>🟦 Free</th><th>🟪 Pro</th></tr>
+        <tr><td>Canva (free) · Figma (free) · Photopea · remove.bg</td><td>Figma (pro) · Adobe Photoshop/Illustrator · After Effects/Rive/Lottie · Blender · Spline</td></tr>
+      </table>
+      <h3 style="margin-top:16px">🎬 Video</h3>
+      <table>
+        <tr><th>🟦 Free</th><th>🟪 Pro</th></tr>
+        <tr><td>CapCut (free) · DaVinci Resolve (free) · Canva Video</td><td>Premiere Pro · After Effects · Runway/Pika/Sora</td></tr>
+      </table>
+      <h3 style="margin-top:16px">🤖 AI hỗ trợ (cả 2 tầng)</h3>
+      <table>
+        <tr><th>AI</th><th>Dùng cho</th></tr>
+        <tr><td>ChatGPT / Gemini / Claude</td><td>Viết copy, kịch bản, ý tưởng</td></tr>
+        <tr><td>Midjourney / Bing Image Creator</td><td>Ảnh minh hoạ, mockup AI</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T6: THUYẾT TRÌNH THỨ 7 -->
+  <div class="panel" id="t6">
+    <h2 class="sec"><span class="num">6</span>Buổi thuyết trình "Full option" — Thứ 7</h2>
+    <p class="sub">Mục tiêu: sản xuất <b>nguyên liệu</b> cho hàng loạt content sắp tới + khởi động hệ thống Automation Content &amp; Design.</p>
+
+    <div class="card">
+      <h3>🎯 Mục tiêu buổi thuyết trình</h3>
+      <ul class="clean">
+        <li>Trình diễn <b>toàn bộ quy trình</b>: web → banner → video → mockup.</li>
+        <li><b>Thu được nguyên liệu</b> (video màn hình, ảnh, sản phẩm demo) cho các bài đăng.</li>
+        <li>Đặt nền móng cho <b>Hệ thống Automation Content &amp; Design</b>.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🗂️ Agenda 5 phần</h3>
+      <div class="agenda">
+        <div class="a"><div class="n">1</div><div class="t">Web / Landing</div><div class="d">Làm 1 landing đẹp từ ý tưởng → hoàn chỉnh · 30 phút</div></div>
+        <div class="a"><div class="n">2</div><div class="t">Banner</div><div class="d">Thiết kế banner + bộ nhận diện · 25 phút</div></div>
+        <div class="a"><div class="n">3</div><div class="t">Video</div><div class="d">Cắt &amp; dựng video giới thiệu · 25 phút</div></div>
+        <div class="a"><div class="n">4</div><div class="t">Mockup</div><div class="d">Dựng mockup sản phẩm / đóng gói · 20 phút</div></div>
+        <div class="a"><div class="n">5</div><div class="t">Hệ thống</div><div class="d">Quy trình automation — 1 lần làm ra nhiều content · 20 phút</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>✅ Checklist nguyên liệu cần thu (trong buổi)</h3>
+      <ul class="check">
+        <li class="checked">Quay màn hình từng bước làm (web/banner/video/mockup)</li>
+        <li class="checked">Chụp/xuất bản mẫu đẹp (đừng quên bản "xịn" tầng 2)</li>
+        <li class="checked">Ghi lại lời thoại/hướng dẫn (để thành bài "chỉ cách")</li>
+        <li class="checked">Lưu file gốc (Figma/Canva/code) để tái sử dụng</li>
+        <li class="checked">Phân loại: cái nào thuộc Tầng 1 (chỉ cách), cái nào thuộc Tầng 2 (chỉ show off)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📦 Bộ tài nguyên sau buổi</h3>
+      <table>
+        <tr><th>Loại</th><th>🟦 Bản Free (Tầng 1)</th><th>🟪 Bản Pro (Tầng 2)</th></tr>
+        <tr><td>Web/Landing</td><td>Landing bằng web AI</td><td>Landing Webflow/custom code</td></tr>
+        <tr><td>Banner</td><td>Banner Canva free</td><td>Banner Photoshop/AE</td></tr>
+        <tr><td>Video</td><td>Video CapCut</td><td>Video Premiere/AE</td></tr>
+        <tr><td>Mockup</td><td>Mockup template free</td><td>Mockup 3D Blender</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- T7: AUTOMATION -->
+  <div class="panel" id="t7">
+    <h2 class="sec"><span class="num">7</span>Hệ thống Automation Content &amp; Design (Khung)</h2>
+    <p class="sub">Tư tưởng cốt lõi: <b>"Làm 1 lần — ra nhiều content"</b>.</p>
+
+    <div class="card">
+      <h3>7.1 Tư tưởng</h3>
+      <p>Mỗi lần bạn làm 1 sản phẩm, hãy <b>tự động hoá</b> để nó trở thành nhiều content: (1) sản phẩm gốc, (2) ảnh cắt → bài ngắn/ story/ reel, (3) video màn hình → tutorial, (4) bản "xịn" → bài show off, (5) caption → kịch bản.</p>
+    </div>
+
+    <div class="card">
+      <h3>7.2 Pipeline Automation</h3>
+      <table>
+        <tr><th>Bước</th><th>Công cụ</th><th>Đầu ra</th></tr>
+        <tr><td>Ghi hình màn hình</td><td>Loom / OBS / Screen Studio</td><td>Video gốc</td></tr>
+        <tr><td>Cắt &amp; phụ đề</td><td>CapCut / Descript</td><td>Video ngắn, tutorial</td></tr>
+        <tr><td>Thiết kế ảnh/banner</td><td>Canva / Figma (template)</td><td>Ảnh bài đăng</td></tr>
+        <tr><td>Viết copy/hashtag</td><td>ChatGPT / template</td><td>Caption</td></tr>
+        <tr><td>Lên lịch đăng</td><td>Buffer / Metricool / Meta Suite</td><td>Lịch tự động</td></tr>
+        <tr><td>Lưu &amp; tái dùng</td><td>Google Drive / Notion</td><td>Thư viện content</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>7.3 Vòng đời 1 sản phẩm → nhiều content</h3>
+      <div class="func"><b>Sản phẩm gốc</b>
+   ├─ Ngày 1: Bài Show-off (Tầng 2)
+   ├─ Ngày 2: Bài Tutorial free (Tầng 1)
+   ├─ Tuần sau: Reel ngắn (từ video màn hình)
+   ├─ Tháng sau: Webinar/workshop (từ kiến thức)
+   └─ Vĩnh viễn: Thư viện template, tái sử dụng</div>
+      <ul class="clean" style="margin-top:12px">
+        <li><b>Một lần làm, nhiều lần đăng</b> — tái sử dụng theo vòng đời.</li>
+        <li><b>Định dạng chuẩn</b> để dán nhanh: ảnh + caption + hashtag + CTA.</li>
+        <li><b>Phân loại tầng tự động:</b> bài Free (chỉ cách) vs bài Pro (show off) — tránh nhầm.</li>
+        <li><b>Lưu template</b> để lần sau chỉ đổi nội dung.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- T8: KẾT QUẢ & KPI -->
+  <div class="panel" id="t8">
+    <h2 class="sec"><span class="num">8</span>Kết quả &amp; KPI</h2>
+    <p class="sub">Cách nhận biết chiến lược đang hoạt động và đo lường hiệu quả.</p>
+
+    <div class="card">
+      <h3>Hệ quả chiến lược</h3>
+      <table>
+        <tr><th>Hệ quả</th><th>Cách nhận biết</th></tr>
+        <tr><td><b>Định vị chuyên gia</b></td><td>Mọi người bình luận "xịn quá", hỏi "làm sao vậy" → bạn có quyền "không tiết lộ".</td></tr>
+        <tr><td><b>Khách tìm đến</b></td><td>Họ inbox hỏi "làm giúp mình" / "bao nhiêu".</td></tr>
+        <tr><td><b>Chuyển hoá từ DEV</b></td><td>Freelancer/đối tác muốn hợp tác, học hỏi.</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>KPI theo dõi</h3>
+      <div class="kpi">
+        <div class="k"><div class="v">2 tầng</div><div class="l">Bài Pro + bài Free xen kẽ</div></div>
+        <div class="k"><div class="v">🔥</div><div class="l">Tương tác mỗi bài</div></div>
+        <div class="k"><div class="v">📩</div><div class="l">Inbox hỏi làm dịch vụ</div></div>
+        <div class="k"><div class="v">💰</div><div class="l">Khách chốt</div></div>
+        <div class="k"><div class="v">⬆️</div><div class="l">Người theo dõi tăng</div></div>
+      </div>
+      <ul class="clean" style="margin-top:12px">
+        <li>So sánh tương tác <b>bài Pro vs bài Free</b> để điều chỉnh nhịp đăng.</li>
+        <li>Theo dõi riêng số liệu từ mỗi loại content (web/banner/video/mockup).</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>Hệ thống Content &amp; Design — Chiến lược 2 tầng · Tạo bởi DeepSeek Harness</footer>
+</div>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+      document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('show');});
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('show');
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+</script>
+</body>
+</html>

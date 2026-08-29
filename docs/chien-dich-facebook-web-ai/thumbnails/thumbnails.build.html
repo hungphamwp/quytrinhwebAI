@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<style>
+  :root{
+    --brand:"WebPro Studio";            /* ← đổi tên thương hiệu ở đây */
+    --fb-cta:"💬 Gửi link demo — tư vấn miễn phí";
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#111;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+
+  .thumb{
+    width:1200px;height:628px;position:relative;overflow:hidden;color:#fff;
+    display:flex;flex-direction:column;justify-content:space-between;padding:52px 60px;
+  }
+  /* decorative glow */
+  .thumb .glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}
+  .thumb .g1{width:520px;height:520px;top:-160px;right:-120px;background:rgba(255,255,255,.28)}
+  .thumb .g2{width:420px;height:420px;bottom:-180px;left:-140px;background:rgba(0,0,0,.28)}
+  .thumb .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px;opacity:.6}
+
+  .inner{position:relative;z-index:2;display:flex;flex-direction:column;height:100%}
+
+  .top{display:flex;align-items:center;justify-content:space-between}
+  .badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.4);padding:8px 18px;border-radius:999px;font-size:15px;font-weight:700;letter-spacing:.5px}
+  .brand{display:inline-flex;align-items:center;gap:12px;font-size:16px;font-weight:700;opacity:.95}
+  .brand .dot{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:18px}
+
+  .mid{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:900px}
+  .num{font-size:18px;font-weight:800;letter-spacing:4px;opacity:.85;margin-bottom:6px}
+  .title{font-size:58px;font-weight:900;line-height:1.05;letter-spacing:-.5px;text-shadow:0 4px 24px rgba(0,0,0,.25)}
+  .title em{font-style:normal;background:rgba(255,255,255,.22);padding:2px 12px;border-radius:12px}
+  .sub{margin-top:20px;font-size:22px;font-weight:500;opacity:.95;max-width:820px}
+  .sub b{background:linear-gradient(90deg,#fff,#ffe9a8);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800}
+
+  .foot{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(255,255,255,.35);padding-top:20px}
+  .cta{font-size:19px;font-weight:800}
+  .cta img,.cta span{}
+  .tagline{font-size:15px;opacity:.9;font-weight:600}
+  .tier-tag{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.5px;padding:5px 12px;border-radius:999px;margin-top:12px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.5)}
+  .tier-tag.show{background:rgba(0,0,0,.28)}
+  .sub .tier{background:rgba(255,255,255,.22);padding:1px 8px;border-radius:8px}
+
+  /* ==== Day palettes ==== */
+  .d1{background:linear-gradient(135deg,#0b1c52,#1c3faa 55%,#2f81f7)}
+  .d2{background:linear-gradient(135deg,#5a0f0f,#a11d1d 55%,#e2593a)}
+  .d3{background:linear-gradient(135deg,#20084a,#5a2ca1 55%,#8b5cf6)}
+  .d4{background:linear-gradient(135deg,#063a34,#0f766e 55%,#14b8a6)}
+  .d5{background:linear-gradient(135deg,#0f172a,#334155 55%,#64748b)}
+  .d6{background:linear-gradient(135deg,#4a2c07,#a16207 55%,#f59e0b)}
+  .d7{background:linear-gradient(135deg,#064e3b,#059669 55%,#34d399)}
+</style>
+</head>
+<body>
+
+<!-- NGÀY 1 -->
+<div class="thumb d1" id="t1">
+  <div class="glow g1"></div><div class="glow g2"></div><div class="grid"></div>
+  <div class="inner">
+    <div class="top"><span class="badge">NGÀY 1</span><span class="brand"><span class="dot">✳</span> WebPro Studio</span></div>
+    <div class="mid">
+      <div class="num">BÀI ĐĂNG · 20H – 21H</div>
+      <div class="title">Web AI miễn phí vs <em>WordPress</em> — cái nào hợp bạn?</div>
+      <div class="sub">Tạo 5 phút là xong, nhưng <b>web thật để bán hàng &amp; lên Google</b> thì chỉ WordPress làm được.</div>
+    </div>
+    <div class="foot" style="--fb-cta:'💬 Bạn đang dùng cái nào? Comment nhé'"><span class="cta">💬 Bạn đang dùng cái nào? Comment nhé</span><span class="tagline">#Website #WordPress #AITool</span></div>
+  </div>
+</div>
+
+<!-- NGÀY 2 -->
+<div class="thumb d2" id="t2">
+  <div class="glow g1"></div><div class="glow g2"></div><div class="grid"></div>
+  <div class="inner">
+    <div class="top"><span class="badge">NGÀY 2</span><span class="brand"><span class="dot">✳</span> WebPro Studio</span></div>
+    <div class="mid">
+      <div class="num">BÀI ĐĂNG · 12H – 13H</div>
+      <div class="title">4 lỗi khiến web không <em>bán được hàng</em></div>
+      <div class="sub">Chậm · tên miền con · không sửa được · không lên Google — <b>90% web mới mắc đúng 1 trong 4.</b></div>
+    </div>
+    <div class="foot" style="--fb-cta:'🔢 Comment số 1-4 để mình gợi ý cách khắc phục'"><span class="cta">🔢 Comment số 1-4 để mình gợi ý cách khắc phục</span><span class="tagline">#Website #SEO #BánHàngOnline</span></div>
+  </div>
+</div>
+
+<!-- NGÀY 3 -->
+<div class="thumb d3" id="t3">
+  <div class="glow g1"></div><div class="glow g2"></div><div class="grid"></div>
+  <div class="inner">
+    <div class="top"><span class="badge">NGÀY 3</span><span class="brand"><span class="dot">✳</span> WebPro Studio</span></div>
+    <div class="mid">
+      <div class="num">BÀI ĐĂNG · 20H – 21H</div>
+      <div class="title">Bạn đang gặp gì với web? <em>Mình trả lời tận nơi.</em></div>
+      <div class="sub">Hỏi về tên miền, tốc độ, SEO, chuyển từ web AI → WordPress... <b>comment là mình giải thích.</b></div>
+    </div>
+    <div class="foot" style="--fb-cta:'💬 Để câu hỏi ở dưới, mình trả lời ngay'"><span class="cta">💬 Để câu hỏi ở dưới, mình trả lời ngay</span><span class="tagline">#TuVan #Website #WordPress</span></div>
+  </div>
+</div>
+
+<!-- NGÀY 4 -->
+<div class="thumb d4" id="t4">
+  <div class="glow g1"></div><div class="glow g2"></div><div class="grid"></div>
+  <div class="inner">
+    <div class="top"><span class="badge">NGÀY 4</span><span class="brand"><span class="dot">✳</span> WebPro Studio</span></div>
+    <div class="mid">
+      <div class="num">BÀI ĐĂNG · 21H – 22H</div>
+      <div class="title">Case study: <em>cứu web</em> từ bản AI miễn phí</div>
+      <div class="sub">Giữ nguyên ý tưởng + hình + menu → chuyển sang WordPress với tên miền riêng, lên Google.</div>
+    </div>
+    <div class="foot" style="--fb-cta:'📖 Bạn có từng bỏ web vì không sửa được?'"><span class="cta">📖 Bạn có từng bỏ web vì không sửa được?</span><span class="tagline">#CaseStudy #WordPress #Website</span></div>
+  </div>
+</div>
+
+<!-- NGÀY 5 -->
+<div class="thumb d5" id="t5">
+  <div class="glow g1"></div><div class="glow g2"></div><div class="grid"></div>
+  <div class="inner">
+    <div class="top"><span class="badge">NGÀY 5</span><span class="brand"><span class="dot">✳</span> WebPro Studio</span></div>
+    <div class="mid">
+      <div class="num">BÀI ĐĂNG · 12H – 13H</div>
+      <div class="title">8 điểm nhận biết web <em>"chuẩn" hay "dở"</em></div>
+      <div class="sub">Checklist tự chấm nhanh: tên miền · quảng cáo · mobile · tốc độ · SEO... <b>thiếu 2-3 mục là web đang ăn khách.</b></div>
+    </div>
+    <div class="foot" style="--fb-cta:'📋 Chấm được mấy điểm? Comment số'"><span class="cta">📋 Chấm được mấy điểm? Comment số</span><span class="tagline">#Checklist #Website #SEO</span></div>
+  </div>
+</div>
+
+<!-- NGÀY 6 -->
+<div class="thumb d6" id="t6">
+  <div class="glow g1"></div><div class="glow g2"></div><div class="grid"></div>
+  <div class="inner">
+    <div class="top"><span class="badge">NGÀY 6</span><span class="brand"><span class="dot">✳</span> WebPro Studio</span></div>
+    <div class="mid">
+      <div class="num">BÀI ĐĂNG · 20H – 21H</div>
+      <div class="title">Tự chỉnh nội dung WordPress trong <em>5 phút</em></div>
+      <div class="sub">Đăng nhập /wp-admin → sửa chữ &amp; hình → Cập nhật. <b>Làm chủ web, không phụ thuộc ai.</b></div>
+    </div>
+    <div class="foot" style="--fb-cta:'✌️ Muốn mình hướng dẫn đổi giá / thêm sản phẩm?'"><span class="cta">✌️ Muốn mình hướng dẫn đổi giá / thêm sản phẩm?</span><span class="tagline">#WordPress #HuongDan #TuQuanTri</span></div>
+  </div>
+</div>
+
+<!-- NGÀY 7 -->
+<div class="thumb d7" id="t7">
+  <div class="glow g1"></div><div class="glow g2"></div><div class="grid"></div>
+  <div class="inner">
+    <div class="top"><span class="badge">NGÀY 7</span><span class="brand"><span class="dot">✳</span> WebPro Studio</span></div>
+    <div class="mid">
+      <div class="num">BÀI ĐĂNG · 21H – 22H</div>
+      <div class="title">Gửi link demo — mình <em>tư vấn làm web</em> chuẩn</div>
+      <div class="sub">Chuyên làm lại website trên WordPress, chuyển từ web AI miễn phí → web chuẩn, không quảng cáo.</div>
+    </div>
+    <div class="foot" style="--fb-cta:'🤝 Comment "DEMO" + gửi link vào inbox'"><span class="cta">🤝 Comment "DEMO" + gửi link vào inbox</span><span class="tagline">#Website #WordPress #DichVu</span></div>
+  </div>
+</div>
+
+</body>
+</html>

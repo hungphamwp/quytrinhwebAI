@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kế hoạch hành động — Chiến dịch FB → Làm web WordPress</title>
+<style>
+  :root{
+    --bg:#f5f7fa; --card:#ffffff; --ink:#1f2328; --muted:#6a737d;
+    --brand:#2f81f7; --brand-soft:#e7f5ff; --ok:#1f883d; --ok-soft:#dafbe1;
+    --warn:#d4a72c; --warn-soft:#fff8c5; --red:#d1242f; --red-soft:#ffebe9;
+    --line:#d0d7de; --shadow:0 8px 24px rgba(31,35,40,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;line-height:1.55}
+  .wrap{max-width:980px;margin:0 auto;padding:24px 18px 70px}
+
+  .hero{text-align:center;padding:34px 22px;background:linear-gradient(135deg,#1c3faa,#2f81f7);color:#fff;border-radius:20px;box-shadow:var(--shadow)}
+  .hero h1{margin:0 0 10px;font-size:26px}
+  .hero p{margin:0;opacity:.93;font-size:15px;max-width:720px;margin-inline:auto}
+  .hero .tags{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .hero .tags span{background:rgba(255,255,255,.16);padding:5px 12px;border-radius:999px;font-size:13px}
+
+  /* Sticky nav */
+  nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin:20px 0;display:flex;flex-wrap:wrap;gap:8px;box-shadow:var(--shadow)}
+  nav a{text-decoration:none;font-size:13px;font-weight:600;color:var(--ink);background:var(--brand-soft);padding:6px 11px;border-radius:999px;border:1px solid transparent}
+  nav a:hover{border-color:var(--brand)}
+
+  section{margin-top:34px;scroll-margin-top:70px}
+  h2.sec{font-size:20px;margin:0 0 6px;display:flex;align-items:center;gap:10px}
+  h2.sec .num{background:var(--brand);color:#fff;width:30px;height:30px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;font-size:15px}
+  .sub{color:var(--muted);font-size:14px;margin:0 0 16px}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);margin-bottom:16px}
+  .card h3{margin:0 0 8px;font-size:16px}
+  .card p{margin:6px 0}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px}
+  th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+  th{background:#f0f3f6;font-weight:700}
+  tr:nth-child(even) td{background:#fbfcfd}
+
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700}
+  .pill.g{background:var(--ok-soft);color:var(--ok)}
+  .ok-tag{display:inline-block;background:var(--ok-soft);color:var(--ok);border:1px solid var(--ok);font-size:11.5px;font-weight:800;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+  .tag-app{display:inline-block;background:#eef2ff;color:#4338ca;border:1px solid #818cf8;font-size:11.5px;font-weight:800;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+  .tag-fee{display:inline-block;background:var(--warn-soft);color:#6f5700;border:1px solid var(--warn);font-size:11.5px;font-weight:800;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+  .tag-int{display:inline-block;background:#fee2e2;color:#b91c1c;border:1px solid #f87171;font-size:11.5px;font-weight:800;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+  .score{font-size:13px;font-weight:800;color:var(--ink);white-space:nowrap}
+  .score .st{color:#f59e0b;letter-spacing:1px}
+  .score .lbl{display:block;color:var(--muted);font-size:10.5px;font-weight:600}
+  .pros{color:var(--ok);font-size:12.5px;line-height:1.5}
+  .cons{color:var(--red);font-size:12.5px;line-height:1.5}
+  .demo{font-size:12.5px}
+  table.otable{font-size:12.5px}
+  table.otable td,table.otable th{padding:8px 9px}
+  .rank-badge{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:#eef1f4;color:var(--muted);font-weight:800;font-size:13px}
+  .rank-badge.top{background:var(--warn-soft);color:#6f5700}
+  .pill.y{background:var(--warn-soft);color:#6f5700}
+  .pill.r{background:var(--red-soft);color:var(--red)}
+  .pill.b{background:var(--brand-soft);color:#0a3069}
+
+  .lead{border-left:4px solid var(--brand);background:var(--brand-soft);padding:12px 14px;border-radius:0 12px 12px 0;font-size:14px}
+  .warn{border-left:4px solid var(--warn);background:var(--warn-soft);padding:12px 14px;border-radius:0 12px 12px 0;font-size:14px}
+  .danger{border-left:4px solid var(--red);background:var(--red-soft);padding:12px 14px;border-radius:0 12px 12px 0;font-size:14px}
+
+  .msg{background:#f6f8fa;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;margin-top:8px;white-space:pre-wrap}
+  .msg b{color:var(--brand)}
+
+  ul.clean{margin:6px 0;padding-left:20px}
+  ul.clean li{margin:5px 0}
+  li b{color:var(--ink)}
+
+  /* checklist */
+  .check{list-style:none;padding-left:0;margin:6px 0}
+  .check li{margin:7px 0;padding-left:30px;position:relative}
+  .check li::before{content:"";position:absolute;left:0;top:2px;width:18px;height:18px;border:2px solid var(--ok);border-radius:5px}
+  .check li.checked::after{content:"✓";position:absolute;left:3px;top:1px;color:var(--ok);font-weight:800;font-size:14px}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+
+  .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;margin-right:6px}
+  .tag.t1{background:var(--brand-soft);color:#0a3069}
+  .tag.t2{background:var(--warn-soft);color:#6f5700}
+  .tag.t3{background:var(--red-soft);color:var(--red)}
+  .tag.t4{background:var(--ok-soft);color:var(--ok)}
+
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:8px}
+  .kpi .k{background:#f0f3f6;border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+  .kpi .k .v{font-size:22px;font-weight:800;color:var(--brand)}
+  .kpi .k .l{font-size:12.5px;color:var(--muted)}
+
+  footer{text-align:center;margin-top:40px;color:var(--muted);font-size:13px}
+  a{color:var(--brand)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🚀 KẾ HOẠCH HÀNH ĐỘNG CHI TIẾT</h1>
+    <p>Chiến dịch Facebook → giới thiệu web AI miễn phí → khách tự tạo demo → vướng giới hạn → liên hệ bạn → nhận link demo → làm website WordPress. <strong>Mỗi bước đều có danh sách cụ thể, số liệu, mẫu câu — nhìn vào là làm theo được.</strong></p>
+    <div class="tags"><span>⭐ Chọn tool</span><span>📅 Lịch đăng</span><span>📩 Mẫu tin nhắn</span><span>📋 Checklist</span><span>💰 Bảng giá</span><span>⚙️ WordPress</span></div>
+  </header>
+
+  <nav>
+    <a href="#sec1">1. Chọn web AI</a>
+    <a href="#sec2">2. Chuẩn bị công cụ</a>
+    <a href="#sec3">3. Nội dung &amp; lịch đăng</a>
+    <a href="#sec4">4. Khách tự tạo demo</a>
+    <a href="#sec5">5. Nhận link demo</a>
+    <a href="#sec6">6. Đánh giá demo</a>
+    <a href="#sec7">7. Chốt deal</a>
+    <a href="#sec8">8. Làm WordPress</a>
+    <a href="#sec9">9. Bàn giao &amp; bảo trì</a>
+    <a href="#sec10">10. KPI &amp; lịch 30 ngày</a>
+  </nav>
+
+  <!-- ===== 1 ===== -->
+  <section id="sec1">
+    <h2 class="sec"><span class="num">1</span>Danh sách web tạo website AI miễn phí — web nào, cái nào OK</h2>
+    <p class="sub">Sắp theo độ phù hợp cho phễu của bạn. Chọn để đăng bài &amp; biết "điểm đau" bán được.</p>
+
+    <div class="warn">⚠️ <b>Lưu ý:</b> free-tier của các nền tảng này <b>thay đổi thường xuyên</b> (giới hạn publish, subdomain, badge, số trang...). Bảng này là trạng thái phổ biến hiện tại để lên kế hoạch. <b>Trước mỗi chiến dịch, bạn tự tạo thử 1 site</b> trên 3-4 tool để chắc chắn "điểm đau" còn đúng.</div>
+
+    <div class="card">
+      <h3>⭐ Bảng chọn lọc — web AI miễn phí</h3>
+      <table class="otable">
+        <tr><th>#</th><th>Nền tảng &amp; Link</th><th>Điểm nổi bật</th><th>Thích hợp cho</th><th>Giao diện</th><th>Dễ dùng</th><th>Tốc độ</th><th>Tiềm năng</th><th>Ưu điểm</th><th>Nhược điểm</th><th>Demo sản phẩm</th></tr>
+        <tr><td><span class="rank-badge">1</span></td><td><b>Durable</b> <span class="ok-tag">✓</span><br><a href="https://durable.com" target="_blank" rel="noopener">durable.com</a></td><td>Web dịch vụ/doanh nghiệp trong 30 giây, kèm sẵn form liên hệ</td><td>Dịch vụ địa phương, cần tốc độ</td><td><div class="score"><span class="st">★★★½</span><span class="lbl">4.0</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.5</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.3</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.2</span></div></td><td class="pros">Rất nhanh; form liên hệ có sẵn; đơn giản cho người không rành kỹ thuật</td><td class="cons">Bản free rất hạn chế; chỉ domain phụ; ít quyền tuỳ chỉnh</td><td class="demo">—</td></tr>
+        <tr><td><span class="rank-badge">2</span></td><td><b>Lindo AI</b><br><a href="https://lindo.ai" target="_blank" rel="noopener">lindo.ai</a></td><td>Nhập 1 câu lệnh (prompt) ra ngay Landing Page hiện đại</td><td>Landing Page, giới thiệu sản phẩm</td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.4</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.5</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.2</span></div></td><td><div class="score"><span class="st">★★★½</span><span class="lbl">3.8</span></div></td><td class="pros">Giao diện hiện đại; dựng landing cực nhanh; không cần code</td><td class="cons">Có badge quảng cáo; giới hạn traffic tháng; ít tùy chỉnh nâng cao</td><td class="demo">—</td></tr>
+        <tr><td><span class="rank-badge">3</span></td><td><b>Wix AI</b><br><a href="https://wix.com" target="_blank" rel="noopener">wix.com</a></td><td>AI dựng khung chuẩn, kết hợp trình kéo-thả linh hoạt</td><td>Phổ thông, cá nhân, cửa hàng nhỏ</td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.2</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.6</span></div></td><td><div class="score"><span class="st">★★★</span><span class="lbl">3.4</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.0</span></div></td><td class="pros">Cộng đồng lớn; kéo-thả mượt; nhiều mẫu &amp; app</td><td class="cons">Dính banner quảng cáo; subdomain; site thường chậm hơn</td><td class="demo">—</td></tr>
+        <tr><td><span class="rank-badge top">4</span></td><td><b>Framer</b> <span class="ok-tag">✓</span><br><a href="https://framer.com" target="_blank" rel="noopener">framer.com</a></td><td>Giao diện thời thượng, hiệu ứng chuyển động (animation) cực mượt</td><td>Nhận diện thương hiệu, portfolio</td><td><div class="score"><span class="st">★★★★★</span><span class="lbl">4.9</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.2</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.6</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.4</span></div></td><td class="pros">Đẹp nhất nhóm; animation mượt; dựng portfolio/thương hiệu rất tốt</td><td class="cons">Subdomain *.framer.website; không xuất code; cần học một chút</td><td class="demo">—</td></tr>
+        <tr><td><span class="rank-badge">5</span></td><td><b>CodeDesign.ai</b><br><a href="https://codedesign.ai" target="_blank" rel="noopener">codedesign.ai</a></td><td>Layout chuẩn chỉnh như thiết kế thủ công, cho can thiệp sâu UI</td><td>Designer, người thích tuỳ biến</td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.4</span></div></td><td><div class="score"><span class="st">★★★</span><span class="lbl">3.4</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.3</span></div></td><td><div class="score"><span class="st">★★★½</span><span class="lbl">3.8</span></div></td><td class="pros">Kiểm soát layout tốt; can thiệp sâu UI; ra code sạch</td><td class="cons">Không custom domain; giới hạn export; đòi hỏi kỹ năng thiết kế</td><td class="demo">—</td></tr>
+        <tr><td><span class="rank-badge">6</span></td><td><b>Dora AI</b><br><a href="https://dora.run" target="_blank" rel="noopener">dora.run</a></td><td>Website tích hợp hiệu ứng 3D trực quan, gây ấn tượng mạnh</td><td>Chiến dịch sáng tạo, cần hút view</td><td><div class="score"><span class="st">★★★★★</span><span class="lbl">4.7</span></div></td><td><div class="score"><span class="st">★★★</span><span class="lbl">3.2</span></div></td><td><div class="score"><span class="st">★★★</span><span class="lbl">3.3</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.0</span></div></td><td class="pros">Hiệu ứng 3D wow; tạo ấn tượng mạnh; hợp chiến dịch/landing</td><td class="cons">Hạn chế tuỳ chỉnh; khó xuất bản; nặng &amp; chậm hơn; cần kỹ năng</td><td class="demo">—</td></tr>
+        <tr><td><span class="rank-badge top">7</span></td><td><b>ZipWP</b><br><a href="https://zipwp.com" target="_blank" rel="noopener">zipwp.com</a></td><td>Tạo web WordPress hoàn thiện bài viết, hình ảnh trong 60 giây</td><td>Dân làm WordPress, developer</td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.2</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.4</span></div></td><td><div class="score"><span class="st">★★★½</span><span class="lbl">3.7</span></div></td><td><div class="score"><span class="st">★★★★½</span><span class="lbl">4.7</span></div></td><td class="pros">Ra WordPress thật; dựng nhanh; dễ đưa vào quy trình WP của bạn</td><td class="cons">Giới hạn 3 web/tháng; bản nháp tự xoá sau 24h nếu không cài host</td><td class="demo">—</td></tr>
+        <tr><td><span class="rank-badge">8</span></td><td><b>Softr</b> <span class="tag-app">💻</span><br><a href="https://www.softr.io" target="_blank" rel="noopener">softr.io</a></td><td>Biến cơ sở dữ liệu (Google Sheets/Airtable) thành website động</td><td>Danh mục sản phẩm, cổng thông tin</td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.2</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.1</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.2</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.0</span></div></td><td class="pros">Nối bảng tính/web động; không cần code; hợp danh mục, cổng thông tin</td><td class="cons">Giới hạn số dòng dữ liệu; tính năng nâng cao cần trả phí</td><td class="demo">—</td></tr>
+        <tr><td><span class="rank-badge">9</span></td><td><b>Base44</b><br><a href="https://base44.com" target="_blank" rel="noopener">base44.com</a></td><td>Dùng AI tạo Web App, thiết lập luồng dữ liệu và phân quyền</td><td>Hệ thống quản lý, luồng dữ liệu</td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.0</span></div></td><td><div class="score"><span class="st">★★★</span><span class="lbl">3.4</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.0</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.0</span></div></td><td class="pros">Làm web app thật sự; quản lý luồng dữ liệu &amp; phân quyền</td><td class="cons">Cần tư duy hệ thống; giới hạn tài nguyên vận hành</td><td class="demo">—</td></tr>
+        <tr><td><span class="rank-badge top">10</span></td><td><b>Lovable</b> <span class="ok-tag">✓</span><br><a href="https://lovable.dev" target="_blank" rel="noopener">lovable.dev</a></td><td>Viết text để AI tự động code ra phần mềm (React, Tailwind)</td><td>Lập trình viên, dự án tính toán</td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.3</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.2</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.5</span></div></td><td><div class="score"><span class="st">★★★★½</span><span class="lbl">4.6</span></div></td><td class="pros">Code ra sản phẩm thật (React/Tailwind); rất mạnh &amp; linh hoạt</td><td class="cons">Giới hạn số prompt/tháng; cần chút nền tảng để chạy app</td><td class="demo">—</td></tr>
+        <tr><td><span class="rank-badge">11</span></td><td><b>B12</b> <span class="ok-tag">✓</span><br><a href="https://b12.io" target="_blank" rel="noopener">b12.io</a></td><td>Tối ưu cho web dịch vụ, tích hợp sẵn form đặt lịch, hoá đơn, email</td><td>Doanh nghiệp nhỏ, dịch vụ B2B</td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.1</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.0</span></div></td><td><div class="score"><span class="st">★★★½</span><span class="lbl">3.6</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.0</span></div></td><td class="pros">Chuyên cho web dịch vụ; form đặt lịch/hoá đơn/email có sẵn</td><td class="cons">Bản free chỉ xem nháp; muốn chạy phải trả phí</td><td class="demo">—</td></tr>
+        <tr><td><span class="rank-badge">12</span></td><td><b>Relume</b> <span class="ok-tag">✓</span><br><a href="https://www.relume.ai" target="_blank" rel="noopener">relume.ai</a></td><td>AI tạo sitemap và wireframe siêu tốc với nội dung copywriting chuẩn</td><td>UI/UX designer, cấu trúc web</td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.3</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.1</span></div></td><td><div class="score"><span class="st">★★★★½</span><span class="lbl">4.6</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.0</span></div></td><td class="pros">Wireframe/sitemap siêu nhanh; copy chuẩn; hợp designer</td><td class="cons">Giới hạn số project; cần kết hợp Figma/Webflow để xuất bản</td><td class="demo">—</td></tr>
+        <tr><td><span class="rank-badge">13</span></td><td><b>10Web</b> <span class="tag-int">🔒</span><br><a href="https://10web.io" target="_blank" rel="noopener">10web.io</a></td><td>Tạo ra site WordPress luôn, gần với dịch vụ làm WP của bạn</td><td>Dân làm web, cầu nối WordPress</td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.1</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.0</span></div></td><td><div class="score"><span class="st">★★★½</span><span class="lbl">3.6</span></div></td><td><div class="score"><span class="st">★★★★½</span><span class="lbl">4.6</span></div></td><td class="pros">Ra web WordPress luôn; dễ đưa vào quy trình làm WP của bạn</td><td class="cons">Free giới hạn tính năng/lưu trữ; nội bộ — không chia sẻ cho khách</td><td class="demo">—</td></tr>
+        <tr><td><span class="rank-badge">14</span></td><td><b>Hostinger Horizons</b> <span class="tag-fee">💳</span><br><a href="https://hostinger.com" target="_blank" rel="noopener">hostinger.com</a></td><td>AI làm nhanh, rất dễ, giao diện đẹp</td><td>Người mới, khách cần web "thật"</td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.2</span></div></td><td><div class="score"><span class="st">★★★★½</span><span class="lbl">4.6</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.3</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.2</span></div></td><td class="pros">Cực dễ; hosting + AI tích hợp; giao diện đẹp; phù hợp người mới</td><td class="cons">Có phí để dùng "thật"; free giới hạn publish/domain</td><td class="demo">—</td></tr>
+        <tr><td><span class="rank-badge">15</span></td><td><b>GoDaddy Airo</b><br><a href="https://www.godaddy.com" target="_blank" rel="noopener">godaddy.com</a></td><td>AI + marketing tích hợp</td><td>Tham khảo, ít dùng</td><td><div class="score"><span class="st">★★★½</span><span class="lbl">3.7</span></div></td><td><div class="score"><span class="st">★★★★</span><span class="lbl">4.2</span></div></td><td><div class="score"><span class="st">★★★</span><span class="lbl">3.4</span></div></td><td><div class="score"><span class="st">★★★</span><span class="lbl">3.2</span></div></td><td class="pros">AI + marketing tích hợp; dùng nhanh</td><td class="cons">Free giới hạn; đẩy lên gói trả phí</td><td class="demo">—</td></tr>
+      </table>
+      <p class="sub" style="margin:10px 0 0;font-size:13px;color:var(--muted)">🟢 <span class="ok-tag">✓</span> = đã tự đăng ký &amp; dùng thử, chấp nhận được · <span class="tag-app">💻</span> = bên tạo web app · <span class="tag-fee">💳</span> = cần trả phí để dùng thật · <span class="tag-int">🔒</span> = dùng nội bộ, không chia sẻ cho khách.<br>⭐ Điểm (0–5) là đánh giá chủ quan: <i>Giao diện</i> (đẹp/không đại trà), <i>Dễ dùng</i> (ai cũng làm được), <i>Tốc độ</i> (tải nhanh), <i>Tiềm năng</i> (đáng đưa vào content/dịch vụ). Trước khi dùng, tự kiểm chứng lại.<br>📌 <b>Demo sản phẩm:</b> đang để trống (—), chờ bạn gửi link demo thật của từng nền tảng để mình điền vào.</p>
+            <div class="danger" style="margin-top:12px">🚫 <b>Không nên giới thiệu cho phễu này:</b> Google Sites, Carrd, Weebly/Strikingly (quá đơn giản, không tạo "điểm đau" để bán).</div>
+      <div class="lead" style="margin-top:12px">🎯 <b>Công thức chọn tool:</b> đăng <b>cái dễ gây nghiện trước</b> (Durable/Wix/Framer) → người xem thử → vướng giới hạn → liên hệ bạn. Giữ <b>ZipWP/10Web/Softr</b> làm "bài chuyên sâu" dẫn về WordPress &amp; dữ liệu động.</div>
+
+      <div class="danger" style="margin-top:14px">🚫 <b>Không nên giới thiệu cho phễu này</b> (không tạo ra "điểm đau" để bán): <b>Google Sites</b> (quá đơn giản, free trọn đời), <b>Carrd</b> (chỉ trang đơn), <b>Weebly / Strikingly</b> (cũ, ít AI, ít "wow").</div>
+
+      <div class="lead" style="margin-top:14px">🎯 <b>Công thức chọn tool để đăng:</b> đăng <b>cái dễ gây nghiện trước</b> (Hostinger / Framer / Wix) — người xem thử ngay, thấy kết quả đẹp → vào tạo → vướng giới hạn → liên hệ bạn. Giữ <b>10Web</b> làm "bài chuyên sâu" để khi khách hỏi về WordPress bạn chuyển hướng tự nhiên. Gọi chung là <b>"Web AI miễn phí — 5 phút có website"</b>.</div>
+    </div>
+  </section>
+
+  <!-- ===== 2 ===== -->
+  <section id="sec2">
+    <h2 class="sec"><span class="num">2</span>Chuẩn bị tài khoản &amp; công cụ</h2>
+    <p class="sub">Làm 1 lần trong ~2-3 giờ. Đây là nền để không sót link demo nào.</p>
+    <div class="card">
+      <table>
+        <tr><th>Nhóm</th><th>Cụ thể</th><th>Ghi chú</th></tr>
+        <tr><td>Kênh liên hệ</td><td>Trang fanpage có nút "Gửi tin nhắn" (Messenger)</td><td>Bật Messenger tự động cho khách gửi link</td></tr>
+        <tr><td>Nhận link</td><td><b>Google Form</b> "Gửi link demo cho mình"</td><td>Trường: Họ tên, SĐT/Zalo, Link demo, Loại web</td></tr>
+        <tr><td>Lưu khách</td><td><b>Google Sheet / Airtable</b> quản lý lead</td><td>Cột: Ngày, Tên, SĐT, Link, Nguồn, Trạng thái, Ghi chú</td></tr>
+        <tr><td>Kỹ thuật</td><td>Hosting WordPress (Hostinger/Namecheap/Cloudways)</td><td>Nơi bạn nhận làm web</td></tr>
+        <tr><td>Kỹ thuật</td><td>Theme + builder thành thạo</td><td>Elementor / Kadence / GeneratePress</td></tr>
+        <tr><td>Liên hệ</td><td>Zalo / Messenger / Email template</td><td>Soạn sẵn ở Phần 5 &amp; 7</td></tr>
+        <tr><td>Đo lường</td><td>Pixel + UTM cho link trong bài</td><td>Biết bài nào ra khách</td></tr>
+      </table>
+      <div class="lead" style="margin-top:12px">✅ <b>Việc cần làm ngay:</b> tạo 1 Google Form + 1 Sheet quản lý lead. Đây là công cụ lõi.</div>
+    </div>
+  </section>
+
+  <!-- ===== 3 ===== -->
+  <section id="sec3">
+    <h2 class="sec"><span class="num">3</span>Nội dung &amp; lịch đăng bài chi tiết</h2>
+    <p class="sub">Bộ 4 kiểu bài xoay vòng + mẫu câu + lịch 7 ngày đầu.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Bộ 4 kiểu bài</h3>
+        <table>
+          <tr><th>Kiểu</th><th>Mục đích</th></tr>
+          <tr><td><span class="tag t1">WOW</span></td><td>Kéo người thử: "Tạo web 5 phút, miễn phí, không cần code"</td></tr>
+          <tr><td><span class="tag t1">So sánh</span></td><td>Uy tín: "Top 5 web AI miễn phí, cái nào OK"</td></tr>
+          <tr><td><span class="tag t2">Nút thắt</span></td><td>Đánh nỗi đau: "4 giới hạn khiến bạn không làm chủ được web"</td></tr>
+          <tr><td><span class="tag t4">Dịch vụ</span></td><td>Bán trực tiếp: "Web AI làm nháp, mình làm thành WordPress thật"</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3>Lịch đăng 7 ngày đầu</h3>
+        <p style="color:var(--muted);font-size:13px;margin-top:0">Khung giờ vàng: 12h–13h &amp; 20h–22h.</p>
+        <table>
+          <tr><th>Ngày</th><th>Kiểu</th><th>Chủ đề</th></tr>
+          <tr><td>T2</td><td><span class="pill b">WOW</span></td><td>5 phút có web miễn phí</td></tr>
+          <tr><td>T3</td><td><span class="pill b">So sánh</span></td><td>Top 5 web AI, cái nào OK</td></tr>
+          <tr><td>T4</td><td><span class="pill y">Nút thắt</span></td><td>4 cái bẫy của web AI free</td></tr>
+          <tr><td>T5</td><td><span class="pill b">WOW</span></td><td>Demo 1 ngành (cafe, spa, shop)</td></tr>
+          <tr><td>T6</td><td><span class="pill b">So sánh</span></td><td>Web AI vs Web WordPress</td></tr>
+          <tr><td>T7</td><td><span class="pill y">Nút thắt</span></td><td>Vì sao web không lên Google</td></tr>
+          <tr><td>CN</td><td><span class="pill g">Dịch vụ</span></td><td>Nhận làm web WP từ link demo</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📝 Mẫu bài đăng — kiểu "WOW" (đăng ngày đầu)</h3>
+      <div class="msg"><b>Tiêu đề:</b> 🌐 Bạn không biết code vẫn tạo được website trong 5 phút — MIỄN PHÍ!
+
+<b>Nội dung:</b> Nhiều bạn nghĩ làm web là phải thuê, phải biết lập trình. Thực ra giờ có công cụ AI miễn phí:
+👉 Chỉ cần mô tả ý tưởng, nó tự dựng xong một website hoàn chỉnh.
+👉 Đẹp, nhanh, không mất phí — ai cũng làm được.
+👉 Mình để sẵn 3 tool dễ nhất trong bài này, thử ngay xem👇
+
+(kèm ảnh/video tạo nhanh + 3 link)
+
+<b>CTA:</b> "Tạo thử xong, nếu muốn web chuẩn — domain riêng, không quảng cáo, tự chỉnh được nội dung — thì gửi mình link demo để mình tư vấn nâng cấp sang WordPress nhé 👌"</div>
+      <p style="color:var(--muted)">Mẹo: đặt 1 UTM riêng cho mỗi bài để cuối tuần biết bài nào ra khách.</p>
+    </div>
+
+    <div class="card">
+      <h3>📝 Mẫu bài đăng — kiểu "Nút thắt" (chuyển đổi mạnh nhất)</h3>
+      <div class="msg"><b>Tiêu đề:</b> ⚠️ Web AI miễn phí có "4 cái bẫy" mà 90% người mới không biết
+
+<b>Nội dung:</b>
+1️⃣ Dính tên miền con — địa chỉ dài xxx.web.ai, khó nhớ, kém chuyên nghiệp.
+2️⃣ Có quảng cáo của nền tảng — nhìn vào là biết "web free", mất niềm tin.
+3️⃣ Không tự chỉnh sửa được — muốn đổi nội dung lại không biết bấm đâu.
+4️⃣ Không tối ưu SEO / không xuất code — khó lên Google, không chuyển hệ thống.
+
+<b>CTA:</b> "Bạn đang vướng cái nào? Gửi mình link demo — mình nói rõ nên nâng cấp thế nào cho chuẩn, làm bằng WordPress luôn nếu cần 👌"</div>
+    </div>
+  </section>
+
+  <!-- ===== 4 ===== -->
+  <section id="sec4">
+    <h2 class="sec"><span class="num">4</span>Đưa khách tự tạo demo — từng bước</h2>
+    <p class="sub">Đây là hướng dẫn bạn gửi khách (tự động hoặc 1 bài cẩm nang), để họ tạo demo &amp; gửi link trong &lt;10 phút.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Hướng dẫn dùng Hostinger Horizons (chuẩn)</h3>
+        <ul class="clean">
+          <li>Vào <b>hostinger.com</b> → bấm <b>AI Website Builder</b> (Horizons).</li>
+          <li>Bấm <b>Try for Free / Start for free</b>.</li>
+          <li>Mô tả ngành + ý tưởng vào ô prompt (VD: "web giới thiệu quán cà phê, có menu và giá").</li>
+          <li>Chọn layout/ảnh AI đề xuất → bấm <b>Generate</b>.</li>
+          <li>Điền thông tin cửa hàng (tên, SĐT, địa chỉ, giờ mở cửa).</li>
+          <li><b>Copy địa chỉ website bản free → gửi link đó cho mình.</b></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Hướng dẫn dùng Wix (kéo-thả)</h3>
+        <ul class="clean">
+          <li>Vào <b>wix.com</b> → <b>Create a website with AI</b>.</li>
+          <li>Đăng ký (Google/Facebook/email).</li>
+          <li>Mô tả website, chọn phân loại → <b>Generate</b>.</li>
+          <li>Sửa nhanh bằng kéo-thả nếu muốn.</li>
+          <li>Copy link <code>*.wixsite.com/...</code> → gửi lại.</li>
+        </ul>
+        <h3 style="margin-top:16px">Hướng dẫn dùng Framer</h3>
+        <ul class="clean">
+          <li>Vào <b>framer.com</b> → <b>Generate a website</b>.</li>
+          <li>Đăng ký, mô tả ý tưởng → chọn template → Framer tự dựng.</li>
+          <li>Copy link <code>*.framer.website</code> → gửi lại.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>💬 Câu trả lời tự động trong Messenger (để khách gửi link ngay)</h3>
+      <div class="msg">"Chào bạn 👋 Để mình tư vấn chính xác, bạn chỉ cần làm 2 bước:
+① Dùng tool miễn phí ở bài mình đăng tạo 1 bản web (5 phút).
+② Copy link demo gửi vào đây.
+Nhận được link mình xem và báo ngay nên nâng cấp thế nào nhé! 👍"</div>
+    </div>
+  </section>
+
+  <!-- ===== 5 ===== -->
+  <section id="sec5">
+    <h2 class="sec"><span class="num">5</span>Nhận link demo — kênh &amp; mẫu</h2>
+    <div class="card">
+      <h3>Kênh nhận (dễ → khó)</h3>
+      <table>
+        <tr><th>Kênh</th><th>Ghi chú</th></tr>
+        <tr><td><b>1. Messenger</b></td><td>Khách gửi link trực tiếp — chính, nhiều nhất</td></tr>
+        <tr><td><b>2. Google Form</b></td><td>Link trong bài/comment — gọn, tự lưu Sheet</td></tr>
+        <tr><td><b>3. Zalo</b></td><td>Khách đã có số — chuyển chốt nhanh</td></tr>
+        <tr><td><b>4. Comment</b></td><td>Link dưới bài — nhắn riêng để tránh spam</td></tr>
+      </table>
+      <h3 style="margin-top:14px">Google Form — các trường</h3>
+      <p>Họ tên * | Số điện thoại / Zalo * | Link demo * | Ngành nghề / ý tưởng | Nguồn thấy bài</p>
+      <h3 style="margin-top:10px">Bảng lead — cột chuẩn</h3>
+      <p><code>Ngày | Tên | SĐT/Zalo | Link demo | Nguồn | Ngành | Trạng thái | Ghi chú</code></p>
+    </div>
+    <div class="card">
+      <h3>💬 Tin nhắn xác nhận khi nhận link (gửi ngay)</h3>
+      <div class="msg">"Đã nhận link demo của bạn rồi 👍 Mình xem trong hôm nay. Thường những link web AI free này sẽ vướng 1 trong 4 vấn đề (tên miền con, quảng cáo, khó chỉnh, khó SEO) — mình sẽ xem và báo chính xác của bạn là vấn đề nào, cần làm gì cho chuẩn nhé! 🚀"</div>
+    </div>
+  </section>
+
+  <!-- ===== 6 ===== -->
+  <section id="sec6">
+    <h2 class="sec"><span class="num">6</span>Đánh giá demo — checklist</h2>
+    <p class="sub">Mở link lên, chấm theo checklist rồi ghi 3-5 ý chính vào cột Ghi chú. Đây là "bia" để bạn tư vấn.</p>
+    <div class="card">
+      <h3>📋 Checklist đánh giá website demo</h3>
+      <ul class="check">
+        <li><b>Tên miền</b>: là *.subdomain của nền tảng? → bán domain riêng</li>
+        <li><b>Quảng cáo / badge</b>: có logo/quảng cáo của Wix/Framer? → bán bản "sạch"</li>
+        <li><b>Nội dung</b>: giữ được bố cục, hình ảnh, menu, giá, video? → điểm cần giữ</li>
+        <li><b>Chỉnh sửa</b>: khách đổi được chữ/hình không, hay bị khoá? → bán "tự quản trị"</li>
+        <li><b>SEO</b>: có tiêu đề, mô tả, URL thân thiện? → bán SEO bài bản</li>
+        <li><b>Tốc độ / mobile</b>: chạy nhanh, hiển thị điện thoại ổn? → bán tối ưu</li>
+        <li><b>Số trang / tính năng</b>: cần form liên hệ, bản đồ, đặt lịch, thanh toán?</li>
+        <li><b>Ý đồ khách</b>: web để làm gì (bán hàng / giới thiệu / chạy quảng cáo)? → báo giá đúng</li>
+      </ul>
+      <div class="lead" style="margin-top:12px">🎤 <b>Câu tư vấn mở đầu chuẩn:</b> "Mình đã xem web của bạn. Nền tảng AI free làm được <i>điểm mạnh này</i> [khen cụ thể]. Nhưng nó đang vướng <i>vấn đề này</i> [điểm đau]. Để web chuẩn, chạy nhanh, lên Google được và bạn tự sửa nội dung — mình làm lại trên WordPress, giữ nguyên ý tưởng + nội dung. Mình báo giá 2 gói ở dưới nhé."</div>
+    </div>
+  </section>
+
+  <!-- ===== 7 ===== -->
+  <section id="sec7">
+    <h2 class="sec"><span class="num">7</span>Chốt deal — bảng giá &amp; kịch bản</h2>
+    <div class="card">
+      <h3>💰 Bảng giá gợi ý</h3>
+      <table>
+        <tr><th>Gói</th><th>Phù hợp</th><th>Nội dung</th><th>Giá tham khảo</th></tr>
+        <tr><td><b>Cơ bản</b></td><td>Chỉ cần giới thiệu</td><td>Làm lại WordPress: 5-7 trang, responsive, form liên hệ, bản đồ</td><td>1,5 – 2,5 tr</td></tr>
+        <tr><td><b>Tiêu chuẩn</b></td><td>Cần bán hàng</td><td>Trang giới thiệu + danh mục, SEO cơ bản, tối ưu tốc độ, quản trị</td><td>3,5 – 5,5 tr</td></tr>
+        <tr><td><b>Nâng cao</b></td><td>Bán hàng online</td><td>Giỏ hàng/thanh toán, đặt lịch, SEO sâu, đào tạo quản trị, hỗ trợ 1 tháng</td><td>7 – 12 tr</td></tr>
+        <tr><td><b>Bảo trì / tháng</b></td><td>Đã có web</td><td>Update, sao lưu, sửa nội dung, theo dõi tốc độ/SEO</td><td>300 – 800 ngàn</td></tr>
+      </table>
+      <p style="color:var(--muted);font-size:13px">💡 Luôn đưa <b>2-3 gói</b> để khách chọn (đừng đưa 1 gói duy nhất). Giá là khung — tự cập nhật theo chi phí hosting/domain &amp; thị trường địa phương.</p>
+    </div>
+    <div class="card">
+      <h3>🗣️ Kịch bản tư vấn</h3>
+      <ul class="clean">
+        <li><b>Cấu trúc:</b> Khen → Chỉ ra vấn đề → Đề xuất WordPress → Đưa giá → Chốt bước nhỏ.</li>
+        <li><b>Chốt bước nhỏ:</b> "Hay mình làm bản demo 1 trang trước, bạn xem ưng rồi mình làm tiếp. OK?"</li>
+        <li><b>Xử lý "đắt quá":</b> "Gói cơ bản đủ cho bạn rồi. Mình không ép nâng cấp. Cần gì sau mình làm sau."</li>
+        <li><b>Xử lý "để suy nghĩ":</b> "Dạ, để mình gửi lại bảng giá + 1 ví dụ web WordPress mình đã làm. Bạn rảnh mình gọi 5 phút nhé."</li>
+      </ul>
+      <h3 style="margin-top:12px">Hợp đồng / báo giá — mục bắt buộc ghi rõ</h3>
+      <ul class="clean">
+        <li>Domain &amp; hosting (ai sở hữu, phí ai trả), số trang, tính năng.</li>
+        <li>Thời gian bàn giao, số lần chỉnh sửa, chế độ bảo hành.</li>
+        <li>Điều khoản thanh toán (đặt cọc 30-50%, còn lại khi nghiệm thu).</li>
+        <li>Quyền sở hữu sau khi hoàn tất.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 8 ===== -->
+  <section id="sec8">
+    <h2 class="sec"><span class="num">8</span>Chuyển sang WordPress — quy trình kỹ thuật</h2>
+    <p class="sub">Mỗi link demo → 1 website WordPress hoàn chỉnh.</p>
+    <div class="card">
+      <h3>8.1 Chuẩn bị hạ tầng (1 lần / 1 dự án)</h3>
+      <ul class="clean">
+        <li>Mua <b>tên miền</b> riêng (.com, .vn...) — giữ quyền sở hữu cho khách.</li>
+        <li>Mua <b>hosting WordPress</b> (Hostinger/Namecheap/Cloudways) hoặc VPS.</li>
+        <li>Cài <b>WordPress</b> (1-click) + <b>SSL</b> (Let's Encrypt miễn phí).</li>
+      </ul>
+      <h3 style="margin-top:14px">8.2 Dựng site từ link demo (thứ tự)</h3>
+      <ul class="clean">
+        <li>Bật plugin: <b>Rank Math/SEO, WP Rocket (cache), Wordfence (bảo mật), UpdraftPlus (backup), Elementor</b>.</li>
+        <li>Tạo theme (Elementor/Kadence/GeneratePress) + design phù hợp.</li>
+        <li>Dựng lại nội dung theo demo: chuyển chữ, hình, menu, trang cần.</li>
+        <li>Nâng chất: đẹp hơn, chuẩn mobile, form liên hệ, bản đồ.</li>
+        <li>Cấu hình SEO: tiêu đề, mô tả, URL thân thiện, sitemap, Search Console, tốc độ.</li>
+        <li>Kiểm tra: tốc độ (PageSpeed), mobile, nút, form, không lỗi 404.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>8.3 Checklist bàn giao nội bộ</h3>
+      <ul class="check">
+        <li class="checked">Domain riêng + SSL hoạt động</li>
+        <li class="checked">Không còn badge/quảng cáo của nền tảng AI</li>
+        <li class="checked">Đầy đủ trang + nội dung khách cần</li>
+        <li class="checked">Form liên hệ gửi được về email/SĐT khách</li>
+        <li class="checked">Chạy nhanh trên điện thoại</li>
+        <li class="checked">Khách <b>tự đăng nhập thay đổi được nội dung</b> (điểm bán quan trọng!)</li>
+        <li class="checked">File backup + tài khoản quản trị bàn giao cho khách</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>8.4 Vì sao web WordPress "chuẩn hơn" bản AI free (dùng khi tư vấn)</h3>
+      <table>
+        <tr><th>Tiêu chí</th><th>Web AI miễn phí</th><th>Web WordPress (bạn làm)</th></tr>
+        <tr><td>Tên miền</td><td>xxx.tool.ai (con)</td><td>Domain riêng chuyên nghiệp</td></tr>
+        <tr><td>Quảng cáo</td><td>Dính badge/nền tảng</td><td>Sạch, không quảng cáo</td></tr>
+        <tr><td>Chỉnh sửa</td><td>Bị khoá/khó</td><td>Khách tự đăng nhập &amp; sửa</td></tr>
+        <tr><td>SEO</td><td>Yếu, khó tối ưu</td><td>SEO bài bản, lên Google</td></tr>
+        <tr><td>Mở rộng</td><td>Bị giới hạn</td><td>Cài plugin, mở rộng thoải mái</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== 9 ===== -->
+  <section id="sec9">
+    <h2 class="sec"><span class="num">9</span>Bàn giao &amp; bảo trì</h2>
+    <div class="card">
+      <ul class="clean">
+        <li><b>Bàn giao:</b> hướng dẫn khách đăng nhập /wp-admin, đổi mật khẩu, cách đổi nội dung (quay video 5 phút gửi khách).</li>
+        <li><b>Nghiệm thu:</b> khách xác nhận, nhận phần còn lại.</li>
+        <li><b>Bảo hành:</b> 1-3 tháng sửa lỗi miễn phí (tuỳ chính sách bạn).</li>
+        <li><b>Bảo trì định kỳ:</b> sao lưu, update theme/plugin, kiểm tra tốc độ &amp; SEO — thu phí tháng.</li>
+        <li><b>Upsell:</b> chạy quảng cáo Facebook/Google cho web, SEO, viết nội dung, thêm tính năng.</li>
+      </ul>
+      <div class="lead">✅ <b>Việc cần làm:</b> chuẩn bị <b>video hướng dẫn quản trị 5 phút</b> (quay màn hình đổi nội dung). Video này giúp khách tin bạn &amp; giảm gọi hỗ trợ về sau.</div>
+    </div>
+  </section>
+
+  <!-- ===== 10 ===== -->
+  <section id="sec10">
+    <h2 class="sec"><span class="num">10</span>KPI &amp; lịch 30 ngày</h2>
+    <div class="card">
+      <h3>KPI cần theo dõi mỗi tuần</h3>
+      <ul class="clean">
+        <li>Số bài đăng, reach/click vào link tool.</li>
+        <li>Số khách <b>gửi link demo</b> (số lead) — quan trọng nhất.</li>
+        <li>Số <b>báo giá</b> &amp; số <b>chốt hợp đồng</b>.</li>
+        <li>Tỷ lệ: demo → báo giá → chốt.</li>
+      </ul>
+      <div class="kpi">
+        <div class="k"><div class="v">4-7</div><div class="l">Bài đăng / tuần</div></div>
+        <div class="k"><div class="v">20-40</div><div class="l">Link demo nhận</div></div>
+        <div class="k"><div class="v">10-20</div><div class="l">Báo giá</div></div>
+        <div class="k"><div class="v">3-6</div><div class="l">Chốt hợp đồng</div></div>
+      </div>
+      <h3 style="margin-top:16px">Lịch hành động 30 ngày</h3>
+      <table>
+        <tr><th>Tuần</th><th>Việc chính</th></tr>
+        <tr><td><b>T1</b></td><td>Lập fanpage + Google Form/Sheet. Đăng bộ WOW/So sánh. Tự tạo thử 5 site để nắm "điểm đau".</td></tr>
+        <tr><td><b>T2</b></td><td>Đăng bài Nút thắt + Dịch vụ. Trả lời mọi link demo trong 24h. Chuẩn bị bảng giá &amp; video hướng dẫn.</td></tr>
+        <tr><td><b>T3</b></td><td>Tăng tần suất, bắt đầu chốt hợp đồng. Làm quy trình WordPress chuẩn.</td></tr>
+        <tr><td><b>T4</b></td><td>Tối ưu: dừng bài kém, tăng bài ra khách. Đẩy upsell bảo trì. Đo KPI, viết lại bộ nội dung.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <div class="warn" style="margin-top:30px">⚠️ <b>Nhắc lại:</b> trạng thái free-tier của Hostinger/Wix/Framer/10Web có thể đổi. Trước mỗi chiến dịch, hãy tự tạo thử 1 site trên 3-4 tool để chắc chắn nội dung bạn đăng &amp; "điểm đau" bạn bán là đúng.</div>
+
+  <footer>Kế hoạch hành động chi tiết · Chiến dịch FB → Khách hàng làm web WordPress · Tạo bởi DeepSeek Harness</footer>
+</div>
+</body>
+</html>

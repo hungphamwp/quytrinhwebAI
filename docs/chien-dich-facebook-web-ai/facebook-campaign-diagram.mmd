@@ -1,0 +1,39 @@
+%%{init: {"theme": "base", "themeVariables": {"fontSize": "16px", "primaryColor": "#ffffff", "primaryBorderColor": "#d0d7de", "primaryTextColor": "#1f2328", "lineColor": "#57606a", "clusterBkg": "#f6f8fa", "clusterBorder": "#d0d7de"}, "flowchart": {"nodeSpacing": 40, "rankSpacing": 45, "curve": "basis"}}}%%
+flowchart TD
+    %% ===== PHASE 1: Funnel thu hút khách hàng =====
+    subgraph F1["<b>GIAI ĐOẠN 1 — Phễu thu hút (Marketing)</b>"]
+        direction TB
+        A(["🎯 Chiến dịch đăng bài Facebook<br/><i>content &amp; quảng cáo</i>"])
+        B["📢 Giới thiệu các trang web tạo website bằng AI <b>miễn phí</b>"]
+        C["🧑‍💻 Người xem vào tạo website<br/><i>nhanh, đẹp, không mất phí</i>"]
+        D["⚠️ NHƯNG KHÔNG CHUYÊN SÂU:<br/>❌ không biết quản trị<br/>❌ không chỉnh sửa được nội dung"]
+        E["📩 Họ liên hệ tôi<br/><b>Tôi = nhà thiết kế website + kiến thức IT</b>"]
+        F(["💎 KHÁCH HÀNG TIỀM NĂNG"])
+        A --> B --> C --> D --> E --> F
+    end
+
+    %% ===== PHASE 2: Quy trình nhận làm web =====
+    subgraph F2["<b>GIAI ĐOẠN 2 — Quy trình nhận làm website (WordPress)</b>"]
+        direction TB
+        G(["📥 Nhận link demo từ khách hàng<br/><i>mẫu họ đã tạo bằng web AI free</i>"])
+        H["🔍 Phân tích &amp; đánh giá mẫu<br/><i>bố cục, nội dung, tính năng</i>"]
+        I["💬 Trao đổi &amp; chốt yêu cầu<br/><i>design, chức năng, SEO, hosting</i>"]
+        J["⚙️ Chuyển sang <b>WordPress</b><br/><i>thiết kế lại + quản trị + bảo trì</i>"]
+        K(["✅ Bàn giao &amp; hỗ trợ lâu dài"])
+        G --> H --> I --> J --> K
+    end
+
+    %% nối phễu với quy trình (khách gửi demo)
+    F -.->|"khách gửi link demo"| G
+
+    %% Styling
+    classDef start fill:#e7f5ff,stroke:#2f81f7,stroke-width:2px,color:#0a3069;
+    classDef goal fill:#dafbe1,stroke:#1f883d,stroke-width:2px,color:#116329;
+    classDef act fill:#fff8c5,stroke:#d4a72c,stroke-width:2px,color:#6f5700;
+
+    class A start;
+    class B,C,D,E act;
+    class F goal;
+    class G act;
+    class H,I,J act;
+    class K goal;

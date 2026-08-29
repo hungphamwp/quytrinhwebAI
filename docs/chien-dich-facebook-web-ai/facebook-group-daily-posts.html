@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nội dung đăng bài 7 ngày — Facebook Group</title>
+<style>
+  :root{
+    --bg:#f5f7fa; --card:#ffffff; --ink:#1f2328; --muted:#6a737d;
+    --brand:#2f81f7; --brand-soft:#e7f5ff; --ok:#1f883d; --ok-soft:#dafbe1;
+    --warn:#d4a72c; --warn-soft:#fff8c5; --red:#d1242f; --red-soft:#ffebe9;
+    --line:#d0d7de; --shadow:0 8px 24px rgba(31,35,40,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;line-height:1.6}
+  .wrap{max-width:940px;margin:0 auto;padding:24px 18px 70px}
+
+  .hero{text-align:center;padding:30px 22px;background:linear-gradient(135deg,#0a5a2a,#1f883d);color:#fff;border-radius:20px;box-shadow:var(--shadow)}
+  .hero h1{margin:0 0 10px;font-size:25px}
+  .hero p{margin:0;opacity:.93;font-size:15px;max-width:720px;margin-inline:auto}
+  .hero .tags{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .hero .tags span{background:rgba(255,255,255,.16);padding:5px 12px;border-radius:999px;font-size:13px}
+
+  nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin:20px 0;display:flex;flex-wrap:wrap;gap:7px;box-shadow:var(--shadow)}
+  nav a{text-decoration:none;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--ok-soft);padding:6px 10px;border-radius:999px;border:1px solid transparent}
+  nav a:hover{border-color:var(--ok)}
+
+  .warn{border-left:4px solid var(--warn);background:var(--warn-soft);padding:13px 15px;border-radius:0 12px 12px 0;font-size:14px;margin-top:20px}
+
+  .cal{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-top:18px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px}
+  th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+  th{background:#f0f3f6;font-weight:700}
+  tr:nth-child(even) td{background:#fbfcfd}
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700}
+  .pill.b{background:var(--brand-soft);color:#0a3069}
+  .pill.y{background:var(--warn-soft);color:#6f5700}
+  .pill.r{background:var(--red-soft);color:var(--red)}
+  .pill.g{background:var(--ok-soft);color:var(--ok)}
+
+  .day{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin-top:26px;overflow:hidden;scroll-margin-top:74px}
+  .day-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;background:linear-gradient(135deg,#f0f7f0,#e6f2e6);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .day-head .ttl{display:flex;align-items:center;gap:12px}
+  .day-num{flex:none;width:46px;height:46px;border-radius:12px;background:var(--ok);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800}
+  .day-head h2{margin:0;font-size:18px}
+  .day-head .meta{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .copybtn{flex:none;border:none;background:var(--brand);color:#fff;font-weight:700;font-size:13px;padding:9px 14px;border-radius:10px;cursor:pointer;box-shadow:var(--shadow);display:flex;align-items:center;gap:6px}
+  .copybtn:hover{background:#1c6fe3}
+  .copybtn.done{background:var(--ok)}
+
+  .day-body{padding:18px}
+  .info{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px;font-size:13px;color:var(--muted)}
+  .info b{color:var(--ink)}
+  .post{background:#f6f8fa;border:1px solid var(--line);border-radius:12px;padding:16px;white-space:pre-wrap;font-size:14.5px;line-height:1.7}
+  .post b{color:var(--ink)}
+  .strategy{margin-top:14px;background:var(--brand-soft);border-radius:12px;padding:13px 15px;font-size:13.5px}
+  .strategy h4{margin:0 0 6px;font-size:14px}
+  .strategy ul{margin:0;padding-left:18px}
+  .strategy li{margin:4px 0}
+
+  footer{text-align:center;margin-top:36px;color:var(--muted);font-size:13px}
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(30px);background:#1f2328;color:#fff;padding:11px 18px;border-radius:12px;font-size:14px;opacity:0;transition:.25s;z-index:50;box-shadow:var(--shadow)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>📱 Nội dung đăng bài 7 ngày — Facebook Group</h1>
+    <p>7 bài viết sẵn, mỗi ngày 1 bài cho nhóm WordPress (chủ shop, kinh doanh, dân IT, marketing). Bấm <b style="color:#fff">"Copy bài"</b> để lấy nội dung dán thẳng vào nhóm.</p>
+    <div class="tags"><span>Ngày 1–7</span><span>👉 Giờ đăng gợi ý</span><span>#Hashtag</span><span>💬 Chiến lược bình luận</span></div>
+  </header>
+
+  <div class="warn">
+    ⚠️ <b>Luật lệ nhóm quan trọng:</b> đa số nhóm WordPress cấm spam link trực tiếp.
+    Toàn bộ kế hoạch dùng chiến thuật <b>giá trị trước, bán sau</b> — KHÔNG đăng link web/dịch vụ lên bài, mà dùng CTA <b>"comment để mình gửi" / "gửi vào inbox"</b> để kéo khách vào Messenger. <b>Kiểm tra quy định từng nhóm</b> trước khi đăng.
+  </div>
+
+  <div class="cal">
+    <h3 style="margin:0 0 4px">📅 Lịch 7 ngày (tổng quan)</h3>
+    <table>
+      <tr><th>Ngày</th><th>Kiểu</th><th>Chủ đề</th><th>Giờ đăng</th></tr>
+      <tr><td>Ngày 1</td><td><span class="pill b">Giá trị</span></td><td>Web AI miễn phí vs WordPress</td><td>20–21h</td></tr>
+      <tr><td>Ngày 2</td><td><span class="pill y">Nút thắt</span></td><td>4 lỗi khiến web không bán được</td><td>12–13h</td></tr>
+      <tr><td>Ngày 3</td><td><span class="pill r">Hỏi–đáp</span></td><td>Bạn đang gặp gì với web?</td><td>20–21h</td></tr>
+      <tr><td>Ngày 4</td><td><span class="pill b">Case study</span></td><td>Làm lại web từ bản AI</td><td>21–22h</td></tr>
+      <tr><td>Ngày 5</td><td><span class="pill g">Checklist</span></td><td>8 điểm web chuẩn / dở</td><td>12–13h</td></tr>
+      <tr><td>Ngày 6</td><td><span class="pill b">Giá trị</span></td><td>Tự chỉnh WordPress 5 phút</td><td>20–21h</td></tr>
+      <tr><td>Ngày 7</td><td><span class="pill g">Dịch vụ</span></td><td>Gửi link demo, tư vấn làm lại</td><td>21–22h</td></tr>
+    </table>
+  </div>
+
+  <!-- ===== DAY 1 ===== -->
+  <section class="day" id="d1">
+    <div class="day-head">
+      <div class="ttl"><div class="day-num">1</div>
+        <div><h2>Web AI miễn phí vs WordPress: cái nào hợp với bạn?</h2><div class="meta">Giờ đăng: 20h–21h · #Website #WordPress #AITool #KinhDoanhOnline</div></div>
+      </div>
+      <button class="copybtn" data-copy="btn1">📋 Copy bài</button>
+    </div>
+    <div class="day-body">
+      <div class="post" id="btn1">🤔 Nhiều bạn hỏi mình: *"Giờ có web AI miễn phí, tạo 5 phút là xong, sao phải làm WordPress?"*
+
+Mình làm web lâu rồi, nói thật: mỗi cái có chỗ mạnh riêng.
+
+✅ Web AI miễn phí (Hostinger, Framer, Wix...) : nhanh, đẹp, không cần code, làm thử ý tưởng cực hợp.
+⚠️ NHƯNG bản free thường:
+- Dính tên miền con xxx.tool.ai, khó nhớ, kém chuyên.
+- Có quảng cáo/logo của nền tảng, nhìn là biết web "miễn phí".
+- Khó tự chỉnh sửa khi muốn đổi nội dung.
+- Khó lên Google, không tối ưu SEO được.
+
+✅ WordPress (bạn tự làm hoặc thuê): đúng tên miền, không quảng cáo, tự đăng nhập sửa được nội dung, SEO chuẩn, mở rộng thoải mái.
+
+👉 Chốt lại: Web AI free là "bản thử/nháp" tuyệt vời để bạn hình dung. Còn khi cần web thật để bán hàng, chạy quảng cáo, lên Google — thì WordPress là lựa chọn chuẩn.
+
+Bạn đang dùng web AI free hay WordPress? Comment cho mình biết, mình tư vấn nên dùng cái nào cho đúng nhu cầu nhé 👇</div>
+      <div class="strategy"><h4>💬 Chiến lược bình luận</h4><ul>
+        <li>Comment "đang dùng web AI": khen + hỏi "bạn có thấy khó tự sửa nội dung không?" → chuyển inbox.</li>
+        <li>Comment "đang dùng WordPress": xây uy tín, hẹn dài hạn.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ===== DAY 2 ===== -->
+  <section class="day" id="d2">
+    <div class="day-head">
+      <div class="ttl"><div class="day-num">2</div>
+        <div><h2>4 lỗi khiến web của bạn không bán được hàng</h2><div class="meta">Giờ đăng: 12h–13h · #BanHangOnline #Website #SEO #ChuyenDoi</div></div>
+      </div>
+      <button class="copybtn" data-copy="btn2">📋 Copy bài</button>
+    </div>
+    <div class="day-body">
+      <div class="post" id="btn2">⚠️ Có web rồi mà vẫn ít đơn? 90% là vướng 1 trong 4 lỗi này:
+
+1️⃣ Web quá chậm. Khách chờ 3 giây là bấm thoát. Tốc độ quyết định doanh thu.
+2️⃣ Sai tên miền / có quảng cáo. Nhìn vô là thấy "web free", mất luôn niềm tin.
+3️⃣ Không tự đổi nội dung được. Muốn cập nhật giá, thêm sản phẩm lại phải đợi người khác.
+4️⃣ Không tối ưu SEO. Lên Google gõ tên shop không thấy → mất nguồn khách miễn phí.
+
+👉 Chữa trị đúng gốc: web phải nhanh, chuyên, tự sửa được, lên Google được. Đó chính là lý do WordPress được dùng phổ biến.
+
+Bạn thấy web mình đang vướng lỗi nào? Comment số 1-4, mình gợi ý cách khắc phục cho từng bạn nhé 👇</div>
+      <div class="strategy"><h4>💬 Chiến lược bình luận</h4><ul>
+        <li>Hỏi lại "bạn cần thêm mẫu/số liệu không?" để kéo dài hội thoại.</li>
+        <li>Ai than "web mình chậm / không lên Google": nhắn inbox ngay — khách nóng.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ===== DAY 3 ===== -->
+  <section class="day" id="d3">
+    <div class="day-head">
+      <div class="ttl"><div class="day-num">3</div>
+        <div><h2>Hỏi–đáp: bạn đang gặp gì với web?</h2><div class="meta">Giờ đăng: 20h–21h · #TuVan #Website #WordPress #HoiDap</div></div>
+      </div>
+      <button class="copybtn" data-copy="btn3">📋 Copy bài</button>
+    </div>
+    <div class="day-body">
+      <div class="post" id="btn3">👋 Hôm nay mình mở hỏi-đáp ở phần comment thay vì chia sẻ dài dòng.
+
+Bạn cứ comment câu hỏi về web của mình: tên miền, tốc độ, SEO, bán hàng, chỉnh sửa nội dung, chuyển từ web AI sang WordPress... gì cũng được.
+
+Mình sẽ trả lời từng câu trong tối nay. Không giữ lại, ai hỏi gì mình giải thích tận nơi 👇
+
+(các câu liên quan tên miền/giá/chi tiết — mình sẽ nhắn riêng để không làm loãng comment)</div>
+      <div class="strategy"><h4>💬 Chiến lược bình luận</h4><ul>
+        <li>Trả lời công khai câu chung (giá trị) → càng nhiều người thấy uy tín.</li>
+        <li>Câu riêng/giá/demo → chuyển inbox: "Mình nhắn riêng để xem kỹ web bạn nha".</li>
+        <li>Sau 1–2h trả lời hết rồi edit bài đóng: "Mình đã trả lời xong, ai chưa được nhắn mình nhé."</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ===== DAY 4 ===== -->
+  <section class="day" id="d4">
+    <div class="day-head">
+      <div class="ttl"><div class="day-num">4</div>
+        <div><h2>Case study: làm lại web từ bản AI miễn phí</h2><div class="meta">Giờ đăng: 21h–22h · #CaseStudy #WordPress #Website #KinhDoanh</div></div>
+      </div>
+      <button class="copybtn" data-copy="btn4">📋 Copy bài</button>
+    </div>
+    <div class="day-body">
+      <div class="post" id="btn4">📖 Kể chuyện thật (không phải quảng cáo):
+
+Cách đây không lâu, một bạn làm quán cà phê nhờ mình "cứu web". Bạn ấy dùng web AI miễn phí tạo xong thấy đẹp, nhưng:
+- Tên miền dài ...tool.ai, khó nhớ, khách không tin.
+- Muốn sửa giá, thêm món thì không biết bấm ở đâu.
+- Tra Google không thấy quán.
+
+Mình giữ nguyên ý tưởng + hình ảnh + menu, chỉ chuyển sang WordPress, đổi tên miền riêng, tối ưu tốc độ và SEO cơ bản.
+Kết quả: web tự sửa nội dung được, lên Google, và bạn ấy dùng để chạy quảng cáo đều hơn.
+
+👉 Bài học: Web AI free = bản nháp tuyệt vời. Web chuẩn = WordPress. Đừng để nỗ lực làm web bị "bỏ xó" vì không dùng được.
+
+Bạn có từng tạo web bằng AI rồi "bỏ" vì không sửa được không? Kể mình nghe 👇</div>
+      <div class="strategy"><h4>💬 Chiến lược bình luận</h4><ul>
+        <li>Kỹ thuật kể chuyện — nhiều người đồng cảm sẽ tự tag/comment.</li>
+        <li>Comment "mình cũng bị vậy": nhắn "để mình xem giúp bạn nhé" → inbox.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ===== DAY 5 ===== -->
+  <section class="day" id="d5">
+    <div class="day-head">
+      <div class="ttl"><div class="day-num">5</div>
+        <div><h2>8 điểm nhận biết web "chuẩn" hay "dở"</h2><div class="meta">Giờ đăng: 12h–13h · #Checklist #Website #WordPress #SEO</div></div>
+      </div>
+      <button class="copybtn" data-copy="btn5">📋 Copy bài</button>
+    </div>
+    <div class="day-body">
+      <div class="post" id="btn5">📋 Mình gửi bạn cái checklist 8 điểm để tự kiểm tra web của mình đang "chuẩn" hay "dở":
+
+1️⃣ Tên miền riêng, dễ nhớ? 2️⃣ Không dính quảng cáo/logo nền tảng?
+3️⃣ Mở trên điện thoại đẹp? 4️⃣ Tải nhanh (dưới 3 giây)?
+5️⃣ Có form liên hệ gửi về được? 6️⃣ Tự đổi nội dung được không?
+7️⃣ Có tiêu đề/mô tả SEO? 8️⃣ Lên Google được không?
+
+👉 Nếu thiếu 2-3 mục trở lên, web của bạn đang "ăn" khách hàng thay vì giữ khách.
+Đa số web AI miễn phí trượt đúng các mục 2, 6, 7, 8. WordPress (làm đúng) thì có đủ.
+
+Bạn tự chấm được mấy điểm? Comment điểm số để mình biết 👇</div>
+      <div class="strategy"><h4>💬 Chiến lược bình luận</h4><ul>
+        <li>Bài checklist dễ share → nhiều lượt lưu/share.</li>
+        <li>Người chấm thấp → chuyển inbox: "web bạn trượt mấy mục rồi, để mình xem giúp".</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ===== DAY 6 ===== -->
+  <section class="day" id="d6">
+    <div class="day-head">
+      <div class="ttl"><div class="day-num">6</div>
+        <div><h2>Tự chỉnh nội dung WordPress trong 5 phút</h2><div class="meta">Giờ đăng: 20h–21h · #WordPress #HuongDan #Website #TuQuanTri</div></div>
+      </div>
+      <button class="copybtn" data-copy="btn6">📋 Copy bài</button>
+    </div>
+    <div class="day-body">
+      <div class="post" id="btn6">✌️ Nhiều bạn sợ "làm web là phải biết code". Thực ra tự đổi nội dung WordPress dễ lắm, chỉ 5 phút:
+
+1️⃣ Đăng nhập vào /wp-admin.
+2️⃣ Vào Trang / Bài viết, bấm vào trang cần sửa.
+3️⃣ Bấm vào chữ/hình cần đổi → gõ nội dung mới.
+4️⃣ Bấm Cập nhật là xong — web đổi mới ngay lập tức.
+
+👉 Cái này gọi là "tự quản trị" — bạn làm chủ web, không phụ thuộc ai. Đây là điểm khác biệt lớn nhất giữa WordPress chuẩn và web AI miễn phí (bị khoá, sửa khó).
+
+Bạn có muốn mình hướng dẫn cách đổi giá / thêm sản phẩm không? Comment để mình chia sẻ tiếp 👇</div>
+      <div class="strategy"><h4>💬 Chiến lược bình luận</h4><ul>
+        <li>Bài "giá trị thuần" → xây uy tín mạnh.</li>
+        <li>Ai hỏi "web mình là WordPress sao không vào được admin" → khách cần hỗ trợ, chuyển inbox.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ===== DAY 7 ===== -->
+  <section class="day" id="d7">
+    <div class="day-head">
+      <div class="ttl"><div class="day-num">7</div>
+        <div><h2>Gửi link demo, mình tư vấn làm lại web chuẩn</h2><div class="meta">Giờ đăng: 21h–22h · #Website #WordPress #DichVu #TuVan</div></div>
+      </div>
+      <button class="copybtn" data-copy="btn7">📋 Copy bài</button>
+    </div>
+    <div class="day-body">
+      <div class="post" id="btn7">🤝 Một tuần mình chia sẻ nhiều về web rồi. Hôm nay mình chốt lại việc mình làm để ai cần thì biết:
+
+👉 Mình chuyên làm lại website trên WordPress — đặc biệt là chuyển từ web AI miễn phí (Hostinger, Framer, Wix...) sang web chuẩn.
+
+Quy trình của mình: nhận link demo → xem & phân tích → tư vấn nên giữ gì, bỏ gì → làm trên WordPress (tên miền riêng, không quảng cáo, SEO, tự quản trị) → bàn giao + hỗ trợ.
+
+Nếu bạn đang dùng web AI free mà thấy:
+- Khó tự sửa nội dung ❌
+- Tên miền dài / có quảng cáo ❌
+- Không lên Google ❌
+- Chậm ❌
+
+👉 Thì comment "DEMO" và gửi link web của bạn vào inbox (hoặc chỗ nhận link mình để). Mình xem và tư vấn miễn phí nên làm gì cho chuẩn. Không ép buộc, xem xong bạn tự quyết định.</div>
+      <div class="strategy"><h4>💬 Chiến lược bình luận</h4><ul>
+        <li>Không đăng link/giá lên bài (tránh bị nhóm chặn). Chỉ dùng CTA "DEMO" + inbox.</li>
+        <li>Ai comment "DEMO": nhắn inbox ngay, kèm bảng giá (phần 7 của kế hoạch) để tư vấn.</li>
+        <li>Nếu nhóm cấm gợi ý dịch vụ: đổi CTA thành "mình chia sẻ thêm cách kiểm tra web" và đặt link/form ở bio/tin đăng thay vì trong bài.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- lead table -->
+  <div class="cal" style="margin-top:26px">
+    <h3 style="margin:0 0 4px">🧰 Bảng lead nhanh (dùng khi nhận "DEMO" vào inbox)</h3>
+    <table>
+      <tr><th>Ngày</th><th>Tên</th><th>SĐT/Zalo</th><th>Link demo</th><th>Nguồn</th><th>Ngành</th><th>Trạng thái</th><th>Ghi chú</th></tr>
+      <tr><td>_</td><td>_</td><td>_</td><td>_</td><td>_</td><td>_</td><td>Mới/Đã liên hệ/Chốt/Từ chối</td><td>_</td></tr>
+    </table>
+    <p style="font-size:13px;color:var(--muted);margin:10px 0 0">💡 Mẹo: đặt bảng này cạnh khi trả lời inbox để không bỏ sót ai. Sau mỗi bài, chuyển toàn bộ comment/inbox lead vào bảng.</p>
+  </div>
+
+  <div class="warn" style="margin-top:20px">
+    ✅ <b>Ghi nhớ khi đăng nhóm:</b> Kiểm tra quy định nhóm · Giá trị trước bán sau (6/7 ngày là giá trị) · Không đăng link trực tiếp (dùng comment/inbox) · Trả lời bình luận trong 1 giờ đầu để đẩy bài · Đặt UTM/link theo dõi ở form/bio để biết bài nào ra khách.
+  </div>
+
+  <footer>Nội dung đăng bài 7 ngày cho Facebook Group · Chiến dịch web AI → WordPress · Tạo bởi DeepSeek Harness</footer>
+</div>
+
+<div class="toast" id="toast">📋 Đã copy bài vào clipboard!</div>
+
+<script>
+  const toast = document.getElementById('toast');
+  function show(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1600);}
+  document.querySelectorAll('.copybtn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const id = btn.dataset.copy;
+      const el = document.getElementById(id);
+      const text = el.innerText;
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(()=>{btn.classList.add('done');btn.innerHTML='✅ Đã copy';show();setTimeout(()=>{btn.classList.remove('done');btn.innerHTML='📋 Copy bài';},1800);});
+      } else {
+        const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+        btn.classList.add('done');btn.innerHTML='✅ Đã copy';show();setTimeout(()=>{btn.classList.remove('done');btn.innerHTML='📋 Copy bài';},1800);
+      }
+    });
+  });
+</script>
+</body>
+</html>

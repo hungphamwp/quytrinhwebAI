@@ -11,6 +11,7 @@
 | Quy trình làm web mẫu bằng AI, dành cho khách hàng không rành kỹ thuật | [Base44](https://app.base44.com/) | [Xem online](https://hungphamwp.github.io/quytrinhwebAI/docs/base44-quy-trinh-lam-web.html) | [docs/base44-quy-trinh-lam-web.md](docs/base44-quy-trinh-lam-web.md) |
 | Tích hợp OpenRouter vào Orca để dùng model miễn phí cho Claude Code | [OpenRouter](https://openrouter.ai/) + Orca | [Xem online](https://hungphamwp.github.io/quytrinhwebAI/docs/openrouter-vao-orca.html) | [docs/openrouter-vao-orca.md](docs/openrouter-vao-orca.md) |
 | Dùng Canva MCP trong Claude Code để thiết kế banner bằng AI | [Canva](https://www.canva.com/) MCP | [Xem online](https://hungphamwp.github.io/quytrinhwebAI/docs/canva-mcp-thiet-ke-banner.html) | [docs/canva-mcp-thiet-ke-banner.md](docs/canva-mcp-thiet-ke-banner.md) |
+| Chiến dịch Facebook → khách làm website WordPress (kế hoạch + bài đăng + sơ đồ + bảng web AI) | Nội bộ | [Bản chính (tab)](https://hungphamwp.github.io/quytrinhwebAI/docs/chien-dich-facebook-web-ai/facebook-campaign-tabs.html) | [Xem folder](docs/chien-dich-facebook-web-ai/README.md) |
 
 *(Danh sách sẽ tiếp tục được bổ sung theo thời gian.)*
 
@@ -28,6 +29,7 @@
     ├── openrouter-vao-orca.html       # Bản hiển thị dạng website
     ├── canva-mcp-thiet-ke-banner.md   # Dùng Canva MCP thiết kế banner (Markdown)
     ├── canva-mcp-thiet-ke-banner.html # Bản hiển thị dạng website
+    ├── chien-dich-facebook-web-ai/    # Bộ tài liệu chiến dịch Facebook → web WordPress
     └── ...                            # các tài liệu mới sẽ thêm vào đây
 ```
 
