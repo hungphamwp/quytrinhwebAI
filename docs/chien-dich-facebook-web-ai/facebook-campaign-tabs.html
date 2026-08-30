@@ -912,8 +912,11 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
     }
 
     // Handle demo input fields
-    document.querySelectorAll('.demo-input').forEach(input => {
+    const inputElements = document.querySelectorAll('.demo-input');
+    console.log('🔗 Attached event listeners to', inputElements.length, 'input elements');
+    inputElements.forEach(input => {
       input.addEventListener('input', function() {
+        console.log('📝 Input changed:', this.value);
         saveDemoData();
       });
 
