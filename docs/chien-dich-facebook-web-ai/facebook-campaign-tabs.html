@@ -525,121 +525,134 @@ Nếu bạn đang dùng web AI free mà thấy:
 
   <!-- ================= TAB: QUY TRÌNH NỘI BỘ ================= -->
   <div class="panel" id="quitrinh">
-    <h2 class="sec"><span class="num">D</span>Quy trình nội bộ — Chuyển web AI → WordPress</h2>
-    <p class="sub">Quy trình KHI CÓ KHÁCH: nhận link demo → clone trang → chuyển WordPress → dùng skill HTML→ACF → bàn giao. <b>Đây là quy trình nội bộ, không đăng cho khách xem.</b></p>
+    <h2 class="sec"><span class="num">D</span>Quy trình nội bộ — ChatGPT → Prompt → Web AI</h2>
+    <p class="sub">Quy trình tạo website cho khách: lấy brief → ChatGPT viết prompt → chọn tool → dán prompt → AI tạo web → chỉnh sửa → bàn giao. <b>Đây là quy trình nội bộ, không đăng cho khách xem.</b></p>
 
-    <div class="danger">🔒 <b>Nội bộ:</b> tab này dành cho bạn triển khai, <b>không chia sẻ</b> cho khách/đối thủ. Chỉ dùng khi làm việc thật với khách.</div>
+    <div class="danger">🔒 <b>Nội bộ:</b> phương pháp này là công thức riêng của bạn, <b>không chia sẻ</b> cho khách/đối thủ. Dùng để tạo nhanh &amp; hiệu quả.</div>
 
     <div class="card">
-      <h3>🔁 Tổng quan quy trình (5 bước)</h3>
+      <h3>🔁 Tổng quan quy trình (6 bước)</h3>
       <table>
-        <tr><th>Bước</th><th>Việc cần làm</th><th>Kết quả</th></tr>
-        <tr><td><b>1. Nhận &amp; đánh giá</b></td><td>Nhận link demo web AI khách gửi → mở lên, phân tích cấu trúc, nội dung, trang, nhu cầu</td><td>Nắm rõ phạm vi &amp; chốt giá/tiến độ</td></tr>
-        <tr><td><b>2. Clone trang</b></td><td><b>Clone/lưu lại toàn bộ trang</b> khách gửi (ảnh, thiết kế, layout, cấu trúc) để làm bản tham chiếu</td><td>Bản sao gốc — "linh hồn" thiết kế</td></tr>
-        <tr><td><b>3. Chuyển sang WordPress</b></td><td>Dựng lại trên WordPress: hosting + theme + cấu trúc trang, giữ đúng bố cục &amp; nội dung</td><td>Website WordPress chạy được</td></tr>
-        <tr><td><b>4. Triển khai chi tiết (skill HTML→ACF)</b></td><td>Dùng <b>skill dev HTML → ACF</b> để dựng các khối/block, nhập nội dung động, chỉnh layout từng phần</td><td>Trang chuẩn, đúng thiết kế, dễ quản trị</td></tr>
-        <tr><td><b>5. Bàn giao</b></td><td>Kiểm tra, SEO, mobile, tốc độ → bàn giao + hướng dẫn quản trị + bảo hành</td><td>Khách nhận web &amp; tự quản trị được</td></tr>
+        <tr><th>Bước</th><th>Việc cần làm</th><th>Công cụ / Tool</th><th>Thời gian</th></tr>
+        <tr><td><b>1. Lấy brief</b></td><td>Khách gửi nhu cầu: ngành, ý tưởng, target, tính năng cần (form, giá, v.v)</td><td>Messenger / Form / Zalo</td><td>~15 phút</td></tr>
+        <tr><td><b>2. Viết prompt</b></td><td>Dùng ChatGPT tạo prompt chi tiết để AI tạo website dựa trên brief</td><td>ChatGPT / Claude</td><td>~20 phút</td></tr>
+        <tr><td><b>3. Chọn tool AI</b></td><td>Dựa trên ngành &amp; nhu cầu, chọn tool web AI phù hợp (Durable/Wix/Framer/...)</td><td>Bảng cột 1</td><td>~5 phút</td></tr>
+        <tr><td><b>4. Tạo web</b></td><td>Dán prompt vào tool → AI tạo website tự động (chỉ cần 2-3 phút)</td><td>Tool web AI</td><td>~5 phút</td></tr>
+        <tr><td><b>5. Chỉnh sửa</b></td><td>Review &amp; tinh chỉnh: nội dung, ảnh, bố cục, form, SEO</td><td>Tool web AI</td><td>~30-60 phút</td></tr>
+        <tr><td><b>6. Bàn giao</b></td><td>Test, copy link, gửi khách + hướng dẫn sửa nội dung</td><td>Messenger / Zalo</td><td>~10 phút</td></tr>
       </table>
+      <p class="sub" style="margin:10px 0 0"><b>⏱️ Tổng cộng: 85-120 phút (~1.5-2 tiếng)</b> từ brief → website sẵn dùng</p>
     </div>
 
     <div class="card">
       <h3>⚙️ Chi tiết từng bước (checklist triển khai)</h3>
 
-      <h4 style="margin-top:8px">Bước 1 — Nhận &amp; đánh giá</h4>
+      <h4 style="margin-top:8px">Bước 1 — Lấy brief từ khách</h4>
       <ul class="check">
-        <li>Nhận link demo từ khách (Messenger / Form / Zalo).</li>
-        <li>Mở web, chụp/ghi lại toàn bộ: trang chủ, các trang con, menu, banner, footer.</li>
-        <li>Ghi nhận nhu cầu: bán hàng? giới thiệu? chạy quảng cáo? cần form/đặt lịch?</li>
-        <li>Chốt phạm vi + bảng giá + tiến độ với khách.</li>
+        <li>Ngành/lĩnh vực: gì (dịch vụ, bán hàng, portfolio)?</li>
+        <li>Mục đích: giới thiệu? bán? chạy quảng cáo?</li>
+        <li>Tính năng cần: form liên hệ? giá? bản đồ? đặt lịch? giỏ hàng?</li>
+        <li>Style mong muốn: màu, tone, reference (nếu có).</li>
       </ul>
 
-      <h4>Bước 2 — Clone trang</h4>
+      <h4>Bước 2 — Viết prompt bằng ChatGPT</h4>
       <ul class="check">
-        <li>Clone/lưu toàn bộ trang khách gửi làm bản gốc tham chiếu (thiết kế, hình, cấu trúc).</li>
-        <li>Lưu lại hình ảnh, font, màu, bố cục từng section.</li>
-        <li>Tạo bản mô tả (wireframe/spec) để giữ đúng ý tưởng khi lên WordPress.</li>
+        <li>Mở <b>ChatGPT</b> → dùng template prompt ở dưới.</li>
+        <li>Thay các <code>[...]</code> bằng thông tin khách (ngành, nhu cầu, tính năng).</li>
+        <li>Chat với Claude/ChatGPT để prompt chi tiết, cụ thể, dễ hiểu.</li>
+        <li>Copy prompt hoàn chỉnh để dùng ở bước tiếp.</li>
       </ul>
 
-      <h4>Bước 3 — Chuyển sang WordPress</h4>
+      <h4>Bước 3 — Chọn tool web AI phù hợp</h4>
       <ul class="check">
-        <li>Dựng môi trường: hosting + cài WordPress + SSL + tên miền.</li>
-        <li>Chọn theme/builder phù hợp (Elementor / Kadence / GeneratePress / theme tuỳ chỉnh).</li>
-        <li>Tạo cấu trúc trang giống bản clone: Home, Giới thiệu, Sản phẩm/Dịch vụ, Liên hệ...</li>
-        <li>Đưa nội dung + hình ảnh lên, giữ đúng bố cục.</li>
+        <li>Ngành bán hàng/dịch vụ địa phương → <b>Durable</b> (nhanh)</li>
+        <li>Landing page hiện đại → <b>Lindo / Framer</b> (đẹp)</li>
+        <li>Cần flexibility → <b>Wix / Webflow</b> (tuỳ chỉnh nhiều)</li>
+        <li>Portfolio/thương hiệu → <b>Framer</b> (animation)</li>
+        <li>Dữ liệu động → <b>Softr</b> (nối Google Sheets)</li>
       </ul>
 
-      <h4>Bước 4 — Triển khai bằng skill HTML → ACF</h4>
+      <h4>Bước 4 — Tạo web bằng tool (chỉ 5 phút!)</h4>
       <ul class="check">
-        <li>Dùng <b>skill HTML → ACF (Advanced Custom Fields)</b> để dựng block/khối nội dung động.</li>
-        <li>Sử dụng ACF để khách <b>tự nhập nội dung</b> mà không phải sửa code: tiêu đề, ảnh, giá, mô tả, bài viết.</li>
-        <li>Map từng phần của bản clone vào các field/block ACF cho chuẩn &amp; linh hoạt.</li>
-        <li>Kiểm tra responsive (mobile/tablet/desktop), chỉnh layout chi tiết.</li>
+        <li>Vào tool web AI đã chọn → chọn "Tạo bằng AI" hoặc "Generate".</li>
+        <li><b>Dán prompt vừa viết</b> vào ô prompt/description.</li>
+        <li>Bấm "Generate" hoặc "Create" → chờ AI tạo (~2-3 phút).</li>
+        <li>Tool tự động tạo layout, nội dung, ảnh, màu sắc.</li>
       </ul>
 
-      <h4>Bước 5 — Bàn giao</h4>
+      <h4>Bước 5 — Chỉnh sửa &amp; hoàn thiện</h4>
       <ul class="check">
-        <li>Chạy kiểm tra: tốc độ (PageSpeed), SEO (tiêu đề/mô tả/sitemap), form liên hệ, mobile, không lỗi 404.</li>
-        <li>Bàn giao tài khoản quản trị + video hướng dẫn tự sửa nội dung (nhờ ACF nên dễ).</li>
-        <li >Bảo hành 1-3 tháng + chốt gói bảo trì.</li>
+        <li>Review toàn bộ website: nội dung, ảnh, bố cục, form.</li>
+        <li>Chỉnh: đổi ảnh, sửa text, thay màu, điều chỉnh section.</li>
+        <li>Kiểm tra mobile view, thử form, test link.</li>
+        <li>Lưu tất cả thay đổi.</li>
+      </ul>
+
+      <h4>Bước 6 — Bàn giao cho khách</h4>
+      <ul class="check">
+        <li>Copy link website → gửi khách (Messenger / Zalo).</li>
+        <li>Ghi chú: "Web của bạn đã tạo xong, bạn có thể sửa nội dung trực tiếp".</li>
+        <li>Nếu khách muốn domain riêng/WordPress → báo giá &amp; hướng dẫn bước tiếp.</li>
       </ul>
     </div>
 
     <div class="card">
-      <h3>🔧 Bộ công cụ &amp; kỹ thuật nội bộ cho quy trình</h3>
-      <table>
-        <tr><th>Khoản</th><th>Công cụ / kỹ thuật</th><th>Dùng cho</th></tr>
-        <tr><td><b>Clone trang</b></td><td>Chụp màn hình / save page / browser devtools</td><td>Lưu bản gốc tham chiếu &amp; cấu trúc</td></tr>
-        <tr><td><b>Hosting + WP</b></td><td>Hostinger / Namecheap / Cloudways + WordPress</td><td>Môi trường chạy website</td></tr>
-        <tr><td><b>Theme / Builder</b></td><td>Elementor / Kadence / GeneratePress</td><td>Dựng layout, block</td></tr>
-        <tr><td><b>Skill HTML → ACF</b></td><td>HTML/CSS + ACF (Advanced Custom Fields)</td><td>Nội dung động, khách tự nhập không sửa code</td></tr>
-        <tr><td><b>SEO</b></td><td>Rank Math / Yoast + Search Console</td><td>Cấu hình SEO, sitemap</td></tr>
-        <tr><td><b>Tốc độ</b></td><td>WP Rocket / caching / nén ảnh</td><td>Trang tải nhanh</td></tr>
-        <tr><td><b>Bảo mật</b></td><td>Wordfence / backup UpdraftPlus</td><td>An toàn &amp; sao lưu</td></tr>
-      </table>
-      <div class="lead" style="margin-top:12px">💡 <b>Mẹo nội bộ:</b> nhờ dựng bằng <b>ACF</b>, khách tự thay nội dung được — đây chính là "điểm bán" để khách tin tưởng &amp; mua gói bảo trì. Đồng thời giúp bạn tái dùng nhanh cho dự án sau (templating ACF).</div>
+      <h3>🤖 Template Prompt cho ChatGPT (copy &amp; chỉnh)</h3>
+      <p class="sub" style="margin-top:4px">Dán prompt này vào ChatGPT, thay <code>[...]</code> bằng thông tin khách, rồi copy prompt hoàn chỉnh để dán vào tool web AI.</p>
+
+      <textarea class="prt" rows="12" readonly>Tôi muốn tạo một website cho [TÊN NGÀNH/DOANH NGHIỆP] để [MỤC ĐÍCH: bán hàng/giới thiệu/chạy quảng cáo].
+
+THÔNG TIN CƠ BẢN:
+- Tên website/doanh nghiệp: [TÊN]
+- Ngành: [NGÀNH]
+- Mục tiêu khách hàng: [AI, VÍ DỤ: phụ nữ 25-40 tuổi quan tâm làm đẹp]
+- Địa chỉ (nếu có): [ĐỊA CHỈ]
+- SĐT/email liên hệ: [LIÊN HỆ]
+
+TÍNH NĂNG CẦN CÓ:
+- [✓] Trang chủ với banner giới thiệu
+- [✓] Trang giới thiệu doanh nghiệp / về chúng tôi
+- [✓] [TÍNH NĂNG 1, VÍ DỤ: danh mục sản phẩm/dịch vụ]
+- [✓] [TÍNH NĂNG 2, VÍ DỤ: form liên hệ / đặt lịch]
+- [✓] [TÍNH NĂNG 3, VÍ DỤ: giá / bảng giá]
+- [✓] Trang liên hệ / footer
+
+PHONG CÁCH MONG MUỐN:
+- Màu sắc: [MÀU, VÍ DỤ: xanh lá + trắng / vàng nổi bật]
+- Tone: [TONE, VÍ DỤ: chuyên nghiệp / hiện đại / thân thiện / cao cấp]
+- Layout: [LAYOUT, VÍ DỤ: minimal / full width / card-based]
+- Reference (nếu có): [LINK]
+
+Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/Wix/Framer) để AI tự động tạo website theo các yêu cầu trên. Prompt phải dưới 200 từ, dễ hiểu, và có thể AI thực hiện được trong 1 lần generate.
+</textarea>
+      <p style="font-size:13px;color:var(--muted);margin:8px 0 0">💡 <b>Sau khi điền xong:</b> gửi đoạn chat này cho ChatGPT → nó sẽ tạo ra một prompt ngắn gọn, hoàn chỉnh → dùng prompt đó ở bước 4.</p>
     </div>
 
     <div class="card">
-      <h3>🎨 Quy trình nội bộ — Tạo hình ảnh, banner, video bằng AI</h3>
-      <p class="sub" style="margin-top:4px">Dành cho việc sản xuất nội dung (thumbnails, banner, video) để đăng bài &amp; phục vụ khách. <b>Đây là quy trình nội bộ — không chỉ cách làm cho người ngoài.</b></p>
-
-      <div class="danger">🔒 <b>Nội bộ:</b> phần này là công thức sản xuất của bạn, <b>không đăng/hướng dẫn</b> cho khách. Dùng để ra nhanh &amp; đồng bộ nội dung.
-
-      <h4 style="margin-top:14px">Bộ 3 quy trình (nhấn để xem ống hoá)</h4>
+      <h3>🛠️ Bộ công cụ &amp; tài nguyên</h3>
       <table>
-        <tr><th>Loại</th><th>Công cụ AI (nội bộ)</th><th>Quy trình nhanh</th><th>Kết quả</th></tr>
-        <tr><td><b>🖼️ Hình ảnh</b></td><td>Midjourney / Bing Image Creator / DALL·E · Adobe Firefly · Ideogram</td><td>Prompts cốt → tạo nhiều mẫu → chọn mẫu đẹp → upscale &amp; chỉnh sửa (Photoshop/Figma) → xuất resize đúng khổ</td><td>Ảnh minh hoạ / mockup / nền quảng cáo</td></tr>
-        <tr><td><b>🎫 Banner</b></td><td>Canva (template) / Figma (framework) + Ideogram/Midjourney</td><td>Chọn khổ &amp; template → thay nội dung (chữ/logo/màu) → AI tạo hình nền → cân bố cục → xuất JPG/PNG</td><td>Banner nhóm, story, cover, quảng cáo</td></tr>
-        <tr><td><b>🎬 Video</b></td><td>CapCut / DaVinci Resolve (dựng) · Runway / Pika / Sora / HeyGen (AI) · TTS (giọng đọc)</td><td>Kịch bản (script) → AI lồng giọng → AI tạo cảnh/hình → dựng + phụ đề + nhạc → xuất 9:16 / 16:9</td><td>Reel, video giới thiệu, video quảng cáo</td></tr>
+        <tr><th>Bước</th><th>Công cụ / Tool</th><th>Link / Ghi chú</th></tr>
+        <tr><td><b>Viết prompt</b></td><td>ChatGPT / Claude</td><td><a href="https://chatgpt.com" target="_blank" rel="noopener">chatgpt.com</a> hoặc Claude</td></tr>
+        <tr><td><b>Web AI - Nhanh</b></td><td>Durable</td><td><a href="https://durable.com" target="_blank" rel="noopener">durable.com</a> - Best for service biz</td></tr>
+        <tr><td><b>Web AI - Đẹp</b></td><td>Framer / Lindo</td><td><a href="https://framer.com" target="_blank" rel="noopener">framer.com</a> - Modern &amp; smooth</td></tr>
+        <tr><td><b>Web AI - Flexibility</b></td><td>Wix / Webflow</td><td><a href="https://wix.com" target="_blank" rel="noopener">wix.com</a> - Customizable</td></tr>
+        <tr><td><b>Screenshot/Clone</b></td><td>Browser DevTools / Httrack</td><td>Lưu bản gốc tham chiếu khi cần</td></tr>
+        <tr><td><b>Test &amp; Review</b></td><td>Mobile Simulator / PageSpeed</td><td><a href="https://pagespeed.web.dev" target="_blank" rel="noopener">pagespeed.web.dev</a> - Check tốc độ</td></tr>
       </table>
-
-      <h4 style="margin-top:16px">🎞️ Quy trình tạo VIDEO (chi tiết từng bước)</h4>
-      <ol style="margin:6px 0;padding-left:20px">
-        <li><b>Kịch bản (script):</b> viết nội dung ngắn 15–60s, mở đầu hút 3s, có CTA cuối.</li>
-        <li><b>Lồng giọng (TTS/AI):</b> dùng CapCut text-to-speech hoặc giọng AI, chọn giọng phù hợp.</li>
-        <li><b>Tạo cảnh/hình (AI):</b> Runway/Pika/Sora tạo clip ngắn, hoặc Midjourney tạo ảnh nền tĩnh.</li>
-        <li><b>Dựng &amp; phụ đề:</b> CapCut/DaVinci cắt ghép, thêm phụ đề tự động, hiệu ứng.</li>
-        <li><b>Nhạc &amp; chuyển cảnh:</b> chọn nhạc nền, chỉnh theo beat, thêm transition.</li>
-        <li><b>Xuất:</b> 9:16 (story/reel) hoặc 16:9 (video dài), nén nhanh, chèn watermark nếu cần.</li>
-      </ol>
-
-      <h4 style="margin-top:16px">🧰 Bộ prompt AI — dùng lại cho mọi chiến dịch</h4>
-      <textarea class="prt" rows="4" readonly>Ảnh/banner:
-"[mô tả chủ đề], [phong cách: hiện đại/tối giản/cao cấp], màu [bảng màu thương hiệu], ánh sáng [cinematic/studio], tỷ lệ [16:9 hoặc 1:1], độ phân giải cao."
-Video (cảnh):
-"[mô tả cảnh ngắn], chuyển động [chậm rãi/nhanh], góc quay [close-up/wide], khung hình 9:16, ánh sáng [studio], phong cách [thương hiệu]."</textarea>
-      <p style="font-size:13px;color:var(--muted);margin:8px 0 0">💡 Lưu mỗi bộ prompt vào <b>thư viện nội bộ</b> để lần sau chỉ đổi "chủ đề + màu" là ra bộ mới — đúng tư tưởng <b>"làm 1 lần — ra nhiều content"</b> của hệ thống Automation Content &amp; Design.</p>
+      <div class="lead" style="margin-top:12px">💡 <b>Mẹo nhanh:</b> dùng cùng 1 prompt template cho mọi khách — chỉ thay <code>[TÊN / NGÀNH / TÍNH NĂNG]</code> là ra website chuẩn. Đó chính là sức mạnh của "automation workflow".</div>
     </div>
 
     <div class="card">
-      <h3>🎯 Kết quả bàn giao (cho khách)</h3>
-      <table>
-        <tr><th>Tiêu chí</th><th>Bản AI free (khách có)</th><th>Sau khi bạn chuyển WordPress</th></tr>
-        <tr><td>Tên miền</td><td>xxx.tool.ai (con)</td><td>Domain riêng</td></tr>
-        <tr><td>Quảng cáo</td><td>Dính badge nền tảng</td><td>Sạch</td></tr>
-        <tr><td>Chỉnh sửa</td><td>Bị khoá/khó</td><td>Khách tự nhập nội dung qua ACF</td></tr>
-        <tr><td>SEO / tốc độ</td><td>Yếu, chậm</td><td>Chuẩn SEO, tải nhanh</td></tr>
-      </table>
+      <h3>✅ Checklist bàn giao</h3>
+      <ul class="check">
+        <li>☑️ Website tạo xong, link copy &amp; test toàn bộ trang</li>
+        <li>☑️ Form liên hệ hoạt động → test gửi message</li>
+        <li>☑️ Mobile view OK → test trên phone</li>
+        <li>☑️ Ảnh load nhanh, không bị lỗi 404</li>
+        <li>☑️ Gửi khách link + hướng dẫn sửa nội dung (nếu cần)</li>
+        <li>☑️ Hỏi khách có thỏa mãn không, nếu cần chỉnh gì không</li>
+        <li>☑️ Chốt tiếp theo: upgrade domain riêng? WordPress? Quảng cáo?</li>
+      </ul>
     </div>
   </div>
 
