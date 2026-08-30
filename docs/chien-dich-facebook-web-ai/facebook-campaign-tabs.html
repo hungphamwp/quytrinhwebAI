@@ -827,14 +827,65 @@
     flex: none;
     transition: all 0.15s;
   }
-  .demo-link-btn:hover { background: var(--brand); color: #ffffff; transform: translateY(-1px); }
-
-  .label-select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-radius: var(--radius-sm); font-size: 12px; cursor: pointer; background: var(--input-bg); color: var(--ink); line-height: 1.3; }
-  .label-select:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-glow); }
-  .rating-badge.ok { background: var(--ok-soft); color: var(--ok); }
-  .rating-badge.not-ok { background: var(--red-soft); color: var(--red); }
-  .rating-badge.normal { background: var(--warn-soft); color: var(--warn); }
-  .rating-badge.good { background: var(--brand-soft); color: var(--brand); }
+  /* Google Sheets / Notion Style Dropdown Labels */
+  .sheet-label-select {
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: var(--radius-full);
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 5px 22px 5px 10px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background-position: right 7px center;
+    background-repeat: no-repeat;
+    background-size: 9px 9px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2364748b'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E");
+    transition: all 0.18s ease;
+    white-space: nowrap;
+    font-family: inherit;
+    display: inline-block;
+    max-width: 100%;
+  }
+  .sheet-label-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--brand-glow);
+  }
+  .sheet-label-select.tag-top {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    border-color: rgba(245, 158, 11, 0.35);
+  }
+  .sheet-label-select.tag-recommended {
+    background-color: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border-color: rgba(16, 185, 129, 0.35);
+  }
+  .sheet-label-select.tag-wp {
+    background-color: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+    border-color: rgba(99, 102, 241, 0.35);
+  }
+  .sheet-label-select.tag-app {
+    background-color: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    border-color: rgba(168, 85, 247, 0.35);
+  }
+  .sheet-label-select.tag-free {
+    background-color: rgba(6, 182, 212, 0.15);
+    color: #22d3ee;
+    border-color: rgba(6, 182, 212, 0.35);
+  }
+  .sheet-label-select.tag-paid {
+    background-color: rgba(244, 63, 94, 0.15);
+    color: #f43f5e;
+    border-color: rgba(244, 63, 94, 0.35);
+  }
+  .sheet-label-select.tag-none {
+    background-color: var(--line);
+    color: var(--muted);
+    border-color: var(--line);
+  }
 
   /* Toolbar Action Buttons (Add Tool / Add Column) */
   .table-actions-toolbar {
@@ -1179,35 +1230,35 @@
 
         <table class="otable" id="tools-table">
           <thead>
-            <tr><th>#</th><th>Nền tảng &amp; Link</th><th>Điểm nổi bật</th><th>Ưu điểm</th><th>Nhược điểm</th><th>Demo sản phẩm</th></tr>
+            <tr><th>#</th><th>Nền tảng &amp; Link</th><th>Nhãn đánh giá</th><th>Ưu điểm</th><th>Nhược điểm</th><th>Demo sản phẩm</th></tr>
           </thead>
           <tbody>
-          <tr><td><span class="rank-badge">1</span></td><td><b>Durable</b><br><a href="https://durable.com" target="_blank" rel="noopener">durable.com</a></td><td>Web dịch vụ/doanh nghiệp trong 30 giây, kèm sẵn form liên hệ</td><td class="pros">Rất nhanh; form liên hệ có sẵn; đơn giản cho người không rành kỹ thuật</td><td class="cons">Bản free rất hạn chế; chỉ domain phụ; ít quyền tuỳ chỉnh</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">2</span></td><td><b>Lindo AI</b><br><a href="https://lindo.ai" target="_blank" rel="noopener">lindo.ai</a></td><td>Nhập 1 câu lệnh (prompt) ra ngay Landing Page hiện đại</td><td class="pros">Giao diện hiện đại; dựng landing cực nhanh; không cần code</td><td class="cons">Có badge quảng cáo Lino; giới hạn traffic tháng; ít tùy chỉnh nâng cao</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">3</span></td><td><b>Wix AI</b><br><a href="https://wix.com" target="_blank" rel="noopener">wix.com</a></td><td>AI dựng khung chuẩn, kết hợp trình kéo-thả linh hoạt</td><td class="pros">Cộng đồng lớn; kéo-thả mượt; nhiều mẫu &amp; app</td><td class="cons">Dính banner quảng cáo; subdomain; site thường chậm hơn</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge top">4</span></td><td><b>Framer</b><br><a href="https://framer.com" target="_blank" rel="noopener">framer.com</a></td><td>Giao diện thời thượng, hiệu ứng chuyển động (animation) cực mượt</td><td class="pros">Đẹp nhất nhóm; animation mượt; dựng portfolio/thương hiệu rất tốt</td><td class="cons">Subdomain *.framer.website; không xuất code; cần học một chút</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">5</span></td><td><b>CodeDesign.ai</b><br><a href="https://codedesign.ai" target="_blank" rel="noopener">codedesign.ai</a></td><td>Layout chuẩn chỉnh như thiết kế thủ công, cho can thiệp sâu vào UI</td><td class="pros">Kiểm soát layout tốt; can thiệp sâu UI; ra code sạch</td><td class="cons">Không custom domain; giới hạn export; đòi hỏi kỹ năng thiết kế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">6</span></td><td><b>Dora AI</b><br><a href="https://dora.run" target="_blank" rel="noopener">dora.run</a></td><td>Website tích hợp hiệu ứng 3D trực quan, gây ấn tượng mạnh</td><td class="pros">Hiệu ứng 3D wow; tạo ấn tượng mạnh; hợp chiến dịch/landing</td><td class="cons">Hạn chế tuỳ chỉnh; khó xuất bản; nặng &amp; chậm hơn; cần kỹ năng</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge top">7</span></td><td><b>ZipWP</b><br><a href="https://zipwp.com" target="_blank" rel="noopener">zipwp.com</a></td><td>Tạo web WordPress hoàn thiện bài viết, hình ảnh chỉ trong 60 giây</td><td class="pros">Ra WordPress thật; dựng nhanh; dễ đưa vào quy trình WP của bạn</td><td class="cons">Giới hạn 3 web/tháng; bản nháp tự xoá sau 24h nếu không cài host</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">8</span></td><td><b>Softr</b><br><a href="https://www.softr.io" target="_blank" rel="noopener">softr.io</a></td><td>Biến cơ sở dữ liệu (Google Sheets/Airtable) thành website động</td><td class="pros">Nối bảng tính/web động; không cần code; hợp danh mục, cổng thông tin</td><td class="cons">Giới hạn số dòng dữ liệu; tính năng nâng cao cần trả phí</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">9</span></td><td><b>Base44</b><br><a href="https://base44.com" target="_blank" rel="noopener">base44.com</a></td><td>Dùng AI tạo Web App, thiết lập luồng dữ liệu và phân quyền</td><td class="pros">Làm web app thật sự; quản lý luồng dữ liệu &amp; phân quyền</td><td class="cons">Cần tư duy hệ thống; giới hạn tài nguyên vận hành</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge top">10</span></td><td><b>Lovable</b><br><a href="https://lovable.dev" target="_blank" rel="noopener">lovable.dev</a></td><td>Viết text để AI tự động code ra phần mềm (React, Tailwind)</td><td class="pros">Code ra sản phẩm thật (React/Tailwind); rất mạnh &amp; linh hoạt</td><td class="cons">Giới hạn số prompt/tháng; cần chút nền tảng để chạy app</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">11</span></td><td><b>B12</b><br><a href="https://b12.io" target="_blank" rel="noopener">b12.io</a></td><td>Tối ưu cho web dịch vụ, tích hợp sẵn form đặt lịch, hoá đơn, email</td><td class="pros">Chuyên cho web dịch vụ; form đặt lịch/hoá đơn/email có sẵn</td><td class="cons">Bản free chỉ xem nháp; muốn chạy phải trả phí</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">12</span></td><td><b>Relume</b><br><a href="https://www.relume.ai" target="_blank" rel="noopener">relume.ai</a></td><td>AI tạo sitemap và wireframe siêu tốc với nội dung copywriting chuẩn</td><td class="pros">Wireframe/sitemap siêu nhanh; copy chuẩn; hợp designer</td><td class="cons">Giới hạn số project; cần kết hợp Figma/Webflow để xuất bản</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">13</span></td><td><b>10Web</b><br><a href="https://10web.io" target="_blank" rel="noopener">10web.io</a></td><td>Tạo ra site WordPress luôn, gần với dịch vụ làm WP của bạn</td><td class="pros">Ra web WordPress luôn; dễ đưa vào quy trình làm WP của bạn</td><td class="cons">Free giới hạn tính năng/lưu trữ; nội bộ — không chia sẻ cho khách</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">14</span></td><td><b>Hostinger Horizons</b><br><a href="https://hostinger.com" target="_blank" rel="noopener">hostinger.com</a></td><td>AI làm nhanh, rất dễ, giao diện đẹp</td><td class="pros">Cực dễ; hosting + AI tích hợp; giao diện đẹp; phù hợp người mới</td><td class="cons">Có phí để dùng "thật"; free giới hạn publish/domain</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">15</span></td><td><b>GoDaddy Airo</b><br><a href="https://www.godaddy.com" target="_blank" rel="noopener">godaddy.com</a></td><td>AI + marketing tích hợp</td><td class="pros">AI + marketing tích hợp; dùng nhanh</td><td class="cons">Free giới hạn; đẩy lên gói trả phí</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">16</span></td><td><b>Bolt.new</b><br><a href="https://bolt.new" target="_blank" rel="noopener">bolt.new</a></td><td>Website + web app full-stack từ prompt</td><td class="pros">Full-stack (frontend + backend); tạo cực nhanh; hỗ trợ database</td><td class="cons">Cần kỹ năng; giới hạn request; free tier hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">17</span></td><td><b>v0 (by Vercel)</b><br><a href="https://v0.dev" target="_blank" rel="noopener">v0.dev</a></td><td>UI, landing page, component React từ mô tả</td><td class="pros">Tạo component React nhanh; Vercel tích hợp; chất lượng cao</td><td class="cons">Cần hiểu React; free giới hạn lượt; cần account Vercel</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">18</span></td><td><b>Google Stitch</b><br><a href="https://stitch.withgoogle.com" target="_blank" rel="noopener">stitch.withgoogle.com</a></td><td>Dựng giao diện UI từ mô tả văn bản</td><td class="pros">Dễ dùng; Google hỗ trợ; free hoàn toàn</td><td class="cons">Chưa ổn định; tính năng hạn chế; không export được</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">19</span></td><td><b>Typedream</b><br><a href="https://typedream.com" target="_blank" rel="noopener">typedream.com</a></td><td>Landing page dạng khối đơn giản, tối ưu</td><td class="pros">Đơn giản; tối ưu SEO sẵn; giá rẻ</td><td class="cons">Tính năng cơ bản; khó customize sâu</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">20</span></td><td><b>Spline</b><br><a href="https://spline.design" target="_blank" rel="noopener">spline.design</a></td><td>Thiết kế không gian 3D và website 3D</td><td class="pros">3D visualization wow; hiệu ứng ấn tượng; free tốt</td><td class="cons">Nặng; chậm; cần kỹ năng 3D; không tốt cho SEO</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">21</span></td><td><b>Uizard</b><br><a href="https://uizard.io" target="_blank" rel="noopener">uizard.io</a></td><td>Thiết kế UI/prototype từ ý tưởng, sketch, ảnh</td><td class="pros">Biến ảnh/sketch thành UI; nhanh; collaboration tốt</td><td class="cons">Chỉ prototype; không deploy được; free hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">22</span></td><td><b>Webflow</b><br><a href="https://webflow.com" target="_blank" rel="noopener">webflow.com</a></td><td>Website chuyên nghiệp, tùy biến sâu mã nguồn</td><td class="pros">Tùy biến vô hạn; export code được; CMS tích hợp; SEO tốt</td><td class="cons">Learning curve cao; free rất hạn chế; publish cần trả phí</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">23</span></td><td><b>Replit</b><br><a href="https://replit.com" target="_blank" rel="noopener">replit.com</a></td><td>Lập trình và deploy web app trên cloud</td><td class="pros">IDE online; hỗ trợ nhiều ngôn ngữ; deploy nhanh; free tốt</td><td class="cons">Performance hạn chế; free có giới hạn CPU/storage</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">24</span></td><td><b>Builder.io</b><br><a href="https://www.builder.io" target="_blank" rel="noopener">builder.io</a></td><td>Kéo thả giao diện UI, kết nối API &amp; hệ thống</td><td class="pros">Kéo thả tự do; hỗ trợ API; CMS mạnh; collaboration</td><td class="cons">Complexity cao; learning curve; free hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">25</span></td><td><b>Tempo</b><br><a href="https://www.tempo.build" target="_blank" rel="noopener">tempo.build</a></td><td>Sinh và chỉnh sửa mã nguồn React app từ prompt</td><td class="pros">Sinh code React chuẩn; AI chỉnh sửa tốt; deploy dễ</td><td class="cons">Cần biết React; free hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
-          <tr><td><span class="rank-badge">26</span></td><td><b>Anything</b><br><a href="https://anything.com" target="_blank" rel="noopener">anything.com</a></td><td>Tạo nhanh ứng dụng và website qua prompt ngôn ngữ tự nhiên</td><td class="pros">Tạo cực nhanh; full-stack; no-code; tích hợp tốt</td><td class="cons">Mới; ít tài liệu; tính năng đang phát triển</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">1</span></td><td><b>Durable</b><br><a href="https://durable.com" target="_blank" rel="noopener">durable.com</a></td><td><select class="sheet-label-select tag-recommended" data-tool-idx="0"><option value="top">⭐ Đánh giá cao</option><option value="recommended" selected>🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Rất nhanh; form liên hệ có sẵn; đơn giản cho người không rành kỹ thuật</td><td class="cons">Bản free rất hạn chế; chỉ domain phụ; ít quyền tuỳ chỉnh</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">2</span></td><td><b>Lindo AI</b><br><a href="https://lindo.ai" target="_blank" rel="noopener">lindo.ai</a></td><td><select class="sheet-label-select tag-free" data-tool-idx="1"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free" selected>🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Giao diện hiện đại; dựng landing cực nhanh; không cần code</td><td class="cons">Có badge quảng cáo Lino; giới hạn traffic tháng; ít tùy chỉnh nâng cao</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">3</span></td><td><b>Wix AI</b><br><a href="https://wix.com" target="_blank" rel="noopener">wix.com</a></td><td><select class="sheet-label-select tag-free" data-tool-idx="2"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free" selected>🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Cộng đồng lớn; kéo-thả mượt; nhiều mẫu &amp; app</td><td class="cons">Dính banner quảng cáo; subdomain; site thường chậm hơn</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge top">4</span></td><td><b>Framer</b><br><a href="https://framer.com" target="_blank" rel="noopener">framer.com</a></td><td><select class="sheet-label-select tag-top" data-tool-idx="3"><option value="top" selected>⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Đẹp nhất nhóm; animation mượt; dựng portfolio/thương hiệu rất tốt</td><td class="cons">Subdomain *.framer.website; không xuất code; cần học một chút</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">5</span></td><td><b>CodeDesign.ai</b><br><a href="https://codedesign.ai" target="_blank" rel="noopener">codedesign.ai</a></td><td><select class="sheet-label-select tag-free" data-tool-idx="4"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free" selected>🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Kiểm soát layout tốt; can thiệp sâu UI; ra code sạch</td><td class="cons">Không custom domain; giới hạn export; đòi hỏi kỹ năng thiết kế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">6</span></td><td><b>Dora AI</b><br><a href="https://dora.run" target="_blank" rel="noopener">dora.run</a></td><td><select class="sheet-label-select tag-free" data-tool-idx="5"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free" selected>🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Hiệu ứng 3D wow; tạo ấn tượng mạnh; hợp chiến dịch/landing</td><td class="cons">Hạn chế tuỳ chỉnh; khó xuất bản; nặng &amp; chậm hơn; cần kỹ năng</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge top">7</span></td><td><b>ZipWP</b><br><a href="https://zipwp.com" target="_blank" rel="noopener">zipwp.com</a></td><td><select class="sheet-label-select tag-top" data-tool-idx="6"><option value="top" selected>⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Ra WordPress thật; dựng nhanh; dễ đưa vào quy trình WP của bạn</td><td class="cons">Giới hạn 3 web/tháng; bản nháp tự xoá sau 24h nếu không cài host</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">8</span></td><td><b>Softr</b><br><a href="https://www.softr.io" target="_blank" rel="noopener">softr.io</a></td><td><select class="sheet-label-select tag-app" data-tool-idx="7"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app" selected>📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Nối bảng tính/web động; không cần code; hợp danh mục, cổng thông tin</td><td class="cons">Giới hạn số dòng dữ liệu; tính năng nâng cao cần trả phí</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">9</span></td><td><b>Base44</b><br><a href="https://base44.com" target="_blank" rel="noopener">base44.com</a></td><td><select class="sheet-label-select tag-app" data-tool-idx="8"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app" selected>📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Làm web app thật sự; quản lý luồng dữ liệu &amp; phân quyền</td><td class="cons">Cần tư duy hệ thống; giới hạn tài nguyên vận hành</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge top">10</span></td><td><b>Lovable</b><br><a href="https://lovable.dev" target="_blank" rel="noopener">lovable.dev</a></td><td><select class="sheet-label-select tag-top" data-tool-idx="9"><option value="top" selected>⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Code ra sản phẩm thật (React/Tailwind); rất mạnh &amp; linh hoạt</td><td class="cons">Giới hạn số prompt/tháng; cần chút nền tảng để chạy app</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">11</span></td><td><b>B12</b><br><a href="https://b12.io" target="_blank" rel="noopener">b12.io</a></td><td><select class="sheet-label-select tag-paid" data-tool-idx="10"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid" selected>⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Chuyên cho web dịch vụ; form đặt lịch/hoá đơn/email có sẵn</td><td class="cons">Bản free chỉ xem nháp; muốn chạy phải trả phí</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">12</span></td><td><b>Relume</b><br><a href="https://www.relume.ai" target="_blank" rel="noopener">relume.ai</a></td><td><select class="sheet-label-select tag-recommended" data-tool-idx="11"><option value="top">⭐ Đánh giá cao</option><option value="recommended" selected>🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Wireframe/sitemap siêu nhanh; copy chuẩn; hợp designer</td><td class="cons">Giới hạn số project; cần kết hợp Figma/Webflow để xuất bản</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">13</span></td><td><b>10Web</b><br><a href="https://10web.io" target="_blank" rel="noopener">10web.io</a></td><td><select class="sheet-label-select tag-wp" data-tool-idx="12"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp" selected>⚡ WordPress</option><option value="app">📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Ra web WordPress luôn; dễ đưa vào quy trình làm WP của bạn</td><td class="cons">Free giới hạn tính năng/lưu trữ; nội bộ — không chia sẻ cho khách</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">14</span></td><td><b>Hostinger Horizons</b><br><a href="https://hostinger.com" target="_blank" rel="noopener">hostinger.com</a></td><td><select class="sheet-label-select tag-paid" data-tool-idx="13"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid" selected>⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Cực dễ; hosting + AI tích hợp; giao diện đẹp; phù hợp người mới</td><td class="cons">Có phí để dùng "thật"; free giới hạn publish/domain</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">15</span></td><td><b>GoDaddy Airo</b><br><a href="https://www.godaddy.com" target="_blank" rel="noopener">godaddy.com</a></td><td><select class="sheet-label-select tag-paid" data-tool-idx="14"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid" selected>⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">AI + marketing tích hợp; dùng nhanh</td><td class="cons">Free giới hạn; đẩy lên gói trả phí</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">16</span></td><td><b>Bolt.new</b><br><a href="https://bolt.new" target="_blank" rel="noopener">bolt.new</a></td><td><select class="sheet-label-select tag-app" data-tool-idx="15"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app" selected>📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Full-stack (frontend + backend); tạo cực nhanh; hỗ trợ database</td><td class="cons">Cần kỹ năng; giới hạn request; free tier hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">17</span></td><td><b>v0 (by Vercel)</b><br><a href="https://v0.dev" target="_blank" rel="noopener">v0.dev</a></td><td><select class="sheet-label-select tag-top" data-tool-idx="16"><option value="top" selected>⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Tạo component React nhanh; Vercel tích hợp; chất lượng cao</td><td class="cons">Cần hiểu React; free giới hạn lượt; cần account Vercel</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">18</span></td><td><b>Google Stitch</b><br><a href="https://stitch.withgoogle.com" target="_blank" rel="noopener">stitch.withgoogle.com</a></td><td><select class="sheet-label-select tag-free" data-tool-idx="17"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free" selected>🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Dễ dùng; Google hỗ trợ; free hoàn toàn</td><td class="cons">Chưa ổn định; tính năng hạn chế; không export được</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">19</span></td><td><b>Typedream</b><br><a href="https://typedream.com" target="_blank" rel="noopener">typedream.com</a></td><td><select class="sheet-label-select tag-free" data-tool-idx="18"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free" selected>🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Đơn giản; tối ưu SEO sẵn; giá rẻ</td><td class="cons">Tính năng cơ bản; khó customize sâu</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">20</span></td><td><b>Spline</b><br><a href="https://spline.design" target="_blank" rel="noopener">spline.design</a></td><td><select class="sheet-label-select tag-free" data-tool-idx="19"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free" selected>🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">3D visualization wow; hiệu ứng ấn tượng; free tốt</td><td class="cons">Nặng; chậm; cần kỹ năng 3D; không tốt cho SEO</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">21</span></td><td><b>Uizard</b><br><a href="https://uizard.io" target="_blank" rel="noopener">uizard.io</a></td><td><select class="sheet-label-select tag-free" data-tool-idx="20"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free" selected>🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Biến ảnh/sketch thành UI; nhanh; collaboration tốt</td><td class="cons">Chỉ prototype; không deploy được; free hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">22</span></td><td><b>Webflow</b><br><a href="https://webflow.com" target="_blank" rel="noopener">webflow.com</a></td><td><select class="sheet-label-select tag-paid" data-tool-idx="21"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app">📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid" selected>⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Tùy biến vô hạn; export code được; CMS tích hợp; SEO tốt</td><td class="cons">Learning curve cao; free rất hạn chế; publish cần trả phí</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">23</span></td><td><b>Replit</b><br><a href="https://replit.com" target="_blank" rel="noopener">replit.com</a></td><td><select class="sheet-label-select tag-app" data-tool-idx="22"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app" selected>📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">IDE online; hỗ trợ nhiều ngôn ngữ; deploy nhanh; free tốt</td><td class="cons">Performance hạn chế; free có giới hạn CPU/storage</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">24</span></td><td><b>Builder.io</b><br><a href="https://www.builder.io" target="_blank" rel="noopener">builder.io</a></td><td><select class="sheet-label-select tag-app" data-tool-idx="23"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app" selected>📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Kéo thả tự do; hỗ trợ API; CMS mạnh; collaboration</td><td class="cons">Complexity cao; learning curve; free hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">25</span></td><td><b>Tempo</b><br><a href="https://www.tempo.build" target="_blank" rel="noopener">tempo.build</a></td><td><select class="sheet-label-select tag-app" data-tool-idx="24"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app" selected>📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Sinh code React chuẩn; AI chỉnh sửa tốt; deploy dễ</td><td class="cons">Cần biết React; free hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">26</span></td><td><b>Anything</b><br><a href="https://anything.com" target="_blank" rel="noopener">anything.com</a></td><td><select class="sheet-label-select tag-app" data-tool-idx="25"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app" selected>📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Tạo cực nhanh; full-stack; no-code; tích hợp tốt</td><td class="cons">Mới; ít tài liệu; tính năng đang phát triển</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
           </tbody>
         </table>
         <p class="sub" style="margin:10px 0 0;font-size:13px;color:var(--muted)">🟢 = đã tự đăng ký &amp; dùng thử, chấp nhận được · = bên tạo web app · = cần trả phí để dùng thật · = dùng nội bộ, không chia sẻ cho khách.<br>⭐ Điểm (0–5) là đánh giá chủ quan của mình: <i>Giao diện</i> (đẹp/không đại trà), <i>Dễ dùng</i> (ai cũng làm được), <i>Tốc độ</i> (tải nhanh), <i>Tiềm năng</i> (đáng đưa vào content/dịch vụ). Trước khi dùng, tự kiểm chứng lại.<br>📌 <b>Demo sản phẩm:</b> đang để trống (—), chờ bạn gửi link demo thật của từng nền tảng để mình điền vào.</p>
@@ -1767,8 +1818,16 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
           <input type="text" class="form-input" id="new-tool-url" placeholder="Ví dụ: cursor.com hoặc https://..." />
         </div>
         <div class="form-group">
-          <label class="form-label">Điểm nổi bật</label>
-          <input type="text" class="form-input" id="new-tool-highlight" placeholder="Ví dụ: AI tạo web chuẩn React, dựng UI trong 30s..." />
+          <label class="form-label">Nhãn đánh giá (Google Sheets Tag) <span class="req">*</span></label>
+          <select class="form-input" id="new-tool-label">
+            <option value="top">⭐ Đánh giá cao</option>
+            <option value="recommended" selected>🟢 Khuyên dùng</option>
+            <option value="wp">⚡ WordPress</option>
+            <option value="app">📱 Web App</option>
+            <option value="free">🎁 Miễn phí tốt</option>
+            <option value="paid">⚠️ Cần trả phí</option>
+            <option value="none">⚪ Chưa đánh giá</option>
+          </select>
         </div>
         <div class="grid2" style="gap:10px;margin-bottom:0">
           <div class="form-group">
@@ -1944,6 +2003,9 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       rows.forEach(function(row) {
         var text = (row.textContent || '').toLowerCase();
         var isTop = row.querySelector('.rank-badge.top') !== null;
+        var labelSelect = row.querySelector('.sheet-label-select');
+        var labelVal = labelSelect ? labelSelect.value : '';
+
         var hasDemo = false;
         var input = row.querySelector('.demo-input');
         if (input && input.value && input.value.trim() !== '' && input.value.trim() !== '—') {
@@ -1951,9 +2013,9 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
         }
 
         var matchCategory = true;
-        if (activeFilter === 'top') matchCategory = isTop;
-        else if (activeFilter === 'wp') matchCategory = /wordpress|zipwp|10web/i.test(text);
-        else if (activeFilter === 'app') matchCategory = /app|react|lovable|bolt|base44|tempo|replit|v0/i.test(text);
+        if (activeFilter === 'top') matchCategory = isTop || labelVal === 'top';
+        else if (activeFilter === 'wp') matchCategory = labelVal === 'wp' || /wordpress|zipwp|10web/i.test(text);
+        else if (activeFilter === 'app') matchCategory = labelVal === 'app' || /app|react|lovable|bolt|base44|tempo|replit|v0/i.test(text);
         else if (activeFilter === 'has-demo') matchCategory = hasDemo;
 
         var matchSearch = !query || text.indexOf(query) !== -1;
@@ -1980,6 +2042,7 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
   // ================= DYNAMIC TOOL & COLUMN LIFECYCLE & SUPABASE SYNC =================
   (function() {
     const DEMO_KEY = 'fb_campaign_demo_links_v1';
+    const LABELS_KEY = 'fb_campaign_tool_labels_v1';
     const CUSTOM_TOOLS_KEY = 'fb_campaign_custom_tools_v1';
     const CUSTOM_COLS_KEY = 'fb_campaign_custom_cols_v1';
     const SUPABASE_URL = 'https://dclqkjvyeukmprpltdkp.supabase.co';
@@ -2107,6 +2170,87 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       allInputs.forEach(function(input, idx) {
         attachInputHandlers(input, idx);
       });
+      bindAllLabels();
+    }
+
+    // ================= LABEL SELECT LOGIC =================
+    function updateLabelSelectClass(select) {
+      const val = select.value || 'recommended';
+      select.className = 'sheet-label-select tag-' + val;
+    }
+
+    function bindAllLabels() {
+      const allLabels = document.querySelectorAll('.sheet-label-select');
+      allLabels.forEach(function(select) {
+        updateLabelSelectClass(select);
+        select.onchange = function() {
+          updateLabelSelectClass(select);
+          const toolIdx = select.dataset.toolIdx ? parseInt(select.dataset.toolIdx, 10) : null;
+          saveLabelsLocal();
+          if (toolIdx !== null) {
+            syncLabelToCloud(toolIdx, select.value);
+          }
+          if (applyFilterGlobal) applyFilterGlobal();
+          show('🏷️ Đã cập nhật nhãn: ' + select.options[select.selectedIndex].text);
+        };
+      });
+    }
+
+    function saveLabelsLocal() {
+      try {
+        const data = {};
+        document.querySelectorAll('.sheet-label-select').forEach(function(select) {
+          const idx = select.dataset.toolIdx;
+          if (idx !== undefined && idx !== null) {
+            data[idx] = select.value;
+          }
+        });
+        localStorage.setItem(LABELS_KEY, JSON.stringify(data));
+      } catch(e){}
+    }
+
+    function loadLabelsLocal() {
+      try {
+        const saved = localStorage.getItem(LABELS_KEY);
+        if (saved) {
+          const data = JSON.parse(saved);
+          if (data && typeof data === 'object') {
+            document.querySelectorAll('.sheet-label-select').forEach(function(select) {
+              const idx = select.dataset.toolIdx;
+              if (idx !== undefined && data[idx] !== undefined) {
+                select.value = data[idx];
+                updateLabelSelectClass(select);
+              }
+            });
+          }
+        }
+      } catch(e){}
+    }
+
+    async function syncLabelToCloud(toolIndex, labelVal) {
+      setCloudStatus('saving', 'Đang lưu...');
+      try {
+        const res = await fetch(SUPABASE_URL + '/rest/v1/tools?tool_index=eq.' + toolIndex, {
+          method: 'PATCH',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_KEY,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({
+            label: labelVal,
+            updated_at: new Date().toISOString()
+          })
+        });
+        if (res.ok) {
+          setCloudStatus('', 'Đã lưu trên Cloud');
+        } else {
+          setCloudStatus('error', 'Đã lưu offline');
+        }
+      } catch(e){
+        setCloudStatus('error', 'Đã lưu offline');
+      }
     }
 
     // Save demo links to localStorage
@@ -2178,7 +2322,7 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
 
     async function loadCloud() {
       try {
-        const res = await fetch(SUPABASE_URL + '/rest/v1/tools?select=tool_index,demo_link&order=tool_index.asc', {
+        const res = await fetch(SUPABASE_URL + '/rest/v1/tools?select=tool_index,demo_link,label&order=tool_index.asc', {
           headers: {
             'apikey': SUPABASE_KEY,
             'Authorization': 'Bearer ' + SUPABASE_KEY
@@ -2200,10 +2344,19 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
                 }
               }
             }
+            // Sync label if present in Supabase
+            if (row.label) {
+              const labelSelect = document.querySelector(`.sheet-label-select[data-tool-idx="${idx}"]`);
+              if (labelSelect && labelSelect.value !== row.label) {
+                labelSelect.value = row.label;
+                updateLabelSelectClass(labelSelect);
+              }
+            }
           });
           if (updated) {
             saveLocal();
           }
+          saveLabelsLocal();
           setCloudStatus('', 'Đã lưu trên Cloud');
         }
       } catch (err) {
@@ -2236,6 +2389,7 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       const baseRowCount = 26;
       customTools.forEach(function(tool, cIdx) {
         const toolNum = baseRowCount + cIdx + 1;
+        const globalIdx = baseRowCount + cIdx;
         const tr = document.createElement('tr');
         tr.className = 'custom-tool-row';
         tr.dataset.customIdx = cIdx;
@@ -2244,13 +2398,25 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
         let hrefUrl = displayUrl;
         if (hrefUrl && !/^https?:\/\//i.test(hrefUrl)) hrefUrl = 'https://' + hrefUrl;
 
+        const currentLabel = tool.label || 'recommended';
+
         tr.innerHTML = `
           <td>
             <span class="rank-badge ${tool.isTop ? 'top' : ''}">${toolNum}</span>
             <button type="button" class="row-delete-btn" title="Xóa công cụ này" data-del-idx="${cIdx}">🗑️</button>
           </td>
           <td><b>${tool.name || 'Công cụ mới'}</b>${hrefUrl ? `<br><a href="${hrefUrl}" target="_blank" rel="noopener">${displayUrl}</a>` : ''}</td>
-          <td>${tool.highlight || '—'}</td>
+          <td>
+            <select class="sheet-label-select tag-${currentLabel}" data-tool-idx="${globalIdx}">
+              <option value="top" ${currentLabel==='top'?'selected':''}>⭐ Đánh giá cao</option>
+              <option value="recommended" ${currentLabel==='recommended'?'selected':''}>🟢 Khuyên dùng</option>
+              <option value="wp" ${currentLabel==='wp'?'selected':''}>⚡ WordPress</option>
+              <option value="app" ${currentLabel==='app'?'selected':''}>📱 Web App</option>
+              <option value="free" ${currentLabel==='free'?'selected':''}>🎁 Miễn phí tốt</option>
+              <option value="paid" ${currentLabel==='paid'?'selected':''}>⚠️ Cần trả phí</option>
+              <option value="none" ${currentLabel==='none'?'selected':''}>⚪ Chưa đánh giá</option>
+            </select>
+          </td>
           <td class="pros">${tool.pros || '—'}</td>
           <td class="cons">${tool.cons || '—'}</td>
           <td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..." value="${tool.demo || ''}"><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td>
@@ -2285,6 +2451,7 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
             renderCustomTools();
             bindAllInputs();
             saveLocal();
+            saveLabelsLocal();
             show('🗑️ Đã xóa công cụ!');
           }
         });
@@ -2318,7 +2485,7 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
         e.preventDefault();
         const name = document.getElementById('new-tool-name').value.trim();
         const url = document.getElementById('new-tool-url').value.trim();
-        const highlight = document.getElementById('new-tool-highlight').value.trim();
+        const labelVal = document.getElementById('new-tool-label').value;
         const pros = document.getElementById('new-tool-pros').value.trim();
         const cons = document.getElementById('new-tool-cons').value.trim();
         const demo = document.getElementById('new-tool-demo').value.trim();
@@ -2332,7 +2499,7 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
         const newToolObj = {
           name: name,
           url: url,
-          highlight: highlight,
+          label: labelVal,
           pros: pros,
           cons: cons,
           demo: demo,
@@ -2345,12 +2512,14 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
         renderCustomTools();
         bindAllInputs();
         saveLocal();
+        saveLabelsLocal();
         closeModalTool();
         show('✨ Đã thêm công cụ: ' + name);
 
         // Optional cloud sync insert
         const newToolIdx = 26 + customTools.length - 1;
         syncToCloud(newToolIdx, demo);
+        syncLabelToCloud(newToolIdx, labelVal);
       });
     }
 
@@ -2472,6 +2641,7 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
     loadCustomCols();
     bindAllInputs();
     loadLocal();
+    loadLabelsLocal();
     loadCloud();
   })();
 </script>
