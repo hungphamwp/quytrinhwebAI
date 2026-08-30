@@ -835,6 +835,230 @@
   .rating-badge.not-ok { background: var(--red-soft); color: var(--red); }
   .rating-badge.normal { background: var(--warn-soft); color: var(--warn); }
   .rating-badge.good { background: var(--brand-soft); color: var(--brand); }
+
+  /* Toolbar Action Buttons (Add Tool / Add Column) */
+  .table-actions-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .btn-action-primary {
+    background: var(--brand-gradient);
+    color: #ffffff;
+    border: none;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 3px 10px var(--brand-glow);
+    transition: all 0.2s ease;
+  }
+  .btn-action-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 16px var(--brand-glow);
+  }
+  .btn-action-secondary {
+    background: var(--card-solid);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+  }
+  .btn-action-secondary:hover {
+    border-color: var(--brand);
+    color: var(--brand);
+    transform: translateY(-1px);
+  }
+
+  /* Custom Column and Row Deletion Buttons */
+  .row-delete-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 4px;
+    transition: all 0.15s ease;
+  }
+  .row-delete-btn:hover {
+    background: var(--red-soft);
+    color: var(--red);
+    border-color: var(--red-border);
+  }
+  .col-delete-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--line);
+    color: var(--muted);
+    border: none;
+    cursor: pointer;
+    font-size: 11px;
+    line-height: 1;
+    margin-left: 6px;
+    vertical-align: middle;
+    transition: all 0.15s ease;
+  }
+  .col-delete-btn:hover {
+    background: var(--red-soft);
+    color: var(--red);
+  }
+  .custom-col-cell {
+    min-width: 120px;
+    outline: none;
+    transition: background-color 0.15s ease;
+  }
+  .custom-col-cell:focus {
+    background-color: var(--brand-soft);
+    box-shadow: inset 0 0 0 2px var(--brand);
+    border-radius: 4px;
+  }
+
+  /* Modal Dialog (Obsidian Glass) */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(10px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .modal-box {
+    background: var(--card-solid);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 540px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    transform: translateY(20px) scale(0.96);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .modal-overlay.open .modal-box {
+    transform: translateY(0) scale(1);
+  }
+  .modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--line);
+    background: var(--brand-soft);
+  }
+  .modal-head h3 {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 17.5px;
+    font-weight: 800;
+    color: var(--ink);
+  }
+  .modal-close-btn {
+    border: none;
+    background: var(--card-solid);
+    color: var(--muted);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+  }
+  .modal-close-btn:hover {
+    background: var(--red-soft);
+    color: var(--red);
+  }
+  .modal-body {
+    padding: 20px 22px;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+  .form-group {
+    margin-bottom: 14px;
+  }
+  .form-label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 5px;
+  }
+  .form-label .req {
+    color: var(--red);
+  }
+  .form-input, .form-textarea {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--input-bg);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 13px;
+    transition: all 0.15s ease;
+  }
+  .form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px var(--brand-glow);
+  }
+  .form-textarea {
+    resize: vertical;
+    min-height: 60px;
+  }
+  .form-checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .modal-foot {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 22px;
+    border-top: 1px solid var(--line);
+    background: var(--card-solid);
+  }
 </style>
 </head>
 <body>
@@ -937,10 +1161,14 @@
           </div>
         </div>
 
-        <!-- Real-time Search & Filter Tool Bar -->
+        <!-- Real-time Search & Filter Tool Bar with Add Buttons -->
         <div class="tool-filter-bar">
           <input type="text" id="tool-search" class="tool-search-input" placeholder="🔍 Tìm nhanh công cụ AI (Framer, Durable, ZipWP, Lovable...)..." />
-          <div class="tool-chips">
+          <div class="table-actions-toolbar">
+            <button type="button" class="btn-action-primary" id="btn-open-add-tool">➕ Thêm Web AI mới</button>
+            <button type="button" class="btn-action-secondary" id="btn-open-add-col">➕ Thêm cột mới</button>
+          </div>
+          <div class="tool-chips" style="width:100%;margin-top:6px">
             <button type="button" class="tool-chip active" data-filter="all">🌟 Tất cả (26)</button>
             <button type="button" class="tool-chip" data-filter="top">🔥 Top khuyên dùng (5)</button>
             <button type="button" class="tool-chip" data-filter="wp">⚡ WordPress (3)</button>
@@ -1517,9 +1745,84 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
   </div>
 
   <footer>Giao diện tab · Sơ đồ · Kế hoạch chi tiết · Bài đăng nhóm 7 ngày · Tạo bởi DeepSeek Harness</footer>
-</div>
+</div><!-- .wrap -->
 
 <div class="toast" id="toast">📋 Đã copy bài vào clipboard!</div>
+
+<!-- Modal: Thêm Web AI mới -->
+<div class="modal-overlay" id="modal-add-tool">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>➕ Thêm công cụ Web AI mới</h3>
+      <button type="button" class="modal-close-btn" id="btn-close-modal-tool">×</button>
+    </div>
+    <form id="form-add-tool">
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Tên nền tảng Web AI <span class="req">*</span></label>
+          <input type="text" class="form-input" id="new-tool-name" placeholder="Ví dụ: Cursor AI, v0, Relume..." required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Địa chỉ Website (Link)</label>
+          <input type="text" class="form-input" id="new-tool-url" placeholder="Ví dụ: cursor.com hoặc https://..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Điểm nổi bật</label>
+          <input type="text" class="form-input" id="new-tool-highlight" placeholder="Ví dụ: AI tạo web chuẩn React, dựng UI trong 30s..." />
+        </div>
+        <div class="grid2" style="gap:10px;margin-bottom:0">
+          <div class="form-group">
+            <label class="form-label" style="color:var(--ok)">Ưu điểm</label>
+            <textarea class="form-textarea" id="new-tool-pros" placeholder="Ví dụ: Nhanh, hiện đại, không cần code..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="color:var(--red)">Nhược điểm</label>
+            <textarea class="form-textarea" id="new-tool-cons" placeholder="Ví dụ: Giới hạn bản free, sub-domain..."></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Link Demo sản phẩm (nếu có)</label>
+          <input type="text" class="form-input" id="new-tool-demo" placeholder="https://..." />
+        </div>
+        <div class="form-group">
+          <label class="form-checkbox-label">
+            <input type="checkbox" id="new-tool-top" />
+            <span>⭐ Đánh dấu là <b>Top khuyên dùng</b> (Huy hiệu nổi bật)</span>
+          </label>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn-action-secondary" id="btn-cancel-add-tool">Hủy</button>
+        <button type="submit" class="btn-action-primary">💾 Lưu công cụ</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: Thêm Cột mới cho bảng -->
+<div class="modal-overlay" id="modal-add-col">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>➕ Thêm cột thông tin mới</h3>
+      <button type="button" class="modal-close-btn" id="btn-close-modal-col">×</button>
+    </div>
+    <form id="form-add-col">
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Tên cột mới <span class="req">*</span></label>
+          <input type="text" class="form-input" id="new-col-name" placeholder="Ví dụ: Chi phí / tháng, Ghi chú, Đánh giá, Thẻ tag..." required />
+        </div>
+        <p style="font-size:12.5px;color:var(--muted);margin:6px 0 0">
+          💡 Cột mới sẽ được tự động thêm vào tất cả các dòng. Bạn có thể bấm trực tiếp vào từng ô để nhập dữ liệu, hệ thống sẽ tự động lưu!
+        </p>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn-action-secondary" id="btn-cancel-add-col">Hủy</button>
+        <button type="submit" class="btn-action-primary">➕ Thêm cột vào bảng</button>
+      </div>
+    </form>
+  </div>
+</div>
 
 <script>
   // Main tab switching
@@ -1627,15 +1930,16 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
   })();
 
   // ================= TOOL SEARCH & FILTER CHIPS =================
+  var applyFilterGlobal = null;
   (function() {
     var searchInput = document.getElementById('tool-search');
     var chips = document.querySelectorAll('.tool-chip');
     var table = document.getElementById('tools-table');
-    if (!table) return;
-    var rows = table.querySelectorAll('tbody tr');
     var activeFilter = 'all';
 
     function applyFilter() {
+      if (!table) return;
+      var rows = table.querySelectorAll('tbody tr');
       var query = searchInput ? (searchInput.value || '').trim().toLowerCase() : '';
       rows.forEach(function(row) {
         var text = (row.textContent || '').toLowerCase();
@@ -1670,22 +1974,29 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       });
     });
 
-    window.refreshToolFilter = applyFilter;
+    applyFilterGlobal = applyFilter;
   })();
 
-  // ================= COMMERCIAL-GRADE AUTO-SAVE & CLOUD SYNC =================
+  // ================= DYNAMIC TOOL & COLUMN LIFECYCLE & SUPABASE SYNC =================
   (function() {
     const DEMO_KEY = 'fb_campaign_demo_links_v1';
+    const CUSTOM_TOOLS_KEY = 'fb_campaign_custom_tools_v1';
+    const CUSTOM_COLS_KEY = 'fb_campaign_custom_cols_v1';
     const SUPABASE_URL = 'https://dclqkjvyeukmprpltdkp.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRjbHFranZ5ZXVrbXBycGx0ZGtwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgxMDQwNTEsImV4cCI6MjEwMzY4MDA1MX0.wvMxX5v8WNYslbu08FqP3NzxAdoWUMnhfgs_RNGSkec';
 
+    const table = document.getElementById('tools-table');
+    const tbody = table ? table.querySelector('tbody') : null;
+    const theadRow = table ? table.querySelector('thead tr') : null;
     const cloudStatusBadge = document.getElementById('cloud-status');
     const cloudStatusText = document.getElementById('cloud-status-text');
     const topCloudStatus = document.getElementById('top-cloud-status');
     const topCloudText = document.getElementById('top-cloud-status-text');
     const demoCountEl = document.getElementById('demo-count');
     const kpiProgressNum = document.getElementById('kpi-progress-num');
-    const inputs = document.querySelectorAll('.demo-input');
+
+    let customTools = [];
+    let customCols = [];
     const syncTimers = {};
 
     function setCloudStatus(state, text) {
@@ -1699,7 +2010,6 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       }
     }
 
-    // Refresh UI (counters, link buttons, clear buttons)
     function refreshCellUI(input) {
       const val = (input.value || '').trim();
       const parent = input.closest('.demo-cell') || input.parentElement;
@@ -1727,8 +2037,9 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
     }
 
     function refreshAllUI() {
+      const allInputs = document.querySelectorAll('.demo-input');
       let count = 0;
-      inputs.forEach(function(input) {
+      allInputs.forEach(function(input) {
         if (refreshCellUI(input)) {
           count++;
         }
@@ -1737,19 +2048,73 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
         demoCountEl.textContent = count;
       }
       if (kpiProgressNum) {
-        kpiProgressNum.textContent = count + ' / ' + inputs.length;
+        kpiProgressNum.textContent = count + ' / ' + allInputs.length;
       }
-      if (window.refreshToolFilter) {
-        window.refreshToolFilter();
+      if (applyFilterGlobal) {
+        applyFilterGlobal();
       }
       return count;
     }
 
-    // Save to localStorage immediately
+    function attachInputHandlers(input, idx) {
+      const parent = input.closest('.demo-cell') || input.parentElement;
+      const clearBtn = parent ? parent.querySelector('.demo-clear-btn') : null;
+
+      input.addEventListener('input', function() {
+        refreshCellUI(input);
+        saveLocal();
+        setCloudStatus('saving', 'Đang lưu...');
+        clearTimeout(syncTimers[idx]);
+        syncTimers[idx] = setTimeout(function() {
+          syncToCloud(idx, input.value);
+        }, 400);
+      });
+
+      input.addEventListener('change', function() {
+        clearTimeout(syncTimers[idx]);
+        saveLocal();
+        syncToCloud(idx, input.value);
+      });
+
+      input.addEventListener('blur', function() {
+        clearTimeout(syncTimers[idx]);
+        saveLocal();
+        syncToCloud(idx, input.value);
+      });
+
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          this.blur();
+        }
+      });
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          input.value = '';
+          refreshCellUI(input);
+          saveLocal();
+          clearTimeout(syncTimers[idx]);
+          syncToCloud(idx, '');
+          input.focus();
+        });
+      }
+    }
+
+    function bindAllInputs() {
+      const allInputs = document.querySelectorAll('.demo-input');
+      allInputs.forEach(function(input, idx) {
+        attachInputHandlers(input, idx);
+      });
+    }
+
+    // Save demo links to localStorage
     function saveLocal() {
       try {
+        const allInputs = document.querySelectorAll('.demo-input');
         const data = [];
-        inputs.forEach(function(input) {
+        allInputs.forEach(function(input) {
           data.push(input.value.trim());
         });
         localStorage.setItem(DEMO_KEY, JSON.stringify(data));
@@ -1759,14 +2124,15 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       refreshAllUI();
     }
 
-    // Load from localStorage instantly
+    // Load demo links from localStorage
     function loadLocal() {
       try {
         const saved = localStorage.getItem(DEMO_KEY);
         if (saved) {
           const data = JSON.parse(saved);
           if (Array.isArray(data)) {
-            inputs.forEach(function(input, idx) {
+            const allInputs = document.querySelectorAll('.demo-input');
+            allInputs.forEach(function(input, idx) {
               if (data[idx] !== undefined && data[idx] !== null && data[idx] !== '—') {
                 input.value = data[idx];
               }
@@ -1779,7 +2145,7 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       refreshAllUI();
     }
 
-    // Sync a single tool to Supabase REST API
+    // Cloud sync
     async function syncToCloud(toolIndex, val) {
       setCloudStatus('saving', 'Đang lưu...');
       const cleanVal = val ? val.trim() : '—';
@@ -1810,7 +2176,6 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       }
     }
 
-    // Load from Cloud on startup
     async function loadCloud() {
       try {
         const res = await fetch(SUPABASE_URL + '/rest/v1/tools?select=tool_index,demo_link&order=tool_index.asc', {
@@ -1823,13 +2188,14 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
           let updated = false;
+          const allInputs = document.querySelectorAll('.demo-input');
           data.forEach(function(row) {
             const idx = row.tool_index;
-            if (inputs[idx]) {
-              const currentVal = inputs[idx].value.trim();
+            if (allInputs[idx]) {
+              const currentVal = allInputs[idx].value.trim();
               if (row.demo_link && row.demo_link !== '—') {
                 if (currentVal !== row.demo_link) {
-                  inputs[idx].value = row.demo_link;
+                  allInputs[idx].value = row.demo_link;
                   updated = true;
                 }
               }
@@ -1845,58 +2211,266 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       }
     }
 
-    // Attach real-time handlers to every cell
-    inputs.forEach(function(input, idx) {
-      const parent = input.closest('.demo-cell') || input.parentElement;
-      const clearBtn = parent ? parent.querySelector('.demo-clear-btn') : null;
+    // ================= CUSTOM TOOLS (ROWS) LOGIC =================
+    function saveCustomTools() {
+      try {
+        localStorage.setItem(CUSTOM_TOOLS_KEY, JSON.stringify(customTools));
+      } catch(e){}
+    }
 
-      // As user types: auto-save local instantly + debounce cloud sync
-      input.addEventListener('input', function() {
-        refreshCellUI(input);
-        saveLocal();
-        setCloudStatus('saving', 'Đang lưu...');
-
-        clearTimeout(syncTimers[idx]);
-        syncTimers[idx] = setTimeout(function() {
-          syncToCloud(idx, input.value);
-        }, 400);
-      });
-
-      // On change/blur: flush immediate save
-      input.addEventListener('change', function() {
-        clearTimeout(syncTimers[idx]);
-        saveLocal();
-        syncToCloud(idx, input.value);
-      });
-
-      input.addEventListener('blur', function() {
-        clearTimeout(syncTimers[idx]);
-        saveLocal();
-        syncToCloud(idx, input.value);
-      });
-
-      input.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          this.blur();
+    function loadCustomTools() {
+      try {
+        const saved = localStorage.getItem(CUSTOM_TOOLS_KEY);
+        if (saved) {
+          customTools = JSON.parse(saved) || [];
+          renderCustomTools();
         }
+      } catch(e){}
+    }
+
+    function renderCustomTools() {
+      if (!tbody) return;
+      // Remove any previously rendered custom rows
+      tbody.querySelectorAll('tr.custom-tool-row').forEach(function(r){ r.remove(); });
+
+      const baseRowCount = 26;
+      customTools.forEach(function(tool, cIdx) {
+        const toolNum = baseRowCount + cIdx + 1;
+        const tr = document.createElement('tr');
+        tr.className = 'custom-tool-row';
+        tr.dataset.customIdx = cIdx;
+
+        let displayUrl = tool.url || '';
+        let hrefUrl = displayUrl;
+        if (hrefUrl && !/^https?:\/\//i.test(hrefUrl)) hrefUrl = 'https://' + hrefUrl;
+
+        tr.innerHTML = `
+          <td>
+            <span class="rank-badge ${tool.isTop ? 'top' : ''}">${toolNum}</span>
+            <button type="button" class="row-delete-btn" title="Xóa công cụ này" data-del-idx="${cIdx}">🗑️</button>
+          </td>
+          <td><b>${tool.name || 'Công cụ mới'}</b>${hrefUrl ? `<br><a href="${hrefUrl}" target="_blank" rel="noopener">${displayUrl}</a>` : ''}</td>
+          <td>${tool.highlight || '—'}</td>
+          <td class="pros">${tool.pros || '—'}</td>
+          <td class="cons">${tool.cons || '—'}</td>
+          <td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..." value="${tool.demo || ''}"><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td>
+        `;
+
+        // Add custom column cells if any custom columns exist
+        customCols.forEach(function(col, colIdx) {
+          const td = document.createElement('td');
+          td.contentEditable = 'true';
+          td.className = 'custom-col-cell';
+          td.dataset.colId = col.id;
+          td.textContent = (tool.customFields && tool.customFields[col.id]) ? tool.customFields[col.id] : '';
+          td.addEventListener('blur', function() {
+            if (!tool.customFields) tool.customFields = {};
+            tool.customFields[col.id] = td.textContent.trim();
+            saveCustomTools();
+          });
+          tr.appendChild(td);
+        });
+
+        tbody.appendChild(tr);
       });
 
-      // Clear button (×)
-      if (clearBtn) {
-        clearBtn.addEventListener('click', function(e) {
+      // Bind delete events
+      tbody.querySelectorAll('.row-delete-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
           e.preventDefault();
-          input.value = '';
-          refreshCellUI(input);
-          saveLocal();
-          clearTimeout(syncTimers[idx]);
-          syncToCloud(idx, '');
-          input.focus();
+          const delIdx = parseInt(btn.dataset.delIdx, 10);
+          if (confirm('Bạn có chắc chắn muốn xóa công cụ này không?')) {
+            customTools.splice(delIdx, 1);
+            saveCustomTools();
+            renderCustomTools();
+            bindAllInputs();
+            saveLocal();
+            show('🗑️ Đã xóa công cụ!');
+          }
         });
-      }
-    });
+      });
 
-    // Initial boot: Load local immediately, then fetch cloud in background
+      bindAllInputs();
+    }
+
+    // Modal Add Tool Handlers
+    const modalTool = document.getElementById('modal-add-tool');
+    const btnOpenAddTool = document.getElementById('btn-open-add-tool');
+    const btnCloseAddTool = document.getElementById('btn-close-modal-tool');
+    const btnCancelAddTool = document.getElementById('btn-cancel-add-tool');
+    const formAddTool = document.getElementById('form-add-tool');
+
+    if (btnOpenAddTool) {
+      btnOpenAddTool.addEventListener('click', function() {
+        if (formAddTool) formAddTool.reset();
+        if (modalTool) modalTool.classList.add('open');
+      });
+    }
+
+    function closeModalTool() {
+      if (modalTool) modalTool.classList.remove('open');
+    }
+    if (btnCloseAddTool) btnCloseAddTool.addEventListener('click', closeModalTool);
+    if (btnCancelAddTool) btnCancelAddTool.addEventListener('click', closeModalTool);
+
+    if (formAddTool) {
+      formAddTool.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('new-tool-name').value.trim();
+        const url = document.getElementById('new-tool-url').value.trim();
+        const highlight = document.getElementById('new-tool-highlight').value.trim();
+        const pros = document.getElementById('new-tool-pros').value.trim();
+        const cons = document.getElementById('new-tool-cons').value.trim();
+        const demo = document.getElementById('new-tool-demo').value.trim();
+        const isTop = document.getElementById('new-tool-top').checked;
+
+        if (!name) {
+          alert('Vui lòng nhập tên công cụ!');
+          return;
+        }
+
+        const newToolObj = {
+          name: name,
+          url: url,
+          highlight: highlight,
+          pros: pros,
+          cons: cons,
+          demo: demo,
+          isTop: isTop,
+          customFields: {}
+        };
+
+        customTools.push(newToolObj);
+        saveCustomTools();
+        renderCustomTools();
+        bindAllInputs();
+        saveLocal();
+        closeModalTool();
+        show('✨ Đã thêm công cụ: ' + name);
+
+        // Optional cloud sync insert
+        const newToolIdx = 26 + customTools.length - 1;
+        syncToCloud(newToolIdx, demo);
+      });
+    }
+
+    // ================= CUSTOM COLUMNS LOGIC =================
+    function saveCustomCols() {
+      try {
+        localStorage.setItem(CUSTOM_COLS_KEY, JSON.stringify(customCols));
+      } catch(e){}
+    }
+
+    function loadCustomCols() {
+      try {
+        const saved = localStorage.getItem(CUSTOM_COLS_KEY);
+        if (saved) {
+          customCols = JSON.parse(saved) || [];
+          renderCustomCols();
+        }
+      } catch(e){}
+    }
+
+    function renderCustomCols() {
+      if (!table || !theadRow) return;
+
+      // Remove existing custom column THs
+      theadRow.querySelectorAll('th.custom-col-th').forEach(function(th){ th.remove(); });
+      // Remove existing custom column TDs
+      table.querySelectorAll('tbody tr').forEach(function(tr) {
+        tr.querySelectorAll('td.custom-col-cell').forEach(function(td){ td.remove(); });
+      });
+
+      customCols.forEach(function(col, cIdx) {
+        // Append Header
+        const th = document.createElement('th');
+        th.className = 'custom-col-th';
+        th.dataset.colId = col.id;
+        th.innerHTML = `${col.name} <button type="button" class="col-delete-btn" title="Xóa cột này" data-col-idx="${cIdx}">×</button>`;
+        theadRow.appendChild(th);
+
+        // Append Cell to each Row
+        table.querySelectorAll('tbody tr').forEach(function(tr, rIdx) {
+          const td = document.createElement('td');
+          td.contentEditable = 'true';
+          td.className = 'custom-col-cell';
+          td.dataset.colId = col.id;
+          td.dataset.rowIdx = rIdx;
+          td.textContent = (col.data && col.data[rIdx]) ? col.data[rIdx] : '';
+
+          td.addEventListener('blur', function() {
+            if (!col.data) col.data = {};
+            col.data[rIdx] = td.textContent.trim();
+            saveCustomCols();
+            setCloudStatus('', 'Đã lưu bảng');
+          });
+
+          tr.appendChild(td);
+        });
+      });
+
+      // Bind delete column event
+      theadRow.querySelectorAll('.col-delete-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const colIdx = parseInt(btn.dataset.colIdx, 10);
+          if (confirm('Bạn có chắc chắn muốn xóa cột "' + customCols[colIdx].name + '" không?')) {
+            customCols.splice(colIdx, 1);
+            saveCustomCols();
+            renderCustomCols();
+            show('🗑️ Đã xóa cột!');
+          }
+        });
+      });
+    }
+
+    // Modal Add Column Handlers
+    const modalCol = document.getElementById('modal-add-col');
+    const btnOpenAddCol = document.getElementById('btn-open-add-col');
+    const btnCloseAddCol = document.getElementById('btn-close-modal-col');
+    const btnCancelAddCol = document.getElementById('btn-cancel-add-col');
+    const formAddCol = document.getElementById('form-add-col');
+
+    if (btnOpenAddCol) {
+      btnOpenAddCol.addEventListener('click', function() {
+        if (formAddCol) formAddCol.reset();
+        if (modalCol) modalCol.classList.add('open');
+      });
+    }
+
+    function closeModalCol() {
+      if (modalCol) modalCol.classList.remove('open');
+    }
+    if (btnCloseAddCol) btnCloseAddCol.addEventListener('click', closeModalCol);
+    if (btnCancelAddCol) btnCancelAddCol.addEventListener('click', closeModalCol);
+
+    if (formAddCol) {
+      formAddCol.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const colName = document.getElementById('new-col-name').value.trim();
+        if (!colName) {
+          alert('Vui lòng nhập tên cột!');
+          return;
+        }
+
+        const newColObj = {
+          id: 'col_' + Date.now(),
+          name: colName,
+          data: {}
+        };
+
+        customCols.push(newColObj);
+        saveCustomCols();
+        renderCustomCols();
+        closeModalCol();
+        show('✨ Đã thêm cột: ' + colName);
+      });
+    }
+
+    // Initial boot sequence
+    loadCustomTools();
+    loadCustomCols();
+    bindAllInputs();
     loadLocal();
     loadCloud();
   })();
