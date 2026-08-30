@@ -1,62 +1,173 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" data-theme="dark">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Chiến dịch Facebook → Làm web WordPress</title>
+<title>Chiến dịch Facebook → Làm web WordPress | Web AI Pro</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f8fafc;
-    --card: #ffffff;
-    --ink: #0f172a;
-    --ink-light: #334155;
-    --muted: #64748b;
-    --brand: #4f46e5;
-    --brand-dark: #3730a3;
-    --brand-gradient: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #2563eb 100%);
-    --brand-soft: #eef2ff;
-    --brand-border: #c7d2fe;
-    --ok: #059669;
-    --ok-soft: #ecfdf5;
-    --ok-border: #a7f3d0;
-    --warn: #d97706;
-    --warn-soft: #fffbeb;
-    --warn-border: #fde68a;
-    --red: #e11d48;
-    --red-soft: #fff1f2;
-    --red-border: #fecdd3;
-    --line: #e2e8f0;
-    --line-subtle: #f1f5f9;
+    --brand: #6366f1;
+    --brand-dark: #4f46e5;
+    --brand-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #3b82f6 100%);
+    --brand-glow: rgba(99, 102, 241, 0.4);
+    --ok: #10b981;
+    --ok-soft: rgba(16, 185, 129, 0.15);
+    --ok-border: rgba(16, 185, 129, 0.3);
+    --warn: #f59e0b;
+    --warn-soft: rgba(245, 158, 11, 0.15);
+    --warn-border: rgba(245, 158, 11, 0.3);
+    --red: #f43f5e;
+    --red-soft: rgba(244, 63, 94, 0.15);
+    --red-border: rgba(244, 63, 94, 0.3);
     --radius-sm: 8px;
     --radius-md: 14px;
     --radius-lg: 20px;
     --radius-full: 9999px;
-    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
-    --shadow-lg: 0 12px 30px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
   }
+
+  /* Dark Theme (Default) */
+  html[data-theme="dark"] {
+    --bg: #090d16;
+    --bg-surface: #0f172a;
+    --card: rgba(17, 24, 39, 0.75);
+    --card-solid: #111827;
+    --card-hover: rgba(30, 41, 59, 0.85);
+    --ink: #f8fafc;
+    --ink-light: #cbd5e1;
+    --muted: #94a3b8;
+    --line: rgba(255, 255, 255, 0.08);
+    --line-subtle: rgba(255, 255, 255, 0.04);
+    --brand-soft: rgba(99, 102, 241, 0.18);
+    --brand-border: rgba(99, 102, 241, 0.35);
+    --shadow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --table-header: rgba(15, 23, 42, 0.9);
+    --table-hover: rgba(99, 102, 241, 0.08);
+    --input-bg: rgba(15, 23, 42, 0.8);
+  }
+
+  /* Light Theme */
+  html[data-theme="light"] {
+    --bg: #f8fafc;
+    --bg-surface: #ffffff;
+    --card: #ffffff;
+    --card-solid: #ffffff;
+    --card-hover: #f1f5f9;
+    --ink: #0f172a;
+    --ink-light: #334155;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --line-subtle: #f1f5f9;
+    --brand-soft: #eef2ff;
+    --brand-border: #c7d2fe;
+    --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+    --table-header: #f8fafc;
+    --table-hover: #f8faff;
+    --input-bg: #ffffff;
+  }
+
   * { box-sizing: border-box; }
   body {
     margin: 0;
     background-color: var(--bg);
-    background-image: 
-      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
-      radial-gradient(at 50% 100%, rgba(236, 72, 153, 0.03) 0px, transparent 50%);
-    background-attachment: fixed;
     color: var(--ink);
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+    position: relative;
   }
+
+  /* Ambient Glowing Background Orbs */
+  .ambient-mesh {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+  }
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.25;
+    animation: orbFloat 14s infinite alternate ease-in-out;
+  }
+  .orb-1 { width: 500px; height: 500px; background: #6366f1; top: -100px; left: -100px; }
+  .orb-2 { width: 450px; height: 450px; background: #06b6d4; top: 30%; right: -100px; animation-duration: 18s; }
+  .orb-3 { width: 400px; height: 400px; background: #ec4899; bottom: -100px; left: 30%; animation-duration: 20s; }
+  @keyframes orbFloat { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(60px) scale(1.15); } }
+
   .wrap {
     max-width: 1320px;
     margin: 0 auto;
-    padding: 24px 20px 80px;
+    padding: 20px 20px 80px;
+  }
+
+  /* Floating Navbar */
+  .top-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 18px;
+    background: var(--card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-card);
+    margin-bottom: 22px;
+    position: sticky;
+    top: 14px;
+    z-index: 90;
+    transition: all 0.25s ease;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--ink);
+    letter-spacing: -0.2px;
+  }
+  .nav-brand-badge {
+    background: var(--brand-gradient);
+    color: #fff;
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+  }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .theme-toggle-btn {
+    border: 1px solid var(--line);
+    background: var(--card-solid);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 6px 13px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+  }
+  .theme-toggle-btn:hover {
+    border-color: var(--brand);
+    color: var(--brand);
+    transform: translateY(-1px);
   }
 
   /* Hero Section */
@@ -64,12 +175,12 @@
     position: relative;
     overflow: hidden;
     text-align: center;
-    padding: 38px 24px;
-    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 55%, #1e293b 100%);
+    padding: 42px 28px;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 27, 75, 0.9) 50%, rgba(15, 23, 42, 0.95) 100%);
     color: #ffffff;
     border-radius: var(--radius-lg);
-    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
   .hero::before {
     content: '';
@@ -78,67 +189,119 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle at center, rgba(99, 102, 241, 0.18) 0%, transparent 60%);
+    background: radial-gradient(circle at center, rgba(99, 102, 241, 0.2) 0%, transparent 60%);
     pointer-events: none;
   }
   .hero-tag {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    gap: 7px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    padding: 5px 14px;
+    padding: 5px 15px;
     border-radius: var(--radius-full);
     font-size: 11.5px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.8px;
     text-transform: uppercase;
-    color: #a5b4fc;
-    margin-bottom: 12px;
+    color: #c7d2fe;
+    margin-bottom: 14px;
   }
   .hero h1 {
     position: relative;
     margin: 0 0 10px;
-    font-size: 27px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 30px;
     font-weight: 800;
     letter-spacing: -0.5px;
     color: #ffffff;
+    line-height: 1.3;
   }
   .hero p {
     position: relative;
     margin: 0;
     opacity: 0.92;
-    font-size: 14.5px;
-    max-width: 760px;
+    font-size: 15px;
+    max-width: 780px;
     margin-inline: auto;
     color: #cbd5e1;
     font-weight: 500;
   }
   .hero p b { color: #ffffff; font-weight: 700; }
 
+  /* KPI Stats Quick Bar */
+  .quick-kpi-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 18px 0 22px;
+  }
+  .kpi-card {
+    background: var(--card);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .kpi-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--brand);
+  }
+  .kpi-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: var(--brand-soft);
+    color: var(--brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex: none;
+    border: 1px solid var(--brand-border);
+  }
+  .kpi-info .kpi-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .kpi-info .kpi-desc {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
   /* Main Tabs */
   .tabs {
     display: flex;
     gap: 10px;
-    margin: 22px 0 16px;
+    margin: 16px 0 20px;
     padding: 6px;
-    background: #ffffff;
+    background: var(--card);
+    backdrop-filter: blur(20px);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-card);
     flex-wrap: wrap;
   }
   .tab-btn {
     flex: 1;
-    min-width: 160px;
+    min-width: 170px;
     border: none;
     background: transparent;
     color: var(--muted);
     font-family: inherit;
     font-size: 14.5px;
     font-weight: 700;
-    padding: 12px 18px;
+    padding: 13px 18px;
     border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -154,27 +317,28 @@
   .tab-btn.active {
     background: var(--brand-gradient);
     color: #ffffff;
-    box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.3);
+    box-shadow: 0 4px 18px var(--brand-glow);
   }
 
   .panel { display: none; }
   .panel.show { display: block; }
 
-  /* Sub Tabs */
+  /* Sub Tabs (Steps 1-10 & 7 days) */
   .subtabs {
     display: flex;
     gap: 7px;
     flex-wrap: wrap;
-    margin: 8px 0 18px;
+    margin: 8px 0 20px;
     padding: 10px 14px;
-    background: #ffffff;
+    background: var(--card);
+    backdrop-filter: blur(16px);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-card);
   }
   .sub-btn {
     border: 1px solid var(--line);
-    background: #ffffff;
+    background: var(--card-solid);
     color: var(--muted);
     font-family: inherit;
     font-size: 12.5px;
@@ -192,17 +356,18 @@
   }
   .sub-btn.active {
     background: var(--brand-soft);
-    color: var(--brand-dark);
+    color: var(--brand);
     border-color: var(--brand);
-    font-weight: 700;
-    box-shadow: 0 2px 6px rgba(79, 70, 229, 0.12);
+    font-weight: 800;
+    box-shadow: 0 2px 8px var(--brand-glow);
   }
   .sub-panel { display: none; }
   .sub-panel.show { display: block; }
 
-  /* Shared Components */
+  /* Section Title */
   h2.sec {
-    font-size: 21px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
     font-weight: 800;
     letter-spacing: -0.3px;
     margin: 0 0 6px;
@@ -216,20 +381,20 @@
   h2.sec .num {
     background: var(--brand-gradient);
     color: #ffffff;
-    width: 32px;
-    height: 32px;
-    border-radius: 9px;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-size: 15px;
     font-weight: 800;
     flex: none;
-    box-shadow: 0 3px 8px rgba(79, 70, 229, 0.25);
+    box-shadow: 0 3px 10px var(--brand-glow);
   }
   h2.sec.b .num {
     background: linear-gradient(135deg, #059669, #10b981);
-    box-shadow: 0 3px 8px rgba(5, 150, 105, 0.25);
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.3);
   }
   .sub {
     color: var(--muted);
@@ -237,31 +402,88 @@
     margin: 2px 0 14px;
   }
 
+  /* Cards */
   .card {
     background: var(--card);
+    backdrop-filter: blur(16px);
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
-    padding: 22px 24px;
-    box-shadow: var(--shadow-md);
-    margin-bottom: 20px;
+    padding: 24px 26px;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 22px;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
   .card:hover {
-    border-color: #cbd5e1;
+    border-color: rgba(99, 102, 241, 0.3);
   }
   .card h3 {
-    font-size: 17px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
     font-weight: 800;
     color: var(--ink);
-    margin: 0 0 10px;
+    margin: 0 0 12px;
   }
   .card h4 {
-    font-size: 15px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15.5px;
     font-weight: 700;
     color: var(--ink);
     margin: 0 0 8px;
   }
   .card p { margin: 6px 0; }
+
+  /* Tools Search & Filter Bar in Step 1 */
+  .tool-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .tool-search-input {
+    flex: 1;
+    min-width: 220px;
+    padding: 9px 14px;
+    background: var(--input-bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-full);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 13px;
+    transition: all 0.2s ease;
+  }
+  .tool-search-input:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px var(--brand-glow);
+  }
+  .tool-chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .tool-chip {
+    padding: 6px 12px;
+    background: var(--card-solid);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .tool-chip:hover {
+    color: var(--brand);
+    border-color: var(--brand);
+  }
+  .tool-chip.active {
+    background: var(--brand-soft);
+    color: var(--brand);
+    border-color: var(--brand);
+    font-weight: 700;
+  }
 
   /* Tables */
   table {
@@ -274,9 +496,10 @@
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
     overflow: hidden;
+    background: var(--card-solid);
   }
   th, td {
-    padding: 10px 12px;
+    padding: 11px 13px;
     text-align: left;
     vertical-align: middle;
     border-bottom: 1px solid var(--line);
@@ -289,17 +512,18 @@
     border-bottom: none;
   }
   th {
-    background: #f8fafc;
-    color: #475569;
+    background: var(--table-header);
+    color: var(--muted);
     font-weight: 700;
     font-size: 12px;
-    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
   tr:hover td {
-    background-color: #f8faff;
+    background-color: var(--table-hover);
   }
   table.otable td, table.otable th {
-    padding: 8px 10px;
+    padding: 9px 11px;
     font-size: 12.5px;
   }
 
@@ -311,22 +535,22 @@
     font-weight: 700;
     white-space: nowrap;
   }
-  .pill.g { background: var(--ok-soft); color: var(--ok); }
-  .pill.y { background: var(--warn-soft); color: #854d0e; }
-  .pill.r { background: var(--red-soft); color: var(--red); }
-  .pill.b { background: var(--brand-soft); color: var(--brand-dark); }
-  .pill.p { background: #f3edff; color: #6f42c1; }
+  .pill.g { background: var(--ok-soft); color: var(--ok); border: 1px solid var(--ok-border); }
+  .pill.y { background: var(--warn-soft); color: var(--warn); border: 1px solid var(--warn-border); }
+  .pill.r { background: var(--red-soft); color: var(--red); border: 1px solid var(--red-border); }
+  .pill.b { background: var(--brand-soft); color: var(--brand); border: 1px solid var(--brand-border); }
+  .pill.p { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
 
   .ok-tag { display: inline-block; background: var(--ok-soft); color: var(--ok); border: 1px solid var(--ok-border); font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: var(--radius-full); margin-left: 6px; vertical-align: middle; white-space: nowrap; }
-  .tag-app { display: inline-block; background: #eef2ff; color: #4338ca; border: 1px solid #c7d2fe; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: var(--radius-full); margin-left: 6px; vertical-align: middle; white-space: nowrap; }
-  .tag-fee { display: inline-block; background: var(--warn-soft); color: #854d0e; border: 1px solid var(--warn-border); font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: var(--radius-full); margin-left: 6px; vertical-align: middle; white-space: nowrap; }
-  .tag-int { display: inline-block; background: var(--red-soft); color: #b91c1c; border: 1px solid var(--red-border); font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: var(--radius-full); margin-left: 6px; vertical-align: middle; white-space: nowrap; }
+  .tag-app { display: inline-block; background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: var(--radius-full); margin-left: 6px; vertical-align: middle; white-space: nowrap; }
+  .tag-fee { display: inline-block; background: var(--warn-soft); color: var(--warn); border: 1px solid var(--warn-border); font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: var(--radius-full); margin-left: 6px; vertical-align: middle; white-space: nowrap; }
+  .tag-int { display: inline-block; background: var(--red-soft); color: var(--red); border: 1px solid var(--red-border); font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: var(--radius-full); margin-left: 6px; vertical-align: middle; white-space: nowrap; }
 
   .score { font-size: 13px; font-weight: 800; color: var(--ink); white-space: nowrap; }
   .score .st { color: #f59e0b; letter-spacing: 1px; }
   .score .lbl { display: block; color: var(--muted); font-size: 10px; font-weight: 600; }
-  .pros { color: #059669; font-size: 12px; line-height: 1.4; }
-  .cons { color: #e11d48; font-size: 12px; line-height: 1.4; }
+  .pros { color: var(--ok); font-size: 12px; line-height: 1.4; font-weight: 500; }
+  .cons { color: var(--red); font-size: 12px; line-height: 1.4; font-weight: 500; }
   .demo { font-size: 12px; word-break: break-word; }
   .pros li, .cons li { margin: 2px 0; }
 
@@ -337,57 +561,57 @@
     width: 26px;
     height: 26px;
     border-radius: 8px;
-    background: #f1f5f9;
-    color: #64748b;
+    background: var(--card-solid);
+    color: var(--muted);
     font-weight: 800;
     font-size: 12.5px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--line);
   }
   .rank-badge.top {
-    background: linear-gradient(135deg, #fef3c7, #fde68a);
-    color: #92400e;
-    border-color: #fcd34d;
-    box-shadow: 0 2px 6px rgba(245, 158, 11, 0.15);
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #ffffff;
+    border-color: #f59e0b;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
   }
 
   /* Callout Banners */
   .lead {
     border-left: 4px solid var(--brand);
-    background: linear-gradient(to right, var(--brand-soft), #ffffff);
+    background: var(--brand-soft);
     border-top: 1px solid var(--brand-border);
     border-right: 1px solid var(--brand-border);
     border-bottom: 1px solid var(--brand-border);
     padding: 13px 16px;
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
     font-size: 14px;
-    color: #1e1b4b;
+    color: var(--ink);
   }
   .warn {
     border-left: 4px solid var(--warn);
-    background: linear-gradient(to right, var(--warn-soft), #ffffff);
+    background: var(--warn-soft);
     border-top: 1px solid var(--warn-border);
     border-right: 1px solid var(--warn-border);
     border-bottom: 1px solid var(--warn-border);
     padding: 13px 16px;
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
     font-size: 14px;
-    color: #78350f;
+    color: var(--ink);
   }
   .danger {
     border-left: 4px solid var(--red);
-    background: linear-gradient(to right, var(--red-soft), #ffffff);
+    background: var(--red-soft);
     border-top: 1px solid var(--red-border);
     border-right: 1px solid var(--red-border);
     border-bottom: 1px solid var(--red-border);
     padding: 13px 16px;
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
     font-size: 14px;
-    color: #881337;
+    color: var(--ink);
   }
 
-  .msg { background: #f8fafc; border: 1px solid var(--line); border-radius: var(--radius-md); padding: 14px 16px; font-size: 14px; margin-top: 8px; white-space: pre-wrap; }
+  .msg { background: var(--card-solid); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 14px 16px; font-size: 14px; margin-top: 8px; white-space: pre-wrap; color: var(--ink); }
   .msg b { color: var(--brand); }
-  .prt { width: 100%; border: 1px solid #334155; border-radius: var(--radius-md); background: #0f172a; color: #f1f5f9; font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 14px 16px; margin-top: 8px; line-height: 1.55; resize: vertical; box-shadow: var(--shadow-sm); }
+  .prt { width: 100%; border: 1px solid var(--line); border-radius: var(--radius-md); background: #0f172a; color: #f1f5f9; font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 14px 16px; margin-top: 8px; line-height: 1.55; resize: vertical; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
   .prt:focus { outline: 2px solid var(--brand); }
 
   ul.clean { margin: 6px 0; padding-left: 20px; }
@@ -400,28 +624,28 @@
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media(max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
   .tag { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 6px; margin-right: 6px; }
-  .tag.t1 { background: var(--brand-soft); color: var(--brand-dark); }
-  .tag.t2 { background: var(--warn-soft); color: #854d0e; }
-  .tag.t3 { background: var(--red-soft); color: var(--red); }
-  .tag.t4 { background: var(--ok-soft); color: var(--ok); }
+  .tag.t1 { background: var(--brand-soft); color: var(--brand); border: 1px solid var(--brand-border); }
+  .tag.t2 { background: var(--warn-soft); color: var(--warn); border: 1px solid var(--warn-border); }
+  .tag.t3 { background: var(--red-soft); color: var(--red); border: 1px solid var(--red-border); }
+  .tag.t4 { background: var(--ok-soft); color: var(--ok); border: 1px solid var(--ok-border); }
 
   .kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 8px; }
-  .kpi .k { background: #f8fafc; border: 1px solid var(--line); border-radius: var(--radius-md); padding: 14px; text-align: center; }
-  .kpi .k .v { font-size: 24px; font-weight: 800; color: var(--brand); }
+  .kpi .k { background: var(--card-solid); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 14px; text-align: center; }
+  .kpi .k .v { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 800; color: var(--brand); }
   .kpi .k .l { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
 
-  .diagram-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-md); overflow: auto; }
+  .diagram-card { background: var(--card); backdrop-filter: blur(16px); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-card); overflow: auto; }
   .diagram-card svg { display: block; margin: 0 auto; max-width: 520px!important; width: 100%!important; height: auto!important; }
 
-  /* Day Cards */
+  /* Day Cards (Facebook Post Simulator) */
   .day-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
     padding: 16px 20px;
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    border-bottom: 1px solid #bbf7d0;
+    background: var(--ok-soft);
+    border-bottom: 1px solid var(--ok-border);
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     flex-wrap: wrap;
   }
@@ -438,10 +662,10 @@
     justify-content: center;
     font-size: 16px;
     font-weight: 800;
-    box-shadow: 0 4px 10px rgba(5, 150, 105, 0.25);
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
   }
-  .day-head h3 { margin: 0; font-size: 16.5px; font-weight: 800; color: #064e3b; }
-  .day-head .meta { font-size: 12.5px; color: #047857; margin-top: 2px; }
+  .day-head h3 { margin: 0; font-family: 'Outfit', sans-serif; font-size: 16.5px; font-weight: 800; color: var(--ink); }
+  .day-head .meta { font-size: 12.5px; color: var(--ok); font-weight: 600; margin-top: 2px; }
   .copybtn {
     flex: none;
     border: none;
@@ -453,7 +677,7 @@
     padding: 10px 16px;
     border-radius: var(--radius-sm);
     cursor: pointer;
-    box-shadow: 0 3px 10px rgba(79, 70, 229, 0.25);
+    box-shadow: 0 3px 10px var(--brand-glow);
     display: flex;
     align-items: center;
     gap: 6px;
@@ -461,15 +685,15 @@
   }
   .copybtn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 5px 14px rgba(79, 70, 229, 0.35);
+    box-shadow: 0 5px 16px var(--brand-glow);
   }
   .copybtn.done {
     background: linear-gradient(135deg, #059669, #10b981);
-    box-shadow: 0 3px 10px rgba(5, 150, 105, 0.3);
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.35);
   }
-  .thumbimg { display: block; width: 100%; max-width: 560px; margin: 16px auto; border-radius: var(--radius-md); box-shadow: var(--shadow-md); border: 1px solid var(--line); }
+  .thumbimg { display: block; width: 100%; max-width: 560px; margin: 16px auto; border-radius: var(--radius-md); box-shadow: var(--shadow-card); border: 1px solid var(--line); }
   .post {
-    background: #f8fafc;
+    background: var(--card-solid);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
     padding: 18px 20px;
@@ -477,22 +701,22 @@
     font-size: 14.5px;
     line-height: 1.75;
     margin-top: 16px;
-    color: #1e293b;
+    color: var(--ink);
   }
   .strategy {
     margin-top: 14px;
-    background: linear-gradient(to right, var(--brand-soft), #ffffff);
+    background: var(--brand-soft);
     border: 1px solid var(--brand-border);
     border-radius: var(--radius-md);
     padding: 15px 18px;
     font-size: 13.5px;
-    color: #1e1b4b;
+    color: var(--ink);
   }
-  .strategy h4 { margin: 0 0 6px; font-size: 14px; font-weight: 700; color: var(--brand-dark); }
+  .strategy h4 { margin: 0 0 6px; font-size: 14px; font-weight: 700; color: var(--brand); }
   .strategy ul { margin: 0; padding-left: 18px; }
   .strategy li { margin: 4px 0; }
 
-  .tocbox { background: #f8fafc; border: 1px dashed var(--line); border-radius: var(--radius-md); padding: 16px; font-size: 14px; }
+  .tocbox { background: var(--card-solid); border: 1px dashed var(--line); border-radius: var(--radius-md); padding: 16px; font-size: 14px; }
   .tocbox b { color: var(--ink); }
   footer { text-align: center; margin-top: 45px; color: var(--muted); font-size: 13px; }
 
@@ -511,7 +735,7 @@
     opacity: 0;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 100;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.15);
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -521,13 +745,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #ffffff;
+    background: var(--card-solid);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
     padding: 10px 16px;
     margin: 12px 0 16px;
     font-size: 13px;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-card);
   }
   .cloud-status-badge {
     display: inline-flex;
@@ -542,7 +766,7 @@
     border: 1px solid var(--ok-border);
     transition: all 0.2s ease;
   }
-  .cloud-status-badge.saving { background: var(--warn-soft); color: #b45309; border-color: var(--warn-border); }
+  .cloud-status-badge.saving { background: var(--warn-soft); color: var(--warn); border-color: var(--warn-border); }
   .cloud-status-badge.error { background: var(--red-soft); color: var(--red); border-color: var(--red-border); }
   .cloud-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); display: inline-block; flex: none; }
   .cloud-status-badge.saving .cloud-dot { background: #f59e0b; animation: cloudPulse 0.8s infinite alternate; }
@@ -558,7 +782,8 @@
     border: 1px solid var(--line);
     border-radius: var(--radius-sm);
     font-size: 12.5px;
-    background: #ffffff;
+    background: var(--input-bg);
+    color: var(--ink);
     line-height: 1.35;
     font-family: inherit;
     transition: all 0.15s ease;
@@ -566,7 +791,7 @@
   .demo-input:focus {
     outline: none;
     border-color: var(--brand);
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    box-shadow: 0 0 0 3px var(--brand-glow);
   }
   .demo-clear-btn {
     display: none;
@@ -575,7 +800,7 @@
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: #f1f5f9;
+    background: var(--line);
     color: var(--muted);
     border: none;
     cursor: pointer;
@@ -604,22 +829,74 @@
   }
   .demo-link-btn:hover { background: var(--brand); color: #ffffff; transform: translateY(-1px); }
 
-  .label-select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-radius: var(--radius-sm); font-size: 12px; cursor: pointer; background: #fff; line-height: 1.3; }
-  .label-select:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15); }
+  .label-select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-radius: var(--radius-sm); font-size: 12px; cursor: pointer; background: var(--input-bg); color: var(--ink); line-height: 1.3; }
+  .label-select:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-glow); }
   .rating-badge.ok { background: var(--ok-soft); color: var(--ok); }
   .rating-badge.not-ok { background: var(--red-soft); color: var(--red); }
-  .rating-badge.normal { background: var(--warn-soft); color: #854d0e; }
-  .rating-badge.good { background: var(--brand-soft); color: var(--brand-dark); }
+  .rating-badge.normal { background: var(--warn-soft); color: var(--warn); }
+  .rating-badge.good { background: var(--brand-soft); color: var(--brand); }
 </style>
 </head>
 <body>
+<!-- Ambient Background Glow Orbs -->
+<div class="ambient-mesh">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
 <div class="wrap">
 
+  <!-- Top Floating Navbar -->
+  <nav class="top-navbar">
+    <div class="nav-brand">
+      <span>🎯 Web AI Campaign</span>
+      <span class="nav-brand-badge">PRO 2026</span>
+    </div>
+    <div class="nav-actions">
+      <div class="cloud-status-badge" id="top-cloud-status" style="margin:0"><span class="cloud-dot"></span><span id="top-cloud-status-text">Cloud Sync</span></div>
+      <button type="button" class="theme-toggle-btn" id="btn-theme-toggle" title="Chuyển chế độ Sáng / Tối">🌙 Tối</button>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
   <header class="hero">
-    <div class="hero-tag">🎯 Quy trình tự động hóa · Chiến dịch Marketing</div>
+    <div class="hero-tag">✨ QUY TRÌNH MARKETING TỰ ĐỘNG HÓA TỪ A–Z</div>
     <h1>Chiến dịch Facebook → Khách hàng làm website WordPress</h1>
     <p>Bấm vào tab bên dưới để chuyển nhanh: <b>Kế hoạch hành động</b> · <b>Bài đăng nhóm 7 ngày</b> · <b>Quy trình nội bộ</b>.</p>
   </header>
+
+  <!-- Quick KPI Bar -->
+  <div class="quick-kpi-bar">
+    <div class="kpi-card">
+      <div class="kpi-icon">🚀</div>
+      <div class="kpi-info">
+        <div class="kpi-num">10 Bước</div>
+        <div class="kpi-desc">Kế hoạch chuyển đổi</div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">📱</div>
+      <div class="kpi-info">
+        <div class="kpi-num">7 Bài Viral</div>
+        <div class="kpi-desc">Mẫu bài &amp; Thumbnail</div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">🌐</div>
+      <div class="kpi-info">
+        <div class="kpi-num">26 Web AI</div>
+        <div class="kpi-desc">Demo &amp; Phân tích lỗi</div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">☁️</div>
+      <div class="kpi-info">
+        <div class="kpi-num" id="kpi-progress-num">0 / 26</div>
+        <div class="kpi-desc">Demo đã đồng bộ Cloud</div>
+      </div>
+    </div>
+  </div>
 
   <!-- MAIN TABS -->
   <div class="tabs">
@@ -652,15 +929,31 @@
         <div class="warn">⚠️ <b>Lưu ý:</b> free-tier của các nền tảng thay đổi thường xuyên. Bảng này là trạng thái phổ biến hiện tại. Trước mỗi chiến dịch, <b>tự tạo thử 1 site</b> trên 3-4 tool để chắc chắn "điểm đau" còn đúng.</div>
         <div class="cloud-status-bar">
           <div style="display:flex;align-items:center;gap:12px">
-            <span style="font-weight:700;font-size:13.5px;color:var(--ink)">🌐 Danh sách Demo Web AI</span>
+            <span style="font-weight:700;font-size:13.5px;color:var(--ink)">🌐 Danh sách 26 Nền tảng Web AI</span>
             <span style="font-size:12.5px;color:var(--muted)">· Tiến độ: <b id="demo-count" style="color:var(--brand)">0</b>/26 link</span>
           </div>
           <div style="display:flex;align-items:center;gap:10px">
             <span class="cloud-status-badge" id="cloud-status"><span class="cloud-dot"></span><span id="cloud-status-text">Đã đồng bộ Cloud</span></span>
           </div>
         </div>
-        <table class="otable">
-          <tr><th>#</th><th>Nền tảng &amp; Link</th><th>Điểm nổi bật</th><th>Ưu điểm</th><th>Nhược điểm</th><th>Demo sản phẩm</th></tr>
+
+        <!-- Real-time Search & Filter Tool Bar -->
+        <div class="tool-filter-bar">
+          <input type="text" id="tool-search" class="tool-search-input" placeholder="🔍 Tìm nhanh công cụ AI (Framer, Durable, ZipWP, Lovable...)..." />
+          <div class="tool-chips">
+            <button type="button" class="tool-chip active" data-filter="all">🌟 Tất cả (26)</button>
+            <button type="button" class="tool-chip" data-filter="top">🔥 Top khuyên dùng (5)</button>
+            <button type="button" class="tool-chip" data-filter="wp">⚡ WordPress (3)</button>
+            <button type="button" class="tool-chip" data-filter="app">💻 Web App (4)</button>
+            <button type="button" class="tool-chip" data-filter="has-demo">🔗 Đã có Demo link</button>
+          </div>
+        </div>
+
+        <table class="otable" id="tools-table">
+          <thead>
+            <tr><th>#</th><th>Nền tảng &amp; Link</th><th>Điểm nổi bật</th><th>Ưu điểm</th><th>Nhược điểm</th><th>Demo sản phẩm</th></tr>
+          </thead>
+          <tbody>
           <tr><td><span class="rank-badge">1</span></td><td><b>Durable</b><br><a href="https://durable.com" target="_blank" rel="noopener">durable.com</a></td><td>Web dịch vụ/doanh nghiệp trong 30 giây, kèm sẵn form liên hệ</td><td class="pros">Rất nhanh; form liên hệ có sẵn; đơn giản cho người không rành kỹ thuật</td><td class="cons">Bản free rất hạn chế; chỉ domain phụ; ít quyền tuỳ chỉnh</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
           <tr><td><span class="rank-badge">2</span></td><td><b>Lindo AI</b><br><a href="https://lindo.ai" target="_blank" rel="noopener">lindo.ai</a></td><td>Nhập 1 câu lệnh (prompt) ra ngay Landing Page hiện đại</td><td class="pros">Giao diện hiện đại; dựng landing cực nhanh; không cần code</td><td class="cons">Có badge quảng cáo Lino; giới hạn traffic tháng; ít tùy chỉnh nâng cao</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
           <tr><td><span class="rank-badge">3</span></td><td><b>Wix AI</b><br><a href="https://wix.com" target="_blank" rel="noopener">wix.com</a></td><td>AI dựng khung chuẩn, kết hợp trình kéo-thả linh hoạt</td><td class="pros">Cộng đồng lớn; kéo-thả mượt; nhiều mẫu &amp; app</td><td class="cons">Dính banner quảng cáo; subdomain; site thường chậm hơn</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
@@ -687,6 +980,7 @@
           <tr><td><span class="rank-badge">24</span></td><td><b>Builder.io</b><br><a href="https://www.builder.io" target="_blank" rel="noopener">builder.io</a></td><td>Kéo thả giao diện UI, kết nối API &amp; hệ thống</td><td class="pros">Kéo thả tự do; hỗ trợ API; CMS mạnh; collaboration</td><td class="cons">Complexity cao; learning curve; free hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
           <tr><td><span class="rank-badge">25</span></td><td><b>Tempo</b><br><a href="https://www.tempo.build" target="_blank" rel="noopener">tempo.build</a></td><td>Sinh và chỉnh sửa mã nguồn React app từ prompt</td><td class="pros">Sinh code React chuẩn; AI chỉnh sửa tốt; deploy dễ</td><td class="cons">Cần biết React; free hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
           <tr><td><span class="rank-badge">26</span></td><td><b>Anything</b><br><a href="https://anything.com" target="_blank" rel="noopener">anything.com</a></td><td>Tạo nhanh ứng dụng và website qua prompt ngôn ngữ tự nhiên</td><td class="pros">Tạo cực nhanh; full-stack; no-code; tích hợp tốt</td><td class="cons">Mới; ít tài liệu; tính năng đang phát triển</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          </tbody>
         </table>
         <p class="sub" style="margin:10px 0 0;font-size:13px;color:var(--muted)">🟢 = đã tự đăng ký &amp; dùng thử, chấp nhận được · = bên tạo web app · = cần trả phí để dùng thật · = dùng nội bộ, không chia sẻ cho khách.<br>⭐ Điểm (0–5) là đánh giá chủ quan của mình: <i>Giao diện</i> (đẹp/không đại trà), <i>Dễ dùng</i> (ai cũng làm được), <i>Tốc độ</i> (tải nhanh), <i>Tiềm năng</i> (đáng đưa vào content/dịch vụ). Trước khi dùng, tự kiểm chứng lại.<br>📌 <b>Demo sản phẩm:</b> đang để trống (—), chờ bạn gửi link demo thật của từng nền tảng để mình điền vào.</p>
                 <div class="danger" style="margin-top:12px">🚫 <b>Không nên giới thiệu cho phễu này:</b> Google Sites, Carrd, Weebly/Strikingly (quá đơn giản, không tạo "điểm đau" để bán).</div>
@@ -1308,6 +1602,77 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
     if (cb) cb();
   }
 
+  // ================= THEME SWITCHER (DARK / LIGHT) =================
+  (function() {
+    var themeBtn = document.getElementById('btn-theme-toggle');
+    var currentTheme = localStorage.getItem('theme_preference') || 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    updateThemeBtn();
+
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function() {
+        currentTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        localStorage.setItem('theme_preference', currentTheme);
+        updateThemeBtn();
+        show(currentTheme === 'dark' ? '🌙 Đã chuyển sang chế độ Tối' : '☀️ Đã chuyển sang chế độ Sáng');
+      });
+    }
+
+    function updateThemeBtn() {
+      if (!themeBtn) return;
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      themeBtn.innerHTML = isDark ? '🌙 Tối' : '☀️ Sáng';
+    }
+  })();
+
+  // ================= TOOL SEARCH & FILTER CHIPS =================
+  (function() {
+    var searchInput = document.getElementById('tool-search');
+    var chips = document.querySelectorAll('.tool-chip');
+    var table = document.getElementById('tools-table');
+    if (!table) return;
+    var rows = table.querySelectorAll('tbody tr');
+    var activeFilter = 'all';
+
+    function applyFilter() {
+      var query = searchInput ? (searchInput.value || '').trim().toLowerCase() : '';
+      rows.forEach(function(row) {
+        var text = (row.textContent || '').toLowerCase();
+        var isTop = row.querySelector('.rank-badge.top') !== null;
+        var hasDemo = false;
+        var input = row.querySelector('.demo-input');
+        if (input && input.value && input.value.trim() !== '' && input.value.trim() !== '—') {
+          hasDemo = true;
+        }
+
+        var matchCategory = true;
+        if (activeFilter === 'top') matchCategory = isTop;
+        else if (activeFilter === 'wp') matchCategory = /wordpress|zipwp|10web/i.test(text);
+        else if (activeFilter === 'app') matchCategory = /app|react|lovable|bolt|base44|tempo|replit|v0/i.test(text);
+        else if (activeFilter === 'has-demo') matchCategory = hasDemo;
+
+        var matchSearch = !query || text.indexOf(query) !== -1;
+        row.style.display = (matchCategory && matchSearch) ? '' : 'none';
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', applyFilter);
+    }
+
+    chips.forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        chips.forEach(function(c) { c.classList.remove('active'); });
+        chip.classList.add('active');
+        activeFilter = chip.dataset.filter || 'all';
+        applyFilter();
+      });
+    });
+
+    window.refreshToolFilter = applyFilter;
+  })();
+
   // ================= COMMERCIAL-GRADE AUTO-SAVE & CLOUD SYNC =================
   (function() {
     const DEMO_KEY = 'fb_campaign_demo_links_v1';
@@ -1316,14 +1681,22 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
 
     const cloudStatusBadge = document.getElementById('cloud-status');
     const cloudStatusText = document.getElementById('cloud-status-text');
+    const topCloudStatus = document.getElementById('top-cloud-status');
+    const topCloudText = document.getElementById('top-cloud-status-text');
     const demoCountEl = document.getElementById('demo-count');
+    const kpiProgressNum = document.getElementById('kpi-progress-num');
     const inputs = document.querySelectorAll('.demo-input');
     const syncTimers = {};
 
     function setCloudStatus(state, text) {
-      if (!cloudStatusBadge || !cloudStatusText) return;
-      cloudStatusBadge.className = 'cloud-status-badge' + (state ? ' ' + state : '');
-      cloudStatusText.textContent = text;
+      if (cloudStatusBadge && cloudStatusText) {
+        cloudStatusBadge.className = 'cloud-status-badge' + (state ? ' ' + state : '');
+        cloudStatusText.textContent = text;
+      }
+      if (topCloudStatus && topCloudText) {
+        topCloudStatus.className = 'cloud-status-badge' + (state ? ' ' + state : '');
+        topCloudText.textContent = state === 'saving' ? 'Đang lưu Cloud...' : (state === 'error' ? 'Lưu offline' : 'Cloud Sync');
+      }
     }
 
     // Refresh UI (counters, link buttons, clear buttons)
@@ -1362,6 +1735,12 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       });
       if (demoCountEl) {
         demoCountEl.textContent = count;
+      }
+      if (kpiProgressNum) {
+        kpiProgressNum.textContent = count + ' / ' + inputs.length;
+      }
+      if (window.refreshToolFilter) {
+        window.refreshToolFilter();
       }
       return count;
     }
