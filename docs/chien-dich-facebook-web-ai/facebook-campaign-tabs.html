@@ -855,31 +855,60 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       }
     }
 
-    // Load from Supabase (on startup)
+    // Load from Supabase (on startup) - only if localStorage is empty
     async function loadFromSupabase() {
       try {
         const {data, error} = await supabase.from('tools').select('tool_index, demo_link, label');
         if (error || !data) return;
 
-        // Apply demo links
-        const demoLinks = {};
-        data.forEach(row => {
-          if (row.demo_link) demoLinks[row.tool_index] = row.demo_link;
-        });
-        document.querySelectorAll('.editable-cell').forEach((cell, idx) => {
-          if (demoLinks[idx]) cell.textContent = demoLinks[idx];
-        });
+        // Check if localStorage has data
+        const hasLocalData = localStorage.getItem(DEMO_KEY) && JSON.parse(localStorage.getItem(DEMO_KEY)).some(d => d !== '—');
 
-        // Apply labels
-        const labels = {};
-        data.forEach(row => {
-          if (row.label) labels[row.tool_index] = row.label;
-        });
-        document.querySelectorAll('.label-select').forEach((select, idx) => {
-          if (labels[idx]) select.value = labels[idx];
-        });
+        // Only apply Supabase data if localStorage is empty
+        if (!hasLocalData) {
+          // Apply demo links from Supabase
+          const demoLinks = {};
+          data.forEach(row => {
+            if (row.demo_link && row.demo_link !== '—') demoLinks[row.tool_index] = row.demo_link;
+          });
+          document.querySelectorAll('.editable-cell').forEach((cell, idx) => {
+            if (demoLinks[idx]) cell.textContent = demoLinks[idx];
+          });
+
+          // Apply labels from Supabase
+          const labels = {};
+          data.forEach(row => {
+            if (row.label) labels[row.tool_index] = row.label;
+          });
+          document.querySelectorAll('.label-select').forEach((select, idx) => {
+            if (labels[idx]) select.value = labels[idx];
+          });
+        }
+
+        // Sync localStorage data to Supabase (in background)
+        syncLocalToSupabase();
       } catch (err) {
         console.log('Supabase load error:', err);
+      }
+    }
+
+    // Sync localStorage data to Supabase
+    async function syncLocalToSupabase() {
+      try {
+        const demoData = JSON.parse(localStorage.getItem(DEMO_KEY) || '[]');
+        const labelData = JSON.parse(localStorage.getItem(LABEL_KEY) || '[]');
+
+        for (let i = 0; i < demoData.length; i++) {
+          const demoLink = demoData[i] !== '—' ? demoData[i] : null;
+          const label = labelData[i] || '';
+
+          await supabase.from('tools')
+            .update({demo_link: demoLink, label: label})
+            .eq('tool_index', i)
+            .catch(err => console.log('Sync error:', err));
+        }
+      } catch (err) {
+        console.log('Sync error:', err);
       }
     }
 
