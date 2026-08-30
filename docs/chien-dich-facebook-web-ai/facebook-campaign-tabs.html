@@ -130,8 +130,22 @@
   .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(30px);background:#1f2328;color:#fff;padding:11px 18px;border-radius:12px;font-size:14px;opacity:0;transition:.25s;z-index:50;box-shadow:var(--shadow)}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-  .demo-input{width:100%;padding:5px 6px;border:1px solid var(--line);border-radius:6px;font-size:12px;background:#fff;line-height:1.3;font-family:inherit}
-  .demo-input:focus{outline:2px solid var(--brand);outline-offset:-2px}
+  .cloud-status-bar{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 16px;margin:12px 0 14px;font-size:13px;box-shadow:var(--shadow)}
+  .cloud-status-badge{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:12px;padding:4px 11px;border-radius:20px;background:var(--ok-soft);color:var(--ok);transition:all .2s ease}
+  .cloud-status-badge.saving{background:var(--warn-soft);color:#b45309}
+  .cloud-status-badge.error{background:var(--red-soft);color:var(--red)}
+  .cloud-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block;flex:none}
+  .cloud-status-badge.saving .cloud-dot{background:#f59e0b;animation:cloudPulse .8s infinite alternate}
+  .cloud-status-badge.error .cloud-dot{background:var(--red)}
+  @keyframes cloudPulse{0%{opacity:.3;transform:scale(.85)}100%{opacity:1;transform:scale(1.2)}}
+
+  .demo-cell{position:relative;display:flex;align-items:center;gap:4px}
+  .demo-input{flex:1;min-width:0;width:100%;padding:6px 8px;border:1px solid var(--line);border-radius:7px;font-size:12px;background:#fff;line-height:1.35;font-family:inherit;transition:border-color .15s,box-shadow .15s}
+  .demo-input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(47,129,247,.15)}
+  .demo-clear-btn{display:none;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#eef1f4;color:var(--muted);border:none;cursor:pointer;font-size:13px;line-height:1;padding:0;flex:none;transition:all .15s}
+  .demo-clear-btn:hover{background:var(--red-soft);color:var(--red)}
+  .demo-link-btn{display:none;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:var(--brand-soft);color:var(--brand);text-decoration:none;font-weight:bold;font-size:12px;border:1px solid #cce3ff;flex:none;transition:all .15s}
+  .demo-link-btn:hover{background:var(--brand);color:#fff;transform:translateY(-1px)}
 
   .label-select{width:100%;padding:5px 6px;border:1px solid var(--line);border-radius:6px;font-size:12px;cursor:pointer;background:#fff;line-height:1.3}
   .label-select:focus{outline:2px solid var(--brand);outline-offset:-2px}
@@ -140,7 +154,6 @@
   .rating-badge.normal{background:var(--warn-soft);color:#6f5700}
   .rating-badge.good{background:var(--brand-soft);color:#0a3069}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <div class="wrap">
@@ -179,34 +192,43 @@
       <div class="card">
         <h3>1️⃣ Chọn web tạo website AI miễn phí — web nào, cái nào OK</h3>
         <div class="warn">⚠️ <b>Lưu ý:</b> free-tier của các nền tảng thay đổi thường xuyên. Bảng này là trạng thái phổ biến hiện tại. Trước mỗi chiến dịch, <b>tự tạo thử 1 site</b> trên 3-4 tool để chắc chắn "điểm đau" còn đúng.</div>
+        <div class="cloud-status-bar">
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="font-weight:700;font-size:13.5px;color:var(--ink)">🌐 Danh sách Demo Web AI</span>
+            <span style="font-size:12.5px;color:var(--muted)">· Tiến độ: <b id="demo-count" style="color:var(--brand)">0</b>/26 link</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span class="cloud-status-badge" id="cloud-status"><span class="cloud-dot"></span><span id="cloud-status-text">Đã đồng bộ Cloud</span></span>
+          </div>
+        </div>
         <table class="otable">
           <tr><th>#</th><th>Nền tảng &amp; Link</th><th>Điểm nổi bật</th><th>Ưu điểm</th><th>Nhược điểm</th><th>Demo sản phẩm</th></tr>
-          <tr><td><span class="rank-badge">1</span></td><td><b>Durable</b><br><a href="https://durable.com" target="_blank" rel="noopener">durable.com</a></td><td>Web dịch vụ/doanh nghiệp trong 30 giây, kèm sẵn form liên hệ</td><td class="pros">Rất nhanh; form liên hệ có sẵn; đơn giản cho người không rành kỹ thuật</td><td class="cons">Bản free rất hạn chế; chỉ domain phụ; ít quyền tuỳ chỉnh</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">2</span></td><td><b>Lindo AI</b><br><a href="https://lindo.ai" target="_blank" rel="noopener">lindo.ai</a></td><td>Nhập 1 câu lệnh (prompt) ra ngay Landing Page hiện đại</td><td class="pros">Giao diện hiện đại; dựng landing cực nhanh; không cần code</td><td class="cons">Có badge quảng cáo Lino; giới hạn traffic tháng; ít tùy chỉnh nâng cao</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">3</span></td><td><b>Wix AI</b><br><a href="https://wix.com" target="_blank" rel="noopener">wix.com</a></td><td>AI dựng khung chuẩn, kết hợp trình kéo-thả linh hoạt</td><td class="pros">Cộng đồng lớn; kéo-thả mượt; nhiều mẫu &amp; app</td><td class="cons">Dính banner quảng cáo; subdomain; site thường chậm hơn</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge top">4</span></td><td><b>Framer</b><br><a href="https://framer.com" target="_blank" rel="noopener">framer.com</a></td><td>Giao diện thời thượng, hiệu ứng chuyển động (animation) cực mượt</td><td class="pros">Đẹp nhất nhóm; animation mượt; dựng portfolio/thương hiệu rất tốt</td><td class="cons">Subdomain *.framer.website; không xuất code; cần học một chút</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">5</span></td><td><b>CodeDesign.ai</b><br><a href="https://codedesign.ai" target="_blank" rel="noopener">codedesign.ai</a></td><td>Layout chuẩn chỉnh như thiết kế thủ công, cho can thiệp sâu vào UI</td><td class="pros">Kiểm soát layout tốt; can thiệp sâu UI; ra code sạch</td><td class="cons">Không custom domain; giới hạn export; đòi hỏi kỹ năng thiết kế</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">6</span></td><td><b>Dora AI</b><br><a href="https://dora.run" target="_blank" rel="noopener">dora.run</a></td><td>Website tích hợp hiệu ứng 3D trực quan, gây ấn tượng mạnh</td><td class="pros">Hiệu ứng 3D wow; tạo ấn tượng mạnh; hợp chiến dịch/landing</td><td class="cons">Hạn chế tuỳ chỉnh; khó xuất bản; nặng &amp; chậm hơn; cần kỹ năng</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge top">7</span></td><td><b>ZipWP</b><br><a href="https://zipwp.com" target="_blank" rel="noopener">zipwp.com</a></td><td>Tạo web WordPress hoàn thiện bài viết, hình ảnh chỉ trong 60 giây</td><td class="pros">Ra WordPress thật; dựng nhanh; dễ đưa vào quy trình WP của bạn</td><td class="cons">Giới hạn 3 web/tháng; bản nháp tự xoá sau 24h nếu không cài host</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">8</span></td><td><b>Softr</b><br><a href="https://www.softr.io" target="_blank" rel="noopener">softr.io</a></td><td>Biến cơ sở dữ liệu (Google Sheets/Airtable) thành website động</td><td class="pros">Nối bảng tính/web động; không cần code; hợp danh mục, cổng thông tin</td><td class="cons">Giới hạn số dòng dữ liệu; tính năng nâng cao cần trả phí</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">9</span></td><td><b>Base44</b><br><a href="https://base44.com" target="_blank" rel="noopener">base44.com</a></td><td>Dùng AI tạo Web App, thiết lập luồng dữ liệu và phân quyền</td><td class="pros">Làm web app thật sự; quản lý luồng dữ liệu &amp; phân quyền</td><td class="cons">Cần tư duy hệ thống; giới hạn tài nguyên vận hành</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge top">10</span></td><td><b>Lovable</b><br><a href="https://lovable.dev" target="_blank" rel="noopener">lovable.dev</a></td><td>Viết text để AI tự động code ra phần mềm (React, Tailwind)</td><td class="pros">Code ra sản phẩm thật (React/Tailwind); rất mạnh &amp; linh hoạt</td><td class="cons">Giới hạn số prompt/tháng; cần chút nền tảng để chạy app</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">11</span></td><td><b>B12</b><br><a href="https://b12.io" target="_blank" rel="noopener">b12.io</a></td><td>Tối ưu cho web dịch vụ, tích hợp sẵn form đặt lịch, hoá đơn, email</td><td class="pros">Chuyên cho web dịch vụ; form đặt lịch/hoá đơn/email có sẵn</td><td class="cons">Bản free chỉ xem nháp; muốn chạy phải trả phí</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">12</span></td><td><b>Relume</b><br><a href="https://www.relume.ai" target="_blank" rel="noopener">relume.ai</a></td><td>AI tạo sitemap và wireframe siêu tốc với nội dung copywriting chuẩn</td><td class="pros">Wireframe/sitemap siêu nhanh; copy chuẩn; hợp designer</td><td class="cons">Giới hạn số project; cần kết hợp Figma/Webflow để xuất bản</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">13</span></td><td><b>10Web</b><br><a href="https://10web.io" target="_blank" rel="noopener">10web.io</a></td><td>Tạo ra site WordPress luôn, gần với dịch vụ làm WP của bạn</td><td class="pros">Ra web WordPress luôn; dễ đưa vào quy trình làm WP của bạn</td><td class="cons">Free giới hạn tính năng/lưu trữ; nội bộ — không chia sẻ cho khách</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">14</span></td><td><b>Hostinger Horizons</b><br><a href="https://hostinger.com" target="_blank" rel="noopener">hostinger.com</a></td><td>AI làm nhanh, rất dễ, giao diện đẹp</td><td class="pros">Cực dễ; hosting + AI tích hợp; giao diện đẹp; phù hợp người mới</td><td class="cons">Có phí để dùng "thật"; free giới hạn publish/domain</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">15</span></td><td><b>GoDaddy Airo</b><br><a href="https://www.godaddy.com" target="_blank" rel="noopener">godaddy.com</a></td><td>AI + marketing tích hợp</td><td class="pros">AI + marketing tích hợp; dùng nhanh</td><td class="cons">Free giới hạn; đẩy lên gói trả phí</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">16</span></td><td><b>Bolt.new</b><br><a href="https://bolt.new" target="_blank" rel="noopener">bolt.new</a></td><td>Website + web app full-stack từ prompt</td><td class="pros">Full-stack (frontend + backend); tạo cực nhanh; hỗ trợ database</td><td class="cons">Cần kỹ năng; giới hạn request; free tier hạn chế</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">17</span></td><td><b>v0 (by Vercel)</b><br><a href="https://v0.dev" target="_blank" rel="noopener">v0.dev</a></td><td>UI, landing page, component React từ mô tả</td><td class="pros">Tạo component React nhanh; Vercel tích hợp; chất lượng cao</td><td class="cons">Cần hiểu React; free giới hạn lượt; cần account Vercel</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">18</span></td><td><b>Google Stitch</b><br><a href="https://stitch.withgoogle.com" target="_blank" rel="noopener">stitch.withgoogle.com</a></td><td>Dựng giao diện UI từ mô tả văn bản</td><td class="pros">Dễ dùng; Google hỗ trợ; free hoàn toàn</td><td class="cons">Chưa ổn định; tính năng hạn chế; không export được</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">19</span></td><td><b>Typedream</b><br><a href="https://typedream.com" target="_blank" rel="noopener">typedream.com</a></td><td>Landing page dạng khối đơn giản, tối ưu</td><td class="pros">Đơn giản; tối ưu SEO sẵn; giá rẻ</td><td class="cons">Tính năng cơ bản; khó customize sâu</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">20</span></td><td><b>Spline</b><br><a href="https://spline.design" target="_blank" rel="noopener">spline.design</a></td><td>Thiết kế không gian 3D và website 3D</td><td class="pros">3D visualization wow; hiệu ứng ấn tượng; free tốt</td><td class="cons">Nặng; chậm; cần kỹ năng 3D; không tốt cho SEO</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">21</span></td><td><b>Uizard</b><br><a href="https://uizard.io" target="_blank" rel="noopener">uizard.io</a></td><td>Thiết kế UI/prototype từ ý tưởng, sketch, ảnh</td><td class="pros">Biến ảnh/sketch thành UI; nhanh; collaboration tốt</td><td class="cons">Chỉ prototype; không deploy được; free hạn chế</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">22</span></td><td><b>Webflow</b><br><a href="https://webflow.com" target="_blank" rel="noopener">webflow.com</a></td><td>Website chuyên nghiệp, tùy biến sâu mã nguồn</td><td class="pros">Tùy biến vô hạn; export code được; CMS tích hợp; SEO tốt</td><td class="cons">Learning curve cao; free rất hạn chế; publish cần trả phí</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">23</span></td><td><b>Replit</b><br><a href="https://replit.com" target="_blank" rel="noopener">replit.com</a></td><td>Lập trình và deploy web app trên cloud</td><td class="pros">IDE online; hỗ trợ nhiều ngôn ngữ; deploy nhanh; free tốt</td><td class="cons">Performance hạn chế; free có giới hạn CPU/storage</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">24</span></td><td><b>Builder.io</b><br><a href="https://www.builder.io" target="_blank" rel="noopener">builder.io</a></td><td>Kéo thả giao diện UI, kết nối API &amp; hệ thống</td><td class="pros">Kéo thả tự do; hỗ trợ API; CMS mạnh; collaboration</td><td class="cons">Complexity cao; learning curve; free hạn chế</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">25</span></td><td><b>Tempo</b><br><a href="https://www.tempo.build" target="_blank" rel="noopener">tempo.build</a></td><td>Sinh và chỉnh sửa mã nguồn React app từ prompt</td><td class="pros">Sinh code React chuẩn; AI chỉnh sửa tốt; deploy dễ</td><td class="cons">Cần biết React; free hạn chế</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
-          <tr><td><span class="rank-badge">26</span></td><td><b>Anything</b><br><a href="https://anything.com" target="_blank" rel="noopener">anything.com</a></td><td>Tạo nhanh ứng dụng và website qua prompt ngôn ngữ tự nhiên</td><td class="pros">Tạo cực nhanh; full-stack; no-code; tích hợp tốt</td><td class="cons">Mới; ít tài liệu; tính năng đang phát triển</td><td class="demo"><input type="text" class="demo-input" placeholder="Nhập link..."></td></tr>
+          <tr><td><span class="rank-badge">1</span></td><td><b>Durable</b><br><a href="https://durable.com" target="_blank" rel="noopener">durable.com</a></td><td>Web dịch vụ/doanh nghiệp trong 30 giây, kèm sẵn form liên hệ</td><td class="pros">Rất nhanh; form liên hệ có sẵn; đơn giản cho người không rành kỹ thuật</td><td class="cons">Bản free rất hạn chế; chỉ domain phụ; ít quyền tuỳ chỉnh</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">2</span></td><td><b>Lindo AI</b><br><a href="https://lindo.ai" target="_blank" rel="noopener">lindo.ai</a></td><td>Nhập 1 câu lệnh (prompt) ra ngay Landing Page hiện đại</td><td class="pros">Giao diện hiện đại; dựng landing cực nhanh; không cần code</td><td class="cons">Có badge quảng cáo Lino; giới hạn traffic tháng; ít tùy chỉnh nâng cao</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">3</span></td><td><b>Wix AI</b><br><a href="https://wix.com" target="_blank" rel="noopener">wix.com</a></td><td>AI dựng khung chuẩn, kết hợp trình kéo-thả linh hoạt</td><td class="pros">Cộng đồng lớn; kéo-thả mượt; nhiều mẫu &amp; app</td><td class="cons">Dính banner quảng cáo; subdomain; site thường chậm hơn</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge top">4</span></td><td><b>Framer</b><br><a href="https://framer.com" target="_blank" rel="noopener">framer.com</a></td><td>Giao diện thời thượng, hiệu ứng chuyển động (animation) cực mượt</td><td class="pros">Đẹp nhất nhóm; animation mượt; dựng portfolio/thương hiệu rất tốt</td><td class="cons">Subdomain *.framer.website; không xuất code; cần học một chút</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">5</span></td><td><b>CodeDesign.ai</b><br><a href="https://codedesign.ai" target="_blank" rel="noopener">codedesign.ai</a></td><td>Layout chuẩn chỉnh như thiết kế thủ công, cho can thiệp sâu vào UI</td><td class="pros">Kiểm soát layout tốt; can thiệp sâu UI; ra code sạch</td><td class="cons">Không custom domain; giới hạn export; đòi hỏi kỹ năng thiết kế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">6</span></td><td><b>Dora AI</b><br><a href="https://dora.run" target="_blank" rel="noopener">dora.run</a></td><td>Website tích hợp hiệu ứng 3D trực quan, gây ấn tượng mạnh</td><td class="pros">Hiệu ứng 3D wow; tạo ấn tượng mạnh; hợp chiến dịch/landing</td><td class="cons">Hạn chế tuỳ chỉnh; khó xuất bản; nặng &amp; chậm hơn; cần kỹ năng</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge top">7</span></td><td><b>ZipWP</b><br><a href="https://zipwp.com" target="_blank" rel="noopener">zipwp.com</a></td><td>Tạo web WordPress hoàn thiện bài viết, hình ảnh chỉ trong 60 giây</td><td class="pros">Ra WordPress thật; dựng nhanh; dễ đưa vào quy trình WP của bạn</td><td class="cons">Giới hạn 3 web/tháng; bản nháp tự xoá sau 24h nếu không cài host</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">8</span></td><td><b>Softr</b><br><a href="https://www.softr.io" target="_blank" rel="noopener">softr.io</a></td><td>Biến cơ sở dữ liệu (Google Sheets/Airtable) thành website động</td><td class="pros">Nối bảng tính/web động; không cần code; hợp danh mục, cổng thông tin</td><td class="cons">Giới hạn số dòng dữ liệu; tính năng nâng cao cần trả phí</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">9</span></td><td><b>Base44</b><br><a href="https://base44.com" target="_blank" rel="noopener">base44.com</a></td><td>Dùng AI tạo Web App, thiết lập luồng dữ liệu và phân quyền</td><td class="pros">Làm web app thật sự; quản lý luồng dữ liệu &amp; phân quyền</td><td class="cons">Cần tư duy hệ thống; giới hạn tài nguyên vận hành</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge top">10</span></td><td><b>Lovable</b><br><a href="https://lovable.dev" target="_blank" rel="noopener">lovable.dev</a></td><td>Viết text để AI tự động code ra phần mềm (React, Tailwind)</td><td class="pros">Code ra sản phẩm thật (React/Tailwind); rất mạnh &amp; linh hoạt</td><td class="cons">Giới hạn số prompt/tháng; cần chút nền tảng để chạy app</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">11</span></td><td><b>B12</b><br><a href="https://b12.io" target="_blank" rel="noopener">b12.io</a></td><td>Tối ưu cho web dịch vụ, tích hợp sẵn form đặt lịch, hoá đơn, email</td><td class="pros">Chuyên cho web dịch vụ; form đặt lịch/hoá đơn/email có sẵn</td><td class="cons">Bản free chỉ xem nháp; muốn chạy phải trả phí</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">12</span></td><td><b>Relume</b><br><a href="https://www.relume.ai" target="_blank" rel="noopener">relume.ai</a></td><td>AI tạo sitemap và wireframe siêu tốc với nội dung copywriting chuẩn</td><td class="pros">Wireframe/sitemap siêu nhanh; copy chuẩn; hợp designer</td><td class="cons">Giới hạn số project; cần kết hợp Figma/Webflow để xuất bản</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">13</span></td><td><b>10Web</b><br><a href="https://10web.io" target="_blank" rel="noopener">10web.io</a></td><td>Tạo ra site WordPress luôn, gần với dịch vụ làm WP của bạn</td><td class="pros">Ra web WordPress luôn; dễ đưa vào quy trình làm WP của bạn</td><td class="cons">Free giới hạn tính năng/lưu trữ; nội bộ — không chia sẻ cho khách</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">14</span></td><td><b>Hostinger Horizons</b><br><a href="https://hostinger.com" target="_blank" rel="noopener">hostinger.com</a></td><td>AI làm nhanh, rất dễ, giao diện đẹp</td><td class="pros">Cực dễ; hosting + AI tích hợp; giao diện đẹp; phù hợp người mới</td><td class="cons">Có phí để dùng "thật"; free giới hạn publish/domain</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">15</span></td><td><b>GoDaddy Airo</b><br><a href="https://www.godaddy.com" target="_blank" rel="noopener">godaddy.com</a></td><td>AI + marketing tích hợp</td><td class="pros">AI + marketing tích hợp; dùng nhanh</td><td class="cons">Free giới hạn; đẩy lên gói trả phí</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">16</span></td><td><b>Bolt.new</b><br><a href="https://bolt.new" target="_blank" rel="noopener">bolt.new</a></td><td>Website + web app full-stack từ prompt</td><td class="pros">Full-stack (frontend + backend); tạo cực nhanh; hỗ trợ database</td><td class="cons">Cần kỹ năng; giới hạn request; free tier hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">17</span></td><td><b>v0 (by Vercel)</b><br><a href="https://v0.dev" target="_blank" rel="noopener">v0.dev</a></td><td>UI, landing page, component React từ mô tả</td><td class="pros">Tạo component React nhanh; Vercel tích hợp; chất lượng cao</td><td class="cons">Cần hiểu React; free giới hạn lượt; cần account Vercel</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">18</span></td><td><b>Google Stitch</b><br><a href="https://stitch.withgoogle.com" target="_blank" rel="noopener">stitch.withgoogle.com</a></td><td>Dựng giao diện UI từ mô tả văn bản</td><td class="pros">Dễ dùng; Google hỗ trợ; free hoàn toàn</td><td class="cons">Chưa ổn định; tính năng hạn chế; không export được</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">19</span></td><td><b>Typedream</b><br><a href="https://typedream.com" target="_blank" rel="noopener">typedream.com</a></td><td>Landing page dạng khối đơn giản, tối ưu</td><td class="pros">Đơn giản; tối ưu SEO sẵn; giá rẻ</td><td class="cons">Tính năng cơ bản; khó customize sâu</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">20</span></td><td><b>Spline</b><br><a href="https://spline.design" target="_blank" rel="noopener">spline.design</a></td><td>Thiết kế không gian 3D và website 3D</td><td class="pros">3D visualization wow; hiệu ứng ấn tượng; free tốt</td><td class="cons">Nặng; chậm; cần kỹ năng 3D; không tốt cho SEO</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">21</span></td><td><b>Uizard</b><br><a href="https://uizard.io" target="_blank" rel="noopener">uizard.io</a></td><td>Thiết kế UI/prototype từ ý tưởng, sketch, ảnh</td><td class="pros">Biến ảnh/sketch thành UI; nhanh; collaboration tốt</td><td class="cons">Chỉ prototype; không deploy được; free hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">22</span></td><td><b>Webflow</b><br><a href="https://webflow.com" target="_blank" rel="noopener">webflow.com</a></td><td>Website chuyên nghiệp, tùy biến sâu mã nguồn</td><td class="pros">Tùy biến vô hạn; export code được; CMS tích hợp; SEO tốt</td><td class="cons">Learning curve cao; free rất hạn chế; publish cần trả phí</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">23</span></td><td><b>Replit</b><br><a href="https://replit.com" target="_blank" rel="noopener">replit.com</a></td><td>Lập trình và deploy web app trên cloud</td><td class="pros">IDE online; hỗ trợ nhiều ngôn ngữ; deploy nhanh; free tốt</td><td class="cons">Performance hạn chế; free có giới hạn CPU/storage</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">24</span></td><td><b>Builder.io</b><br><a href="https://www.builder.io" target="_blank" rel="noopener">builder.io</a></td><td>Kéo thả giao diện UI, kết nối API &amp; hệ thống</td><td class="pros">Kéo thả tự do; hỗ trợ API; CMS mạnh; collaboration</td><td class="cons">Complexity cao; learning curve; free hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">25</span></td><td><b>Tempo</b><br><a href="https://www.tempo.build" target="_blank" rel="noopener">tempo.build</a></td><td>Sinh và chỉnh sửa mã nguồn React app từ prompt</td><td class="pros">Sinh code React chuẩn; AI chỉnh sửa tốt; deploy dễ</td><td class="cons">Cần biết React; free hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
+          <tr><td><span class="rank-badge">26</span></td><td><b>Anything</b><br><a href="https://anything.com" target="_blank" rel="noopener">anything.com</a></td><td>Tạo nhanh ứng dụng và website qua prompt ngôn ngữ tự nhiên</td><td class="pros">Tạo cực nhanh; full-stack; no-code; tích hợp tốt</td><td class="cons">Mới; ít tài liệu; tính năng đang phát triển</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
         </table>
         <p class="sub" style="margin:10px 0 0;font-size:13px;color:var(--muted)">🟢 = đã tự đăng ký &amp; dùng thử, chấp nhận được · = bên tạo web app · = cần trả phí để dùng thật · = dùng nội bộ, không chia sẻ cho khách.<br>⭐ Điểm (0–5) là đánh giá chủ quan của mình: <i>Giao diện</i> (đẹp/không đại trà), <i>Dễ dùng</i> (ai cũng làm được), <i>Tốc độ</i> (tải nhanh), <i>Tiềm năng</i> (đáng đưa vào content/dịch vụ). Trước khi dùng, tự kiểm chứng lại.<br>📌 <b>Demo sản phẩm:</b> đang để trống (—), chờ bạn gửi link demo thật của từng nền tảng để mình điền vào.</p>
                 <div class="danger" style="margin-top:12px">🚫 <b>Không nên giới thiệu cho phễu này:</b> Google Sites, Carrd, Weebly/Strikingly (quá đơn giản, không tạo "điểm đau" để bán).</div>
@@ -754,179 +776,266 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
       document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('show');});
       btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('show');
+      const target = document.getElementById(btn.dataset.tab);
+      if (target) target.classList.add('show');
       window.scrollTo({top:0,behavior:'smooth'});
     });
   });
-  // Sub tab switching (within a panel)
+
+  // Sub tab switching
   function bindSub(container){
+    if (!container) return;
     container.querySelectorAll('.sub-btn').forEach(function(btn){
       btn.addEventListener('click',function(){
         container.querySelectorAll('.sub-btn').forEach(function(b){b.classList.remove('active');});
         container.querySelectorAll('.sub-panel').forEach(function(p){p.classList.remove('show');});
         btn.classList.add('active');
-        document.getElementById(btn.dataset.sub).classList.add('show');
+        const target = document.getElementById(btn.dataset.sub);
+        if (target) target.classList.add('show');
       });
     });
   }
-  document.getElementById('kehoach') && bindSub(document.getElementById('kehoach'));
-  document.getElementById('baidang') && bindSub(document.getElementById('baidang'));
+  bindSub(document.getElementById('kehoach'));
+  bindSub(document.getElementById('baidang'));
 
-  // Copy buttons
-  var toast=document.getElementById('toast');
-  function show(t,d){d=d||1600;toast.textContent=t;toast.classList.add('show');setTimeout(function(){toast.classList.remove('show');},d);}
+  // Toast notification
+  var toast = document.getElementById('toast');
+  var toastTimer = null;
+  function show(text, duration){
+    if (!toast) return;
+    duration = duration || 1800;
+    clearTimeout(toastTimer);
+    toast.textContent = text || '✅ Đã lưu!';
+    toast.classList.add('show');
+    toastTimer = setTimeout(function(){
+      toast.classList.remove('show');
+    }, duration);
+  }
+
+  // Copy post buttons
   document.querySelectorAll('.copybtn').forEach(function(btn){
     btn.addEventListener('click',function(){
-      var el=document.getElementById(btn.dataset.copy), text=el.innerText;
-      function done(){btn.classList.add('done');btn.innerHTML='✅ Đã copy';show();setTimeout(function(){btn.classList.remove('done');btn.innerHTML='📋 Copy bài';},1800);}
-      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done);}
-      else{var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);done();}
+      var targetId = btn.dataset.copy;
+      var el = document.getElementById(targetId);
+      if (!el) return;
+      var text = el.innerText || el.textContent;
+      function done(){
+        btn.classList.add('done');
+        btn.innerHTML = '✅ Đã copy';
+        show('📋 Đã copy bài viết vào bộ nhớ tạm!');
+        setTimeout(function(){
+          btn.classList.remove('done');
+          btn.innerHTML = '📋 Copy bài';
+        }, 1800);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done).catch(function(){
+          fallbackCopy(text, done);
+        });
+      } else {
+        fallbackCopy(text, done);
+      }
     });
   });
 
-  // Supabase setup
-  const SUPABASE_URL = 'https://dclqkjvyeukmprpltdkp.supabase.co';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRjbHFranZ5ZXVrbXBycGx0ZGtwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgxMDQwNTEsImV4cCI6MjEwMzY4MDA1MX0.wvMxX5v8WNYslbu08FqP3NzxAdoWUMnhfgs_RNGSkec';
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  function fallbackCopy(text, cb){
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch(e){}
+    document.body.removeChild(ta);
+    if (cb) cb();
+  }
 
-  // Editable cells & Label dropdowns
+  // ================= COMMERCIAL-GRADE AUTO-SAVE & CLOUD SYNC =================
   (function() {
-    const DEMO_KEY = 'facebook-campaign-demo-links';
-    const LABEL_KEY = 'facebook-campaign-labels';
+    const DEMO_KEY = 'fb_campaign_demo_links_v1';
+    const SUPABASE_URL = 'https://dclqkjvyeukmprpltdkp.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRjbHFranZ5ZXVrbXBycGx0ZGtwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgxMDQwNTEsImV4cCI6MjEwMzY4MDA1MX0.wvMxX5v8WNYslbu08FqP3NzxAdoWUMnhfgs_RNGSkec';
 
-    // Load demo links
-    function loadDemoData() {
-      const saved = localStorage.getItem(DEMO_KEY);
-      console.log('📂 DEMO_KEY:', DEMO_KEY, 'Saved data:', saved);
-      if (!saved) return;
-      const data = JSON.parse(saved);
-      document.querySelectorAll('.demo-input').forEach((input, idx) => {
-        if (data[idx] && data[idx] !== '—') {
-          input.value = data[idx];
-        }
-      });
+    const cloudStatusBadge = document.getElementById('cloud-status');
+    const cloudStatusText = document.getElementById('cloud-status-text');
+    const demoCountEl = document.getElementById('demo-count');
+    const inputs = document.querySelectorAll('.demo-input');
+    const syncTimers = {};
+
+    function setCloudStatus(state, text) {
+      if (!cloudStatusBadge || !cloudStatusText) return;
+      cloudStatusBadge.className = 'cloud-status-badge' + (state ? ' ' + state : '');
+      cloudStatusText.textContent = text;
     }
 
-    // Save demo links (localStorage + Supabase realtime)
-    function saveDemoData() {
-      const data = [];
-      document.querySelectorAll('.demo-input').forEach((input, idx) => {
-        const demoLink = input.value.trim() || '—';
-        data.push(demoLink);
+    // Refresh UI (counters, link buttons, clear buttons)
+    function refreshCellUI(input) {
+      const val = (input.value || '').trim();
+      const parent = input.closest('.demo-cell') || input.parentElement;
+      if (!parent) return val && val !== '—';
 
-        // Sync to Supabase immediately (fire & forget)
-        if (demoLink !== '—' && window.supabase) {
-          try {
-            supabase.from('tools').update({demo_link: demoLink})
-              .eq('tool_index', idx)
-              .then(() => show('☁️ Đã backup!', 1000))
-              .catch(err => console.log('Sync error:', err));
-          } catch (err) {
-            console.log('Supabase error:', err);
+      const linkBtn = parent.querySelector('.demo-link-btn');
+      const clearBtn = parent.querySelector('.demo-clear-btn');
+
+      if (val && val !== '—') {
+        let url = val;
+        if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+        if (linkBtn) {
+          linkBtn.href = url;
+          linkBtn.style.display = 'inline-flex';
+        }
+        if (clearBtn) {
+          clearBtn.style.display = 'inline-flex';
+        }
+        return true;
+      } else {
+        if (linkBtn) linkBtn.style.display = 'none';
+        if (clearBtn) clearBtn.style.display = 'none';
+        return false;
+      }
+    }
+
+    function refreshAllUI() {
+      let count = 0;
+      inputs.forEach(function(input) {
+        if (refreshCellUI(input)) {
+          count++;
+        }
+      });
+      if (demoCountEl) {
+        demoCountEl.textContent = count;
+      }
+      return count;
+    }
+
+    // Save to localStorage immediately
+    function saveLocal() {
+      try {
+        const data = [];
+        inputs.forEach(function(input) {
+          data.push(input.value.trim());
+        });
+        localStorage.setItem(DEMO_KEY, JSON.stringify(data));
+      } catch (e) {
+        console.warn('Lỗi lưu localStorage:', e);
+      }
+      refreshAllUI();
+    }
+
+    // Load from localStorage instantly
+    function loadLocal() {
+      try {
+        const saved = localStorage.getItem(DEMO_KEY);
+        if (saved) {
+          const data = JSON.parse(saved);
+          if (Array.isArray(data)) {
+            inputs.forEach(function(input, idx) {
+              if (data[idx] !== undefined && data[idx] !== null && data[idx] !== '—') {
+                input.value = data[idx];
+              }
+            });
           }
         }
-      });
-      localStorage.setItem(DEMO_KEY, JSON.stringify(data));
-      console.log('✅ Saved to localStorage:', data);
+      } catch (e) {
+        console.warn('Lỗi đọc localStorage:', e);
+      }
+      refreshAllUI();
     }
 
-    // Load labels
-    function loadLabelData() {
-      const saved = localStorage.getItem(LABEL_KEY);
-      if (!saved) return;
-      const data = JSON.parse(saved);
-      document.querySelectorAll('.label-select').forEach((select, idx) => {
-        if (data[idx]) select.value = data[idx];
-      });
-    }
+    // Sync a single tool to Supabase REST API
+    async function syncToCloud(toolIndex, val) {
+      setCloudStatus('saving', 'Đang lưu...');
+      const cleanVal = val ? val.trim() : '—';
 
-    // Save labels (localStorage + Supabase realtime)
-    function saveLabelData() {
-      const data = [];
-      document.querySelectorAll('.label-select').forEach((select, idx) => {
-        const label = select.value || '';
-        data.push(label);
-
-        // Sync to Supabase immediately (fire & forget)
-        if (label) {
-          supabase.from('tools').update({label: label})
-            .eq('tool_index', idx)
-            .then(() => show('☁️ Đã backup!', 1000))
-            .catch(err => console.log('Sync error:', err));
-        }
-      });
-      localStorage.setItem(LABEL_KEY, JSON.stringify(data));
-    }
-
-    // Load from Supabase (on startup) - only if localStorage is empty
-    async function loadFromSupabase() {
       try {
-        const {data, error} = await supabase.from('tools').select('tool_index, demo_link, label');
-        if (error || !data) return;
+        const res = await fetch(SUPABASE_URL + '/rest/v1/tools?tool_index=eq.' + toolIndex, {
+          method: 'PATCH',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_KEY,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({
+            demo_link: cleanVal || '—',
+            updated_at: new Date().toISOString()
+          })
+        });
 
-        // Check if localStorage has data
-        const hasLocalData = localStorage.getItem(DEMO_KEY) && JSON.parse(localStorage.getItem(DEMO_KEY)).some(d => d !== '—');
-
-        // Only apply Supabase data if localStorage is empty
-        if (!hasLocalData) {
-          // Apply demo links from Supabase
-          const demoLinks = {};
-          data.forEach(row => {
-            if (row.demo_link && row.demo_link !== '—') demoLinks[row.tool_index] = row.demo_link;
-          });
-          document.querySelectorAll('.demo-input').forEach((input, idx) => {
-            if (demoLinks[idx]) input.value = demoLinks[idx];
-          });
-
-          // Apply labels from Supabase
-          const labels = {};
-          data.forEach(row => {
-            if (row.label) labels[row.tool_index] = row.label;
-          });
-          document.querySelectorAll('.label-select').forEach((select, idx) => {
-            if (labels[idx]) select.value = labels[idx];
-          });
+        if (res.ok) {
+          setCloudStatus('', 'Đã lưu trên Cloud');
+        } else {
+          setCloudStatus('error', 'Đã lưu offline');
         }
-
-        // Sync localStorage data to Supabase (in background)
-        syncLocalToSupabase();
       } catch (err) {
-        console.log('Supabase load error:', err);
+        console.warn('Lỗi đồng bộ Cloud tool #' + toolIndex + ':', err);
+        setCloudStatus('error', 'Đã lưu offline');
       }
     }
 
-    // Sync localStorage data to Supabase
-    async function syncLocalToSupabase() {
+    // Load from Cloud on startup
+    async function loadCloud() {
       try {
-        const demoData = JSON.parse(localStorage.getItem(DEMO_KEY) || '[]');
-        const labelData = JSON.parse(localStorage.getItem(LABEL_KEY) || '[]');
-
-        for (let i = 0; i < demoData.length; i++) {
-          const demoLink = demoData[i] !== '—' ? demoData[i] : null;
-          const label = labelData[i] || '';
-
-          await supabase.from('tools')
-            .update({demo_link: demoLink, label: label})
-            .eq('tool_index', i)
-            .catch(err => console.log('Sync error:', err));
+        const res = await fetch(SUPABASE_URL + '/rest/v1/tools?select=tool_index,demo_link&order=tool_index.asc', {
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_KEY
+          }
+        });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          let updated = false;
+          data.forEach(function(row) {
+            const idx = row.tool_index;
+            if (inputs[idx]) {
+              const currentVal = inputs[idx].value.trim();
+              if (row.demo_link && row.demo_link !== '—') {
+                if (currentVal !== row.demo_link) {
+                  inputs[idx].value = row.demo_link;
+                  updated = true;
+                }
+              }
+            }
+          });
+          if (updated) {
+            saveLocal();
+          }
+          setCloudStatus('', 'Đã lưu trên Cloud');
         }
       } catch (err) {
-        console.log('Sync error:', err);
+        console.warn('Lỗi nạp Cloud:', err);
       }
     }
 
-    // Handle demo input fields
-    const inputElements = document.querySelectorAll('.demo-input');
-    console.log('🔗 Attached event listeners to', inputElements.length, 'input elements');
-    inputElements.forEach(input => {
+    // Attach real-time handlers to every cell
+    inputs.forEach(function(input, idx) {
+      const parent = input.closest('.demo-cell') || input.parentElement;
+      const clearBtn = parent ? parent.querySelector('.demo-clear-btn') : null;
+
+      // As user types: auto-save local instantly + debounce cloud sync
       input.addEventListener('input', function() {
-        console.log('📝 Input changed:', this.value);
-        saveDemoData();
+        refreshCellUI(input);
+        saveLocal();
+        setCloudStatus('saving', 'Đang lưu...');
+
+        clearTimeout(syncTimers[idx]);
+        syncTimers[idx] = setTimeout(function() {
+          syncToCloud(idx, input.value);
+        }, 400);
+      });
+
+      // On change/blur: flush immediate save
+      input.addEventListener('change', function() {
+        clearTimeout(syncTimers[idx]);
+        saveLocal();
+        syncToCloud(idx, input.value);
       });
 
       input.addEventListener('blur', function() {
-        if (this.value.trim() === '') this.value = '';
-        saveDemoData();
+        clearTimeout(syncTimers[idx]);
+        saveLocal();
+        syncToCloud(idx, input.value);
       });
 
       input.addEventListener('keydown', function(e) {
@@ -935,20 +1044,24 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
           this.blur();
         }
       });
+
+      // Clear button (×)
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          input.value = '';
+          refreshCellUI(input);
+          saveLocal();
+          clearTimeout(syncTimers[idx]);
+          syncToCloud(idx, '');
+          input.focus();
+        });
+      }
     });
 
-    // Handle label dropdowns
-    document.querySelectorAll('.label-select').forEach(select => {
-      select.addEventListener('change', function() {
-        saveLabelData();
-        show('✅ Đã lưu label!');
-      });
-    });
-
-    // Load on startup
-    loadDemoData();
-    loadLabelData();
-    loadFromSupabase(); // Load from Supabase DB
+    // Initial boot: Load local immediately, then fetch cloud in background
+    loadLocal();
+    loadCloud();
   })();
 </script>
 </body>
