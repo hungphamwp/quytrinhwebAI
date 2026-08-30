@@ -797,10 +797,13 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
     // Load demo links
     function loadDemoData() {
       const saved = localStorage.getItem(DEMO_KEY);
+      console.log('📂 DEMO_KEY:', DEMO_KEY, 'Saved data:', saved);
       if (!saved) return;
       const data = JSON.parse(saved);
       document.querySelectorAll('.demo-input').forEach((input, idx) => {
-        if (data[idx]) input.value = data[idx];
+        if (data[idx] && data[idx] !== '—') {
+          input.value = data[idx];
+        }
       });
     }
 
@@ -820,6 +823,7 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
         }
       });
       localStorage.setItem(DEMO_KEY, JSON.stringify(data));
+      console.log('✅ Saved to localStorage:', data);
     }
 
     // Load labels
@@ -909,6 +913,10 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
 
     // Handle demo input fields
     document.querySelectorAll('.demo-input').forEach(input => {
+      input.addEventListener('input', function() {
+        saveDemoData();
+      });
+
       input.addEventListener('blur', function() {
         if (this.value.trim() === '') this.value = '';
         saveDemoData();
