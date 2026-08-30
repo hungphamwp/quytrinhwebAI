@@ -141,6 +141,7 @@
   .rating-badge.normal{background:var(--warn-soft);color:#6f5700}
   .rating-badge.good{background:var(--brand-soft);color:#0a3069}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <div class="wrap">
@@ -784,6 +785,11 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
     });
   });
 
+  // Supabase setup
+  const SUPABASE_URL = 'https://dclqkjvyeukmprpltdkp.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRjbHFranZ5ZXVrbXBycGx0ZGtwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgxMDQwNTEsImV4cCI6MjEwMzY4MDA1MX0.wvMxX5v8WNYslbu08FqP3NzxAdoWUMnhfgs_RNGSkec';
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
   // Editable cells & Label dropdowns
   (function() {
     const DEMO_KEY = 'facebook-campaign-demo-links';
@@ -799,13 +805,24 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       });
     }
 
-    // Save demo links
-    function saveDemoData() {
+    // Save demo links (localStorage + Supabase)
+    async function saveDemoData() {
       const data = [];
-      document.querySelectorAll('.editable-cell').forEach(cell => {
-        data.push(cell.textContent.trim() || '—');
+      const tools = [];
+      document.querySelectorAll('.editable-cell').forEach((cell, idx) => {
+        const demoLink = cell.textContent.trim() || '—';
+        data.push(demoLink);
+        tools.push({idx, demoLink});
       });
       localStorage.setItem(DEMO_KEY, JSON.stringify(data));
+
+      // Sync to Supabase (async, no wait)
+      for (const t of tools) {
+        if (t.demoLink !== '—') {
+          supabase.from('tools').update({demo_link: t.demoLink})
+            .eq('tool_index', t.idx).catch(err => console.log('Save error:', err));
+        }
+      }
     }
 
     // Load labels
@@ -818,13 +835,52 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       });
     }
 
-    // Save labels
-    function saveLabelData() {
+    // Save labels (localStorage + Supabase)
+    async function saveLabelData() {
       const data = [];
-      document.querySelectorAll('.label-select').forEach(select => {
-        data.push(select.value);
+      const tools = [];
+      document.querySelectorAll('.label-select').forEach((select, idx) => {
+        const label = select.value || '';
+        data.push(label);
+        tools.push({idx, label});
       });
       localStorage.setItem(LABEL_KEY, JSON.stringify(data));
+
+      // Sync to Supabase (async, no wait)
+      for (const t of tools) {
+        if (t.label) {
+          supabase.from('tools').update({label: t.label})
+            .eq('tool_index', t.idx).catch(err => console.log('Save error:', err));
+        }
+      }
+    }
+
+    // Load from Supabase (on startup)
+    async function loadFromSupabase() {
+      try {
+        const {data, error} = await supabase.from('tools').select('tool_index, demo_link, label');
+        if (error || !data) return;
+
+        // Apply demo links
+        const demoLinks = {};
+        data.forEach(row => {
+          if (row.demo_link) demoLinks[row.tool_index] = row.demo_link;
+        });
+        document.querySelectorAll('.editable-cell').forEach((cell, idx) => {
+          if (demoLinks[idx]) cell.textContent = demoLinks[idx];
+        });
+
+        // Apply labels
+        const labels = {};
+        data.forEach(row => {
+          if (row.label) labels[row.tool_index] = row.label;
+        });
+        document.querySelectorAll('.label-select').forEach((select, idx) => {
+          if (labels[idx]) select.value = labels[idx];
+        });
+      } catch (err) {
+        console.log('Supabase load error:', err);
+      }
     }
 
     // Make demo cells editable
@@ -867,6 +923,7 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
     // Load on startup
     loadDemoData();
     loadLabelData();
+    loadFromSupabase(); // Load from Supabase DB
   })();
 </script>
 </body>
