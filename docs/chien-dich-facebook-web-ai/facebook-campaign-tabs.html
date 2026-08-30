@@ -775,7 +775,7 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
 
   // Copy buttons
   var toast=document.getElementById('toast');
-  function show(t){toast.textContent=t;toast.classList.add('show');setTimeout(function(){toast.classList.remove('show');},1600);}
+  function show(t,d){d=d||1600;toast.textContent=t;toast.classList.add('show');setTimeout(function(){toast.classList.remove('show');},d);}
   document.querySelectorAll('.copybtn').forEach(function(btn){
     btn.addEventListener('click',function(){
       var el=document.getElementById(btn.dataset.copy), text=el.innerText;
@@ -805,24 +805,22 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       });
     }
 
-    // Save demo links (localStorage + Supabase)
-    async function saveDemoData() {
+    // Save demo links (localStorage + Supabase realtime)
+    function saveDemoData() {
       const data = [];
-      const tools = [];
       document.querySelectorAll('.editable-cell').forEach((cell, idx) => {
         const demoLink = cell.textContent.trim() || '—';
         data.push(demoLink);
-        tools.push({idx, demoLink});
+
+        // Sync to Supabase immediately (fire & forget)
+        if (demoLink !== '—') {
+          supabase.from('tools').update({demo_link: demoLink})
+            .eq('tool_index', idx)
+            .then(() => show('☁️ Đã backup!', 1000))
+            .catch(err => console.log('Sync error:', err));
+        }
       });
       localStorage.setItem(DEMO_KEY, JSON.stringify(data));
-
-      // Sync to Supabase (async, no wait)
-      for (const t of tools) {
-        if (t.demoLink !== '—') {
-          supabase.from('tools').update({demo_link: t.demoLink})
-            .eq('tool_index', t.idx).catch(err => console.log('Save error:', err));
-        }
-      }
     }
 
     // Load labels
@@ -835,24 +833,22 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
       });
     }
 
-    // Save labels (localStorage + Supabase)
-    async function saveLabelData() {
+    // Save labels (localStorage + Supabase realtime)
+    function saveLabelData() {
       const data = [];
-      const tools = [];
       document.querySelectorAll('.label-select').forEach((select, idx) => {
         const label = select.value || '';
         data.push(label);
-        tools.push({idx, label});
+
+        // Sync to Supabase immediately (fire & forget)
+        if (label) {
+          supabase.from('tools').update({label: label})
+            .eq('tool_index', idx)
+            .then(() => show('☁️ Đã backup!', 1000))
+            .catch(err => console.log('Sync error:', err));
+        }
       });
       localStorage.setItem(LABEL_KEY, JSON.stringify(data));
-
-      // Sync to Supabase (async, no wait)
-      for (const t of tools) {
-        if (t.label) {
-          supabase.from('tools').update({label: t.label})
-            .eq('tool_index', t.idx).catch(err => console.log('Save error:', err));
-        }
-      }
     }
 
     // Load from Supabase (on startup) - only if localStorage is empty
