@@ -815,11 +815,15 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
         data.push(demoLink);
 
         // Sync to Supabase immediately (fire & forget)
-        if (demoLink !== '—') {
-          supabase.from('tools').update({demo_link: demoLink})
-            .eq('tool_index', idx)
-            .then(() => show('☁️ Đã backup!', 1000))
-            .catch(err => console.log('Sync error:', err));
+        if (demoLink !== '—' && window.supabase) {
+          try {
+            supabase.from('tools').update({demo_link: demoLink})
+              .eq('tool_index', idx)
+              .then(() => show('☁️ Đã backup!', 1000))
+              .catch(err => console.log('Sync error:', err));
+          } catch (err) {
+            console.log('Supabase error:', err);
+          }
         }
       });
       localStorage.setItem(DEMO_KEY, JSON.stringify(data));
