@@ -1777,16 +1777,9 @@ document.addEventListener('DOMContentLoaded', function() {
     selectEl.classList.add('tag-' + val);
   }
 
-  document.addEventListener('change', function(e) {
-    if (e.target && e.target.classList.contains('sheet-label-select')) {
-      updateLabelSelectClass(e.target);
-      saveLabelsLocal();
-    }
-  });
-
-  // ================= 6. DEMO LINK CELLS & SUPABASE SYNC =================
-  const DEMO_KEY = 'master_ai_demo_links_v1';
-  const LABELS_KEY = 'master_ai_tool_labels_v1';
+  // ================= 6. DEMO LINK CELLS & FULL SUPABASE CLOUD SYNC =================
+  const DEMO_KEY = 'fb_campaign_demo_links_v1';
+  const LABELS_KEY = 'fb_campaign_tool_labels_v1';
   const SUPABASE_URL = 'https://dclqkjvyeukmprpltdkp.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRjbHFranZ5ZXVrbXBycGx0ZGtwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgxMDQwNTEsImV4cCI6MjEwMzY4MDA1MX0.wvMxX5v8WNYslbu08FqP3NzxAdoWUMnhfgs_RNGSkec';
 
@@ -1797,6 +1790,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const topCloudStatus = document.getElementById('top-cloud-status');
   const topCloudText = document.getElementById('top-cloud-status-text');
   const demoCountEl = document.getElementById('demo-count');
+
+  const syncTimers = {};
 
   function setCloudStatus(state, text) {
     if (cloudStatusBadge && cloudStatusText) {
@@ -1846,32 +1841,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function saveLocal() {
     const data = {};
-    document.querySelectorAll('.demo-input').forEach(function(inp, idx) {
+    document.querySelectorAll('#tools-table .demo-input').forEach(function(inp, idx) {
       const v = inp.value.trim();
       if (v) data[idx] = v;
     });
     try {
       localStorage.setItem(DEMO_KEY, JSON.stringify(data));
+      localStorage.setItem('master_ai_demo_links_v1', JSON.stringify(data));
     } catch(e){}
     updateCounters();
   }
 
   function saveLabelsLocal() {
     const labels = {};
-    document.querySelectorAll('.sheet-label-select').forEach(function(sel, idx) {
+    document.querySelectorAll('#tools-table .sheet-label-select').forEach(function(sel, idx) {
       labels[idx] = sel.value;
     });
     try {
       localStorage.setItem(LABELS_KEY, JSON.stringify(labels));
+      localStorage.setItem('master_ai_tool_labels_v1', JSON.stringify(labels));
     } catch(e){}
   }
 
   function loadLocal() {
     try {
-      const saved = localStorage.getItem(DEMO_KEY);
+      const saved = localStorage.getItem(DEMO_KEY) || localStorage.getItem('master_ai_demo_links_v1');
       if (saved) {
         const data = JSON.parse(saved);
-        const allInputs = document.querySelectorAll('.demo-input');
+        const allInputs = document.querySelectorAll('#tools-table .demo-input');
         Object.keys(data).forEach(function(idx) {
           if (allInputs[idx]) {
             allInputs[idx].value = data[idx];
@@ -1880,10 +1877,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }
 
-      const savedLabels = localStorage.getItem(LABELS_KEY);
+      const savedLabels = localStorage.getItem(LABELS_KEY) || localStorage.getItem('master_ai_tool_labels_v1');
       if (savedLabels) {
         const lData = JSON.parse(savedLabels);
-        const allSelects = document.querySelectorAll('.sheet-label-select');
+        const allSelects = document.querySelectorAll('#tools-table .sheet-label-select');
         Object.keys(lData).forEach(function(idx) {
           if (allSelects[idx]) {
             allSelects[idx].value = lData[idx];
@@ -1895,14 +1892,119 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCounters();
   }
 
+  // Cloud Sync to Supabase
+  function syncToCloud(toolIdx, demoLink) {
+    setCloudStatus('saving', 'Đang lưu Cloud...');
+    if (syncTimers[toolIdx]) clearTimeout(syncTimers[toolIdx]);
+
+    syncTimers[toolIdx] = setTimeout(async function() {
+      try {
+        const res = await fetch(SUPABASE_URL + '/rest/v1/tools?tool_index=eq.' + toolIdx, {
+          method: 'PATCH',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_KEY,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({
+            demo_link: demoLink || '—',
+            updated_at: new Date().toISOString()
+          })
+        });
+
+        if (res.ok) {
+          setCloudStatus('', 'Đã lưu trên Cloud');
+        } else {
+          setCloudStatus('error', 'Lưu offline');
+        }
+      } catch(err) {
+        setCloudStatus('error', 'Lưu offline');
+      }
+    }, 600);
+  }
+
+  function syncLabelToCloud(toolIdx, labelVal) {
+    setCloudStatus('saving', 'Đang lưu Cloud...');
+    setTimeout(async function() {
+      try {
+        await fetch(SUPABASE_URL + '/rest/v1/tools?tool_index=eq.' + toolIdx, {
+          method: 'PATCH',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_KEY,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({
+            label: labelVal,
+            updated_at: new Date().toISOString()
+          })
+        });
+        setCloudStatus('', 'Đã lưu trên Cloud');
+      } catch(e){}
+    }, 300);
+  }
+
+  async function loadFromCloud() {
+    try {
+      setCloudStatus('saving', 'Đang tải từ Cloud...');
+      const res = await fetch(SUPABASE_URL + '/rest/v1/tools?select=*&order=tool_index.asc', {
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_KEY
+        }
+      });
+
+      if (res.ok) {
+        const rows = await res.json();
+        const allInputs = document.querySelectorAll('#tools-table .demo-input');
+        let updated = false;
+
+        rows.forEach(function(row) {
+          const idx = row.tool_index;
+          if (allInputs[idx]) {
+            if (row.demo_link && row.demo_link !== '—') {
+              allInputs[idx].value = row.demo_link;
+              refreshCellUI(allInputs[idx]);
+              updated = true;
+            }
+          }
+
+          if (row.label) {
+            const labelSelect = document.querySelector('#tools-table .sheet-label-select[data-tool-idx="' + idx + '"]');
+            if (labelSelect) {
+              labelSelect.value = row.label;
+              updateLabelSelectClass(labelSelect);
+            }
+          }
+        });
+
+        if (updated) {
+          saveLocal();
+        }
+        saveLabelsLocal();
+        setCloudStatus('', 'Đã đồng bộ Cloud (' + rows.filter(r => r.demo_link && r.demo_link !== '—').length + ' link)');
+      }
+    } catch(err) {
+      console.warn('Lỗi load cloud:', err);
+      setCloudStatus('error', 'Lưu offline');
+    }
+    updateCounters();
+  }
+
   function bindAllInputs() {
-    document.querySelectorAll('.demo-input').forEach(function(input) {
+    document.querySelectorAll('.demo-input').forEach(function(input, idx) {
       if (input.dataset.bound) return;
       input.dataset.bound = 'true';
 
       input.addEventListener('input', function() {
         refreshCellUI(input);
         saveLocal();
+        const parentTable = input.closest('table');
+        if (parentTable && parentTable.id === 'tools-table') {
+          syncToCloud(idx, input.value.trim());
+        }
       });
 
       const parent = input.closest('.demo-cell') || input.parentElement;
@@ -1913,6 +2015,10 @@ document.addEventListener('DOMContentLoaded', function() {
           input.value = '';
           refreshCellUI(input);
           saveLocal();
+          const parentTable = input.closest('table');
+          if (parentTable && parentTable.id === 'tools-table') {
+            syncToCloud(idx, '');
+          }
           input.focus();
         });
       }
@@ -1920,6 +2026,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelectorAll('.sheet-label-select').forEach(function(sel) {
       updateLabelSelectClass(sel);
+      if (!sel.dataset.bound) {
+        sel.dataset.bound = 'true';
+        sel.addEventListener('change', function() {
+          updateLabelSelectClass(sel);
+          saveLabelsLocal();
+          const idx = sel.dataset.toolIdx;
+          if (idx !== undefined) {
+            syncLabelToCloud(parseInt(idx, 10), sel.value);
+          }
+        });
+      }
     });
   }
 
@@ -1957,13 +2074,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if (tbody) {
         const rowCount = tbody.querySelectorAll('tr').length + 1;
+        const newIdx = rowCount - 1;
         const tr = document.createElement('tr');
         let hrefUrl = url;
         if (hrefUrl && !/^https?:\/\//i.test(hrefUrl)) hrefUrl = 'https://' + hrefUrl;
 
         tr.innerHTML = '<td><span class="rank-badge ' + (isTop ? 'top' : '') + '">' + rowCount + '</span></td>' +
           '<td><b>' + name + '</b>' + (hrefUrl ? '<br><a href="' + hrefUrl + '" target="_blank" rel="noopener">' + url + '</a>' : '') + '</td>' +
-          '<td><select class="sheet-label-select tag-' + labelVal + '">' +
+          '<td><select class="sheet-label-select tag-' + labelVal + '" data-tool-idx="' + newIdx + '">' +
             '<option value="top" ' + (labelVal==='top'?'selected':'') + '>⭐ Đánh giá cao</option>' +
             '<option value="recommended" ' + (labelVal==='recommended'?'selected':'') + '>🟢 Khuyên dùng</option>' +
             '<option value="wp" ' + (labelVal==='wp'?'selected':'') + '>⚡ WordPress</option>' +
@@ -1976,6 +2094,9 @@ document.addEventListener('DOMContentLoaded', function() {
           '<td class="cons">' + (cons || '—') + '</td>' +
           '<td class="demo"><div class="demo-cell"><input type="text" class="demo-input" value="' + demo + '" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td>';
         tbody.appendChild(tr);
+
+        syncToCloud(newIdx, demo);
+        syncLabelToCloud(newIdx, labelVal);
       }
 
       closeModalTool();
@@ -2022,13 +2143,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (tbody) {
       const rowCount = tbody.querySelectorAll('tr').length + 1;
+      const newIdx = rowCount - 1;
       const tr = document.createElement('tr');
       let hrefUrl = url;
       if (hrefUrl && !/^https?:\/\//i.test(hrefUrl)) hrefUrl = 'https://' + hrefUrl;
 
       tr.innerHTML = '<td><span class="rank-badge ' + (labelVal==='top'?'top':'') + '">' + rowCount + '</span></td>' +
         '<td><b>' + name + '</b>' + (hrefUrl ? '<br><a href="' + hrefUrl + '" target="_blank" rel="noopener">' + url + '</a>' : '') + '</td>' +
-        '<td><select class="sheet-label-select tag-' + labelVal + '">' +
+        '<td><select class="sheet-label-select tag-' + labelVal + '" data-tool-idx="' + newIdx + '">' +
           '<option value="top" ' + (labelVal==='top'?'selected':'') + '>⭐ Đánh giá cao</option>' +
           '<option value="recommended" ' + (labelVal==='recommended'?'selected':'') + '>🟢 Khuyên dùng</option>' +
           '<option value="wp" ' + (labelVal==='wp'?'selected':'') + '>⚡ WordPress</option>' +
@@ -2041,6 +2163,9 @@ document.addEventListener('DOMContentLoaded', function() {
         '<td class="cons">' + (cons || '—') + '</td>' +
         '<td class="demo"><div class="demo-cell"><input type="text" class="demo-input" value="' + demo + '" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td>';
       tbody.appendChild(tr);
+
+      syncToCloud(newIdx, demo);
+      syncLabelToCloud(newIdx, labelVal);
     }
 
     inlineName.value = '';
@@ -2113,6 +2238,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Init
   bindAllInputs();
   loadLocal();
+  loadFromCloud();
 });
 </script>
 </body>
