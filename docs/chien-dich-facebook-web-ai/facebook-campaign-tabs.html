@@ -885,6 +885,73 @@
     background-color: var(--line);
     color: var(--muted);
     border-color: var(--line);
+  /* Inline Add Row at the bottom of Table (Notion / Sheets style) */
+  .inline-add-row {
+    background: var(--card-solid);
+    border-top: 2px dashed var(--brand-border) !important;
+  }
+  .inline-add-row td {
+    padding: 8px 10px !important;
+    vertical-align: middle;
+  }
+  .inline-plus-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    background: var(--brand-soft);
+    color: var(--brand);
+    font-weight: 800;
+    font-size: 13px;
+    border: 1px dashed var(--brand-border);
+  }
+  .inline-table-input {
+    width: 100%;
+    padding: 7px 10px;
+    font-size: 12.5px;
+    font-family: inherit;
+    color: var(--ink);
+    background: var(--input-bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease;
+  }
+  .inline-table-input:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 2px var(--brand-glow);
+    background: var(--card-solid);
+  }
+  .btn-inline-submit {
+    background: var(--brand-gradient);
+    color: #ffffff;
+    border: none;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 7px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 8px var(--brand-glow);
+    transition: all 0.15s ease;
+  }
+  .btn-inline-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--brand-glow);
+  }
+  .inline-add-helper {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 8px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
   /* Toolbar Action Buttons (Add Tool / Add Column) */
@@ -1260,7 +1327,43 @@
           <tr><td><span class="rank-badge">25</span></td><td><b>Tempo</b><br><a href="https://www.tempo.build" target="_blank" rel="noopener">tempo.build</a></td><td><select class="sheet-label-select tag-app" data-tool-idx="24"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app" selected>📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Sinh code React chuẩn; AI chỉnh sửa tốt; deploy dễ</td><td class="cons">Cần biết React; free hạn chế</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
           <tr><td><span class="rank-badge">26</span></td><td><b>Anything</b><br><a href="https://anything.com" target="_blank" rel="noopener">anything.com</a></td><td><select class="sheet-label-select tag-app" data-tool-idx="25"><option value="top">⭐ Đánh giá cao</option><option value="recommended">🟢 Khuyên dùng</option><option value="wp">⚡ WordPress</option><option value="app" selected>📱 Web App</option><option value="free">🎁 Miễn phí tốt</option><option value="paid">⚠️ Cần trả phí</option><option value="none">⚪ Chưa đánh giá</option></select></td><td class="pros">Tạo cực nhanh; full-stack; no-code; tích hợp tốt</td><td class="cons">Mới; ít tài liệu; tính năng đang phát triển</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link">×</button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo">↗</a></div></td></tr>
           </tbody>
+          <tfoot>
+            <tr class="inline-add-row" id="table-inline-add-tr">
+              <td>
+                <span class="inline-plus-badge" title="Dòng thêm nhanh">➕</span>
+              </td>
+              <td>
+                <input type="text" class="inline-table-input" id="inline-tool-name" placeholder="Tên web & link (vd: Cursor / cursor.com)..." />
+              </td>
+              <td>
+                <select class="sheet-label-select tag-recommended" id="inline-tool-label">
+                  <option value="top">⭐ Đánh giá cao</option>
+                  <option value="recommended" selected>🟢 Khuyên dùng</option>
+                  <option value="wp">⚡ WordPress</option>
+                  <option value="app">📱 Web App</option>
+                  <option value="free">🎁 Miễn phí tốt</option>
+                  <option value="paid">⚠️ Cần trả phí</option>
+                  <option value="none">⚪ Chưa đánh giá</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" class="inline-table-input" id="inline-tool-pros" placeholder="Ưu điểm..." />
+              </td>
+              <td>
+                <input type="text" class="inline-table-input" id="inline-tool-cons" placeholder="Nhược điểm..." />
+              </td>
+              <td class="demo">
+                <div style="display:flex;align-items:center;gap:6px">
+                  <input type="text" class="inline-table-input" id="inline-tool-demo" placeholder="Link demo..." style="flex:1" />
+                  <button type="button" class="btn-inline-submit" id="btn-inline-add" title="Thêm công cụ mới (Enter)">➕ Thêm</button>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
         </table>
+        <div class="inline-add-helper">
+          <span>💡 <b>Mẹo thêm nhanh:</b> Nhập trực tiếp vào dòng cuối bảng ở trên rồi bấm <b>➕ Thêm</b> (hoặc ấn phím <b>Enter</b>).</span>
+        </div>
         <p class="sub" style="margin:10px 0 0;font-size:13px;color:var(--muted)">🟢 = đã tự đăng ký &amp; dùng thử, chấp nhận được · = bên tạo web app · = cần trả phí để dùng thật · = dùng nội bộ, không chia sẻ cho khách.<br>⭐ Điểm (0–5) là đánh giá chủ quan của mình: <i>Giao diện</i> (đẹp/không đại trà), <i>Dễ dùng</i> (ai cũng làm được), <i>Tốc độ</i> (tải nhanh), <i>Tiềm năng</i> (đáng đưa vào content/dịch vụ). Trước khi dùng, tự kiểm chứng lại.<br>📌 <b>Demo sản phẩm:</b> đang để trống (—), chờ bạn gửi link demo thật của từng nền tảng để mình điền vào.</p>
                 <div class="danger" style="margin-top:12px">🚫 <b>Không nên giới thiệu cho phễu này:</b> Google Sites, Carrd, Weebly/Strikingly (quá đơn giản, không tạo "điểm đau" để bán).</div>
         <div class="lead" style="margin-top:12px">🎯 <b>Công thức chọn tool:</b> đăng <b>cái dễ gây nghiện trước</b> (Durable/Wix/Framer) → người xem thử → vướng giới hạn → liên hệ bạn. Giữ <b>ZipWP / 10Web / Softr</b> làm "bài chuyên sâu" để dẫn về WordPress &amp; dữ liệu động.</div>
@@ -2522,6 +2625,96 @@ Tôi cần prompt NGẮN, CỤ THỂ để dán vào tool tạo web AI (Durable/
         syncLabelToCloud(newToolIdx, labelVal);
       });
     }
+
+    // ================= INLINE ADD ROW (TABLE FOOTER) LOGIC =================
+    const inlineName = document.getElementById('inline-tool-name');
+    const inlineLabel = document.getElementById('inline-tool-label');
+    const inlinePros = document.getElementById('inline-tool-pros');
+    const inlineCons = document.getElementById('inline-tool-cons');
+    const inlineDemo = document.getElementById('inline-tool-demo');
+    const btnInlineAdd = document.getElementById('btn-inline-add');
+
+    if (inlineLabel) {
+      inlineLabel.addEventListener('change', function() {
+        updateLabelSelectClass(inlineLabel);
+      });
+    }
+
+    function handleInlineAdd() {
+      if (!inlineName) return;
+      let rawName = inlineName.value.trim();
+      if (!rawName) {
+        inlineName.focus();
+        show('⚠️ Vui lòng nhập tên nền tảng Web AI!');
+        return;
+      }
+
+      // Parse name and url if entered together (e.g. "Cursor - cursor.com" or "Cursor / cursor.com")
+      let name = rawName;
+      let url = '';
+      const splitMatch = rawName.split(/[\/\-–—|]/);
+      if (splitMatch.length > 1 && /(?:https?:\/\/|\.com|\.ai|\.io|\.dev|\.run|\.build|\.app|\.net|\.org)/i.test(rawName)) {
+        name = splitMatch[0].trim();
+        url = splitMatch.slice(1).join('-').trim();
+      } else if (/(?:https?:\/\/|\.com|\.ai|\.io|\.dev|\.run|\.build|\.app|\.net|\.org)/i.test(rawName) && !rawName.includes(' ')) {
+        name = rawName.replace(/^https?:\/\//i, '').split('.')[0];
+        name = name.charAt(0).toUpperCase() + name.slice(1);
+        url = rawName;
+      }
+
+      const labelVal = inlineLabel ? inlineLabel.value : 'recommended';
+      const pros = inlinePros ? inlinePros.value.trim() : '';
+      const cons = inlineCons ? inlineCons.value.trim() : '';
+      const demo = inlineDemo ? inlineDemo.value.trim() : '';
+      const isTop = labelVal === 'top';
+
+      const newToolObj = {
+        name: name,
+        url: url,
+        label: labelVal,
+        pros: pros,
+        cons: cons,
+        demo: demo,
+        isTop: isTop,
+        customFields: {}
+      };
+
+      customTools.push(newToolObj);
+      saveCustomTools();
+      renderCustomTools();
+      bindAllInputs();
+      saveLocal();
+      saveLabelsLocal();
+
+      // Clear inline inputs & focus for next entry
+      inlineName.value = '';
+      if (inlinePros) inlinePros.value = '';
+      if (inlineCons) inlineCons.value = '';
+      if (inlineDemo) inlineDemo.value = '';
+      inlineName.focus();
+
+      show('✨ Đã thêm hàng mới: ' + name);
+
+      // Cloud sync
+      const newToolIdx = 26 + customTools.length - 1;
+      syncToCloud(newToolIdx, demo);
+      syncLabelToCloud(newToolIdx, labelVal);
+    }
+
+    if (btnInlineAdd) {
+      btnInlineAdd.addEventListener('click', handleInlineAdd);
+    }
+
+    [inlineName, inlinePros, inlineCons, inlineDemo].forEach(function(inp) {
+      if (inp) {
+        inp.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            handleInlineAdd();
+          }
+        });
+      }
+    });
 
     // ================= CUSTOM COLUMNS LOGIC =================
     function saveCustomCols() {
