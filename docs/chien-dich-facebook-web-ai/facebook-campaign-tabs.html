@@ -1713,65 +1713,75 @@ document.addEventListener('DOMContentLoaded', function() {
   })();
 
   // ================= 4. DYNAMIC SEARCH & FILTER FOR ALL TABS =================
-  (function() {
-    function filterTable(tableId, query, category) {
-      var table = document.getElementById(tableId);
-      if (!table) return;
-      var rows = table.querySelectorAll('tbody tr');
-      query = (query || '').toLowerCase().trim();
-      category = category || 'all';
+  function filterTable(tableId, query, category) {
+    var table = document.getElementById(tableId);
+    if (!table) return;
+    var rows = table.querySelectorAll('tbody tr');
+    query = (query || '').toLowerCase().trim();
+    category = category || 'all';
 
-      rows.forEach(function(row) {
-        var text = (row.textContent || '').toLowerCase();
-        var isTop = row.querySelector('.rank-badge.top') !== null;
-        var labelSelect = row.querySelector('.sheet-label-select');
-        var labelVal = labelSelect ? labelSelect.value : '';
+    rows.forEach(function(row) {
+      var text = (row.textContent || '').toLowerCase();
+      var labelSelect = row.querySelector('.sheet-label-select');
+      var labelVal = labelSelect ? labelSelect.value : '';
 
-        var input = row.querySelector('.demo-input');
-        var hasDemo = input && input.value && input.value.trim() !== '' && input.value.trim() !== '—';
+      var input = row.querySelector('.demo-input');
+      var hasDemo = input && input.value && input.value.trim() !== '' && input.value.trim() !== '—';
 
-        var matchCategory = true;
-        if (category === 'top') matchCategory = isTop || labelVal === 'top';
-        else if (category === 'wp') matchCategory = labelVal === 'wp' || /wordpress|zipwp|10web/i.test(text);
-        else if (category === 'app') matchCategory = labelVal === 'app' || /app|react|lovable|bolt|base44|tempo|replit|v0/i.test(text);
-        else if (category === 'avatar') matchCategory = labelVal === 'avatar' || /avatar|mc|người ảo|heygen|hedra|d-id/i.test(text);
-        else if (category === 'typography') matchCategory = labelVal === 'typography' || /typography|chữ|ideogram|recraft/i.test(text);
-        else if (category === 'voice') matchCategory = labelVal === 'voice' || /voice|clone|lồng tiếng|elevenlabs|fish/i.test(text);
-        else if (category === 'music') matchCategory = labelVal === 'music' || /nhạc|bài hát|suno|udio|soundraw/i.test(text);
-        else if (category === 'free') matchCategory = labelVal === 'free' || /miễn phí|free|krea|seaart|haiper|viggle/i.test(text);
-        else if (category === 'has-demo') matchCategory = hasDemo;
+      var matchCategory = true;
+      if (category === 'top') {
+        // Only matches if current label is top or recommended, AND not paid/free/none
+        matchCategory = (labelVal === 'top' || labelVal === 'recommended') && labelVal !== 'paid' && labelVal !== 'free' && labelVal !== 'none';
+      } else if (category === 'wp') {
+        matchCategory = labelVal === 'wp' || /wordpress/i.test(text);
+      } else if (category === 'app') {
+        matchCategory = labelVal === 'app';
+      } else if (category === 'avatar') {
+        matchCategory = labelVal === 'avatar';
+      } else if (category === 'typography') {
+        matchCategory = labelVal === 'typography';
+      } else if (category === 'voice') {
+        matchCategory = labelVal === 'voice';
+      } else if (category === 'music') {
+        matchCategory = labelVal === 'music';
+      } else if (category === 'free') {
+        matchCategory = labelVal === 'free';
+      } else if (category === 'paid') {
+        matchCategory = labelVal === 'paid';
+      } else if (category === 'has-demo') {
+        matchCategory = hasDemo;
+      }
 
-        var matchSearch = !query || text.indexOf(query) !== -1;
-        row.style.display = (matchCategory && matchSearch) ? '' : 'none';
-      });
-    }
-
-    // Bind Search inputs
-    document.querySelectorAll('.tab-search-input').forEach(function(input) {
-      input.addEventListener('input', function() {
-        var targetTable = input.dataset.target;
-        var parentBar = input.closest('.tool-filter-bar') || input.parentElement;
-        var activeChip = parentBar ? parentBar.querySelector('.tool-chip.active') : null;
-        var cat = activeChip ? activeChip.dataset.filter : 'all';
-        filterTable(targetTable, input.value, cat);
-      });
+      var matchSearch = !query || text.indexOf(query) !== -1;
+      row.style.display = (matchCategory && matchSearch) ? '' : 'none';
     });
+  }
 
-    // Bind Filter Chips
-    document.querySelectorAll('.tool-chip').forEach(function(chip) {
-      chip.addEventListener('click', function() {
-        var parent = chip.parentElement;
-        parent.querySelectorAll('.tool-chip').forEach(function(c) { c.classList.remove('active'); });
-        chip.classList.add('active');
-
-        var targetTable = chip.dataset.target;
-        var parentBar = chip.closest('.tool-filter-bar');
-        var searchInput = parentBar ? parentBar.querySelector('.tab-search-input') : null;
-        var query = searchInput ? searchInput.value : '';
-        filterTable(targetTable, query, chip.dataset.filter);
-      });
+  // Bind Search inputs
+  document.querySelectorAll('.tab-search-input').forEach(function(input) {
+    input.addEventListener('input', function() {
+      var targetTable = input.dataset.target;
+      var parentBar = input.closest('.tool-filter-bar') || input.parentElement;
+      var activeChip = parentBar ? parentBar.querySelector('.tool-chip.active') : null;
+      var cat = activeChip ? activeChip.dataset.filter : 'all';
+      filterTable(targetTable, input.value, cat);
     });
-  })();
+  });
+
+  // Bind Filter Chips
+  document.querySelectorAll('.tool-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      var parent = chip.parentElement;
+      parent.querySelectorAll('.tool-chip').forEach(function(c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+
+      var targetTable = chip.dataset.target;
+      var parentBar = chip.closest('.tool-filter-bar');
+      var searchInput = parentBar ? parentBar.querySelector('.tab-search-input') : null;
+      var query = searchInput ? searchInput.value : '';
+      filterTable(targetTable, query, chip.dataset.filter);
+    });
+  });
 
   // ================= 5. GOOGLE SHEETS LABEL COLOR HELPER =================
   function updateLabelSelectClass(selectEl) {
@@ -1780,6 +1790,19 @@ document.addEventListener('DOMContentLoaded', function() {
     tagClasses.forEach(function(cls){ selectEl.classList.remove(cls); });
     const val = selectEl.value;
     selectEl.classList.add('tag-' + val);
+
+    // Dynamically update rank badge top styling based on current selected label
+    const row = selectEl.closest('tr');
+    if (row) {
+      const badge = row.querySelector('.rank-badge');
+      if (badge) {
+        if (val === 'top') {
+          badge.classList.add('top');
+        } else {
+          badge.classList.remove('top');
+        }
+      }
+    }
   }
 
   // ================= 6. DEMO LINK CELLS & FULL SUPABASE CLOUD SYNC =================
@@ -2040,6 +2063,17 @@ document.addEventListener('DOMContentLoaded', function() {
           if (idx !== undefined) {
             syncLabelToCloud(parseInt(idx, 10), sel.value);
           }
+
+          // Re-trigger filtering on the table immediately
+          const parentTable = sel.closest('table');
+          if (parentTable) {
+            const filterBar = parentTable.parentElement ? parentTable.parentElement.querySelector('.tool-filter-bar') : null;
+            const activeChip = filterBar ? filterBar.querySelector('.tool-chip.active') : null;
+            const searchInput = filterBar ? filterBar.querySelector('.tab-search-input') : null;
+            const cat = activeChip ? activeChip.dataset.filter : 'all';
+            const query = searchInput ? searchInput.value : '';
+            filterTable(parentTable.id, query, cat);
+          }
         });
       }
     });
@@ -2084,7 +2118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let hrefUrl = url;
         if (hrefUrl && !/^https?:\/\//i.test(hrefUrl)) hrefUrl = 'https://' + hrefUrl;
 
-        tr.innerHTML = '<td><span class="rank-badge ' + (isTop ? 'top' : '') + '">' + rowCount + '</span></td>' +
+        tr.innerHTML = '<td><span class="rank-badge ' + (labelVal === 'top' ? 'top' : '') + '">' + rowCount + '</span></td>' +
           '<td><b>' + name + '</b>' + (hrefUrl ? '<br><a href="' + hrefUrl + '" target="_blank" rel="noopener">' + url + '</a>' : '') + '</td>' +
           '<td><select class="sheet-label-select tag-' + labelVal + '" data-tool-idx="' + newIdx + '">' +
             '<option value="top" ' + (labelVal==='top'?'selected':'') + '>⭐ Đánh giá cao</option>' +
