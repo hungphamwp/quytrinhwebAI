@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bảng So Sánh Nền Tảng Tạo Website AI 2026 — Facebook Post Graphic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #060911;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px;
+    background-image: 
+      radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.18) 0%, transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 60%);
+  }
+
+  /* Screenshot Card Container (1200px width optimal for FB) */
+  .fb-card-canvas {
+    width: 100%;
+    max-width: 1040px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(99, 102, 241, 0.15);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+    position: relative;
+    padding: 36px 36px 30px;
+  }
+
+  .fb-card-canvas::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899, #06b6d4);
+  }
+
+  /* Header */
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tag-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    color: #818cf8;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 999px;
+    width: fit-content;
+  }
+
+  .card-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    line-height: 1.2;
+  }
+
+  .card-title span {
+    background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Table */
+  .custom-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+  }
+
+  .custom-table th {
+    background: rgba(30, 41, 59, 0.6);
+    color: #cbd5e1;
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 12px 14px;
+    text-align: left;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .custom-table th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px; width: 44px; text-align: center; }
+  .custom-table th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
+
+  .custom-table tbody tr {
+    transition: background 0.15s ease;
+  }
+
+  .custom-table tbody tr:hover {
+    background: rgba(99, 102, 241, 0.06);
+  }
+
+  .custom-table td {
+    padding: 13px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    vertical-align: middle;
+    line-height: 1.5;
+  }
+
+  .rank-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 12px;
+    font-weight: 800;
+    color: #e2e8f0;
+  }
+
+  .tool-name-box b {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .tool-name-box span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #818cf8;
+  }
+
+  /* Evaluation Badges */
+  .badge-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .badge-recommended {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+  }
+
+  .badge-top {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.35);
+  }
+
+  .pros-text {
+    color: #4ade80;
+    font-size: 12.5px;
+  }
+
+  .cons-text {
+    color: #f87171;
+    font-size: 12.5px;
+  }
+
+  /* Card Footer */
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  .footer-tip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .footer-tip b {
+    color: #e2e8f0;
+  }
+
+  .footer-hub-link {
+    color: #818cf8;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* Helper bar for user capture */
+  .capture-helper-bar {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 13px;
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .capture-helper-bar kbd {
+    background: rgba(99, 102, 241, 0.3);
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-family: inherit;
+    border: 1px solid rgba(99, 102, 241, 0.5);
+  }
+</style>
+</head>
+<body>
+
+  <!-- THE SCREENSHOT CANVAS -->
+  <div class="fb-card-canvas" id="fb-card">
+    
+    <!-- Header -->
+    <div class="card-header">
+      <div class="header-left">
+        <div class="tag-badge"><i class="fa-solid fa-wand-magic-sparkles" style="color:#f59e0b"></i> Đánh Giá Thực Chiến 2026</div>
+        <h1 class="card-title">Top Nền Tảng <span>Tạo Website &amp; Web App Bằng AI</span></h1>
+      </div>
+      <div class="brand-logo">
+        <i class="fa-solid fa-shapes" style="color:#818cf8;font-size:16px"></i>
+        <span>Master AI Workflow Hub</span>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>NỀN TẢNG &amp; LINK</th>
+          <th>ĐÁNH GIÁ</th>
+          <th>ƯU ĐIỂM NỔI BẬT</th>
+          <th>LƯU Ý / NHƯỢC ĐIỂM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:center"><span class="rank-num">1</span></td>
+          <td class="tool-name-box"><b>Lindo AI</b><span>lindo.ai</span></td>
+          <td><span class="badge-label badge-recommended"><i class="fa-solid fa-circle-check"></i> Khuyên dùng</span></td>
+          <td class="pros-text">Dựng Landing Page bán hàng siêu tốc; giao diện cực hiện đại; không cần code</td>
+          <td class="cons-text">Bản free có gắn badge quảng cáo; giới hạn lượng traffic tháng</td>
+        </tr>
+        <tr>
+          <td style="text-align:center"><span class="rank-num">2</span></td>
+          <td class="tool-name-box"><b>Framer</b><span>framer.com</span></td>
+          <td><span class="badge-label badge-recommended"><i class="fa-solid fa-circle-check"></i> Khuyên dùng</span></td>
+          <td class="pros-text">Thẩm mỹ đẹp nhất nhóm; animation mượt mà; hợp Portfolio &amp; Web thương hiệu</td>
+          <td class="cons-text">Dùng subdomain framer.website; cần chút thời gian làm quen UI</td>
+        </tr>
+        <tr>
+          <td style="text-align:center"><span class="rank-num">3</span></td>
+          <td class="tool-name-box"><b>Lovable</b><span>lovable.dev</span></td>
+          <td><span class="badge-label badge-top"><i class="fa-solid fa-star"></i> Đánh giá cao</span></td>
+          <td class="pros-text">Code ra Web App thật (React + Tailwind); giao diện thông minh; deploy tức thì</td>
+          <td class="cons-text">Giới hạn số prompt miễn phí mỗi tháng; cần tư duy logic app</td>
+        </tr>
+        <tr>
+          <td style="text-align:center"><span class="rank-num">4</span></td>
+          <td class="tool-name-box"><b>Bolt.new</b><span>bolt.new</span></td>
+          <td><span class="badge-label badge-top"><i class="fa-solid fa-star"></i> Đánh giá cao</span></td>
+          <td class="pros-text">Full-stack trên trình duyệt; hỗ trợ database, backend, auth; tạo cực nhanh</td>
+          <td class="cons-text">Yêu cầu người dùng có kỹ năng kỹ thuật để tùy biến sâu</td>
+        </tr>
+        <tr>
+          <td style="text-align:center"><span class="rank-num">5</span></td>
+          <td class="tool-name-box"><b>Google Stitch</b><span>stitch.withgoogle.com</span></td>
+          <td><span class="badge-label badge-top"><i class="fa-solid fa-star"></i> Đánh giá cao</span></td>
+          <td class="pros-text">Công cụ từ Google; giao diện tối giản; hoàn toàn miễn phí, dễ dùng</td>
+          <td class="cons-text">Tính năng đang hoàn thiện; chưa hỗ trợ tùy biến nâng cao</td>
+        </tr>
+        <tr>
+          <td style="text-align:center"><span class="rank-num">6</span></td>
+          <td class="tool-name-box"><b>v0 (by Vercel)</b><span>v0.dev</span></td>
+          <td><span class="badge-label badge-top"><i class="fa-solid fa-star"></i> Đánh giá cao</span></td>
+          <td class="pros-text">Sinh UI Component React chuẩn công nghiệp; tích hợp hệ sinh thái Vercel</td>
+          <td class="cons-text">Cần nền tảng lập trình frontend để ghép thành website hoàn chỉnh</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Footer -->
+    <div class="card-footer">
+      <div class="footer-tip">
+        <i class="fa-solid fa-lightbulb" style="color:#fbbf24"></i>
+        <span><b>Mẹo chọn:</b> Dùng <b>Lindo/Framer</b> cho Landing Page &amp; Dùng <b>Lovable/Bolt.new</b> cho Web App có Database.</span>
+      </div>
+      <div class="footer-hub-link">
+        <i class="fa-solid fa-link"></i>
+        <span>hungphamwp.github.io/quytrinhwebAI</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Instruction for taking screenshot -->
+  <div class="capture-helper-bar">
+    <span>📸 <b>Cách chụp ảnh siêu nét:</b> Nhấn <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>4</kbd> (trên Mac) và quét chọn khung thẻ ở trên để có ảnh đăng Facebook sắc nét 100%!</span>
+  </div>
+
+</body>
+</html>
