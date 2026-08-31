@@ -3,360 +3,434 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bảng So Sánh Nền Tảng Tạo Website AI 2026 — Facebook Post Graphic</title>
+<title>20 Công Cụ AI Xây Dựng Website & Apps — Infographic Poster</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  
   body {
-    background: #060911;
+    background: #f1f5f9;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #f8fafc;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px 15px;
-    background-image: 
-      radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.18) 0%, transparent 40%),
-      radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 60%);
+    padding: 40px 15px;
   }
 
-  /* Screenshot Card Container (1200px width optimal for FB) */
-  .fb-card-canvas {
+  /* POSTER CANVAS (Chuẩn tỉ lệ Facebook Poster 4:5 / 1:1 siêu nét) */
+  .poster-card {
     width: 100%;
-    max-width: 1040px;
-    background: rgba(15, 23, 42, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 24px;
-    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(99, 102, 241, 0.15);
-    backdrop-filter: blur(20px);
-    overflow: hidden;
+    max-width: 820px;
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 44px 38px 36px;
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.08), 0 0 1px 1px rgba(0, 0, 0, 0.04);
     position: relative;
-    padding: 36px 36px 30px;
   }
 
-  .fb-card-canvas::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899, #06b6d4);
+  /* HEADER */
+  .poster-header {
+    text-align: center;
+    margin-bottom: 30px;
   }
 
-  /* Header */
-  .card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-bottom: 24px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .header-left {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .tag-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(99, 102, 241, 0.15);
-    border: 1px solid rgba(99, 102, 241, 0.35);
-    color: #818cf8;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 999px;
-    width: fit-content;
-  }
-
-  .card-title {
+  .header-main-title {
     font-family: 'Outfit', sans-serif;
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    color: #ffffff;
-    line-height: 1.2;
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #0f172a;
+    margin: 0;
   }
 
-  .card-title span {
-    background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #38bdf8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .header-main-title .highlight-red {
+    color: #e11d48;
+    display: block;
+    margin-top: 4px;
   }
 
-  .brand-logo {
+  /* 2-COLUMN GRID (10 CARDS PER COLUMN) */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 16px;
+  }
+
+  /* TOOL CARD */
+  .tool-item-card {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 700;
-    color: #94a3b8;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 8px 14px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    gap: 12px;
+    background: #ffffff;
+    border: 1.5px solid #fecdd3;
+    border-radius: 16px;
+    padding: 10px 14px;
+    transition: all 0.2s ease;
   }
 
-  /* Table */
-  .custom-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    font-size: 13px;
+  .tool-item-card:hover {
+    border-color: #f43f5e;
+    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.08);
+    transform: translateY(-1px);
   }
 
-  .custom-table th {
-    background: rgba(30, 41, 59, 0.6);
-    color: #cbd5e1;
-    font-size: 11.5px;
+  /* NUMBER BADGE */
+  .tool-number {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
     font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    padding: 12px 14px;
-    text-align: left;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: #e11d48;
+    min-width: 22px;
+    text-align: center;
+    flex-shrink: 0;
   }
 
-  .custom-table th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px; width: 44px; text-align: center; }
-  .custom-table th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
-
-  .custom-table tbody tr {
-    transition: background 0.15s ease;
-  }
-
-  .custom-table tbody tr:hover {
-    background: rgba(99, 102, 241, 0.06);
-  }
-
-  .custom-table td {
-    padding: 13px 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    vertical-align: middle;
-    line-height: 1.5;
-  }
-
-  .rank-num {
-    display: inline-flex;
+  /* LOGO ICON BOX */
+  .tool-logo-box {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    font-size: 12px;
-    font-weight: 800;
-    color: #e2e8f0;
-  }
-
-  .tool-name-box b {
-    font-size: 14.5px;
-    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 18px;
+    font-weight: 900;
     color: #ffffff;
-    display: block;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Custom Logo Colors */
+  .logo-lovable   { background: linear-gradient(135deg, #ec4899, #8b5cf6); }
+  .logo-bolt      { background: #000000; font-family: 'JetBrains Mono', monospace; font-style: italic; font-weight: 900; }
+  .logo-v0        { background: #000000; font-family: 'Outfit', sans-serif; font-size: 14px; letter-spacing: -1px; }
+  .logo-framer    { background: #0055ff; }
+  .logo-lindo     { background: linear-gradient(135deg, #10b981, #06b6d4); }
+  .logo-relume    { background: #18181b; }
+  .logo-uizard    { background: #fbbf24; color: #1e293b; }
+  .logo-stitch    { background: #4f46e5; }
+  .logo-webflow   { background: #146ef5; }
+  .logo-dora      { background: #3b82f6; }
+  .logo-typedream { background: #ffffff; color: #8b5cf6; border: 1.5px solid #e2e8f0; }
+  .logo-replit    { background: #f97316; }
+  .logo-builder   { background: linear-gradient(135deg, #0ea5e9, #f43f5e); }
+  .logo-spline    { background: linear-gradient(135deg, #ec4899, #06b6d4, #a855f7); }
+  .logo-wix       { background: #000000; font-size: 12px; font-weight: 900; }
+  .logo-hostinger { background: #673ab7; }
+  .logo-softr     { background: #ffffff; color: #f59e0b; border: 1.5px solid #e2e8f0; }
+  .logo-base44    { background: #ea580c; }
+  .logo-tempo     { background: #09090b; }
+  .logo-anything  { background: #0f172a; }
+
+  /* TOOL INFO */
+  .tool-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .tool-name {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
     margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .tool-name-box span {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #818cf8;
+  .tool-desc {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #64748b;
+    line-height: 1.35;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  /* Evaluation Badges */
-  .badge-label {
-    display: inline-flex;
+  /* FOOTER */
+  .poster-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px dashed #e2e8f0;
+    font-size: 12px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .footer-badge {
+    color: #e11d48;
+    display: flex;
     align-items: center;
     gap: 5px;
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 11.5px;
-    font-weight: 700;
-    white-space: nowrap;
   }
 
-  .badge-recommended {
-    background: rgba(16, 185, 129, 0.15);
-    color: #34d399;
-    border: 1px solid rgba(16, 185, 129, 0.35);
-  }
-
-  .badge-top {
-    background: rgba(245, 158, 11, 0.15);
-    color: #fbbf24;
-    border: 1px solid rgba(245, 158, 11, 0.35);
-  }
-
-  .pros-text {
-    color: #4ade80;
-    font-size: 12.5px;
-  }
-
-  .cons-text {
-    color: #f87171;
-    font-size: 12.5px;
-  }
-
-  /* Card Footer */
-  .card-footer {
+  /* CAPTURE BAR (Dành cho người dùng) */
+  .action-toolbar {
+    margin-top: 24px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
     gap: 12px;
-    margin-top: 22px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: 12px;
-    color: #94a3b8;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
-  .footer-tip {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .footer-tip b {
-    color: #e2e8f0;
-  }
-
-  .footer-hub-link {
-    color: #818cf8;
+  .btn-capture {
+    background: #0f172a;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13.5px;
     font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  /* Helper bar for user capture */
-  .capture-helper-bar {
-    margin-top: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 10px 20px;
     border-radius: 999px;
-    font-size: 13px;
-    color: #cbd5e1;
-    display: flex;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+    transition: all 0.2s ease;
   }
-  .capture-helper-bar kbd {
-    background: rgba(99, 102, 241, 0.3);
-    color: #ffffff;
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-family: inherit;
-    border: 1px solid rgba(99, 102, 241, 0.5);
+  .btn-capture:hover {
+    background: #e11d48;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 700px) {
+    .poster-card { padding: 24px 18px; }
+    .header-main-title { font-size: 28px; }
+    .tools-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-  <!-- THE SCREENSHOT CANVAS -->
-  <div class="fb-card-canvas" id="fb-card">
+  <!-- POSTER CONTAINER -->
+  <div class="poster-card" id="poster-card">
     
-    <!-- Header -->
-    <div class="card-header">
-      <div class="header-left">
-        <div class="tag-badge"><i class="fa-solid fa-wand-magic-sparkles" style="color:#f59e0b"></i> Đánh Giá Thực Chiến 2026</div>
-        <h1 class="card-title">Top Nền Tảng <span>Tạo Website &amp; Web App Bằng AI</span></h1>
-      </div>
-      <div class="brand-logo">
-        <i class="fa-solid fa-shapes" style="color:#818cf8;font-size:16px"></i>
-        <span>Master AI Workflow Hub</span>
-      </div>
+    <!-- Title -->
+    <div class="poster-header">
+      <h1 class="header-main-title">
+        20 công cụ AI
+        <span class="highlight-red">xây dựng Website &amp; Apps</span>
+      </h1>
     </div>
 
-    <!-- Table -->
-    <table class="custom-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>NỀN TẢNG &amp; LINK</th>
-          <th>ĐÁNH GIÁ</th>
-          <th>ƯU ĐIỂM NỔI BẬT</th>
-          <th>LƯU Ý / NHƯỢC ĐIỂM</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align:center"><span class="rank-num">1</span></td>
-          <td class="tool-name-box"><b>Lindo AI</b><span>lindo.ai</span></td>
-          <td><span class="badge-label badge-recommended"><i class="fa-solid fa-circle-check"></i> Khuyên dùng</span></td>
-          <td class="pros-text">Dựng Landing Page bán hàng siêu tốc; giao diện cực hiện đại; không cần code</td>
-          <td class="cons-text">Bản free có gắn badge quảng cáo; giới hạn lượng traffic tháng</td>
-        </tr>
-        <tr>
-          <td style="text-align:center"><span class="rank-num">2</span></td>
-          <td class="tool-name-box"><b>Framer</b><span>framer.com</span></td>
-          <td><span class="badge-label badge-recommended"><i class="fa-solid fa-circle-check"></i> Khuyên dùng</span></td>
-          <td class="pros-text">Thẩm mỹ đẹp nhất nhóm; animation mượt mà; hợp Portfolio &amp; Web thương hiệu</td>
-          <td class="cons-text">Dùng subdomain framer.website; cần chút thời gian làm quen UI</td>
-        </tr>
-        <tr>
-          <td style="text-align:center"><span class="rank-num">3</span></td>
-          <td class="tool-name-box"><b>Lovable</b><span>lovable.dev</span></td>
-          <td><span class="badge-label badge-top"><i class="fa-solid fa-star"></i> Đánh giá cao</span></td>
-          <td class="pros-text">Code ra Web App thật (React + Tailwind); giao diện thông minh; deploy tức thì</td>
-          <td class="cons-text">Giới hạn số prompt miễn phí mỗi tháng; cần tư duy logic app</td>
-        </tr>
-        <tr>
-          <td style="text-align:center"><span class="rank-num">4</span></td>
-          <td class="tool-name-box"><b>Bolt.new</b><span>bolt.new</span></td>
-          <td><span class="badge-label badge-top"><i class="fa-solid fa-star"></i> Đánh giá cao</span></td>
-          <td class="pros-text">Full-stack trên trình duyệt; hỗ trợ database, backend, auth; tạo cực nhanh</td>
-          <td class="cons-text">Yêu cầu người dùng có kỹ năng kỹ thuật để tùy biến sâu</td>
-        </tr>
-        <tr>
-          <td style="text-align:center"><span class="rank-num">5</span></td>
-          <td class="tool-name-box"><b>Google Stitch</b><span>stitch.withgoogle.com</span></td>
-          <td><span class="badge-label badge-top"><i class="fa-solid fa-star"></i> Đánh giá cao</span></td>
-          <td class="pros-text">Công cụ từ Google; giao diện tối giản; hoàn toàn miễn phí, dễ dùng</td>
-          <td class="cons-text">Tính năng đang hoàn thiện; chưa hỗ trợ tùy biến nâng cao</td>
-        </tr>
-        <tr>
-          <td style="text-align:center"><span class="rank-num">6</span></td>
-          <td class="tool-name-box"><b>v0 (by Vercel)</b><span>v0.dev</span></td>
-          <td><span class="badge-label badge-top"><i class="fa-solid fa-star"></i> Đánh giá cao</span></td>
-          <td class="pros-text">Sinh UI Component React chuẩn công nghiệp; tích hợp hệ sinh thái Vercel</td>
-          <td class="cons-text">Cần nền tảng lập trình frontend để ghép thành website hoàn chỉnh</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- 20 Tools Grid -->
+    <div class="tools-grid">
+      
+      <!-- CỘT TRÁI (1 - 10) -->
+      <div class="tool-item-card">
+        <span class="tool-number">1</span>
+        <div class="tool-logo-box logo-lovable"><i class="fa-solid fa-heart"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Lovable</div>
+          <div class="tool-desc">Tạo website và ứng dụng bằng AI.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">11</span>
+        <div class="tool-logo-box logo-typedream"><i class="fa-solid fa-cloud"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Typedream</div>
+          <div class="tool-desc">Tạo website và landing page no code.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">2</span>
+        <div class="tool-logo-box logo-bolt">b</div>
+        <div class="tool-info">
+          <div class="tool-name">Bolt.new</div>
+          <div class="tool-desc">Tạo website và web app bằng prompt.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">12</span>
+        <div class="tool-logo-box logo-replit"><i class="fa-solid fa-terminal"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Replit</div>
+          <div class="tool-desc">Xây dựng và triển khai app bằng AI.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">3</span>
+        <div class="tool-logo-box logo-v0">v0</div>
+        <div class="tool-info">
+          <div class="tool-name">v0 (by Vercel)</div>
+          <div class="tool-desc">Tạo giao diện và code bằng AI.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">13</span>
+        <div class="tool-logo-box logo-builder"><i class="fa-solid fa-layer-group"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Builder.io</div>
+          <div class="tool-desc">Thiết kế và chỉnh sửa giao diện bằng AI.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">4</span>
+        <div class="tool-logo-box logo-framer"><i class="fa-solid fa-shapes"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Framer AI</div>
+          <div class="tool-desc">Tạo website responsive từ prompt.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">14</span>
+        <div class="tool-logo-box logo-spline"><i class="fa-solid fa-cube"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Spline AI</div>
+          <div class="tool-desc">Tạo trải nghiệm 3D tương tác bằng AI.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">5</span>
+        <div class="tool-logo-box logo-lindo"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Lindo AI</div>
+          <div class="tool-desc">Dựng landing page bán hàng siêu tốc.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">15</span>
+        <div class="tool-logo-box logo-wix">WIX</div>
+        <div class="tool-info">
+          <div class="tool-name">Wix AI</div>
+          <div class="tool-desc">Tạo website hoàn chỉnh bằng AI.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">6</span>
+        <div class="tool-logo-box logo-relume"><i class="fa-solid fa-cube"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Relume</div>
+          <div class="tool-desc">Tạo sitemap và wireframe bằng AI.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">16</span>
+        <div class="tool-logo-box logo-hostinger"><i class="fa-solid fa-server"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Hostinger AI Builder</div>
+          <div class="tool-desc">Tạo website và web app bằng AI.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">7</span>
+        <div class="tool-logo-box logo-uizard"><i class="fa-solid fa-face-smile"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Uizard</div>
+          <div class="tool-desc">Biến ý tưởng thành prototype giao diện.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">17</span>
+        <div class="tool-logo-box logo-softr"><i class="fa-solid fa-table-columns"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Softr</div>
+          <div class="tool-desc">Tạo app, portal và công cụ nội bộ.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">8</span>
+        <div class="tool-logo-box logo-stitch"><i class="fa-solid fa-sparkles"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Google Stitch</div>
+          <div class="tool-desc">Tạo giao diện UI từ mô tả tự nhiên.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">18</span>
+        <div class="tool-logo-box logo-base44"><i class="fa-solid fa-sun"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Base44</div>
+          <div class="tool-desc">Tạo ứng dụng hoàn chỉnh từ prompt.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">9</span>
+        <div class="tool-logo-box logo-webflow"><i class="fa-solid fa-water"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Webflow AI</div>
+          <div class="tool-desc">Tạo website và thiết kế bằng AI.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">19</span>
+        <div class="tool-logo-box logo-tempo"><i class="fa-solid fa-code"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Tempo</div>
+          <div class="tool-desc">Xây dựng &amp; sửa app React bằng AI.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">10</span>
+        <div class="tool-logo-box logo-dora"><i class="fa-solid fa-globe"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Dora AI</div>
+          <div class="tool-desc">Tạo website 3D và hiệu ứng tương tác.</div>
+        </div>
+      </div>
+
+      <div class="tool-item-card">
+        <span class="tool-number">20</span>
+        <div class="tool-logo-box logo-anything"><i class="fa-solid fa-meteor"></i></div>
+        <div class="tool-info">
+          <div class="tool-name">Anything</div>
+          <div class="tool-desc">Biến ý tưởng thành website và ứng dụng.</div>
+        </div>
+      </div>
+
+    </div>
 
     <!-- Footer -->
-    <div class="card-footer">
-      <div class="footer-tip">
-        <i class="fa-solid fa-lightbulb" style="color:#fbbf24"></i>
-        <span><b>Mẹo chọn:</b> Dùng <b>Lindo/Framer</b> cho Landing Page &amp; Dùng <b>Lovable/Bolt.new</b> cho Web App có Database.</span>
-      </div>
-      <div class="footer-hub-link">
-        <i class="fa-solid fa-link"></i>
-        <span>hungphamwp.github.io/quytrinhwebAI</span>
+    <div class="poster-footer">
+      <div class="footer-badge">
+        <i class="fa-solid fa-crown"></i>
+        <span>MASTER AI WORKFLOW HUB • 2026</span>
       </div>
     </div>
 
   </div>
 
-  <!-- Instruction for taking screenshot -->
-  <div class="capture-helper-bar">
-    <span>📸 <b>Cách chụp ảnh siêu nét:</b> Nhấn <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>4</kbd> (trên Mac) và quét chọn khung thẻ ở trên để có ảnh đăng Facebook sắc nét 100%!</span>
+  <!-- TOOLBAR CHỤP ẢNH -->
+  <div class="action-toolbar">
+    <button type="button" class="btn-capture" onclick="window.print()">
+      <i class="fa-solid fa-print"></i> In / Xuất PDF sắc nét
+    </button>
+    <span style="font-size:13px;color:#64748b">Hoặc nhấn <b>Cmd + Shift + 4</b> (Mac) quét chọn khung thẻ trắng để lấy ảnh siêu nét!</span>
   </div>
 
 </body>
