@@ -892,6 +892,21 @@
     color: var(--muted);
     border-color: var(--line);
   }
+  .sheet-label-select.tag-workspace {
+    background-color: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+    border-color: rgba(99, 102, 241, 0.35);
+  }
+  .sheet-label-select.tag-workflow {
+    background-color: rgba(6, 182, 212, 0.15);
+    color: #22d3ee;
+    border-color: rgba(6, 182, 212, 0.35);
+  }
+  .sheet-label-select.tag-agent {
+    background-color: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    border-color: rgba(168, 85, 247, 0.35);
+  }
   /* Inline Add Row at the bottom of Table (Notion / Sheets style) */
   .inline-add-row {
     background: var(--card-solid);
@@ -1528,44 +1543,92 @@
     </div>
   </div>
 
-  <!-- ================= TAB 5: TỰ ĐỘNG HÓA & AI AGENTS (5 TOOLS) ================= -->
+  <!-- ================= TAB 5: TỰ ĐỘNG HÓA & AI AGENTS (11 TOOLS) ================= -->
   <div class="panel" id="tab-automation">
     <div class="card">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px">
         <div>
-          <h2 style="margin:0;font-size:20px;font-family:'Outfit',sans-serif;color:var(--ink)"><i class="fa-solid fa-bolt-lightning" style="color:var(--brand);margin-right:6px"></i> Hệ Thống Tự Động Hóa Quy Trình &amp; AI Agents</h2>
-          <p style="margin:4px 0 0;font-size:13px;color:var(--muted)">Kết nối các công cụ AI thành một chuỗi vận hành tự động không cần can thiệp thủ công.</p>
+          <h2 style="margin:0;font-size:20px;font-family:'Outfit',sans-serif;color:var(--ink)"><i class="fa-solid fa-bolt-lightning" style="color:var(--brand);margin-right:6px"></i> Ứng Dụng Quản Lý Hiệu Suất, Tự Động Hóa &amp; AI Agents</h2>
+          <p style="margin:4px 0 0;font-size:13px;color:var(--muted)">Hệ thống ứng dụng làm việc hiệu quả với AI (Obsidian, Orca, Cursor) và các nền tảng tự động hóa quy trình (n8n, Make, Dify).</p>
         </div>
       </div>
 
-      <table class="otable">
+      <!-- Search & Filter Bar -->
+      <div class="tool-filter-bar">
+        <input type="text" class="tool-search-input tab-search-input" data-target="automation-table" placeholder="Tìm nhanh công cụ (Obsidian, Orca, n8n, Make, Dify, Cursor...)..." />
+        <div class="tool-chips" style="width:100%;margin-top:6px">
+          <button type="button" class="tool-chip active" data-target="automation-table" data-filter="all"><i class="fa-solid fa-layer-group"></i> Tất cả (11)</button>
+          <button type="button" class="tool-chip" data-target="automation-table" data-filter="workspace"><i class="fa-solid fa-brain" style="color:#818cf8"></i> App Tri Thức &amp; Agent (5)</button>
+          <button type="button" class="tool-chip" data-target="automation-table" data-filter="workflow"><i class="fa-solid fa-gears" style="color:#06b6d4"></i> Nối luồng No-Code (3)</button>
+          <button type="button" class="tool-chip" data-target="automation-table" data-filter="agent"><i class="fa-solid fa-robot" style="color:#a855f7"></i> AI Agent Builder (3)</button>
+          <button type="button" class="tool-chip" data-target="automation-table" data-filter="has-demo"><i class="fa-solid fa-link" style="color:#10b981"></i> Đã có Demo link</button>
+        </div>
+      </div>
+
+      <table class="otable" id="automation-table">
         <thead>
-          <tr><th>#</th><th>NỀN TẢNG TỰ ĐỘNG HÓA</th><th>PHÂN LOẠI</th><th>ỨNG DỤNG THỰC TẾ</th><th>ƯU ĐIỂM NỔI BẬT</th></tr>
+          <tr><th>#</th><th>ỨNG DỤNG &amp; LINK</th><th>PHÂN LOẠI / NHÃN</th><th>ỨNG DỤNG &amp; ƯU ĐIỂM NỔI BẬT</th><th>LƯU Ý / NHƯỢC ĐIỂM</th><th>DEMO / GHI CHÚ</th></tr>
         </thead>
         <tbody>
-        <tr><td><span class="rank-badge top">1</span></td><td><b>n8n</b><br><a href="https://n8n.io" target="_blank" rel="noopener">n8n.io</a></td><td><span class="sheet-label-select tag-top">⭐ Mã nguồn mở</span></td><td>Nối toàn bộ API AI (GPT, Midjourney, Telegram, Google Sheets) tự động</td><td class="pros">Self-host miễn phí 100%, không giới hạn số lượng workflow</td></tr>
-        <tr><td><span class="rank-badge top">2</span></td><td><b>Make.com</b><br><a href="https://make.com" target="_blank" rel="noopener">make.com</a></td><td><span class="sheet-label-select tag-top">⭐ Kéo thả No-Code</span></td><td>Tự động xuất bản bài viết từ kịch bản AI lên WordPress, Facebook, TikTok</td><td class="pros">Giao diện trực quan đẹp mắt nhất, xử lý dữ liệu phức tạp dễ dàng</td></tr>
-        <tr><td><span class="rank-badge">3</span></td><td><b>Dify.ai</b><br><a href="https://dify.ai" target="_blank" rel="noopener">dify.ai</a></td><td><span class="sheet-label-select tag-app">🤖 AI Agent Builder</span></td><td>Xây dựng Chatbot RAG nội bộ tra cứu tài liệu và trợ lý AI tự động</td><td class="pros">Hỗ trợ nhiều model LLM cùng lúc, quản lý Prompt &amp; Memory thông minh</td></tr>
-        <tr><td><span class="rank-badge">4</span></td><td><b>Cursor AI / Claude Code</b><br><a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a></td><td><span class="sheet-label-select tag-wp">💻 Lập trình &amp; Scripting</span></td><td>Sinh mã nguồn tự động hóa, xây dựng ứng dụng web và script cào dữ liệu</td><td class="pros">Tăng tốc độ lập trình gấp 5-10 lần với AI Agent hiểu toàn bộ codebase</td></tr>
-        <tr><td><span class="rank-badge">5</span></td><td><b>Zapier</b><br><a href="https://zapier.com" target="_blank" rel="noopener">zapier.com</a></td><td><span class="sheet-label-select tag-free">⚡ Nền tảng phổ thông</span></td><td>Kết nối nhanh các ứng dụng phổ biến như Gmail, Notion, Slack, CRM</td><td class="pros">Hệ sinh thái hơn 6000+ app kết nối sẵn, cài đặt cực nhanh</td></tr>
+        <!-- Nhóm 1: App Quản lý & Tri thức với AI -->
+        <tr><td><span class="rank-badge top">1</span></td><td><b>Obsidian</b><br><a href="https://obsidian.md" target="_blank" rel="noopener">obsidian.md</a></td><td><select class="sheet-label-select tag-top"><option value="top" selected>⭐ Đánh giá cao</option><option value="workspace" selected>🧠 Quản lý tri thức</option><option value="workflow">⚙️ Nối luồng</option><option value="agent">🤖 AI Agent</option></select></td><td class="pros">Bộ não thứ hai (Second Brain) lưu trữ Markdown offline 100%; liên kết 2 chiều ([[bi-directional links]]); tích hợp cực mạnh với AI qua plugin Smart Connections, Text Generator, Obsidian Copilot</td><td class="cons">Cần thời gian làm quen và tùy biến cấu hình ban đầu; đồng bộ đa thiết bị cần qua Obsidian Sync hoặc Git/iCloud</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link ghi chú..."><button type="button" class="demo-clear-btn" title="Xoá link"><i class="fa-solid fa-xmark"></i></button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></td></tr>
+        <tr><td><span class="rank-badge top">2</span></td><td><b>Orca (Agent Manager)</b><br><a href="https://orca.so" target="_blank" rel="noopener">orca.so / workspace</a></td><td><select class="sheet-label-select tag-top"><option value="top" selected>⭐ Đánh giá cao</option><option value="workspace" selected>🤖 Quản lý Agent</option><option value="workflow">⚙️ Nối luồng</option><option value="agent">🤖 AI Agent</option></select></td><td class="pros">Nền tảng điều phối &amp; quản lý nhiều AI Agent làm việc song song; quản lý ngữ cảnh và phân luồng tác vụ tập trung cho từng Workspace dự án</td><td class="cons">Đang trong giai đoạn phát triển nâng cấp tính năng mở rộng</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link workspace..."><button type="button" class="demo-clear-btn" title="Xoá link"><i class="fa-solid fa-xmark"></i></button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></td></tr>
+        <tr><td><span class="rank-badge top">3</span></td><td><b>Cursor AI / Claude Code</b><br><a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a></td><td><select class="sheet-label-select tag-top"><option value="top" selected>⭐ Đánh giá cao</option><option value="workspace" selected>💻 AI IDE Lập trình</option><option value="workflow">⚙️ Nối luồng</option><option value="agent">🤖 AI Agent</option></select></td><td class="pros">Trình soạn thảo mã nguồn tích hợp AI Agent hiểu toàn bộ cấu trúc dự án (Full Codebase Indexing); tự động sinh file, debug và refactor với tốc độ gấp 10 lần</td><td class="cons">Bản miễn phí có giới hạn số lượng câu hỏi thông minh hàng tháng (Pro $20/tháng)</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link demo..."><button type="button" class="demo-clear-btn" title="Xoá link"><i class="fa-solid fa-xmark"></i></button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></td></tr>
+        <tr><td><span class="rank-badge">4</span></td><td><b>Raycast AI</b><br><a href="https://raycast.com" target="_blank" rel="noopener">raycast.com</a></td><td><select class="sheet-label-select tag-recommended"><option value="top">⭐ Đánh giá cao</option><option value="workspace" selected>⚡ AI Launcher</option><option value="workflow">⚙️ Nối luồng</option><option value="agent">🤖 AI Agent</option></select></td><td class="pros">Trợ lý phím tắt số 1 trên Mac; gọi ChatGPT / Claude / Gemini từ bất kỳ đâu chỉ bằng 1 phím tắt; tự động hóa dịch thuật, tóm tắt và quản lý clipboard</td><td class="cons">Chủ yếu tối ưu trên macOS (bản Windows đang phát triển)</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link"><i class="fa-solid fa-xmark"></i></button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></td></tr>
+        <tr><td><span class="rank-badge">5</span></td><td><b>Notion AI</b><br><a href="https://notion.so" target="_blank" rel="noopener">notion.so</a></td><td><select class="sheet-label-select tag-recommended"><option value="top">⭐ Đánh giá cao</option><option value="workspace" selected>🧠 Quản lý tri thức</option><option value="workflow">⚙️ Nối luồng</option><option value="agent">🤖 AI Agent</option></select></td><td class="pros">Không gian làm việc cộng tác đa năng; AI tự động trích xuất thông tin, điền thuộc tính bảng tính và tóm tắt cuộc họp</td><td class="cons">Dữ liệu lưu trên đám mây; phí AI tính riêng $10/tháng/người dùng</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link"><i class="fa-solid fa-xmark"></i></button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></td></tr>
+
+        <!-- Nhóm 2: Nền tảng Nối luồng Tự động hóa -->
+        <tr><td><span class="rank-badge top">6</span></td><td><b>n8n</b><br><a href="https://n8n.io" target="_blank" rel="noopener">n8n.io</a></td><td><select class="sheet-label-select tag-top"><option value="top" selected>⭐ Đánh giá cao</option><option value="workflow" selected>⚙️ Nối luồng No-Code</option><option value="agent">🤖 AI Agent</option></select></td><td class="pros">Nền tảng tự động hóa mã nguồn mở đỉnh nhất; Self-host miễn phí không giới hạn luồng; tích hợp sẵn các Node AI Agent (LangChain) mạnh mẽ</td><td class="cons">Cần có máy chủ VPS hoặc Docker để tự vận hành (Self-host)</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link"><i class="fa-solid fa-xmark"></i></button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></td></tr>
+        <tr><td><span class="rank-badge top">7</span></td><td><b>Make.com</b><br><a href="https://make.com" target="_blank" rel="noopener">make.com</a></td><td><select class="sheet-label-select tag-top"><option value="top" selected>⭐ Đánh giá cao</option><option value="workflow" selected>⚙️ Nối luồng No-Code</option><option value="agent">🤖 AI Agent</option></select></td><td class="pros">Giao diện kéo thả trực quan sinh động nhất; tự động hóa xuất bản đa kênh (WordPress, Facebook, Zalo, Google Sheets); xử lý JSON/Data linh hoạt</td><td class="cons">Bản miễn phí giới hạn 1.000 operation mỗi tháng</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link"><i class="fa-solid fa-xmark"></i></button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></td></tr>
+        <tr><td><span class="rank-badge">8</span></td><td><b>Zapier</b><br><a href="https://zapier.com" target="_blank" rel="noopener">zapier.com</a></td><td><select class="sheet-label-select tag-recommended"><option value="top">⭐ Đánh giá cao</option><option value="workflow" selected>⚙️ Nối luồng No-Code</option><option value="agent">🤖 AI Agent</option></select></td><td class="pros">Hệ sinh thái kết nối lớn nhất thế giới với hơn 6.000+ app; có tính năng Zapier Central điều khiển AI Bot tự động</td><td class="cons">Chi phí các gói trả phí tương đối cao so với Make và n8n</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link"><i class="fa-solid fa-xmark"></i></button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></td></tr>
+
+        <!-- Nhóm 3: Nền tảng Xây dựng AI Agent & RAG -->
+        <tr><td><span class="rank-badge top">9</span></td><td><b>Dify.ai</b><br><a href="https://dify.ai" target="_blank" rel="noopener">dify.ai</a></td><td><select class="sheet-label-select tag-top"><option value="top" selected>⭐ Đánh giá cao</option><option value="agent" selected>🤖 AI Agent Builder</option><option value="workflow">⚙️ Nối luồng</option></select></td><td class="pros">Nền tảng kéo thả xây dựng ứng dụng AI Agent &amp; Chatbot RAG nội bộ tra cứu tài liệu đỉnh cao; hỗ trợ nhiều LLM (OpenAI, Claude, DeepSeek) cùng lúc</td><td class="cons">Mã nguồn mở cần máy chủ đủ tài nguyên để cài đặt Docker trọn gói</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link"><i class="fa-solid fa-xmark"></i></button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></td></tr>
+        <tr><td><span class="rank-badge">10</span></td><td><b>Flowise AI</b><br><a href="https://flowiseai.com" target="_blank" rel="noopener">flowiseai.com</a></td><td><select class="sheet-label-select tag-recommended"><option value="top">⭐ Đánh giá cao</option><option value="agent" selected>🤖 AI Agent Builder</option><option value="workflow">⚙️ Nối luồng</option></select></td><td class="pros">Giao diện kéo thả No-code cho LangChain &amp; LlamaIndex; dễ dàng kết nối Vector Database (Pinecone, Supabase, Chroma) để làm trợ lý tài liệu</td><td class="cons">Cần hiểu tư duy về Chains, Memory và Vector Store để tùy biến sâu</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link"><i class="fa-solid fa-xmark"></i></button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></td></tr>
+        <tr><td><span class="rank-badge">11</span></td><td><b>CrewAI</b><br><a href="https://crewai.com" target="_blank" rel="noopener">crewai.com</a></td><td><select class="sheet-label-select tag-recommended"><option value="top">⭐ Đánh giá cao</option><option value="agent" selected>🤖 AI Agent Builder</option><option value="workflow">⚙️ Nối luồng</option></select></td><td class="pros">Framework điều phối mạng lưới Đa Agent (Multi-Agent Team) xuất sắc; chia vai trò (Researcher, Writer, Reviewer) tự phối hợp giải quyết bài toán phức tạp</td><td class="cons">Chủ yếu triển khai qua mã nguồn Python / CLI, đòi hỏi nền tảng lập trình</td><td class="demo"><div class="demo-cell"><input type="text" class="demo-input" placeholder="Nhập link..."><button type="button" class="demo-clear-btn" title="Xoá link"><i class="fa-solid fa-xmark"></i></button><a class="demo-link-btn" target="_blank" rel="noopener" title="Mở link demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></td></tr>
         </tbody>
+        <tfoot>
+          <tr class="inline-add-row">
+            <td><span class="inline-plus-badge"><i class="fa-solid fa-plus"></i></span></td>
+            <td><input type="text" class="inline-table-input" placeholder="Tên ứng dụng &amp; Link..." /></td>
+            <td>
+              <select class="sheet-label-select tag-recommended">
+                <option value="top">⭐ Đánh giá cao</option>
+                <option value="workspace" selected>🧠 Quản lý tri thức</option>
+                <option value="workflow">⚙️ Nối luồng</option>
+                <option value="agent">🤖 AI Agent</option>
+              </select>
+            </td>
+            <td><input type="text" class="inline-table-input" placeholder="Ứng dụng &amp; Ưu điểm..." /></td>
+            <td><input type="text" class="inline-table-input" placeholder="Lưu ý / Nhược điểm..." /></td>
+            <td class="demo">
+              <div style="display:flex;align-items:center;gap:6px">
+                <input type="text" class="inline-table-input" placeholder="Link demo..." style="flex:1" />
+                <button type="button" class="btn-inline-submit"><i class="fa-solid fa-plus"></i> Thêm</button>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
       </table>
 
-      <!-- Pipeline Visualization Box -->
-      <div class="lead" style="margin-top:16px">
-        <h4><i class="fa-solid fa-diagram-project" style="color:var(--brand);margin-right:6px"></i> Sơ đồ Chuỗi Vận Hành Tự Động Hóa AI Mẫu (Full AI Pipeline):</h4>
-        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px;font-size:12.5px;font-weight:700">
-          <span style="background:var(--brand-soft);color:var(--brand);padding:6px 12px;border-radius:20px;border:1px solid var(--brand-border)">1. Cào Trend / RSS</span>
-          <span style="color:var(--muted)">➔</span>
-          <span style="background:var(--brand-soft);color:var(--brand);padding:6px 12px;border-radius:20px;border:1px solid var(--brand-border)">2. ChatGPT Viết Bài</span>
-          <span style="color:var(--muted)">➔</span>
-          <span style="background:var(--brand-soft);color:var(--brand);padding:6px 12px;border-radius:20px;border:1px solid var(--brand-border)">3. FLUX Sinh Ảnh</span>
-          <span style="color:var(--muted)">➔</span>
-          <span style="background:var(--brand-soft);color:var(--brand);padding:6px 12px;border-radius:20px;border:1px solid var(--brand-border)">4. Kling Sinh Video</span>
-          <span style="color:var(--muted)">➔</span>
-          <span style="background:var(--brand-soft);color:var(--brand);padding:6px 12px;border-radius:20px;border:1px solid var(--brand-border)">5. ElevenLabs Đọc</span>
-          <span style="color:var(--muted)">➔</span>
-          <span style="background:var(--ok-soft);color:var(--ok);padding:6px 12px;border-radius:20px;border:1px solid var(--ok-border)">6. Tự Động Đăng Bài</span>
+      <!-- Workflow Guide & Architecture Box -->
+      <div class="lead" style="margin-top:18px">
+        <h4><i class="fa-solid fa-diagram-project" style="color:var(--brand);margin-right:6px"></i> Mô hình Hệ Thống Làm Việc Tối Ưu Với AI 2026:</h4>
+        <div style="margin-top:10px;font-size:13px;line-height:1.7;color:var(--ink)">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:12px;margin-top:10px">
+            <div style="background:var(--card-solid);border:1px solid var(--line);border-radius:var(--radius-md);padding:14px">
+              <div style="font-weight:800;color:var(--brand);margin-bottom:6px"><i class="fa-solid fa-brain"></i> 1. Tầng Quản Lý Tri Thức (Obsidian + Orca)</div>
+              <p style="margin:0;font-size:12.5px;color:var(--muted)">Lưu trữ toàn bộ tài liệu dự án, cấu trúc Prompt và nhật ký luồng công việc. Orca điều phối các tác vụ của Agent.</p>
+            </div>
+            <div style="background:var(--card-solid);border:1px solid var(--line);border-radius:var(--radius-md);padding:14px">
+              <div style="font-weight:800;color:var(--ok);margin-bottom:6px"><i class="fa-solid fa-gears"></i> 2. Tầng Tự Động Hóa (n8n / Make.com)</div>
+              <p style="margin:0;font-size:12.5px;color:var(--muted)">Nhận yêu cầu từ Webhook, gọi các mô hình AI (LLM, Sinh ảnh, Sinh video) và tự động xuất bản kết quả lên mạng xã hội.</p>
+            </div>
+            <div style="background:var(--card-solid);border:1px solid var(--line);border-radius:var(--radius-md);padding:14px">
+              <div style="font-weight:800;color:#f59e0b;margin-bottom:6px"><i class="fa-solid fa-robot"></i> 3. Tầng Đa Agent (Dify / Cursor AI)</div>
+              <p style="margin:0;font-size:12.5px;color:var(--muted)">Đóng vai trò trợ lý chuyên sâu từng lĩnh vực: tự động phân tích dữ liệu, viết mã nguồn và kiểm tra chất lượng sản phẩm.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1734,6 +1797,12 @@ document.addEventListener('DOMContentLoaded', function() {
         matchCategory = (labelVal === 'top' || labelVal === 'recommended') && labelVal !== 'paid' && labelVal !== 'free' && labelVal !== 'none';
       } else if (category === 'wp') {
         matchCategory = labelVal === 'wp' || /wordpress/i.test(text);
+      } else if (category === 'workspace') {
+        matchCategory = labelVal === 'workspace' || /obsidian|orca|raycast|notion|cursor/i.test(text);
+      } else if (category === 'workflow') {
+        matchCategory = labelVal === 'workflow' || /n8n|make|zapier/i.test(text);
+      } else if (category === 'agent') {
+        matchCategory = labelVal === 'agent' || /dify|flowise|crewai/i.test(text);
       } else if (category === 'app') {
         matchCategory = labelVal === 'app';
       } else if (category === 'avatar') {
@@ -1786,7 +1855,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // ================= 5. GOOGLE SHEETS LABEL COLOR HELPER =================
   function updateLabelSelectClass(selectEl) {
     if (!selectEl) return;
-    const tagClasses = ['tag-top', 'tag-recommended', 'tag-wp', 'tag-app', 'tag-free', 'tag-paid', 'tag-none', 'tag-avatar', 'tag-typography', 'tag-voice', 'tag-music'];
+    const tagClasses = ['tag-top', 'tag-recommended', 'tag-wp', 'tag-app', 'tag-free', 'tag-paid', 'tag-none', 'tag-avatar', 'tag-typography', 'tag-voice', 'tag-music', 'tag-workspace', 'tag-workflow', 'tag-agent'];
     tagClasses.forEach(function(cls){ selectEl.classList.remove(cls); });
     const val = selectEl.value;
     selectEl.classList.add('tag-' + val);
