@@ -10,7 +10,7 @@
 
 | File | Nội dung |
 |------|----------|
-| **`facebook-campaign-tabs.html`** | ⭐ Bản chính (giao diện tab): sơ đồ · kế hoạch · bài đăng nhóm 7 ngày · quy trình nội bộ |
+| **`facebook-campaign-tabs.html`** | ↪ Đã chuyển hướng sang [`../facebook-campaign-tabs.html`](../facebook-campaign-tabs.html) — bản chính đang cập nhật (Master AI Workflow Hub) |
 | `facebook-campaign-action-plan.html` / `.md` | Kế hoạch hành động chi tiết 10 phần |
 | `facebook-campaign-diagram.mmd` / `.svg` / `.png` / `.html` | Sơ đồ dòng chảy chiến dịch |
 | `content-design-system.html` / `.md` | Hệ thống Content & Design — chiến lược 2 tầng |
@@ -29,7 +29,7 @@ Mở bằng trình duyệt (mở file trực tiếp hoặc chạy server tĩnh):
 ```bash
 # từ thư mục repo
 python3 -m http.server 8899 --bind 127.0.0.1
-# rồi mở: http://127.0.0.1:8899/docs/chien-dich-facebook-web-ai/facebook-campaign-tabs.html
+# rồi mở: http://127.0.0.1:8899/docs/facebook-campaign-tabs.html
 ```
 
 > ⚠️ Các file HTML đặt cùng thư mục `thumbnails/` nên ảnh tự hiển thị. Giữ nguyên cấu trúc.
