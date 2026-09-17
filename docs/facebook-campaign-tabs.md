@@ -309,6 +309,8 @@ Prompt mẫu rút gọn:
 4. *Cuối cùng:* Object/Watermark Removal (CapCut Pro, Premiere) — tốt với nền tĩnh, dễ lem khi có chuyển động.
 SynthID ẩn vẫn còn; chạy quảng cáo Meta/TikTok nên bật nhãn "nội dung có AI".
 
+**Hậu kỳ CapCut cho TVC:** thay clip gốc bằng bản `_clean` qua chuột phải → *Replace* (giữ nguyên cắt/transition). Transition có kim cương tím là Pro (cả mục Trending); free ở nhóm **Basic** (Mix/Dissolve, Fade to black/white, Blur, Zoom) và **Slide**. Công thức: Fade từ đen 0,5 s → Mix 0,3–0,4 s giữa cảnh → cắt thẳng lúc lộ sản phẩm → logo/CTA → Fade ra đen; tránh Spin/Glitch/Distortion.
+
 Checklist trước khi xuất: nhận diện sản phẩm giống nhau mọi cảnh · mỗi cảnh 3–8 s, cao trào nhạc trùng lúc lộ sản phẩm · giọng rõ, nhạc không lấn · logo + CTA cuối đủ lớn trên điện thoại · chỉ dùng nhạc/giọng tự tạo bằng AI.
 
 **Chi tiết bước 4 — tạo giọng đọc trong Google AI Studio** (`aistudio.google.com/generate-speech`)
