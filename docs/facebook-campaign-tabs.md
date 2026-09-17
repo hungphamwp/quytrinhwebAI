@@ -123,6 +123,8 @@ Kịch bản JSON → hình minh họa SVG → giọng Gemini TTS → video MP4.
 
 ---
 
+**Case 18/09/2026 — Video Vox collage 63 s "Làm TVC thương hiệu bằng AI — 5 bước"** (skill `vox-collage-video`): 10 cảnh, giọng Gemini TTS từng cảnh (54 s), 15 cutout Pexels (tìm qua trang search không cần API key, tải `images.pexels.com/photos/<ID>/...`), rembg tách nền, Remotion render. Output `~/Desktop/clean/TVC-AI-5-buoc_vox-collage.mp4`; project `~/Project/03. Nội bộ/Vox collage TVC AI/`. Bài học máy 8 GB: rembg chạy tuần tự với ảnh ≤1100 px, render `--concurrency=2`; tạo giọng trước rồi mới đặt duration cảnh (8 frame lead + WAV + 18 frame đuôi).
+
 ### Cách 02 · Video từ các trang HTML — Claude × HTML → Video quảng cáo
 
 Dùng trang HTML làm cảnh chuyển động, chụp từng khung hình rồi ghép thành MP4. Theo skill `video-quangcao-hpb`. Mẫu dọc **1080×1920, 15 giây, 30 fps**, giọng macOS `say` + nhạc/SFX.
