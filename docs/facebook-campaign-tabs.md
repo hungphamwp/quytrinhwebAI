@@ -302,6 +302,17 @@ Prompt mẫu rút gọn:
 
 Checklist trước khi xuất: nhận diện sản phẩm giống nhau mọi cảnh · mỗi cảnh 3–8 s, cao trào nhạc trùng lúc lộ sản phẩm · giọng rõ, nhạc không lấn · logo + CTA cuối đủ lớn trên điện thoại · chỉ dùng nhạc/giọng tự tạo bằng AI.
 
+**Chi tiết bước 4 — tạo giọng đọc trong Google AI Studio** (`aistudio.google.com/generate-speech`)
+
+1. Mở đúng trang **Generate speech** (Playground mặc định là chat với Gemini, không có tạo giọng). Ở *Run settings* xác nhận model **Gemini Flash TTS** (hoặc Pro TTS nếu có). Chọn chế độ *Text* (một đoạn) hoặc *Composer* (nhiều khối/nhiều người nói).
+2. Dán voice-over từng cảnh vào ô lời thoại; tiếng Việt có dấu, số viết bằng chữ; mỗi cảnh một *speech block*.
+3. Vào *Speaker settings* → nghe thử và chọn giọng (nam trầm: Orus, Charon; nữ ấm: Kore, Aoede; trẻ: Puck, Zephyr). Điền *Audio Profile* / *Sample Context* kiểu "Giọng quảng cáo cao cấp, ấm, tự tin, tốc độ vừa". Style *Promo/Hype* cho TVC.
+4. Chèn thẻ cảm xúc trước câu: `[intrigue] [confident] [warm] [excited] [whisper] [pause]`. Bấm **Run**, nghe lại; Temperature 0.6–0.8 ổn định, 1.0 biểu cảm hơn.
+5. Bấm tải xuống → WAV; đặt tên `VO_S01.wav`, `VO_S02.wav`… rồi kéo vào CapCut trước, cắt hình theo giọng. Bản cũ nằm trong *History*.
+
+Ví dụ: `[intrigue] Bạn có bao giờ tự hỏi, một mùi hương có thể kể câu chuyện gì?` · `[confident] Aurelia Parfum. [pause] Hương thơm của chính bạn.`
+Lưu ý: gói miễn phí có hạn mức/ngày; WAV 24 kHz mono CapCut nhận trực tiếp; không dùng để giả giọng người thật.
+
 ---
 
 ### Cách 05 · (Đang nghiên cứu khả năng dùng miễn phí) Seedance qua Dola Render Gateway
