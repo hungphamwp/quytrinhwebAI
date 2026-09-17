@@ -282,6 +282,26 @@ Flow là không gian làm việc; Veo/Omni/Nano Banana là các model bên trong
 
 **Khi nào chuyển sang CapCut?** Hoàn thiện trong Flow khi cần chuỗi cảnh đơn giản; tải clip sang CapCut nếu cần kiểm soát nhiều lớp video, nhạc, lời đọc và phụ đề chi tiết. Đặt tên tệp `01-mo-dau`, `02-phat-hien`... để không nhầm thứ tự; dùng chung tỉ lệ khung hình từ đầu.
 
+**Tạo TVC cho thương hiệu — quy trình 5 bước chuyên nghiệp** (xem sơ đồ: `video-assets/flow-tvc-brand-infographic.jpg`)
+
+Khác với cách làm nhanh (một prompt → nhiều clip), TVC cần sản phẩm giữ nguyên nhận diện qua mọi cảnh và có nhạc, giọng đọc riêng.
+
+| # | Bước | Công cụ | Việc cần làm |
+|---|------|---------|--------------|
+| 1 | Kịch bản, mô tả phân cảnh | Gemini | Đưa thương hiệu, sản phẩm, khách hàng, thông điệp, thời lượng → nhận bảng phân cảnh (hình ảnh, camera, voice-over, chữ trên màn). Chốt trước khi làm tiếp. |
+| 2 | Tạo video | Google Flow | 2.1 **Hero shot** — 1 ảnh sản phẩm chủ đạo; 2.2 **Storyboard** — 1 ảnh tĩnh/cảnh, gắn hero shot làm tham chiếu; 2.3 **Phân cảnh ngắn** — chuyển từng ảnh thành clip 5–8 s (image-to-video). |
+| 3 | Tạo nhạc | Google Flow Music | Mô tả thể loại, tempo, điểm cao trào theo giây; tạo 2–3 bản, chọn bản khớp nhịp cảnh. |
+| 4 | Tạo giọng đọc | Google AI Studio | Dán voice-over, chọn giọng Việt hợp thương hiệu, xuất từng cảnh một tệp (VO_S01…). |
+| 5 | Hậu kỳ video | CapCut | Đặt giọng trước, cắt hình theo giọng, nhạc nền −12…−18 dB, chữ nhấn, logo + CTA cuối ≥ 3 s, xuất 1080p/4K. |
+
+Prompt mẫu rút gọn:
+- **Gemini:** "Bạn là đạo diễn TVC. Viết kịch bản 30 s, 16:9 cho [thương hiệu] – [sản phẩm], thông điệp "[…]". Trả về bảng 6 cảnh: STT | thời lượng | hình ảnh | camera | voice-over ≤12 từ | chữ trên màn."
+- **Hero shot:** `Product photography of [sản phẩm], studio lighting, soft rim light, premium commercial look, clean dark background, 4K, no text.`
+- **Storyboard/clip:** luôn kèm `Same product as reference image, keep exact shape, color and label … no morphing, no text.`
+- **Flow Music:** `30-second cinematic commercial track, warm piano intro, builds to a confident climax at 20s, no vocals, 100 BPM.`
+
+Checklist trước khi xuất: nhận diện sản phẩm giống nhau mọi cảnh · mỗi cảnh 3–8 s, cao trào nhạc trùng lúc lộ sản phẩm · giọng rõ, nhạc không lấn · logo + CTA cuối đủ lớn trên điện thoại · chỉ dùng nhạc/giọng tự tạo bằng AI.
+
 ---
 
 ### Cách 05 · (Đang nghiên cứu khả năng dùng miễn phí) Seedance qua Dola Render Gateway
