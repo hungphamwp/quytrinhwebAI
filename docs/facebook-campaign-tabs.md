@@ -300,6 +300,13 @@ Prompt mẫu rút gọn:
 - **Storyboard/clip:** luôn kèm `Same product as reference image, keep exact shape, color and label … no morphing, no text.`
 - **Flow Music:** `30-second cinematic commercial track, warm piano intro, builds to a confident climax at 20s, no vocals, 100 BPM.`
 
+**Xoá logo Gemini/Veo (watermark góc phải dưới) trên clip Flow** — gói Free/Pro luôn gắn khi tải về:
+1. *Chính thức:* Google AI Ultra tải clip không watermark nhìn thấy (còn SynthID ẩn).
+2. *Hay dùng nhất:* CapCut → Scale 105–108% và dời khung, hoặc Crop mép phải + dưới ~40 px rồi phóng lại; áp cùng mức cho mọi clip. Xuất 9:16 từ clip 16:9 thì crop dọc đã bỏ góc đó.
+3. *Đúng chuẩn TVC:* đặt logo thương hiệu/CTA nhỏ che đúng góc đó, chạy suốt video.
+4. *Cuối cùng:* Object/Watermark Removal (CapCut Pro, Premiere) — tốt với nền tĩnh, dễ lem khi có chuyển động.
+SynthID ẩn vẫn còn; chạy quảng cáo Meta/TikTok nên bật nhãn "nội dung có AI".
+
 Checklist trước khi xuất: nhận diện sản phẩm giống nhau mọi cảnh · mỗi cảnh 3–8 s, cao trào nhạc trùng lúc lộ sản phẩm · giọng rõ, nhạc không lấn · logo + CTA cuối đủ lớn trên điện thoại · chỉ dùng nhạc/giọng tự tạo bằng AI.
 
 **Chi tiết bước 4 — tạo giọng đọc trong Google AI Studio** (`aistudio.google.com/generate-speech`)
