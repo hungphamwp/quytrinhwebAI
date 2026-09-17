@@ -311,6 +311,8 @@ SynthID ẩn vẫn còn; chạy quảng cáo Meta/TikTok nên bật nhãn "nội
 
 **Hậu kỳ CapCut cho TVC:** thay clip gốc bằng bản `_clean` qua chuột phải → *Replace* (giữ nguyên cắt/transition). Transition có kim cương tím là Pro (cả mục Trending); free ở nhóm **Basic** (Mix/Dissolve, Fade to black/white, Blur, Zoom) và **Slide**. Công thức: Fade từ đen 0,5 s → Mix 0,3–0,4 s giữa cảnh → cắt thẳng lúc lộ sản phẩm → logo/CTA → Fade ra đen; tránh Spin/Glitch/Distortion.
 
+**Dựng TVC hoàn chỉnh bằng ffmpeg (không cần CapCut):** `docs/tools/build-tvc.sh canh1.mp4 canh2.mp4 canh3.mp4 endcard.png out.mp4` — fade từ đen 0,6 s → cảnh 1 → cắt thẳng → cảnh 2 → dissolve 0,4 s → cảnh 3 → fade đen 0,8 s → end card 4,5 s; âm thanh acrossfade + loudnorm −16 LUFS. End card làm bằng Pillow (ffmpeg Homebrew không có drawtext). Mọi nhánh video cần `fps=24,settb=AVTB` trước `xfade`. Thêm nhạc/giọng bằng `amix` hoặc mở file trong CapCut.
+
 Checklist trước khi xuất: nhận diện sản phẩm giống nhau mọi cảnh · mỗi cảnh 3–8 s, cao trào nhạc trùng lúc lộ sản phẩm · giọng rõ, nhạc không lấn · logo + CTA cuối đủ lớn trên điện thoại · chỉ dùng nhạc/giọng tự tạo bằng AI.
 
 **Chi tiết bước 4 — tạo giọng đọc trong Google AI Studio** (`aistudio.google.com/generate-speech`)
