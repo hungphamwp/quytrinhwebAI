@@ -302,6 +302,7 @@ Prompt mẫu rút gọn:
 
 **Xoá logo Gemini/Veo (watermark góc phải dưới) trên clip Flow** — gói Free/Pro luôn gắn khi tải về:
 0. *Đã dùng thực tế, miễn phí:* `ffmpeg -i in.mp4 -vf "delogo=x=1696:y=852:w=90:h=90" -c:v libx264 -crf 16 -c:a copy out.mp4` (toạ độ cho 1920×1080; logo cố định suốt clip). Script hàng loạt: `docs/tools/remove-veo-logo.sh`.
+   Kinh nghiệm: clip có ngôi sao nằm trên cạnh cứng, hoặc ảnh gốc từ Gemini đã có watermark (đi theo camera) → dùng crop/zoom `crop=1690:950:0:65,scale=1920:1080`. Phòng trước: crop bỏ góc watermark của ảnh hero/storyboard *trước* khi đưa vào Flow.
 1. *Chính thức:* Google AI Ultra tải clip không watermark nhìn thấy (còn SynthID ẩn).
 2. *Hay dùng nhất:* CapCut → Scale 105–108% và dời khung, hoặc Crop mép phải + dưới ~40 px rồi phóng lại; áp cùng mức cho mọi clip. Xuất 9:16 từ clip 16:9 thì crop dọc đã bỏ góc đó.
 3. *Đúng chuẩn TVC:* đặt logo thương hiệu/CTA nhỏ che đúng góc đó, chạy suốt video.
