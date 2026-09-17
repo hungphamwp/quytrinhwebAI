@@ -312,6 +312,22 @@ Checklist trước khi xuất: nhận diện sản phẩm giống nhau mọi c�
 
 Ví dụ: `[intrigue] Bạn có bao giờ tự hỏi, một mùi hương có thể kể câu chuyện gì?` · `[confident] Aurelia Parfum. [pause] Hương thơm của chính bạn.`
 Lưu ý: gói miễn phí có hạn mức/ngày; WAV 24 kHz mono CapCut nhận trực tiếp; không dùng để giả giọng người thật.
+Chọn mẫu trong *Quickstart Templates*: TVC → **The Ad Voiceover** (xoá đoạn mẫu tiếng Anh, dán lời thoại Việt, sửa *Sample Context*); kể chuyện thương hiệu → *Master Storyteller*; hội thoại → *Energetic Co-Host* / *Guarded NPC*; hướng dẫn → *Patient Teacher* / *Training Guide*.
+Nếu báo "Failed to list models: authentication error" (ô model trống): tải lại trang, đăng nhập lại Google, hoặc mở `aistudio.google.com/generate-speech` không kèm `?pli=1`.
+
+**Lấy ảnh & video đã tạo trong Flow về máy cho Claude Code / Antigravity**
+
+Flow hiện không có API công khai, không có MCP, không đồng bộ Google Drive → Claude/Antigravity không kéo trực tiếp được; cả hai làm việc với file trên máy. Cầu nối là một thư mục cố định.
+
+| Mức | Cách | Khi nào dùng |
+|---|---|---|
+| 1 · Thủ công | Flow → nút Tải xuống → lưu `~/HPB/flow-assets/<project>/S01_mo-dau.mp4`… → mở thư mục trong Claude Code/Antigravity | Mặc định, ổn nhất |
+| 2 · Bán tự động | Claude in Chrome / browser agent của Antigravity mở Flow, tải từng clip (xác nhận mỗi lần tải) | Project 10–30 clip |
+| 3 · Bỏ qua Flow | Claude/Antigravity gọi Gemini API (Veo, Imagen/Nano Banana) bằng API key từ AI Studio, file trả về ngay trong dự án | Muốn tự động hoá cả pipeline; tính credit theo API |
+
+Script gợi ý (`sort-flow.sh <project>`): gom file `.mp4/.png/.jpg` mới trong `~/Downloads` (theo thứ tự thời gian), chuyển vào `~/HPB/flow-assets/<project>/` và đánh số `S01_`, `S02_`…
+
+Quy ước: một project = một thư mục (không dấu, không khoảng trắng) · tên file `S01_`, `S02_` trùng số cảnh trong kịch bản · kèm `README.md` ghi kịch bản/prompt/clip đã duyệt để Claude đọc ngữ cảnh · giữ bản gốc, bản cắt ghép để trong `out/`.
 
 ---
 
