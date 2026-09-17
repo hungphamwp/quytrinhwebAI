@@ -309,7 +309,7 @@ Prompt mẫu rút gọn:
 4. *Cuối cùng:* Object/Watermark Removal (CapCut Pro, Premiere) — tốt với nền tĩnh, dễ lem khi có chuyển động.
 SynthID ẩn vẫn còn; chạy quảng cáo Meta/TikTok nên bật nhãn "nội dung có AI".
 
-**Hậu kỳ CapCut cho TVC:** thay clip gốc bằng bản `_clean` qua chuột phải → *Replace* (giữ nguyên cắt/transition). Transition có kim cương tím là Pro (cả mục Trending); free ở nhóm **Basic** (Mix/Dissolve, Fade to black/white, Blur, Zoom) và **Slide**. Công thức: Fade từ đen 0,5 s → Mix 0,3–0,4 s giữa cảnh → cắt thẳng lúc lộ sản phẩm → logo/CTA → Fade ra đen; tránh Spin/Glitch/Distortion.
+**Hậu kỳ CapCut cho TVC:** thay clip gốc bằng bản `_clean` qua chuột phải → *Replace* (giữ nguyên cắt/transition). Transition có kim cương tím là Pro (cả mục Trending); free ở nhóm **Basic** (Mix/Dissolve, Fade to black/white, Blur, Zoom) và **Slide**. Công thức: Fade từ đen 0,5 s → Mix 0,3–0,4 s giữa cảnh → cắt thẳng lúc lộ sản phẩm → logo/CTA → Fade ra đen; tránh Spin/Glitch/Distortion. Cuối video mờ dần: chọn clip cuối → Video → Basic → Fade out 0,8–1,2 s; âm nhỏ dần: tab Audio → Fade out 1,5 s (hoặc kéo chấm tròn ở mép phải dải sóng âm).
 
 **Dựng TVC hoàn chỉnh bằng ffmpeg (không cần CapCut):** `docs/tools/build-tvc.sh canh1.mp4 canh2.mp4 canh3.mp4 endcard.png out.mp4` — fade từ đen 0,6 s → cảnh 1 → cắt thẳng → cảnh 2 → dissolve 0,4 s → cảnh 3 → fade đen 0,8 s → end card 4,5 s; âm thanh acrossfade + loudnorm −16 LUFS. End card làm bằng Pillow (ffmpeg Homebrew không có drawtext). Mọi nhánh video cần `fps=24,settb=AVTB` trước `xfade`. Thêm nhạc/giọng bằng `amix` hoặc mở file trong CapCut.
 
