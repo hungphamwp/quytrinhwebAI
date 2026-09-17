@@ -301,6 +301,7 @@ Prompt mẫu rút gọn:
 - **Flow Music:** `30-second cinematic commercial track, warm piano intro, builds to a confident climax at 20s, no vocals, 100 BPM.`
 
 **Xoá logo Gemini/Veo (watermark góc phải dưới) trên clip Flow** — gói Free/Pro luôn gắn khi tải về:
+0. *Đã dùng thực tế, miễn phí:* `ffmpeg -i in.mp4 -vf "delogo=x=1696:y=852:w=90:h=90" -c:v libx264 -crf 16 -c:a copy out.mp4` (toạ độ cho 1920×1080; logo cố định suốt clip). Script hàng loạt: `docs/tools/remove-veo-logo.sh`.
 1. *Chính thức:* Google AI Ultra tải clip không watermark nhìn thấy (còn SynthID ẩn).
 2. *Hay dùng nhất:* CapCut → Scale 105–108% và dời khung, hoặc Crop mép phải + dưới ~40 px rồi phóng lại; áp cùng mức cho mọi clip. Xuất 9:16 từ clip 16:9 thì crop dọc đã bỏ góc đó.
 3. *Đúng chuẩn TVC:* đặt logo thương hiệu/CTA nhỏ che đúng góc đó, chạy suốt video.
