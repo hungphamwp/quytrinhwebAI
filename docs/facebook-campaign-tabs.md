@@ -12,7 +12,7 @@
 3. [10 Công cụ Sinh Ảnh AI & Công thức Prompt](#3-10-công-cụ-sinh-ảnh-ai--công-thức-prompt)
 4. [8 Công cụ Giọng Đọc & Sáng Tác Nhạc AI](#4-8-công-cụ-giọng-đọc--sáng-tác-nhạc-ai)
 5. [Tự Động Hóa & AI Agents](#5-tự-động-hóa--ai-agents)
-6. [Content YouTube — quy trình 7 bước, kịch bản, metadata, thumbnail, đo lường](#6-content-youtube)
+6. [Content YouTube — danh sách video sẽ làm](#6-content-youtube--danh-sách-video-sẽ-làm)
 
 ---
 
@@ -553,80 +553,13 @@ Hệ thống ứng dụng làm việc hiệu quả với AI (Obsidian, Orca, Cur
 
 ---
 
-## 6. Content YouTube
+## 6. Content YouTube — Danh sách video sẽ làm
 
-Quy trình làm nội dung YouTube cho kênh HPB Media: chọn chủ đề có người tìm → chốt tiêu đề + thumbnail → kịch bản → sản xuất bằng công cụ ở các mục Video/Ảnh/Audio → metadata → đăng → đo. Công thức: **CTR** (thumbnail + tiêu đề khiến người ta bấm) × **AVD** (kịch bản + dựng khiến người ta xem tiếp) × **tần suất** (lịch đăng đều để YouTube đề xuất).
+Tab này chỉ là **danh sách video sẽ làm** (ý tưởng → đang làm → đã đăng), sửa trực tiếp trên trang, lưu trên trình duyệt. Quy trình sản xuất xem ở mục Video AI.
 
-### Quy trình 7 bước cho một video
-
-| # | Bước | Làm gì | Đầu ra |
-|---|------|--------|--------|
-| 01 | Ý tưởng | Lấy từ câu hỏi khách, case vừa làm, gợi ý tìm kiếm YouTube, video đối thủ đang lên | 1 dòng chủ đề + ai xem + họ được gì |
-| 02 | Tiêu đề + thumbnail | Viết 5 tiêu đề chọn 1 (≤ 70 ký tự); phác thumbnail 1 hình + 3–5 chữ. **Nghĩ trước khi quay** | Tiêu đề + phác thumbnail |
-| 03 | Kịch bản | Hook 15 s (vấn đề + lời hứa) → thân bài theo bước → CTA duy nhất; ghi mốc thời gian từng cảnh | Kịch bản có mốc thời gian |
-| 04 | Sản xuất | Giọng: AI Studio / Gemini TTS; hình: Remotion, Vox collage, Google Flow, Canva; ráp CapCut | MP4 1080p + .srt |
-| 05 | Metadata | Mô tả theo mẫu, chapter từ mốc kịch bản, 10–15 tag, bật khai báo nội dung AI | Khối mô tả dán vào Studio |
-| 06 | Đăng | Lên lịch giờ cố định, playlist, end screen + thẻ, ghim bình luận có link | Video public / đã lên lịch |
-| 07 | Đo | Sau 48 giờ và 7 ngày: CTR, AVD, biểu đồ giữ chân; ghi 1 bài học | 1 dòng bài học |
-| + | Tái sử dụng | Cắt 2–3 Shorts 30–60 s (9:16) từ video dài, mô tả trỏ về video dài; 1 bài Facebook | 2–3 Shorts + 1 bài social |
-
-Thời gian tham khảo cho video hướng dẫn 5–8 phút: ý tưởng + tiêu đề + thumb 30 phút · kịch bản 45 phút · giọng + hình + dựng 2–4 giờ · metadata + đăng 20 phút.
-
-### Ý tưởng & định dạng
-
-**4 trụ nội dung:** (1) Hướng dẫn làm X bằng AI trong N bước — mỗi mục trong hub là 1 video; (2) Case thực tế cho khách (web spa/nhà hàng/BĐS: brief → bàn giao, có số liệu, lỗi); (3) So sánh công cụ (Base44 vs Lovable, Veo vs Seedance…); (4) Kiến thức web cho người không kỹ thuật (hosting, web chậm, SEO).
-
-| Định dạng | Thời lượng | Cấu trúc | Sản xuất nhanh nhất |
-|---|---|---|---|
-| Hướng dẫn từng bước | 5–12 phút | Kết quả cuối trước → bước 1..n → tổng kết | Quay màn hình + giọng AI Studio, chapter theo bước |
-| Explainer collage / hoạt hình | 1–3 phút | Vấn đề → 3–5 ý → kết | Skill `vox-collage-video` hoặc Claude × Remotion |
-| Case study | 6–10 phút | Brief → khó khăn → cách giải → kết quả → bài học | Ảnh dự án + talking head / giọng đọc |
-| So sánh / review | 8–15 phút | Tiêu chí → cùng 1 đề bài → bảng điểm → khuyến nghị | Quay màn hình 2 công cụ |
-| Shorts | 30–60 s | 1 mẹo / 1 câu hỏi / 1 kết quả | Cắt từ video dài hoặc skill `video-quangcao-hpb` |
-| Danh sách công cụ | 5–8 phút | Top N → làm gì, giá, demo 20 s | Lấy từ bảng công cụ trong hub |
-
-Nguồn ý tưởng 10 phút: gợi ý tự động của ô tìm kiếm YouTube · lọc video "tải lên tuần này" theo từ khoá · câu hỏi lặp lại từ khách · case vừa xong · Google Trends. Câu hỏi lọc: *"Ai tìm video này, họ gõ gì, xem xong làm được việc gì?"*
-
-Prompt đề xuất ý tưởng (Claude/Gemini): mô tả kênh + 4 trụ + khán giả → yêu cầu 20 ý tưởng, mỗi ý tưởng có tiêu đề ≤70 ký tự, trụ, định dạng, lý do bấm, độ khó (1–5), điểm tiềm năng (1–10); chọn 5 nên làm trước.
-
-### Kịch bản
-
-- **0:00–0:15 Hook:** nỗi đau hoặc cho xem kết quả cuối → video này cho gì, bao lâu → vì sao tin (đã làm cho khách). Không intro logo, không chào quá 3 giây.
-- **Thân bài:** mỗi bước = 1 chapter; mở bước bằng kết quả, làm (quay màn hình / hình minh hoạ), đóng bước bằng 1 lỗi hay gặp + cách né; cứ 45–60 s có 1 câu cầu nối.
-- **30 s cuối:** tóm 3 ý trong 1 câu; 1 CTA duy nhất (xem video tiếp / tải tài liệu); câu cuối mở sang video tiếp theo.
-- Tốc độ đọc tiếng Việt 150–170 từ/phút → kịch bản 6 phút ≈ 900–1000 từ. Giọng AI: câu ngắn, đủ dấu câu, số viết bằng chữ.
-
-Prompt kịch bản: nêu chủ đề, khán giả, kết quả, thời lượng, **ghi chú thật của mình (bắt buộc dùng, không bịa)**; yêu cầu bảng cảnh (STT · m:ss · lời đọc · hình · ghi chú dựng), hook 15 s, mỗi bước kết bằng 1 lỗi, cầu nối mỗi 45–60 s, 1 CTA, kèm danh sách chapter + 5 tiêu đề. Prompt phụ: từ kịch bản dài → 3 Shorts 30–45 s (hook 2 s, ≤90 từ, chữ màn hình 3–5 từ, ghi mốc lấy từ video gốc) + 1 bài Facebook 120–180 từ.
-
-### Tiêu đề · Mô tả · Chapter · Tag
-
-**Tiêu đề** ≤ 70 ký tự, từ khoá chính ở nửa đầu, có số/kết quả, hứa đúng thứ video có. 5 công thức: "Làm [X] bằng AI trong [N] bước ([công cụ])" · "Tôi làm [X] cho khách [ngành] trong [thời gian] — quy trình đầy đủ" · "[A] vs [B]: nên dùng cái nào để [mục tiêu]?" · "[N] lỗi khiến [X] thất bại (và cách sửa)" · "[X] là gì? Giải thích cho người không rành kỹ thuật".
-
-**Mô tả (mẫu):** 2 dòng đầu có từ khoá + lợi ích (hiện trước "xem thêm") → khối `⏱ Nội dung` chapter (bắt đầu 0:00, ≥ 3 mốc, mỗi mốc ≥ 10 s) → `🧰 Công cụ` → `📄 Tài liệu` [link] → `🎬 Video này làm bằng AI: …` → `▶ Xem tiếp` → `📩 CTA HPB Media` → 3–5 hashtag. Mẫu đầy đủ là bản đã dùng cho video Vox collage 18/09/2026 (xem cuối mục Claude × Remotion).
-
-**Tag:** 10–15 tag tiếng Việt (có dấu + không dấu cho 3 từ chính): từ khoá chính · biến thể · tên công cụ · tên kênh. **Cài đặt:** danh mục Giáo dục / Khoa học & Công nghệ · ngôn ngữ Tiếng Việt · tải .srt · bật khai báo *Altered or synthetic content* khi có giọng/hình AI · thêm vào playlist theo trụ.
-
-Prompt metadata: dán kịch bản có mốc thời gian → 5 tiêu đề (đánh dấu khuyên chọn), mô tả theo mẫu, 12 tag, 3 bình luận ghim.
-
-### Thumbnail
-
-- 1280×720, 16:9, ≤ 2 MB; né góc dưới phải (đè thời lượng); chữ ≥ 90 px, đậm, có viền; tối đa 2 màu chủ đạo + 1 màu nhấn theo màu HPB Media.
-- **Chữ trên thumb ≠ tiêu đề:** tiêu đề nói *cái gì*, thumb nói *vì sao bấm* ("Làm TVC bằng AI trong 5 bước" → thumb "0 ĐỒNG QUAY PHIM"); 3–5 từ; số/tiền/thời gian đọc nhanh nhất.
-- 3 bố cục: Trước/Sau (hướng dẫn) · Người + kết quả (case) · Logo A vs Logo B (so sánh).
-- Làm bằng AI: **Canva MCP** (khuyên dùng — chữ Việt chuẩn; xuất frame từ video → nhờ Claude Code dựng 1280×720 với chữ và màu thương hiệu) hoặc ảnh AI (Gemini/Ideogram) tạo **nền không chữ**, ghép chữ sau trong Canva/CapCut.
-- Kiểm tra: thu nhỏ 160 px vẫn đọc được; đặt cạnh 5 video đối thủ vẫn nổi; làm phương án 2 để bật *Test & compare*.
-
-### Đăng & đo lường
-
-**Checklist Studio:** tiêu đề ≤70 · mô tả theo mẫu · chapter từ 0:00 · thumbnail + phương án 2 · playlist, tag, danh mục, ngôn ngữ, .srt · khai báo AI · không dành cho trẻ em · end screen 20 s cuối (1 video + đăng ký) · thẻ ở phút 2–3 · bình luận ghim (link + câu hỏi) · lên lịch · chia sẻ Facebook/Zalo sau 1 giờ · Shorts 9:16 ≤ 60 s có #Shorts, mô tả trỏ về video dài.
-
-**Lịch đề xuất:** 1 video dài/tuần (thứ Tư 19:00) + 2–3 Shorts cắt từ đó (thứ Sáu, CN, thứ Ba). Tuần mẫu: T2 chốt chủ đề + tiêu đề + thumb · T3 kịch bản · T4 sản xuất + đăng · T5 cắt Shorts, trả lời bình luận, xem CTR 24 giờ · T6 Shorts #1 + chia sẻ · CN Shorts #2 + ghi bài học.
-
-**3 số cần nhìn (48 giờ và 7 ngày):** CTR (kênh mới 4–6% ổn, < 3% đổi thumb/tiêu đề) · AVD (mục tiêu ≥ 40–50% thời lượng; thấp → hook yếu) · biểu đồ giữ chân (dốc 30 s đầu = intro thừa; đỉnh nhô = đoạn hay, cắt Shorts) · nguồn lượt xem (tìm kiếm cao = metadata đúng; đề xuất cao = giữ chân tốt).
-
-**Sổ tay video đã đăng** (ngày · video · trụ/định dạng · CTR · AVD · lượt xem 7 ngày · bài học): 18/09/2026 — "Làm TVC thương hiệu bằng AI trong 5 bước (Gemini, Google Flow, CapCut)", explainer collage 63 s — bài học: tạo giọng trước rồi mới đặt thời lượng cảnh; chapter tính từ duration storyboard (frame ÷ 30). Điền số sau 7 ngày.
-
-**Lỗi hay gặp:** chapter không hiện (mốc đầu phải "0:00", ≥ 3 mốc, mỗi mốc ≥ 10 s, tăng dần) · Shorts bị tính video thường (phải dọc 9:16 và ≤ 60 s) · thumbnail bị từ chối (chưa xác minh SĐT) · giọng AI bị hạn chế kiếm tiền (cần giá trị riêng: màn hình thật, số liệu, giọng người ở hook) · nhạc bị claim (dùng Flow Music / Suno / thư viện YouTube, giữ file chứng minh).
+| # | Ngày làm | Video sẽ làm | Link / nguồn | Trạng thái | Ghi chú |
+|---|----------|--------------|--------------|-----------|---------|
+| 1 | 19/09/2026 | Tạo video từ tài liệu bằng Gemini Notebook (NotebookLM) — Video Overview | notebook.google.com/notebook/fbb0f1fd-… | 💡 Ý tưởng | Phải Add sources trước thì Studio → Video Overview mới tạo được (0 sources = không làm gì). Đặt Output language = Tiếng Việt. |
 
 ---
 

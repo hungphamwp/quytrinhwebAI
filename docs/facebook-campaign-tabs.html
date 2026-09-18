@@ -1522,18 +1522,7 @@
 #tab-ai .flow-glossary a{color:var(--brand);text-decoration:underline}
 @media(max-width:1000px){#tab-ai .subtab-nav{grid-template-columns:1fr 1fr}.ai-hier{grid-template-columns:1fr}#tab-ai .ai-layers,#tab-ai .ai-concepts,#tab-ai .ai-weeks{grid-template-columns:1fr 1fr}#tab-ai .ai-prompt-frame{grid-template-columns:repeat(3,minmax(0,1fr))}#tab-ai .ai-four{grid-template-columns:1fr}}
 @media(max-width:680px){#tab-ai .subtab-nav{grid-template-columns:1fr}#tab-ai .ai-layers,#tab-ai .ai-concepts,#tab-ai .ai-weeks,#tab-ai .ai-prompt-frame{grid-template-columns:1fr}.ai-ring{padding:14px}}
-/* ===== TAB 6: CONTENT YOUTUBE ===== */
-#tab-youtube .yt-hero{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:center;margin:8px 0 20px}#tab-youtube .yt-hero h2{font-size:30px;margin:8px 0 10px;color:var(--ink);font-family:'Outfit',sans-serif}#tab-youtube .yt-hero p{font-size:16px;line-height:1.8;color:var(--ink-light);margin:0}
-.yt-formula{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:18px;border:1px solid var(--brand-border);border-radius:12px;background:var(--brand-soft)}.yt-formula div{text-align:center;color:var(--ink)}.yt-formula b{display:block;font-size:22px;color:var(--brand)}.yt-formula span{font-size:12.5px;color:var(--ink-light)}
-#tab-youtube .subtab-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;padding:16px 0;border-bottom:1px solid var(--line)}#tab-youtube .subtab-btn{border-radius:12px;padding:13px 12px;font-size:13.5px;white-space:normal;text-align:left}#tab-youtube .subtab-btn.active{background:var(--brand);color:white;border-color:var(--brand)}
-.yt-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:20px 0}.yt-steps article{padding:18px;background:var(--bg-surface);border:1px solid var(--line);border-radius:12px;color:var(--ink)}.yt-steps article>span{font-size:12px;font-weight:800;color:var(--brand)}.yt-steps h4{font-size:17px;margin:10px 0 8px}.yt-steps p{font-size:14.5px;line-height:1.7;color:var(--ink-light);margin:0}.yt-steps small{display:block;margin-top:10px;font-size:12px;color:var(--muted)}
-.yt-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}.yt-grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
-#tab-youtube .lr-sheet ul,#tab-youtube .lr-sheet ol{padding-left:20px;margin:6px 0;font-size:15px;line-height:1.75}#tab-youtube .lr-sheet li{margin-bottom:6px}#tab-youtube h3{font-size:22px;color:var(--ink);margin:24px 0 10px}#tab-youtube .lr-prompt{margin:14px 0}
-.yt-table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0}.yt-table th,.yt-table td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;color:var(--ink)}.yt-table th{background:var(--bg-surface);font-size:12.5px;letter-spacing:.03em;color:var(--muted)}.yt-table td small{color:var(--muted)}
-.yt-check{list-style:none;padding:0;margin:10px 0}.yt-check li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--line);font-size:15px;color:var(--ink)}.yt-check li input{margin-top:5px;accent-color:var(--brand)}
-.yt-kpi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}.yt-kpi div{padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--bg-surface)}.yt-kpi b{display:block;font-size:20px;margin-bottom:4px;color:var(--brand)}.yt-kpi span{font-size:13px;color:var(--ink-light);line-height:1.6;display:block}
-@media(max-width:1000px){#tab-youtube .subtab-nav{grid-template-columns:repeat(3,minmax(0,1fr))}.yt-steps{grid-template-columns:1fr 1fr}.yt-kpi{grid-template-columns:1fr 1fr}.yt-grid-3{grid-template-columns:1fr}}
-@media(max-width:680px){#tab-youtube .yt-hero,.yt-grid-2,.yt-steps,.yt-kpi,.yt-formula{grid-template-columns:1fr}#tab-youtube .subtab-nav{grid-template-columns:1fr 1fr}}
+#yt-table td[contenteditable]:focus{outline:2px solid var(--brand);outline-offset:-2px;border-radius:4px}
 </style>
 </head>
 <body>
@@ -2428,295 +2417,51 @@ Hãy tạo 1 phương án banner hoàn chỉnh, có bố cục đẹp, sẵn sà
     </div>
   </div>
 
-  <!-- ================= TAB 6: CONTENT YOUTUBE ================= -->
+  <!-- ================= TAB 6: CONTENT YOUTUBE (DANH SÁCH VIDEO SẼ LÀM) ================= -->
   <div class="panel" id="tab-youtube">
     <div class="card">
-      <section class="yt-hero">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px">
         <div>
-          <span class="vs-eyebrow">TỪ Ý TƯỞNG ĐẾN VIDEO ĐÃ ĐĂNG · CÓ AI HỖ TRỢ TỪNG BƯỚC</span>
-          <h2>Content YouTube</h2>
-          <p>Quy trình làm nội dung YouTube cho kênh HPB Media: chọn chủ đề có người tìm, viết kịch bản giữ chân người xem, sản xuất bằng các công cụ ở tab Video/Ảnh/Audio, rồi đăng đúng chuẩn (tiêu đề, mô tả, chapter, tag, thumbnail) và đọc số liệu để làm video sau tốt hơn.</p>
+          <h2 style="margin:0;font-size:20px;font-family:'Outfit',sans-serif;color:var(--ink)"><i class="fa-brands fa-youtube" style="color:#ff0000;margin-right:6px"></i> Content YouTube — Danh sách video sẽ làm</h2>
+          <p style="margin:4px 0 0;font-size:13px;color:var(--muted)">Ghi nhanh ý tưởng video tại đây. Bấm vào ô để sửa trực tiếp, đổi trạng thái khi bắt đầu làm / đã đăng. Dữ liệu lưu trên trình duyệt này.</p>
         </div>
-        <div class="yt-formula">
-          <div><b>CTR</b><span>Thumbnail + tiêu đề<br>khiến người ta bấm</span></div>
-          <div><b>AVD</b><span>Kịch bản + dựng<br>khiến người ta xem tiếp</span></div>
-          <div><b>Tần suất</b><span>Lịch đăng đều<br>khiến YouTube đề xuất</span></div>
-        </div>
-      </section>
-
-      <div class="subtab-nav" role="tablist" aria-label="Content YouTube">
-        <button type="button" class="subtab-btn active" data-subtab="yt-workflow"><i class="fa-solid fa-route"></i> Quy trình 7 bước</button>
-        <button type="button" class="subtab-btn" data-subtab="yt-idea"><i class="fa-solid fa-lightbulb"></i> Ý tưởng &amp; định dạng</button>
-        <button type="button" class="subtab-btn" data-subtab="yt-script"><i class="fa-solid fa-pen-nib"></i> Kịch bản</button>
-        <button type="button" class="subtab-btn" data-subtab="yt-meta"><i class="fa-solid fa-tags"></i> Tiêu đề · Mô tả · Tag</button>
-        <button type="button" class="subtab-btn" data-subtab="yt-thumb"><i class="fa-solid fa-image"></i> Thumbnail</button>
-        <button type="button" class="subtab-btn" data-subtab="yt-publish"><i class="fa-brands fa-youtube"></i> Đăng &amp; đo lường</button>
-      </div>
-
-      <!-- SUB 1: QUY TRÌNH -->
-      <div class="subtab-panel show" id="yt-workflow">
-        <div class="vs-intro"><div><span class="vs-eyebrow">BƯỚC 01 → 07 · MỖI VIDEO ĐI ĐÚNG THỨ TỰ NÀY</span><h3>Quy trình 7 bước cho một video</h3><p>Mỗi bước có đầu ra rõ ràng. Không nhảy sang sản xuất khi chưa chốt tiêu đề và thumbnail — vì hai thứ đó quyết định video có được bấm hay không, phải nghĩ trước khi quay.</p></div><div class="lr-speaking"><span>NGUYÊN TẮC</span><blockquote>“Nghĩ tiêu đề và thumbnail trước, quay sau. Video hay mà không ai bấm thì cũng như chưa đăng.”</blockquote></div></div>
-        <div class="yt-steps">
-          <article><span>01 · Ý TƯỞNG</span><h4>Chọn chủ đề có người tìm</h4><p>Lấy từ câu hỏi khách hay hỏi, case vừa làm xong (TVC AI, web AI), hoặc video đối thủ đang chạy tốt. Kiểm tra gợi ý tìm kiếm YouTube.</p><small>Đầu ra: 1 dòng chủ đề + ai xem + họ được gì</small></article>
-          <article><span>02 · TIÊU ĐỀ + THUMB</span><h4>Chốt “bao bì” trước</h4><p>Viết 5 tiêu đề, chọn 1 (≤ 70 ký tự). Phác thumbnail: 1 hình chính + 3–5 chữ. Nếu không tự thấy muốn bấm → đổi góc nhìn.</p><small>Đầu ra: tiêu đề + phác thumbnail</small></article>
-          <article><span>03 · KỊCH BẢN</span><h4>Hook – Nội dung – CTA</h4><p>Dùng prompt ở tab <b>Kịch bản</b>: 15 giây đầu nêu vấn đề + hứa kết quả, thân bài theo bước, kết nhắc video tiếp theo.</p><small>Đầu ra: kịch bản có mốc thời gian từng cảnh</small></article>
-          <article><span>04 · SẢN XUẤT</span><h4>Quay / dựng bằng AI</h4><p>Giọng: AI Studio / Gemini TTS (tab Audio). Hình: Remotion, Vox collage, Google Flow, Canva (tab Video / Ảnh). Ráp trong CapCut.</p><small>Đầu ra: MP4 1080p + file phụ đề .srt</small></article>
-          <article><span>05 · METADATA</span><h4>Mô tả · chapter · tag</h4><p>Điền theo mẫu ở tab <b>Tiêu đề · Mô tả · Tag</b>. Chapter lấy từ mốc thời gian kịch bản. Bật khai báo nội dung có AI.</p><small>Đầu ra: khối mô tả dán thẳng vào YouTube Studio</small></article>
-          <article><span>06 · ĐĂNG</span><h4>Lên lịch, playlist, màn hình kết thúc</h4><p>Đăng khung giờ cố định, thêm vào playlist, gắn end screen + thẻ trỏ về video liên quan, ghim bình luận có link.</p><small>Đầu ra: video public / đã lên lịch</small></article>
-          <article><span>07 · ĐO &amp; RÚT KINH NGHIỆM</span><h4>Xem số sau 48 giờ &amp; 7 ngày</h4><p>CTR, thời gian xem trung bình, biểu đồ giữ chân. Ghi 1 bài học vào bảng ở tab <b>Đăng &amp; đo lường</b> rồi áp cho video sau.</p><small>Đầu ra: 1 dòng bài học</small></article>
-          <article><span>+ · TÁI SỬ DỤNG</span><h4>1 video dài → nhiều Shorts</h4><p>Cắt 2–3 đoạn 30–60 giây thành Shorts 9:16, đăng cách nhau vài ngày, mô tả trỏ về video dài. Bài đăng Facebook/TikTok dùng lại cùng file.</p><small>Đầu ra: 2–3 Shorts + 1 bài social</small></article>
-        </div>
-        <div class="lr-step-support" style="padding:0">
-          <div class="lr-sheet"><span>KẾT NỐI VỚI CÁC TAB KHÁC TRONG HUB</span>
-            <ul>
-              <li><b>Tạo Video AI</b> → Claude × Remotion, Vox collage, Google Flow, CapCut: dùng ở bước 04.</li>
-              <li><b>Tạo Hình Ảnh AI</b> → Canva MCP / ảnh AI: dùng làm thumbnail (bước 02) và hình minh họa.</li>
-              <li><b>Giọng Nói &amp; Âm Thanh</b> → Google AI Studio, ElevenLabs, Suno: giọng đọc và nhạc nền.</li>
-              <li><b>Tự Động Hóa</b> → Claude Code / n8n: sinh hàng loạt tiêu đề, mô tả, .srt từ kịch bản JSON.</li>
-            </ul>
-          </div>
-          <div class="lr-sheet"><span>THỜI GIAN THAM KHẢO · VIDEO HƯỚNG DẪN 5–8 PHÚT</span>
-            <p><b>Ý tưởng + tiêu đề + thumb:</b> 30 phút</p>
-            <p><b>Kịch bản (AI viết nháp, mình sửa):</b> 45 phút</p>
-            <p><b>Giọng đọc + hình + dựng:</b> 2–4 giờ (tuỳ cách làm)</p>
-            <p><b>Metadata + đăng:</b> 20 phút</p>
-            <small>Case 18/09/2026: video Vox collage 63 giây “Làm TVC thương hiệu bằng AI — 5 bước” đi trọn quy trình này, xem chi tiết ở tab Video AI → Claude × Remotion.</small>
-          </div>
+        <div class="tool-chips" id="yt-filter-chips">
+          <button type="button" class="tool-chip active" data-yt-filter="all"><i class="fa-solid fa-layer-group"></i> Tất cả</button>
+          <button type="button" class="tool-chip" data-yt-filter="idea"><i class="fa-solid fa-lightbulb" style="color:#f59e0b"></i> Ý tưởng</button>
+          <button type="button" class="tool-chip" data-yt-filter="doing"><i class="fa-solid fa-clapperboard" style="color:#6366f1"></i> Đang làm</button>
+          <button type="button" class="tool-chip" data-yt-filter="done"><i class="fa-solid fa-circle-check" style="color:#10b981"></i> Đã đăng</button>
         </div>
       </div>
 
-      <!-- SUB 2: Ý TƯỞNG -->
-      <div class="subtab-panel" id="yt-idea">
-        <div class="vs-intro"><div><span class="vs-eyebrow">BƯỚC 01 · KHÔNG BAO GIỜ THIẾU ĐỀ TÀI</span><h3>4 trụ nội dung &amp; 6 định dạng video</h3><p>Kênh cần vài “trụ” cố định để người xem biết mình sẽ nhận gì khi đăng ký. Mỗi trụ có 2–3 định dạng lặp lại được; mỗi định dạng có khung kịch bản riêng ở tab Kịch bản.</p></div><div class="lr-speaking"><span>CÂU HỎI LỌC Ý TƯỞNG</span><blockquote>“Ai tìm video này, họ gõ gì vào ô tìm kiếm, và xem xong họ làm được việc gì?”</blockquote></div></div>
-        <div class="lr-roles">
-          <article><span>TRỤ 1 · HƯỚNG DẪN AI</span><h4>Làm X bằng AI trong N bước</h4><p>Web AI, TVC AI, banner Canva, giọng đọc AI Studio… Đúng những gì hub này ghi lại — mỗi mục trong hub là 1 video.</p></article>
-          <article><span>TRỤ 2 · CASE THỰC TẾ</span><h4>Làm cho khách như thế nào</h4><p>Web cho spa / nhà hàng / bất động sản: từ brief đến bàn giao, có số liệu và lỗi gặp phải.</p></article>
-          <article><span>TRỤ 3 · SO SÁNH CÔNG CỤ</span><h4>A vs B, nên chọn gì</h4><p>Base44 vs Lovable, Veo vs Seedance, ElevenLabs vs AI Studio — dùng bảng ở tab tương ứng làm sườn.</p></article>
-          <article><span>TRỤ 4 · KIẾN THỨC WEB</span><h4>Giải thích cho khách không kỹ thuật</h4><p>Hosting là gì, vì sao web chậm, SEO cần gì — video ngắn, trả lời 1 câu hỏi.</p></article>
-        </div>
-        <table class="yt-table">
-          <thead><tr><th>Định dạng</th><th>Thời lượng</th><th>Cấu trúc cốt lõi</th><th>Hợp với trụ</th><th>Cách sản xuất nhanh nhất</th></tr></thead>
-          <tbody>
-            <tr><td><b>Hướng dẫn từng bước</b></td><td>5–12 phút</td><td>Kết quả cuối trước → bước 1..n → tổng kết</td><td>1, 2</td><td>Quay màn hình + giọng AI Studio, chapter theo bước</td></tr>
-            <tr><td><b>Explainer collage / hoạt hình</b></td><td>1–3 phút</td><td>Vấn đề → 3–5 ý → kết</td><td>1, 4</td><td>Skill <code>vox-collage-video</code> hoặc Claude × Remotion</td></tr>
-            <tr><td><b>Case study</b></td><td>6–10 phút</td><td>Brief → khó khăn → cách giải → kết quả → bài học</td><td>2</td><td>Ảnh chụp dự án + talking head hoặc giọng đọc</td></tr>
-            <tr><td><b>So sánh / review</b></td><td>8–15 phút</td><td>Tiêu chí → thử cùng 1 đề bài → bảng điểm → khuyến nghị</td><td>3</td><td>Quay màn hình 2 công cụ song song</td></tr>
-            <tr><td><b>Shorts</b></td><td>30–60 giây</td><td>1 mẹo / 1 câu hỏi / 1 kết quả bất ngờ</td><td>tất cả</td><td>Cắt từ video dài hoặc skill <code>video-quangcao-hpb</code></td></tr>
-            <tr><td><b>Danh sách công cụ</b></td><td>5–8 phút</td><td>Top N → mỗi mục: làm gì, giá, demo 20 giây</td><td>3</td><td>Lấy thẳng từ bảng công cụ trong hub</td></tr>
-          </tbody>
-        </table>
-        <div class="yt-grid-2">
-          <div class="lr-sheet"><span>NGUỒN Ý TƯỞNG · KIỂM TRA TRONG 10 PHÚT</span>
-            <ol>
-              <li><b>Ô tìm kiếm YouTube</b>: gõ “làm web bằng ai”, “tạo video ai” … và ghi lại các gợi ý tự động — đó là câu người ta thật sự tìm.</li>
-              <li><b>Tab Video → Lọc “Tải lên hôm nay / tuần này”</b> theo từ khoá: xem video mới nào đang lên nhanh ở kênh nhỏ.</li>
-              <li><b>Bình luận và inbox khách</b>: mỗi câu hỏi lặp lại 2 lần = 1 video.</li>
-              <li><b>Case vừa làm xong</b>: đang còn file, còn nhớ lỗi → quay ngay, đừng để nguội.</li>
-              <li><b>Google Trends / AnswerThePublic</b> cho chủ đề đang tăng.</li>
-            </ol>
-          </div>
-          <details class="lr-prompt" open><summary>Prompt · nhờ Claude/Gemini đề xuất 20 ý tưởng có điểm số</summary><p>Dán vào Claude, Gemini hoặc ChatGPT. Thay phần trong [ ].</p><textarea readonly>Bạn là chiến lược gia nội dung YouTube cho kênh HPB Media — công ty thiết kế website và làm video/ảnh bằng AI tại Việt Nam. Khán giả: chủ doanh nghiệp nhỏ, người làm marketing, freelancer muốn tự dùng AI làm web/video.
-
-Kênh có 4 trụ nội dung: (1) Hướng dẫn làm X bằng AI, (2) Case thực tế cho khách, (3) So sánh công cụ AI, (4) Kiến thức web cho người không kỹ thuật.
-
-Hãy đề xuất 20 ý tưởng video cho tháng tới về chủ đề [ví dụ: làm video quảng cáo bằng AI]. Với mỗi ý tưởng cho: tiêu đề gợi ý (≤70 ký tự, tiếng Việt tự nhiên, không giật gân sai sự thật), trụ nội dung, định dạng (hướng dẫn / explainer / case / so sánh / shorts), lý do người xem bấm, độ khó sản xuất (1–5), điểm tiềm năng (1–10). Sắp xếp theo điểm giảm dần và chọn 5 ý tưởng nên làm trước, giải thích ngắn vì sao.</textarea></details>
-        </div>
-      </div>
-
-      <!-- SUB 3: KỊCH BẢN -->
-      <div class="subtab-panel" id="yt-script">
-        <div class="vs-intro"><div><span class="vs-eyebrow">BƯỚC 03 · GIỮ NGƯỜI XEM Ở LẠI</span><h3>Kịch bản: Hook 15 giây – Thân bài theo bước – CTA</h3><p>YouTube xếp hạng theo thời gian xem. Kịch bản tốt không phải viết hay, mà là mỗi 30–60 giây có một lý do để xem tiếp. AI viết nháp rất nhanh; việc của mình là thêm trải nghiệm thật, số liệu thật và lỗi thật.</p></div><div class="lr-speaking"><span>HOOK MẪU · 15 GIÂY ĐẦU</span><blockquote>“Một TVC 30 giây từng tốn 50–100 triệu. Video này tôi làm bằng 5 công cụ AI trong một buổi chiều — và cuối video bạn sẽ có đúng quy trình đó, kèm prompt.”</blockquote></div></div>
-        <div class="yt-grid-3">
-          <div class="lr-sheet"><span>0:00–0:15 · HOOK</span><b>Vấn đề + lời hứa + bằng chứng</b>
-            <ul><li>Câu 1: nỗi đau hoặc kết quả bất ngờ (cho xem luôn kết quả cuối).</li><li>Câu 2: video này cho bạn cái gì, trong bao lâu.</li><li>Câu 3: vì sao tin tôi (đã làm cho khách / số liệu).</li><li>Không intro logo, không “xin chào các bạn” quá 3 giây.</li></ul></div>
-          <div class="lr-sheet"><span>0:15–END-30s · THÂN BÀI</span><b>Mỗi bước = 1 chapter</b>
-            <ul><li>Mở bước: nói kết quả của bước trước khi làm.</li><li>Làm: quay màn hình / hình minh hoạ, giọng đọc kể đang làm gì.</li><li>Đóng bước: 1 lỗi hay gặp + cách né (giữ chân tốt nhất).</li><li>Cầu nối: “nhưng có 1 thứ nếu bỏ qua thì bước sau hỏng…”.</li></ul></div>
-          <div class="lr-sheet"><span>30 GIÂY CUỐI · CTA</span><b>Một hành động, không phải ba</b>
-            <ul><li>Tóm 3 ý trong 1 câu.</li><li>Chỉ 1 CTA chính: xem video tiếp theo (end screen) hoặc tải tài liệu (link mô tả).</li><li>Nhắc đăng ký nhẹ, đặt ở giữa video hiệu quả hơn ở cuối.</li><li>Kết bằng câu mở sang video tiếp: “Bước tiếp theo — đưa video này lên web — tôi làm ở đây.”</li></ul></div>
-        </div>
-        <h3>Prompt viết kịch bản</h3>
-        <div class="yt-grid-2">
-          <details class="lr-prompt" open><summary>Prompt 1 · kịch bản video hướng dẫn 5–8 phút (có mốc thời gian)</summary><p>Đưa kèm ghi chú thật của bạn (các bước đã làm, lỗi gặp, số liệu) để AI không bịa.</p><textarea readonly>Viết kịch bản video YouTube tiếng Việt cho kênh HPB Media, giọng nói chuyện tự nhiên, xưng "tôi" – gọi "bạn", không dùng từ tiếng Anh khi có từ Việt tương đương, không giật gân.
-
-Chủ đề: [Làm TVC thương hiệu bằng AI trong 5 bước]
-Khán giả: [chủ shop, marketer nhỏ, chưa biết dựng video]
-Kết quả người xem đạt được: [tự làm 1 TVC 30 giây bằng Gemini + Google Flow + AI Studio + CapCut]
-Thời lượng mục tiêu: [6 phút]
-Ghi chú thật từ tôi (bắt buộc dùng, không bịa thêm): [dán các bước, lỗi đã gặp, thời gian tốn, chi phí…]
-
-Yêu cầu định dạng:
-1. Bảng cảnh: STT · mốc thời gian (m:ss) · lời đọc · hình trên màn hình (quay màn hình / hình minh hoạ / chữ) · ghi chú dựng.
-2. Hook 15 giây đầu: cho thấy kết quả cuối trước, nêu vấn đề, hứa kết quả.
-3. Mỗi bước là 1 chapter, kết mỗi bước bằng 1 lỗi hay gặp và cách tránh.
-4. Cứ 45–60 giây có 1 câu cầu nối để người xem muốn xem tiếp.
-5. CTA cuối: 1 hành động duy nhất là [xem video tiếp theo về …].
-6. Sau bảng cảnh, xuất thêm: danh sách chapter (mốc + tên) và 5 tiêu đề gợi ý ≤70 ký tự.</textarea></details>
-          <details class="lr-prompt"><summary>Prompt 2 · biến video dài thành 3 Shorts + bài đăng Facebook</summary><p>Dán kịch bản đã chốt vào cuối prompt.</p><textarea readonly>Từ kịch bản video dài dưới đây, hãy tạo:
-
-A. 3 Shorts 30–45 giây (dọc 9:16), mỗi Short chỉ 1 ý: hook 2 giây đầu bằng câu hỏi hoặc kết quả, lời đọc ≤ 90 từ, gợi ý chữ hiện trên màn hình (3–5 từ mỗi lần), câu cuối trỏ về video dài. Ghi rõ lấy từ mốc thời gian nào của video gốc.
-
-B. 1 bài Facebook 120–180 từ: mở bằng kết quả, 3 gạch đầu dòng bài học, kết bằng câu hỏi để người ta bình luận; kèm 5 hashtag tiếng Việt.
-
-C. Tiêu đề Shorts ≤ 50 ký tự có #Shorts.
-
-Kịch bản gốc:
-[dán vào đây]</textarea></details>
-        </div>
-        <div class="lr-sheet"><span>KIỂM TRA KỊCH BẢN TRƯỚC KHI THU GIỌNG</span>
-          <ul class="yt-check">
-            <li><input type="checkbox"> 15 giây đầu đã cho thấy kết quả cuối hoặc nêu đúng nỗi đau?</li>
-            <li><input type="checkbox"> Đọc thành tiếng: 150–170 từ/phút tiếng Việt — kịch bản 6 phút ≈ 900–1000 từ?</li>
-            <li><input type="checkbox"> Mỗi bước có ít nhất 1 chi tiết chỉ mình biết (lỗi, số, mẹo)?</li>
-            <li><input type="checkbox"> Mốc thời gian mỗi cảnh đã ghi để xuất chapter và cắt Shorts?</li>
-            <li><input type="checkbox"> Chỉ 1 CTA cuối, và câu cuối mở sang video tiếp theo?</li>
-            <li><input type="checkbox"> Nếu dùng giọng AI: câu ngắn, có dấu câu đầy đủ, số viết bằng chữ (“năm mươi triệu”)?</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- SUB 4: METADATA -->
-      <div class="subtab-panel" id="yt-meta">
-        <div class="vs-intro"><div><span class="vs-eyebrow">BƯỚC 05 · ĐỂ YOUTUBE HIỂU VIDEO NÓI VỀ GÌ</span><h3>Tiêu đề · Mô tả · Chapter · Tag</h3><p>Tiêu đề và thumbnail quyết định bấm; mô tả, chapter, tag giúp YouTube và Google hiểu nội dung để đề xuất và xếp hạng tìm kiếm. Điền theo mẫu bên dưới là đủ, không cần “nhồi” từ khoá.</p></div><div class="lr-speaking"><span>QUY TẮC TIÊU ĐỀ</span><blockquote>“≤ 70 ký tự · từ khoá chính ở nửa đầu · có số hoặc kết quả · hứa đúng thứ video có.”</blockquote></div></div>
-        <div class="yt-grid-2">
-          <div class="lr-sheet"><span>TIÊU ĐỀ · 5 CÔNG THỨC DÙNG LẠI ĐƯỢC</span>
-            <ol>
-              <li><b>Làm [X] bằng AI trong [N] bước ([công cụ 1], [công cụ 2])</b><br><small>vd: Làm TVC thương hiệu bằng AI trong 5 bước (Gemini, Google Flow, CapCut)</small></li>
-              <li><b>Tôi làm [X] cho khách [ngành] trong [thời gian] — quy trình đầy đủ</b></li>
-              <li><b>[A] vs [B]: nên dùng cái nào để [mục tiêu]? (thử cùng 1 đề bài)</b></li>
-              <li><b>[N] lỗi khiến [X] thất bại (và cách sửa trong 5 phút)</b></li>
-              <li><b>[X] là gì? Giải thích cho người không rành kỹ thuật</b></li>
-            </ol>
-            <small>Tránh: VIẾT HOA TOÀN BỘ, “gây sốc”, hứa thứ video không có. Kiểm tra độ dài: tiêu đề bị cắt ở ~70 ký tự trên điện thoại.</small>
-          </div>
-          <div class="lr-sheet"><span>TAG &amp; CÀI ĐẶT</span>
-            <p><b>Tag (10–15 tag, tiếng Việt có dấu + không dấu cho từ chính):</b> từ khoá chính · biến thể · tên công cụ · tên kênh. vd: <i>làm tvc bằng ai, tvc ai, google flow, veo 3, gemini tts, capcut, làm video bằng ai, hpb media</i>.</p>
-            <p><b>Hashtag:</b> 3–5 cái ở cuối mô tả, 3 cái đầu hiện trên tiêu đề.</p>
-            <p><b>Danh mục:</b> Giáo dục (hướng dẫn) hoặc Khoa học &amp; Công nghệ.</p>
-            <p><b>Ngôn ngữ:</b> Tiếng Việt · tải phụ đề .srt (tăng tìm kiếm + người xem tắt tiếng).</p>
-            <p><b>Nội dung có AI:</b> bật khai báo <i>Altered or synthetic content</i> khi giọng/hình do AI tạo — bắt buộc, không ảnh hưởng đề xuất.</p>
-            <p><b>Playlist:</b> mỗi trụ nội dung 1 playlist; thêm ngay khi đăng.</p>
-          </div>
-        </div>
-        <details class="lr-prompt" open><summary>Mẫu mô tả · dán vào YouTube Studio rồi thay phần trong [ ]</summary><p>Đây là mẫu đã dùng cho video Vox collage 18/09/2026. 2 dòng đầu hiện trước nút “xem thêm” — phải chứa từ khoá và lý do xem.</p><textarea readonly>[1 câu tóm tắt có từ khoá chính: Làm TVC thương hiệu bằng AI chỉ với 5 công cụ — quy trình HPB Media đang dùng cho khách.]
-[1 câu: xem xong bạn làm được gì.]
-
-⏱ Nội dung
-0:00 [Tên chapter 1 — hook]
-0:05 [Chapter 2]
-0:11 [Bước 1 — …]
-0:18 [Bước 2 — …]
-0:25 [Bước 3 — …]
-0:37 [Bước 4 — …]
-0:44 [Bước 5 — …]
-0:51 [Mẹo / lỗi hay gặp]
-0:57 [Kết]
-
-🧰 Công cụ trong video: [Gemini · Google Flow (Veo) · Flow Music · Google AI Studio · CapCut · ffmpeg]
-📄 Tài liệu đầy đủ, prompt mẫu, checklist: [link hub / bài viết]
-🎬 Video này cũng làm bằng AI: [giọng Gemini TTS, ảnh Pexels, dựng bằng Remotion].
-
-▶ Xem tiếp: [tên video liên quan] — [link]
-📩 Cần [website / TVC / video AI] cho thương hiệu? HPB Media: [website] · [SĐT] · [email]
-
-#TVC #AIVideo #GoogleFlow #Gemini #CapCut</textarea></details>
-        <details class="lr-prompt"><summary>Prompt · sinh trọn bộ metadata từ kịch bản</summary><p>Dán kịch bản có mốc thời gian; AI trả về tiêu đề, mô tả, chapter, tag theo đúng mẫu trên.</p><textarea readonly>Từ kịch bản video YouTube tiếng Việt dưới đây (có mốc thời gian từng cảnh), hãy tạo:
-1. 5 tiêu đề ≤70 ký tự, từ khoá chính "[từ khoá]" nằm ở nửa đầu, có số hoặc kết quả, không giật gân; đánh dấu tiêu đề bạn khuyên chọn.
-2. Mô tả theo đúng mẫu: 2 dòng đầu có từ khoá + lợi ích; khối "⏱ Nội dung" liệt kê chapter (mốc m:ss + tên ≤ 8 từ, chapter đầu bắt buộc 0:00, mỗi chapter ≥ 10 giây); khối công cụ; link tài liệu [link]; dòng "video này làm bằng AI" nếu có; CTA HPB Media; 5 hashtag.
-3. 12 tag tiếng Việt (có dấu, thêm bản không dấu cho 3 từ chính), cách nhau bằng dấu phẩy.
-4. 3 câu bình luận ghim gợi ý (1 câu hỏi cho người xem + link tài liệu).
-
-Kịch bản:
-[dán vào đây]</textarea></details>
-      </div>
-
-      <!-- SUB 5: THUMBNAIL -->
-      <div class="subtab-panel" id="yt-thumb">
-        <div class="vs-intro"><div><span class="vs-eyebrow">BƯỚC 02 · THỨ ĐẦU TIÊN NGƯỜI XEM THẤY</span><h3>Thumbnail: 1 hình · 3–5 chữ · đọc được ở kích thước ngón tay</h3><p>Thumbnail hiện ở 1280×720 nhưng người ta thấy nó ở cỡ 160 px trên điện thoại. Mọi quyết định thiết kế đều phải kiểm tra ở cỡ nhỏ. Làm 2–3 phương án, để YouTube tự A/B (tính năng “Test &amp; compare”).</p></div><div class="lr-speaking"><span>KIỂM TRA 1 GIÂY</span><blockquote>“Thu nhỏ còn bằng con tem. Còn đọc được chữ, còn hiểu hình nói gì → đạt.”</blockquote></div></div>
-        <div class="yt-grid-3">
-          <div class="lr-sheet"><span>THÔNG SỐ</span><ul><li>1280×720 px, tỉ lệ 16:9, JPG/PNG ≤ 2 MB.</li><li>Vùng an toàn: né góc dưới phải (đè thời lượng).</li><li>Chữ ≥ 90 px ở kích thước gốc, font đậm, có viền/nền.</li><li>Tối đa 2 màu chủ đạo + 1 màu nhấn; giữ đúng màu HPB Media để nhận ra kênh.</li></ul></div>
-          <div class="lr-sheet"><span>3 BỐ CỤC DÙNG LẠI ĐƯỢC</span><ul><li><b>Trước / Sau:</b> nửa trái “kịch bản giấy”, nửa phải khung hình TVC — hợp video hướng dẫn.</li><li><b>Người + kết quả:</b> mặt người (biểu cảm rõ) chiếm 1/3, sản phẩm/màn hình 2/3 — hợp case study.</li><li><b>Logo A vs Logo B:</b> hai logo đối đầu, chữ “Chọn gì?” — hợp so sánh công cụ.</li></ul></div>
-          <div class="lr-sheet"><span>CHỮ TRÊN THUMB ≠ TIÊU ĐỀ</span><ul><li>Tiêu đề nói <i>cái gì</i>, thumbnail nói <i>vì sao bấm</i>: tiêu đề “Làm TVC bằng AI trong 5 bước” → thumb “0 ĐỒNG QUAY PHIM”.</li><li>3–5 từ, không lặp tiêu đề.</li><li>Số, tiền, thời gian đọc nhanh nhất: “5 BƯỚC”, “1 BUỔI CHIỀU”.</li></ul></div>
-        </div>
-        <h3>Làm thumbnail bằng AI</h3>
-        <div class="yt-grid-2">
-          <div class="lr-sheet"><span>CÁCH 1 · CANVA MCP (KHUYÊN DÙNG, CÓ CHỮ TIẾNG VIỆT CHUẨN)</span>
-            <ol><li>Xuất 1 frame đẹp từ video (CapCut: Export frame; hoặc Remotion still).</li><li>Trong Claude Code: “Tạo thumbnail YouTube 1280×720 từ ảnh này, chữ ‘…’, màu thương hiệu HPB Media” — Canva MCP dựng, chữ Việt không lỗi font.</li><li>Xuất PNG, kiểm tra ở cỡ nhỏ, tải lên.</li></ol>
-            <small>Chi tiết tab Tạo Hình Ảnh AI → Canva MCP.</small>
-          </div>
-          <details class="lr-prompt" open><summary>Cách 2 · Prompt tạo nền thumbnail bằng ảnh AI (Gemini / Ideogram), chữ ghép sau</summary><p>Ảnh AI hay sai chữ tiếng Việt — tạo nền trống chữ rồi thêm chữ trong Canva/CapCut.</p><textarea readonly>Tạo ảnh nền thumbnail YouTube 16:9, không có chữ, không watermark.
-Chủ đề: [làm TVC quảng cáo bằng AI].
-Bố cục: [bên trái một người ngồi trước laptop nhìn hứng thú, bên phải màn hình lớn đang phát TVC sản phẩm nước uống, ánh sáng studio]. Để trống vùng [bên trên phải] cho chữ.
-Phong cách: ảnh thật, sáng, tương phản cao, màu chủ đạo [xanh đậm #122745 và cam nhấn], nét sắc, nhân vật chiếm 1/3 khung.
-Không: chữ, logo, tay 6 ngón, nền rối.</textarea></details>
-        </div>
-        <div class="lr-sheet"><span>CHECKLIST TRƯỚC KHI TẢI LÊN</span>
-          <ul class="yt-check">
-            <li><input type="checkbox"> Thu nhỏ còn 160 px: vẫn đọc được chữ và hiểu hình?</li>
-            <li><input type="checkbox"> Chữ trên thumb không lặp lại tiêu đề?</li>
-            <li><input type="checkbox"> Đặt cạnh 5 video đối thủ cùng chủ đề: có nổi bật (màu, biểu cảm, khoảng trống)?</li>
-            <li><input type="checkbox"> Không đè lên góc dưới phải; không dùng ảnh/logo bên thứ ba chưa được phép?</li>
-            <li><input type="checkbox"> Đã làm phương án thứ 2 để bật Test &amp; compare?</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- SUB 6: ĐĂNG & ĐO -->
-      <div class="subtab-panel" id="yt-publish">
-        <div class="vs-intro"><div><span class="vs-eyebrow">BƯỚC 06–07 · ĐĂNG ĐÚNG CHUẨN, ĐỌC SỐ, LÀM VIDEO SAU TỐT HƠN</span><h3>Đăng &amp; đo lường</h3><p>Video hướng dẫn sống lâu nhờ tìm kiếm, nên khung giờ không quan trọng bằng đều đặn. Sau khi đăng, chỉ cần theo dõi 3 con số và ghi lại 1 bài học mỗi video.</p></div><div class="lr-speaking"><span>LỊCH ĐĂNG ĐỀ XUẤT</span><blockquote>“1 video dài / tuần (thứ Tư 19:00) + 2–3 Shorts cắt từ video đó (thứ Sáu, Chủ nhật, thứ Ba). Nửa năm là 26 video dài + 70 Shorts.”</blockquote></div></div>
-        <div class="yt-grid-2">
-          <div class="lr-sheet"><span>CHECKLIST ĐĂNG · YOUTUBE STUDIO</span>
-            <ul class="yt-check">
-              <li><input type="checkbox"> Tiêu đề ≤70 ký tự, mô tả theo mẫu, chapter bắt đầu 0:00 và ≥ 3 chapter.</li>
-              <li><input type="checkbox"> Thumbnail tuỳ chỉnh + phương án 2 cho Test &amp; compare.</li>
-              <li><input type="checkbox"> Playlist, tag, danh mục, ngôn ngữ Tiếng Việt, phụ đề .srt.</li>
-              <li><input type="checkbox"> Khai báo nội dung AI (nếu có giọng/hình AI). Đối tượng: không dành cho trẻ em.</li>
-              <li><input type="checkbox"> Màn hình kết thúc 20 giây cuối: 1 video liên quan + nút đăng ký. Thẻ (card) ở phút 2–3 trỏ video liên quan.</li>
-              <li><input type="checkbox"> Bình luận ghim: link tài liệu + 1 câu hỏi cho người xem.</li>
-              <li><input type="checkbox"> Lên lịch (Schedule) đúng khung giờ; chia sẻ Facebook/Zalo sau 1 giờ đăng.</li>
-              <li><input type="checkbox"> Shorts: 9:16, ≤ 60 giây, tiêu đề có #Shorts, mô tả trỏ về video dài (link video liên quan).</li>
-            </ul>
-          </div>
-          <div>
-            <div class="lr-sheet"><span>3 SỐ CẦN NHÌN · YOUTUBE STUDIO → ANALYTICS</span>
-              <div class="yt-kpi">
-                <div><b>CTR</b><span>Tỉ lệ bấm hiển thị. Kênh mới 4–6% là ổn, &lt; 3% → đổi thumbnail/tiêu đề (Test &amp; compare).</span></div>
-                <div><b>AVD</b><span>Thời gian xem trung bình. Mục tiêu ≥ 40–50% thời lượng; thấp → hook yếu hoặc thân bài dài dòng.</span></div>
-                <div><b>Retention</b><span>Biểu đồ giữ chân: dốc mạnh ở 30 giây đầu = intro thừa; đỉnh nhô lên = đoạn hay, cắt thành Shorts.</span></div>
-                <div><b>Nguồn lượt xem</b><span>Tìm kiếm cao = tiêu đề/mô tả đúng; Đề xuất cao = giữ chân tốt; Bên ngoài = link Facebook đang chạy.</span></div>
+      <table class="otable" id="yt-table">
+        <thead>
+          <tr><th>#</th><th>NGÀY LÀM</th><th>VIDEO SẼ LÀM</th><th>LINK / NGUỒN</th><th>TRẠNG THÁI</th><th>GHI CHÚ</th><th></th></tr>
+        </thead>
+        <tbody id="yt-body"></tbody>
+        <tfoot>
+          <tr class="inline-add-row">
+            <td><span class="inline-plus-badge"><i class="fa-solid fa-plus"></i></span></td>
+            <td><input type="text" class="inline-table-input" id="yt-new-date" placeholder="19/09/2026" style="width:110px" /></td>
+            <td><input type="text" class="inline-table-input" id="yt-new-title" placeholder="Tên video / chủ đề..." /></td>
+            <td><input type="text" class="inline-table-input" id="yt-new-link" placeholder="Link công cụ, tài liệu, video tham khảo..." /></td>
+            <td>
+              <select class="sheet-label-select tag-recommended" id="yt-new-status">
+                <option value="idea" selected>💡 Ý tưởng</option>
+                <option value="doing">🎬 Đang làm</option>
+                <option value="done">✅ Đã đăng</option>
+              </select>
+            </td>
+            <td>
+              <div style="display:flex;align-items:center;gap:6px">
+                <input type="text" class="inline-table-input" id="yt-new-note" placeholder="Ghi chú..." style="flex:1" />
+                <button type="button" class="btn-inline-submit" id="yt-add-btn"><i class="fa-solid fa-plus"></i> Thêm</button>
               </div>
-              <small>Xem sau 48 giờ (phản ứng ban đầu) và 7 ngày (tìm kiếm bắt đầu vào). Video hướng dẫn thường tăng đều sau tuần 2–3.</small>
-            </div>
-          </div>
-        </div>
-        <h3>Sổ tay video đã đăng · ghi 1 bài học mỗi video</h3>
-        <table class="yt-table">
-          <thead><tr><th>Ngày</th><th>Video</th><th>Trụ / định dạng</th><th>CTR</th><th>AVD</th><th>Lượt xem 7 ngày</th><th>Bài học áp cho video sau</th></tr></thead>
-          <tbody>
-            <tr><td>18/09/2026</td><td>Làm TVC thương hiệu bằng AI trong 5 bước (Gemini, Google Flow, CapCut)</td><td>Hướng dẫn / explainer collage 63 s</td><td>—</td><td>—</td><td>—</td><td>Tạo giọng trước rồi mới đặt thời lượng cảnh; chapter tính từ duration storyboard (frame ÷ 30). Điền số sau 7 ngày.</td></tr>
-            <tr><td><small>…</small></td><td><small>Thêm dòng cho mỗi video mới</small></td><td></td><td></td><td></td><td></td><td></td></tr>
-          </tbody>
-        </table>
-        <div class="yt-grid-2">
-          <div class="lr-sheet"><span>LỊCH 1 TUẦN · MẪU</span>
-            <table class="yt-table" style="margin:0">
-              <tbody>
-                <tr><td><b>Thứ 2</b></td><td>Chốt chủ đề + tiêu đề + phác thumbnail tuần này (30 phút)</td></tr>
-                <tr><td><b>Thứ 3</b></td><td>Kịch bản (AI nháp → sửa) · đăng Shorts #3 tuần trước</td></tr>
-                <tr><td><b>Thứ 4</b></td><td>Sản xuất: giọng, hình, dựng · <b>19:00 đăng video dài</b></td></tr>
-                <tr><td><b>Thứ 5</b></td><td>Cắt 3 Shorts · trả lời bình luận · xem CTR 24 giờ</td></tr>
-                <tr><td><b>Thứ 6</b></td><td>Đăng Shorts #1 · chia sẻ Facebook/Zalo</td></tr>
-                <tr><td><b>CN</b></td><td>Đăng Shorts #2 · ghi bài học video tuần này vào sổ tay</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="lr-sheet"><span>LỖI HAY GẶP KHI ĐĂNG</span>
-            <ul>
-              <li><b>Chapter không hiện:</b> mốc đầu phải đúng “0:00”, ≥ 3 mốc, mỗi mốc ≥ 10 giây, thứ tự tăng dần.</li><li><b>Shorts bị tính là video thường:</b> phải dọc 9:16 (hoặc vuông) và ≤ 60 giây (YouTube đã mở lên 3 phút với video dọc; vẫn nên ≤ 60 s để lan toả).</li><li><b>Thumbnail bị từ chối:</b> tài khoản chưa xác minh số điện thoại → Studio → Cài đặt → Kênh → Tính năng.</li><li><b>Giọng AI bị hạn chế kiếm tiền:</b> cần thêm giá trị riêng (màn hình thật, số liệu, giọng người ở hook) — không đăng nội dung “lặp lại hàng loạt”.</li><li><b>Nhạc nền bị claim bản quyền:</b> dùng Flow Music / Suno / thư viện âm thanh YouTube, giữ file chứng minh.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
+            </td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <p style="font-size:12px;color:var(--muted);margin:10px 0 0"><i class="fa-solid fa-circle-info"></i> Enter trong ô nhập = thêm dòng. Bấm <i class="fa-solid fa-trash"></i> để xoá. Muốn quy trình làm video chi tiết → xem tab <b>Tạo Video AI</b>.</p>
     </div>
   </div>
 
@@ -3019,6 +2764,56 @@ document.querySelectorAll('[data-video-step]').forEach(function(button){
       }
     }
   }
+
+
+  // ================= 7. CONTENT YOUTUBE — DANH SÁCH VIDEO SẼ LÀM (localStorage) =================
+  (function(){
+    var KEY='master_ai_youtube_list_v1';
+    var body=document.getElementById('yt-body'); if(!body) return;
+    var SEED=[{date:'19/09/2026',title:'Tạo video từ tài liệu bằng Gemini Notebook (NotebookLM) — Video Overview',link:'https://notebook.google.com/notebook/fbb0f1fd-74c0-4bb2-8544-de813fd525bb',status:'idea',note:'Phải Add sources trước thì Studio → Video Overview mới tạo được (0 sources = không làm gì). Đặt Output language = Tiếng Việt.'}];
+    var STATUS={idea:['💡 Ý tưởng','tag-free'],doing:['🎬 Đang làm','tag-recommended'],done:['✅ Đã đăng','tag-top']};
+    var list; try{ list=JSON.parse(localStorage.getItem(KEY)||'null'); }catch(e){ list=null; }
+    if(!Array.isArray(list)) list=SEED.slice();
+    var filter='all';
+    function save(){ try{ localStorage.setItem(KEY,JSON.stringify(list)); }catch(e){} }
+    function esc(s){ return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+    function linkCell(v){ if(!v) return ''; var m=v.match(/https?:\/\/\S+/); if(!m) return esc(v); var u=m[0]; var host=u.replace(/^https?:\/\//,'').split('/')[0]; return '<a href="'+esc(u)+'" target="_blank" rel="noopener">'+esc(host)+'</a>'+esc(v.replace(u,'')); }
+    function render(){
+      body.innerHTML='';
+      var shown=0;
+      list.forEach(function(it,i){
+        if(filter!=='all'&&it.status!==filter) return; shown++;
+        var st=STATUS[it.status]||STATUS.idea;
+        var tr=document.createElement('tr'); tr.dataset.idx=i;
+        tr.innerHTML='<td><span class="rank-badge'+(it.status==='done'?' top':'')+'">'+(i+1)+'</span></td>'
+          +'<td contenteditable="true" data-f="date" style="white-space:nowrap">'+esc(it.date)+'</td>'
+          +'<td contenteditable="true" data-f="title"><b>'+esc(it.title)+'</b></td>'
+          +'<td data-f="link"><span contenteditable="true" data-raw="'+esc(it.link)+'" style="display:none">'+esc(it.link)+'</span>'+linkCell(it.link)+' <button type="button" class="yt-edit-link" title="Sửa link" style="border:0;background:none;color:var(--muted);cursor:pointer"><i class="fa-solid fa-pen"></i></button></td>'
+          +'<td><select class="sheet-label-select '+st[1]+'" data-f="status">'+Object.keys(STATUS).map(function(k){return '<option value="'+k+'"'+(k===it.status?' selected':'')+'>'+STATUS[k][0]+'</option>';}).join('')+'</select></td>'
+          +'<td contenteditable="true" data-f="note" style="font-size:13px;color:var(--ink-light)">'+esc(it.note)+'</td>'
+          +'<td><button type="button" class="yt-del" title="Xoá" style="border:0;background:none;color:#ef4444;cursor:pointer;font-size:14px"><i class="fa-solid fa-trash"></i></button></td>';
+        body.appendChild(tr);
+      });
+      if(!shown){ var tr=document.createElement('tr'); tr.innerHTML='<td colspan="7" style="text-align:center;color:var(--muted);padding:22px">Chưa có video nào ở mục này — thêm ở dòng dưới.</td>'; body.appendChild(tr); }
+    }
+    body.addEventListener('input',function(e){ var td=e.target.closest('[data-f]'); var tr=e.target.closest('tr'); if(!td||!tr||tr.dataset.idx===undefined) return; var f=td.dataset.f; if(f==='status') return; list[tr.dataset.idx][f]=(f==='link'?e.target.textContent:td.textContent).trim(); save(); });
+    body.addEventListener('change',function(e){ if(e.target.dataset.f==='status'){ var tr=e.target.closest('tr'); list[tr.dataset.idx].status=e.target.value; save(); render(); } });
+    body.addEventListener('click',function(e){
+      var del=e.target.closest('.yt-del'); if(del){ var tr=del.closest('tr'); list.splice(tr.dataset.idx,1); save(); render(); return; }
+      var ed=e.target.closest('.yt-edit-link'); if(ed){ var td=ed.closest('td'); var span=td.querySelector('span[contenteditable]'); span.style.display='inline'; span.focus(); span.addEventListener('blur',function(){ render(); },{once:true}); }
+    });
+    body.addEventListener('keydown',function(e){ if(e.key==='Enter'&&e.target.closest('[contenteditable]')){ e.preventDefault(); e.target.blur(); } });
+    function add(){
+      var t=document.getElementById('yt-new-title').value.trim(); if(!t){ document.getElementById('yt-new-title').focus(); return; }
+      list.push({date:document.getElementById('yt-new-date').value.trim(),title:t,link:document.getElementById('yt-new-link').value.trim(),status:document.getElementById('yt-new-status').value,note:document.getElementById('yt-new-note').value.trim()});
+      save(); ['yt-new-date','yt-new-title','yt-new-link','yt-new-note'].forEach(function(id){document.getElementById(id).value='';}); document.getElementById('yt-new-status').value='idea'; render();
+      var toast=document.getElementById('toast'); if(toast){ toast.textContent='✅ Đã thêm video vào danh sách'; toast.classList.add('show'); setTimeout(function(){toast.classList.remove('show');},1800); }
+    }
+    document.getElementById('yt-add-btn').addEventListener('click',add);
+    ['yt-new-date','yt-new-title','yt-new-link','yt-new-note'].forEach(function(id){ document.getElementById(id).addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); add(); } }); });
+    document.querySelectorAll('#yt-filter-chips .tool-chip').forEach(function(ch){ ch.addEventListener('click',function(){ document.querySelectorAll('#yt-filter-chips .tool-chip').forEach(function(c){c.classList.remove('active');}); ch.classList.add('active'); filter=ch.dataset.ytFilter; render(); }); });
+    render();
+  })();
 
   // ================= 6. DEMO LINK CELLS & FULL SUPABASE CLOUD SYNC =================
   const DEMO_KEY = 'fb_campaign_demo_links_v1';
