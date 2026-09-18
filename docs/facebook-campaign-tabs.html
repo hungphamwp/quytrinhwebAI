@@ -3243,7 +3243,7 @@ document.querySelectorAll('[data-video-step]').forEach(function(button){
 
   // Universal inline add row for Video, Image, Audio tables
   document.querySelectorAll('tfoot .btn-inline-submit').forEach(function(btn) {
-    if (btn === btnInlineAdd) return;
+    if (btn === btnInlineAdd || btn.id === 'yt-add-btn') return;
     btn.addEventListener('click', function() {
       const trFoot = btn.closest('tr');
       const tableTarget = btn.closest('table');
