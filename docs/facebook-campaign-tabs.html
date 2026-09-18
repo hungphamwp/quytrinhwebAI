@@ -1499,6 +1499,41 @@
 
 .other-image-tool{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:start;padding:28px 0;border-top:1px solid var(--line)}.other-image-tool .flow-figure{margin:0;min-width:0}.other-image-tool img{width:100%;height:auto;display:block}.other-image-tool h4{font-size:25px;margin:10px 0}.other-image-tool h5{font-size:16px;margin:20px 0 8px}.other-image-tool p{line-height:1.7}.other-free{background:var(--brand-soft);border-radius:12px;padding:16px;margin:18px 0}.other-free p{margin:8px 0 0}.other-open{display:inline-block;padding:11px 18px;background:var(--brand);color:white;border-radius:9px;text-decoration:none;font-weight:700}@media(max-width:900px){.other-image-tool{grid-template-columns:1fr}#tab-image .subtab-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .canva-example-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}.canva-example-grid .flow-figure{margin:0;min-width:0}.canva-example-grid img{display:block;width:100%;height:auto}.canva-example-grid figcaption p{line-height:1.65}@media(max-width:800px){.canva-example-grid{grid-template-columns:1fr}}
+
+/* ===== TAB 0: KIẾN THỨC AI ===== */
+#tab-ai .ai-workshop{color:var(--ink)}#tab-ai .ai-workshop>h2{font-size:30px;margin:10px 0}#tab-ai .ai-workshop>p{font-size:17px;line-height:1.8;color:var(--ink-light);max-width:900px}
+#tab-ai .subtab-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:20px 0;border-bottom:1px solid var(--line)}
+#tab-ai .subtab-btn{text-align:left;padding:16px 18px;border-radius:12px;white-space:normal;font-size:15px;display:block}
+#tab-ai .subtab-btn i{margin-right:6px;color:var(--brand)}#tab-ai .subtab-btn small{display:block;font-size:12px;margin-top:6px;font-weight:500;opacity:.8}
+#tab-ai .subtab-btn.active{background:var(--brand);color:white}#tab-ai .subtab-btn.active i{color:white}
+#tab-ai .subtab-panel{padding-top:24px}#tab-ai .lr-heading h3{font-size:26px;letter-spacing:-.5px;margin:8px 0}
+#tab-ai p{line-height:1.75}#tab-ai .lr-definition{font-size:16px}
+.ai-hier{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start;margin:22px 0}
+.ai-ring{border-radius:20px;padding:18px 18px 18px 22px;border:1px solid rgba(255,255,255,.18);color:#eef4ff}
+.ai-ring-1{background:linear-gradient(135deg,#0b2a5b,#123d7a)}.ai-ring-2{background:linear-gradient(135deg,#0f5d5e,#1a7d6a);margin-top:14px}.ai-ring-3{background:linear-gradient(135deg,#3b2f8f,#4a3fb0);margin-top:14px}.ai-ring-4{background:linear-gradient(135deg,#a8791c,#d8a92a);margin-top:14px;color:#1d1a10;box-shadow:0 0 0 4px rgba(255,214,80,.25)}
+.ai-ring-head{display:flex;align-items:flex-start;gap:14px}.ai-ring-head i{font-size:30px;margin-top:2px;opacity:.95}.ai-ring-head b{display:block;font-size:20px;line-height:1.2}.ai-ring-head span{display:block;font-size:14px;opacity:.9;margin-top:4px}
+.ai-hier-side{display:flex;flex-direction:column;gap:12px}.ai-hier-side article{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--bg-surface);border:1px solid var(--line);border-radius:14px}
+.ai-hier-side article b{display:block;font-size:17px}.ai-hier-side article small{color:var(--muted);font-size:13px}.ai-hier-side p{font-size:14px;color:var(--ink-light);margin:6px 0 0}
+.ai-logo{width:44px;height:44px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:white;flex:none}.ai-logo-gpt{background:#10a37f}.ai-logo-gem{background:linear-gradient(135deg,#4285f4,#a142f4)}.ai-logo-cla{background:#d97757}
+#tab-ai .ai-layers{grid-template-columns:repeat(4,minmax(0,1fr))}#tab-ai .ai-figure{max-width:900px;margin:24px auto}
+#tab-ai .ai-concepts{grid-template-columns:repeat(4,minmax(0,1fr))}#tab-ai .ai-prompt-frame{grid-template-columns:repeat(5,minmax(0,1fr))}#tab-ai .ai-four{grid-template-columns:1fr 1fr}#tab-ai .ai-four .workflow-chain{padding:12px 0 0}#tab-ai .ai-four .workflow-chain b{font-size:12px;padding:8px 10px}
+#tab-ai .ai-weeks{grid-template-columns:repeat(4,minmax(0,1fr))}#tab-ai .lr-roles h4{font-size:18px}#tab-ai .lr-roles p{font-size:14.5px}
+#tab-ai .ai-glossary-table td:first-child{white-space:normal;min-width:150px}#tab-ai code{font-size:13px;background:var(--brand-soft);padding:1px 6px;border-radius:4px;color:var(--brand)}
+#tab-ai .flow-glossary a{color:var(--brand);text-decoration:underline}
+@media(max-width:1000px){#tab-ai .subtab-nav{grid-template-columns:1fr 1fr}.ai-hier{grid-template-columns:1fr}#tab-ai .ai-layers,#tab-ai .ai-concepts,#tab-ai .ai-weeks{grid-template-columns:1fr 1fr}#tab-ai .ai-prompt-frame{grid-template-columns:repeat(3,minmax(0,1fr))}#tab-ai .ai-four{grid-template-columns:1fr}}
+@media(max-width:680px){#tab-ai .subtab-nav{grid-template-columns:1fr}#tab-ai .ai-layers,#tab-ai .ai-concepts,#tab-ai .ai-weeks,#tab-ai .ai-prompt-frame{grid-template-columns:1fr}.ai-ring{padding:14px}}
+/* ===== TAB 6: CONTENT YOUTUBE ===== */
+#tab-youtube .yt-hero{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:center;margin:8px 0 20px}#tab-youtube .yt-hero h2{font-size:30px;margin:8px 0 10px;color:var(--ink);font-family:'Outfit',sans-serif}#tab-youtube .yt-hero p{font-size:16px;line-height:1.8;color:var(--ink-light);margin:0}
+.yt-formula{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:18px;border:1px solid var(--brand-border);border-radius:12px;background:var(--brand-soft)}.yt-formula div{text-align:center;color:var(--ink)}.yt-formula b{display:block;font-size:22px;color:var(--brand)}.yt-formula span{font-size:12.5px;color:var(--ink-light)}
+#tab-youtube .subtab-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;padding:16px 0;border-bottom:1px solid var(--line)}#tab-youtube .subtab-btn{border-radius:12px;padding:13px 12px;font-size:13.5px;white-space:normal;text-align:left}#tab-youtube .subtab-btn.active{background:var(--brand);color:white;border-color:var(--brand)}
+.yt-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:20px 0}.yt-steps article{padding:18px;background:var(--bg-surface);border:1px solid var(--line);border-radius:12px;color:var(--ink)}.yt-steps article>span{font-size:12px;font-weight:800;color:var(--brand)}.yt-steps h4{font-size:17px;margin:10px 0 8px}.yt-steps p{font-size:14.5px;line-height:1.7;color:var(--ink-light);margin:0}.yt-steps small{display:block;margin-top:10px;font-size:12px;color:var(--muted)}
+.yt-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}.yt-grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}
+#tab-youtube .lr-sheet ul,#tab-youtube .lr-sheet ol{padding-left:20px;margin:6px 0;font-size:15px;line-height:1.75}#tab-youtube .lr-sheet li{margin-bottom:6px}#tab-youtube h3{font-size:22px;color:var(--ink);margin:24px 0 10px}#tab-youtube .lr-prompt{margin:14px 0}
+.yt-table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0}.yt-table th,.yt-table td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;color:var(--ink)}.yt-table th{background:var(--bg-surface);font-size:12.5px;letter-spacing:.03em;color:var(--muted)}.yt-table td small{color:var(--muted)}
+.yt-check{list-style:none;padding:0;margin:10px 0}.yt-check li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--line);font-size:15px;color:var(--ink)}.yt-check li input{margin-top:5px;accent-color:var(--brand)}
+.yt-kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:14px 0}.yt-kpi div{padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--bg-surface)}.yt-kpi b{display:block;font-size:24px;color:var(--brand)}.yt-kpi span{font-size:13px;color:var(--ink-light);line-height:1.6;display:block}
+@media(max-width:1000px){#tab-youtube .subtab-nav{grid-template-columns:repeat(3,minmax(0,1fr))}.yt-steps{grid-template-columns:1fr 1fr}.yt-kpi{grid-template-columns:1fr 1fr}.yt-grid-3{grid-template-columns:1fr}}
+@media(max-width:680px){#tab-youtube .yt-hero,.yt-grid-2,.yt-steps,.yt-kpi,.yt-formula{grid-template-columns:1fr}#tab-youtube .subtab-nav{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -1528,20 +1563,229 @@
   <header class="hero">
     <div class="hero-tag"><i class="fa-solid fa-wand-magic-sparkles" style="color:#f59e0b"></i> TRUNG TÂM TÀI LIỆU &amp; QUY TRÌNH AI TOÀN DIỆN 2026</div>
     <h1>Hệ Thống Công Cụ, Prompt &amp; Quy Trình AI Toàn Diện</h1>
-    <p>Tổng hợp và đánh giá thực chiến các nền tảng AI tạo <b>Website</b>, <b>Video</b>, <b>Hình ảnh</b>, <b>Giọng nói</b> và <b>Tự động hóa luồng làm việc</b>.</p>
+    <p>Từ <b>kiến thức nền về AI</b> đến đánh giá thực chiến các nền tảng AI tạo <b>Website</b>, <b>Video</b>, <b>Hình ảnh</b>, <b>Giọng nói</b> và <b>Tự động hóa luồng làm việc</b>.</p>
   </header>
 
   <!-- MAIN TABS -->
   <div class="tabs">
-    <button class="tab-btn active" data-tab="tab-website"><i class="fa-solid fa-globe"></i> Tạo Website AI</button>
+    <button class="tab-btn active" data-tab="tab-ai"><i class="fa-solid fa-lightbulb"></i> Kiến Thức AI</button>
+    <button class="tab-btn" data-tab="tab-website"><i class="fa-solid fa-globe"></i> Tạo Website AI</button>
     <button class="tab-btn" data-tab="tab-video"><i class="fa-solid fa-clapperboard"></i> Tạo Video AI</button>
     <button class="tab-btn" data-tab="tab-image"><i class="fa-solid fa-image"></i> Tạo Hình Ảnh AI</button>
     <button class="tab-btn" data-tab="tab-audio"><i class="fa-solid fa-microphone-lines"></i> Giọng Nói &amp; Âm Thanh</button>
     <button class="tab-btn" data-tab="tab-automation"><i class="fa-solid fa-bolt-lightning"></i> Tự Động Hóa &amp; Agent</button>
+    <button class="tab-btn" data-tab="tab-youtube"><i class="fa-brands fa-youtube"></i> Content YouTube</button>
+  </div>
+
+  <!-- ================= TAB 0: KIẾN THỨC AI CHUYÊN SÂU ================= -->
+  <div class="panel" id="tab-ai">
+    <div class="card"><section class="ai-workshop">
+      <span class="vs-eyebrow">NỀN TẢNG TRƯỚC KHI DÙNG CÔNG CỤ</span>
+      <h2>Kiến thức AI chuyên sâu — hiểu đúng để dùng đúng</h2>
+      <p>Các tab bên cạnh dạy <b>cách làm</b>; tab này trả lời <b>vì sao nó hoạt động</b>: AI khác Generative AI chỗ nào, LLM “nghĩ” ra sao, prompt tốt là gì, và RAG · Agent · MCP · Skill khác nhau thế nào. Đọc theo thứ tự từ trái sang phải, mỗi mục 5–8 phút.</p>
+      <div class="subtab-nav" role="tablist" aria-label="Kiến thức AI">
+        <button type="button" class="subtab-btn active" data-subtab="ai-hierarchy"><i class="fa-solid fa-layer-group"></i> Từ AI đến Generative AI<small>Phân tầng trí tuệ · ChatGPT, Gemini, Claude nằm đâu</small></button>
+        <button type="button" class="subtab-btn" data-subtab="ai-llm"><i class="fa-solid fa-brain"></i> LLM hoạt động thế nào<small>Token · context · temperature · ảo giác</small></button>
+        <button type="button" class="subtab-btn" data-subtab="ai-prompt"><i class="fa-solid fa-terminal"></i> Prompt engineering<small>Khung 5 phần · few-shot · chain-of-thought</small></button>
+        <button type="button" class="subtab-btn" data-subtab="ai-agent"><i class="fa-solid fa-diagram-project"></i> RAG · Agent · MCP · Skill<small>Khi nào dùng cái nào · HPB đang dùng gì</small></button>
+        <button type="button" class="subtab-btn" data-subtab="ai-glossary"><i class="fa-solid fa-book"></i> Thuật ngữ A–Z<small>40 từ hay gặp, giải thích một dòng</small></button>
+        <button type="button" class="subtab-btn" data-subtab="ai-learn"><i class="fa-solid fa-graduation-cap"></i> Lộ trình học 4 tuần<small>Nguồn miễn phí, uy tín</small></button>
+      </div>
+
+      <!-- SUB 1: HIERARCHY -->
+      <div class="subtab-panel show" id="ai-hierarchy">
+        <div class="lr-heading"><div><span class="vs-eyebrow">A HIERARCHY OF INTELLIGENCE</span><h3>Từ AI đến Generative AI — bốn vòng tròn lồng nhau</h3></div><span class="lr-badge">Mỗi vòng trong là tập con của vòng ngoài</span></div>
+        <p class="lr-definition">Khi nói “AI”, người ta thường đang nói về vòng trong cùng: <b>Generative AI</b> — thứ tạo ra nội dung mới. Nhưng nó chỉ là một nhánh nhỏ của <b>Deep Learning</b>, vốn là một phương pháp của <b>Machine Learning</b>, và Machine Learning lại là một cách tiếp cận trong lĩnh vực rộng <b>AI</b>. Hiểu phân tầng này giúp bạn đọc tin tức không bị nhầm, và biết công cụ mình đang dùng có thể — và không thể — làm gì.</p>
+        <div class="ai-hier">
+          <div class="ai-ring ai-ring-1"><div class="ai-ring-head"><i class="fa-solid fa-brain"></i><div><b>AI — Trí tuệ nhân tạo</b><span>Lĩnh vực rộng: tạo ra máy móc có hành vi thông minh</span></div></div>
+            <div class="ai-ring ai-ring-2"><div class="ai-ring-head"><i class="fa-solid fa-chart-simple"></i><div><b>Machine Learning — Học máy</b><span>Hệ thống học quy luật từ dữ liệu thay vì được lập trình từng luật</span></div></div>
+              <div class="ai-ring ai-ring-3"><div class="ai-ring-head"><i class="fa-solid fa-circle-nodes"></i><div><b>Deep Learning — Học sâu</b><span>Mạng nơ-ron nhiều lớp, tự trích đặc trưng từ dữ liệu thô</span></div></div>
+                <div class="ai-ring ai-ring-4"><div class="ai-ring-head"><i class="fa-solid fa-wand-magic-sparkles"></i><div><b>Generative AI — AI tạo sinh</b><span>Tạo nội dung mới: văn bản, hình ảnh, code, âm thanh, video</span></div></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="ai-hier-side">
+            <article><span class="ai-logo ai-logo-gpt">⌘</span><div><b>ChatGPT</b><small>OpenAI · trợ lý hội thoại, GPT-5</small></div></article>
+            <article><span class="ai-logo ai-logo-gem">✦</span><div><b>Gemini</b><small>Google · đa phương thức, gắn với Flow/AI Studio</small></div></article>
+            <article><span class="ai-logo ai-logo-cla">✳</span><div><b>Claude</b><small>Anthropic · lập luận dài, Claude Code, MCP</small></div></article>
+            <p>Cả ba đều là <b>Generative AI</b> dạng <b>LLM</b> — vòng trong cùng. Chúng khác nhau ở dữ liệu huấn luyện, cách tinh chỉnh và hệ sinh thái công cụ, không khác nhau về “tầng”.</p>
+          </div>
+        </div>
+        <div class="flow-glossary ai-layers">
+          <article><h4>AI (1956 →)</h4><p>Bao gồm cả hệ chuyên gia viết bằng luật if-then, thuật toán tìm đường, chơi cờ. <b>Ví dụ đời thường:</b> bộ lọc thư rác đời đầu, GPS tìm đường.</p></article>
+          <article><h4>Machine Learning (1990s →)</h4><p>Cho máy nhiều ví dụ, nó tự tìm quy luật. <b>Ví dụ:</b> gợi ý sản phẩm trên Shopee, dự đoán giá nhà, chấm điểm tín dụng.</p></article>
+          <article><h4>Deep Learning (2012 →)</h4><p>Mạng nơ-ron hàng triệu–tỉ tham số; bùng nổ nhờ GPU và dữ liệu lớn. <b>Ví dụ:</b> nhận diện khuôn mặt, dịch máy Google Translate, xe tự lái.</p></article>
+          <article><h4>Generative AI (2017/2022 →)</h4><p>Kiến trúc <b>Transformer</b> (2017) → GPT, rồi ChatGPT (11/2022) đưa nó tới đại chúng. <b>Ví dụ:</b> ChatGPT, Gemini, Claude, Midjourney, Veo, Suno.</p></article>
+        </div>
+        <figure class="flow-figure ai-figure"><a href="video-assets/ai-hierarchy-infographic.jpg" target="_blank" rel="noopener"><img src="video-assets/ai-hierarchy-infographic.jpg" alt="Infographic From AI to Generative AI: bốn khối lồng nhau AI ⊃ Machine Learning ⊃ Deep Learning ⊃ Generative AI, nối sang ChatGPT và Gemini" width="1672" height="941" loading="lazy"></a><figcaption><b>Infographic gốc (bạn cung cấp)</b><p>Bản HTML phía trên dựng lại cùng cấu trúc để dùng khi trình bày, có thêm Claude cho đủ ba trợ lý HPB đang dùng.</p></figcaption></figure>
+        <section class="flow-section"><h3>Dòng thời gian rút gọn — vì sao “AI” bùng nổ đúng lúc này</h3>
+          <div class="workflow-chain"><b>1956 · Thuật ngữ AI ra đời (Dartmouth)</b>→<b>1997 · Deep Blue thắng cờ vua</b>→<b>2012 · AlexNet, deep learning cất cánh</b>→<b>2017 · Transformer (“Attention is all you need”)</b>→<b>2022 · ChatGPT</b>→<b>2024 · Đa phương thức: ảnh, giọng, video</b>→<b>2025–26 · Agent, MCP, Claude Code</b></div>
+          <div class="capcut-two"><article><h4>Ba thứ hội tụ</h4><p><b>Dữ liệu</b> (internet), <b>tính toán</b> (GPU NVIDIA) và <b>kiến trúc</b> (Transformer). Thiếu một trong ba, LLM ngày nay không tồn tại.</p></article><article><h4>Hệ quả cho người làm web/video</b></h4><p>Công cụ trong các tab bên cạnh (Flow, Veo, Remotion + Claude, AI Studio TTS) đều là <b>ứng dụng của Generative AI</b>. Khi công cụ đổi tên hay đổi model, nguyên lý không đổi — học nguyên lý một lần, dùng được nhiều công cụ.</p></article></div>
+        </section>
+        <div class="lr-step-support"><div class="lr-sheet"><span>KIỂM TRA HIỂU NHANH</span><p>□ Bộ lọc thư rác học từ email bạn đánh dấu → tầng nào? <i>(Machine Learning)</i></p><p>□ Veo tạo video từ prompt → tầng nào? <i>(Generative AI, bên trong Deep Learning)</i></p><p>□ Phần mềm chấm công nhận diện khuôn mặt → <i>(Deep Learning, không phải Generative)</i></p><p>□ ChatGPT “thông minh hơn” Gemini vì ở tầng cao hơn? <i>(Sai — cùng tầng)</i></p></div><div class="lr-speaking"><span>CÂU NÓI KHI TRÌNH BÀY</span><blockquote>“Generative AI không phải một thứ khác với AI — nó là vòng trong cùng. Cái mới không phải ‘máy thông minh’, mà là máy <b>tạo ra</b> được nội dung mới.”</blockquote></div></div>
+      </div>
+
+      <!-- SUB 2: LLM -->
+      <div class="subtab-panel" id="ai-llm">
+        <div class="lr-heading"><div><span class="vs-eyebrow">BÊN TRONG CHATGPT · GEMINI · CLAUDE</span><h3>LLM hoạt động thế nào — đủ để dùng đúng, không cần toán</h3></div><span class="lr-badge">Large Language Model = mô hình ngôn ngữ lớn</span></div>
+        <p class="lr-definition">Một LLM làm đúng <b>một việc</b>: nhìn chuỗi chữ đã có và <b>dự đoán mảnh chữ tiếp theo</b> có khả năng nhất, lặp đi lặp lại. Mọi thứ ấn tượng — viết kịch bản, sửa code, dịch — đều nổi lên từ việc dự đoán đó ở quy mô hàng tỉ tham số học từ hàng nghìn tỉ từ. Hiểu điều này giải thích cả điểm mạnh lẫn điểm yếu của nó.</p>
+        <div class="workflow-chain"><b>Văn bản</b>→<b>Cắt thành token</b>→<b>Mã hoá thành số</b>→<b>Transformer (attention) tính xác suất</b>→<b>Chọn token tiếp theo</b>→<b>Lặp cho tới khi dừng</b></div>
+        <div class="lr-roles ai-concepts">
+          <article><span>KHÁI NIỆM 1</span><h4>Token</h4><p>Đơn vị nhỏ nhất mô hình đọc — không phải từ, mà là mảnh từ. Tiếng Anh ~4 ký tự/token; <b>tiếng Việt có dấu tốn 1,5–2× token</b> so với tiếng Anh cùng nghĩa. Giá API và giới hạn độ dài đều tính bằng token.</p></article>
+          <article><span>KHÁI NIỆM 2</span><h4>Context window</h4><p>“Trí nhớ ngắn hạn”: tổng token mô hình nhìn thấy trong một lượt (prompt + lịch sử + câu trả lời). Hết cửa sổ là quên phần đầu. Claude, Gemini hiện 200k–1M token — đủ dán cả tài liệu này vào.</p></article>
+          <article><span>KHÁI NIỆM 3</span><h4>Temperature</h4><p>Độ “liều” khi chọn token: 0 = luôn chọn xác suất cao nhất (ổn định, lặp), 1 = sáng tạo hơn nhưng dễ lệch. Viết kịch bản TVC: 0,7–1; trích xuất dữ liệu, code: 0–0,3. Đây là con số bạn thấy trong AI Studio.</p></article>
+          <article><span>KHÁI NIỆM 4</span><h4>Hallucination — ảo giác</h4><p>Mô hình tạo câu <i>nghe hợp lý</i> chứ không <i>tra cứu sự thật</i>, nên có thể bịa số liệu, link, tên người rất trôi chảy. Cách giảm: cấp tài liệu nguồn (RAG), yêu cầu trích dẫn, bảo “nếu không chắc hãy nói không biết”, và luôn kiểm tra con số.</p></article>
+          <article><span>KHÁI NIỆM 5</span><h4>Training vs Inference</h4><p><b>Training</b>: học từ dữ liệu, tốn hàng tháng và hàng chục triệu USD, có <b>ngày cắt dữ liệu</b> (knowledge cutoff). <b>Inference</b>: lúc bạn chat — mô hình không học thêm gì từ bạn. Muốn nó biết chuyện mới: đưa vào prompt hoặc bật tìm kiếm web.</p></article>
+          <article><span>KHÁI NIỆM 6</span><h4>Fine-tuning &amp; RLHF</h4><p>Sau khi học “đọc internet”, mô hình được tinh chỉnh bằng ví dụ hội thoại tốt và phản hồi của con người (RLHF) để biết trả lời lịch sự, từ chối việc có hại. Đây là lý do ChatGPT/Claude “biết nói chuyện” còn model thô thì không.</p></article>
+          <article><span>KHÁI NIỆM 7</span><h4>Đa phương thức (multimodal)</h4><p>Mô hình mới đọc/tạo được ảnh, âm thanh, video ngoài chữ — vẫn dựa trên token (ảnh cắt thành mảnh, âm thanh thành khung). Vì thế Gemini vừa viết kịch bản vừa xem storyboard của bạn được.</p></article>
+          <article><span>KHÁI NIỆM 8</span><h4>System prompt</h4><p>Chỉ dẫn ẩn đặt trước hội thoại, quyết định vai trò và luật chơi. Trong AI Studio là ô <i>System instructions</i>; trong Claude Project là <i>Project instructions</i>; trong Claude Code là <code>CLAUDE.md</code>. Viết tốt system prompt = đỡ lặp lại yêu cầu mỗi lần.</p></article>
+        </div>
+        <section class="flow-section"><h3>Ba trợ lý HPB đang dùng — chọn theo việc, không theo tên</h3>
+          <div class="lr-compare-wrap"><table class="lr-compare"><thead><tr><th>Việc cần làm</th><th>ChatGPT</th><th>Gemini</th><th>Claude</th></tr></thead><tbody>
+            <tr><td>Viết kịch bản, brainstorm</td><td>Tốt, nhiều “cá tính”</td><td>Tốt, gắn Google Docs/Drive</td><td>Rất tốt với văn bản dài, giữ giọng nhất quán</td></tr>
+            <tr><td>Tạo ảnh</td><td>GPT Image — chữ trong ảnh đẹp</td><td>Nano Banana / Imagen — nhanh, gắn Flow</td><td>Không tự tạo ảnh (dùng Canva MCP)</td></tr>
+            <tr><td>Video · giọng đọc</td><td>Sora (hạn chế khu vực)</td><td><b>Veo 3 qua Flow · TTS qua AI Studio</b></td><td>Dựng video bằng code (Remotion) qua Claude Code</td></tr>
+            <tr><td>Code &amp; tự động hoá</td><td>Codex, GPTs</td><td>Gemini CLI, Antigravity</td><td><b>Claude Code + Skill + MCP</b> — mạnh nhất cho quy trình lặp</td></tr>
+            <tr><td>Đọc tài liệu rất dài</td><td>Khá</td><td>1M token context</td><td>200k token, lập luận cẩn thận</td></tr>
+            <tr><td>Chi phí vào cửa</td><td>Free / Plus 20$</td><td>Free / AI Pro (kèm Flow)</td><td>Free / Pro 20$ (kèm Claude Code)</td></tr>
+          </tbody></table></div>
+          <p class="lr-source">Bảng phản ánh cách HPB dùng tại 09/2026; tính năng đổi theo tháng — kiểm tra lại trước khi tư vấn khách.</p>
+        </section>
+        <details class="vs-detail"><summary><b>Vì sao LLM đếm chữ sai, làm toán sai, nhưng viết văn hay?</b></summary><div class="lr-setup"><p>Vì nó nhìn <b>token</b> chứ không nhìn ký tự: từ “strawberry” có thể là 2–3 token nên đếm chữ “r” khó. Toán nhiều bước cần trạng thái chính xác, còn mô hình chỉ dự đoán chuỗi — hãy bảo nó “viết code Python để tính” hoặc dùng công cụ tính toán. Ngược lại, văn phong, cấu trúc, ngữ pháp là <i>mẫu thống kê</i> — đúng sở trường.</p><p>Ứng dụng: khi cần con số trong báo giá hay bảng phân cảnh có tổng thời lượng, yêu cầu AI liệt kê rồi <b>tự cộng lại</b> hoặc để công cụ (Excel, script) cộng.</p></div></details>
+        <details class="vs-detail"><summary><b>Model “lớn” có luôn tốt hơn model “nhỏ”?</b></summary><div class="lr-setup"><p>Không. Model nhỏ (Flash, Haiku, mini) rẻ và nhanh gấp 5–20 lần, đủ cho phân loại, tóm tắt, TTS, trích xuất. Model lớn (Pro, Opus, GPT-5) đáng tiền khi cần lập luận nhiều bước, viết dài, code phức tạp. Nguyên tắc HPB: <b>thử model nhỏ trước</b>, chỉ nâng khi kết quả không đạt.</p></div></details>
+      </div>
+
+      <!-- SUB 3: PROMPT -->
+      <div class="subtab-panel" id="ai-prompt">
+        <div class="lr-heading"><div><span class="vs-eyebrow">KỸ NĂNG QUAN TRỌNG NHẤT</span><h3>Prompt engineering — nói cho máy hiểu đúng ý ngay lần đầu</h3></div><span class="lr-badge">Áp dụng cho mọi tab: web, video, ảnh, giọng</span></div>
+        <p class="lr-definition">Prompt tốt không phải câu “thần chú”, mà là <b>bản brief đầy đủ</b> như bạn giao việc cho một nhân viên mới rất giỏi nhưng không biết gì về công ty bạn. Thiếu bối cảnh → AI đoán → kết quả chung chung. Khung 5 phần dưới đây dùng được cho ChatGPT, Gemini, Claude, Flow, AI Studio.</p>
+        <div class="lr-roles ai-prompt-frame">
+          <article><span>1 · VAI TRÒ</span><h4>Role</h4><p>“Bạn là đạo diễn TVC 10 năm kinh nghiệm cho ngành F&amp;B cao cấp.” Vai trò kéo theo từ vựng, tiêu chuẩn và góc nhìn.</p></article>
+          <article><span>2 · BỐI CẢNH</span><h4>Context</h4><p>Thương hiệu, khách hàng, kênh phát, ngân sách, những gì đã có (hero shot, storyboard). Càng cụ thể càng ít phải sửa.</p></article>
+          <article><span>3 · NHIỆM VỤ</span><h4>Task</h4><p>Một động từ rõ: <i>viết / liệt kê / so sánh / sửa / đánh giá</i>. Một prompt, một nhiệm vụ chính; việc phụ tách lượt sau.</p></article>
+          <article><span>4 · RÀNG BUỘC</span><h4>Constraints</h4><p>Độ dài, ngôn ngữ, giọng điệu, điều cấm (“không dùng từ ‘tuyệt vời’”, “không bịa số liệu”), tiêu chí đạt.</p></article>
+          <article><span>5 · ĐỊNH DẠNG</span><h4>Format + ví dụ</h4><p>Bảng, JSON, gạch đầu dòng, số cảnh. Kèm <b>1–3 ví dụ mẫu</b> (few-shot) nếu có phong cách cần bắt chước.</p></article>
+        </div>
+        <details class="lr-prompt" open><summary>Cùng một yêu cầu — prompt yếu và prompt mạnh</summary><div class="workflow-code"><pre>❌ YẾU
+Viết kịch bản quảng cáo bánh trung thu.
+
+✅ MẠNH
+[Vai trò] Bạn là đạo diễn TVC chuyên ngành F&amp;B cao cấp.
+[Bối cảnh] Thương hiệu VERDE Premium Mooncakes, hộp 6 bánh giá 1,2 triệu, khách 30–50 tuổi
+mua biếu đối tác. Đã có hero shot hộp xanh lục – vàng đồng. Phát trên YouTube 16:9 và Reels 9:16.
+[Nhiệm vụ] Viết bảng phân cảnh TVC 30 giây.
+[Ràng buộc] 6 cảnh, mỗi cảnh ≤ 8 giây; voice-over tiếng Việt ≤ 12 từ/cảnh; không dùng từ
+"tuyệt vời", "đẳng cấp"; cảnh cuối là logo + CTA. Không bịa thông tin sản phẩm ngoài dữ liệu trên.
+[Định dạng] Bảng: STT | Thời lượng | Hình ảnh | Chuyển động camera | Voice-over | Chữ trên màn.
+Ví dụ giọng mong muốn: "Từ những cánh hoa hái lúc bình minh."</pre><p>Prompt mạnh dài hơn 8 lần nhưng tiết kiệm 3–4 vòng sửa. Lưu prompt tốt thành mẫu (Project instructions / CLAUDE.md / Skill) để dùng lại.</p></div></details>
+        <section class="flow-section"><h3>Kỹ thuật nâng cao — khi khung 5 phần chưa đủ</h3>
+          <div class="flow-glossary">
+            <article><h4>Few-shot (cho ví dụ)</h4><p>Đưa 2–3 cặp “đầu vào → đầu ra” mẫu. Hiệu quả nhất để bắt chước giọng văn, định dạng, cách đặt tên file.</p></article>
+            <article><h4>Chain-of-thought (nghĩ từng bước)</h4><p>“Hãy phân tích từng bước trước khi kết luận.” Tăng độ đúng cho việc cần lập luận: so sánh gói, tính ngân sách, tìm lỗi.</p></article>
+            <article><h4>Lặp có định hướng</h4><p>Đừng viết lại prompt từ đầu; nói rõ <i>cái gì giữ, cái gì đổi</i>: “Giữ cảnh 1–3, viết lại cảnh 4 ngắn hơn, đổi CTA thành hotline.”</p></article>
+            <article><h4>Tự phản biện</h4><p>“Liệt kê 3 điểm yếu của kịch bản trên rồi sửa.” Mô hình đánh giá đầu ra của chính nó thường tìm được lỗi bạn bỏ sót.</p></article>
+            <article><h4>Ràng buộc đầu ra máy đọc được</h4><p>Yêu cầu JSON/CSV đúng schema khi kết quả sẽ đưa vào script (storyboard.json, narration.json). Kèm ví dụ schema.</p></article>
+            <article><h4>Prompt cho ảnh/video khác prompt chữ</h4><p>Flow/Veo/Midjourney cần <b>mô tả hình</b>: chủ thể, bối cảnh, ánh sáng, ống kính, chuyển động, phong cách; viết tiếng Anh ổn định hơn. Xem prompt mẫu ở tab Video → TVC.</p></article>
+          </div>
+        </section>
+        <div class="lr-step-support"><div class="lr-sheet"><span>LỖI PROMPT HAY GẶP Ở HPB</span><p><b>Nhồi nhiều việc một lượt</b> → kết quả nông đều. Tách lượt.</p><p><b>Không nói đối tượng đọc</b> → giọng sai (viết cho chủ shop mà như luận văn).</p><p><b>Không cho dữ liệu thật</b> → AI bịa giá, bịa tính năng.</p><p><b>Sửa bằng cách chửi</b> (“sai rồi, làm lại”) → không có thông tin mới, AI lặp lỗi. Nói rõ sai ở đâu.</p></div><div class="lr-speaking"><span>CÂU NÓI KHI TRÌNH BÀY</span><blockquote>“Prompt là brief. Brief tốt cho người thì cũng tốt cho máy — chỉ khác là máy không biết hỏi lại, nên bạn phải nói trước.”</blockquote></div></div>
+      </div>
+
+      <!-- SUB 4: RAG / AGENT / MCP / SKILL -->
+      <div class="subtab-panel" id="ai-agent">
+        <div class="lr-heading"><div><span class="vs-eyebrow">TỪ CHATBOT ĐẾN TRỢ LÝ LÀM VIỆC THẬT</span><h3>RAG · Agent · MCP · Skill — bốn khái niệm đang định hình 2025–2026</h3></div><span class="lr-badge">Đây là nền của tab Tự động hoá &amp; Agent</span></div>
+        <p class="lr-definition">LLM thuần chỉ biết những gì đã học và chỉ trả lời bằng chữ. Bốn cơ chế này lần lượt cho nó <b>tri thức riêng của bạn</b> (RAG), <b>khả năng tự hành động nhiều bước</b> (Agent), <b>cổng kết nối chuẩn tới công cụ bên ngoài</b> (MCP) và <b>quy trình đóng gói dùng lại</b> (Skill). Claude Code mà HPB dùng hằng ngày là nơi cả bốn gặp nhau.</p>
+        <div class="lr-roles ai-four">
+          <article><span>RAG</span><h4>Retrieval-Augmented Generation</h4><p><b>Là gì:</b> trước khi trả lời, hệ thống <i>tìm</i> đoạn tài liệu liên quan (trong kho của bạn) rồi <i>đưa vào prompt</i> để mô hình dựa vào đó viết. <b>Giải quyết:</b> ảo giác và kiến thức cũ. <b>Ví dụ HPB:</b> chatbot tư vấn gói web đọc từ bảng giá thật; Claude Project có file Guideline đính kèm.</p><div class="workflow-chain"><b>Câu hỏi</b>→<b>Tìm trong kho</b>→<b>Ghép vào prompt</b>→<b>LLM trả lời có trích dẫn</b></div></article>
+          <article><span>AGENT</span><h4>Tác nhân AI</h4><p><b>Là gì:</b> LLM được đặt trong vòng lặp <i>nghĩ → dùng công cụ → xem kết quả → nghĩ tiếp</i> cho tới khi xong việc, thay vì trả lời một lượt. <b>Giải quyết:</b> việc nhiều bước, cần đọc file, chạy lệnh, kiểm tra lại. <b>Ví dụ HPB:</b> Claude Code tự tải ảnh Pexels, tách nền, dựng storyboard, render video, kiểm tra frame — như phần Vox collage ở tab Video.</p><div class="workflow-chain"><b>Mục tiêu</b>→<b>Lập kế hoạch</b>→<b>Gọi công cụ</b>→<b>Quan sát</b>→<b>Lặp / báo cáo</b></div></article>
+          <article><span>MCP</span><h4>Model Context Protocol</h4><p><b>Là gì:</b> chuẩn mở (Anthropic, 11/2024) để một AI kết nối với dịch vụ ngoài — Canva, Notion, Google Drive, SSH server — qua cùng một “ổ cắm”. Trước MCP, mỗi tích hợp phải viết riêng. <b>Ví dụ HPB:</b> Claude Code gọi Canva MCP để tạo banner, Notion MCP để đọc kế hoạch, SSH MCP để deploy web. <b>Lưu ý:</b> MCP là <i>đường ống</i>, không phải trí thông minh; server lỗi thì tool biến mất (như HPB Media Workspace báo 404 hôm nay).</p></article>
+          <article><span>SKILL</span><h4>Kỹ năng đóng gói</h4><p><b>Là gì:</b> một thư mục gồm hướng dẫn (SKILL.md), script và tài nguyên mẫu, để AI làm lại một quy trình phức tạp đúng cách mỗi lần — không cần bạn nhắc lại 30 điều. <b>Ví dụ HPB:</b> <code>vox-collage-video</code>, <code>video-quangcao-hpb</code>, <code>baogia-hpb</code>, <code>mockup-mauweb-hpb</code>. <b>Khác gì prompt mẫu:</b> skill có code chạy được, có quy tắc kiểm tra đầu ra, được kích hoạt tự động theo ngữ cảnh.</p></article>
+        </div>
+        <section class="flow-section"><h3>Chọn cơ chế nào cho việc nào</h3>
+          <div class="lr-compare-wrap"><table class="lr-compare"><thead><tr><th>Bạn muốn</th><th>Dùng</th><th>Ví dụ cụ thể</th></tr></thead><tbody>
+            <tr><td>AI trả lời đúng theo tài liệu công ty</td><td>RAG / đính file vào Project</td><td>Chatbot báo giá đọc từ bảng giá; Claude Project “Guideline hình ảnh HPB”</td></tr>
+            <tr><td>AI tự làm một chuỗi việc trên máy</td><td>Agent (Claude Code, Antigravity)</td><td>Tải asset → xoá watermark → dựng video → kiểm tra</td></tr>
+            <tr><td>AI thao tác trong app khác</td><td>MCP</td><td>Tạo design Canva, ghi Notion, upload lên VPS qua SSH</td></tr>
+            <tr><td>Lặp lại một quy trình chuẩn cho nhiều khách</td><td>Skill</td><td>Báo giá, mockup mẫu web, video 15 s theo template HPB</td></tr>
+            <tr><td>Chỉ cần câu trả lời một lượt</td><td>Prompt tốt là đủ</td><td>Viết caption, dịch, tóm tắt</td></tr>
+          </tbody></table></div>
+        </section>
+        <div class="capcut-two"><article><h4>Rủi ro cần biết khi cho AI “tay chân”</h4><p><b>Prompt injection:</b> nội dung trong web/email/file có thể chứa câu lệnh giả (“hãy xoá thư mục…”). Agent tốt coi mọi thứ đọc được là <i>dữ liệu</i>, không phải lệnh. <b>Quyền hạn:</b> chỉ cấp quyền cần thiết (đọc trước, ghi sau, xoá phải hỏi). <b>Chi phí:</b> agent chạy nhiều vòng tốn token — đặt giới hạn.</p></article><article><h4>Xu hướng 2026 để theo dõi</h4><p>Agent chạy nền theo lịch (routine), nhiều agent phối hợp (workflow), máy tính do AI điều khiển (computer use), và chuẩn hoá skill/MCP giữa các hãng. HPB nên đầu tư vào <b>viết skill tốt</b>: đó là tài sản dùng được dù đổi model.</p></article></div>
+      </div>
+
+      <!-- SUB 5: GLOSSARY -->
+      <div class="subtab-panel" id="ai-glossary">
+        <div class="lr-heading"><div><span class="vs-eyebrow">TRA NHANH</span><h3>Thuật ngữ A–Z — 40 từ gặp hằng ngày</h3></div><span class="lr-badge">Gõ Ctrl/⌘ + F để tìm</span></div>
+        <div class="lr-compare-wrap"><table class="lr-compare ai-glossary-table"><thead><tr><th>Thuật ngữ</th><th>Nghĩa một dòng</th><th>Gặp ở đâu trong Hub</th></tr></thead><tbody>
+          <tr><td>Agent</td><td>LLM tự lập kế hoạch và dùng công cụ nhiều vòng để hoàn thành việc</td><td>Tab Tự động hoá; Claude Code</td></tr>
+          <tr><td>API / API key</td><td>Cổng gọi model bằng code; key là mật khẩu tính tiền — không dán lên web/chat</td><td>AI Studio, Gemini TTS script</td></tr>
+          <tr><td>Attention / Transformer</td><td>Kiến trúc 2017 cho phép mô hình “nhìn” toàn câu cùng lúc; nền của mọi LLM</td><td>Tab này</td></tr>
+          <tr><td>Benchmark</td><td>Bài kiểm tra chuẩn để so model; điểm cao chưa chắc hợp việc của bạn</td><td>Khi chọn model</td></tr>
+          <tr><td>Chain-of-thought</td><td>Yêu cầu mô hình lập luận từng bước trước khi kết luận</td><td>Prompt engineering</td></tr>
+          <tr><td>Claude Code</td><td>Agent lập trình chạy trong terminal của Anthropic; HPB dùng để dựng web, video, báo giá</td><td>Tab Video, Tự động hoá</td></tr>
+          <tr><td>Context window</td><td>Lượng token mô hình nhớ trong một lượt</td><td>LLM</td></tr>
+          <tr><td>Credit / Quota</td><td>Hạn mức dùng dịch vụ tạo ảnh/video/giọng theo gói</td><td>Flow, AI Studio</td></tr>
+          <tr><td>Diffusion model</td><td>Cách tạo ảnh/video: khử nhiễu dần từ nhiễu ngẫu nhiên theo prompt (Imagen, Midjourney, Veo)</td><td>Tab Ảnh, Video</td></tr>
+          <tr><td>Embedding</td><td>Biến chữ/ảnh thành vector số để so “gần nghĩa”; nền của tìm kiếm trong RAG</td><td>RAG</td></tr>
+          <tr><td>Few-shot / Zero-shot</td><td>Có / không kèm ví dụ mẫu trong prompt</td><td>Prompt engineering</td></tr>
+          <tr><td>Fine-tuning</td><td>Huấn luyện thêm model trên dữ liệu riêng; đắt, thường không cần — RAG + prompt đủ</td><td>LLM</td></tr>
+          <tr><td>Foundation model</td><td>Model nền lớn (GPT, Gemini, Claude) dùng cho nhiều việc</td><td>LLM</td></tr>
+          <tr><td>GPU</td><td>Chip đồ hoạ tính song song; “xăng” của AI, lý do NVIDIA lớn</td><td>Dòng thời gian</td></tr>
+          <tr><td>Guardrail</td><td>Luật an toàn chặn đầu vào/đầu ra không mong muốn</td><td>Agent</td></tr>
+          <tr><td>Hallucination</td><td>Bịa thông tin trôi chảy; luôn kiểm tra số, tên, link</td><td>LLM</td></tr>
+          <tr><td>Image-to-video</td><td>Tạo clip chuyển động từ một ảnh tĩnh (Flow: storyboard → clip)</td><td>Tab Video → TVC</td></tr>
+          <tr><td>Inference</td><td>Lúc model chạy để trả lời (khác training)</td><td>LLM</td></tr>
+          <tr><td>Knowledge cutoff</td><td>Ngày dữ liệu huấn luyện dừng; sau đó model không biết</td><td>LLM</td></tr>
+          <tr><td>Latency</td><td>Thời gian chờ phản hồi; model nhỏ nhanh hơn</td><td>Chọn model</td></tr>
+          <tr><td>LLM</td><td>Large Language Model — mô hình ngôn ngữ lớn</td><td>Toàn Hub</td></tr>
+          <tr><td>MCP</td><td>Chuẩn kết nối AI với công cụ ngoài (Canva, Notion, SSH…)</td><td>Tab Tự động hoá</td></tr>
+          <tr><td>Multimodal</td><td>Xử lý nhiều loại dữ liệu: chữ, ảnh, âm thanh, video</td><td>Gemini, Claude</td></tr>
+          <tr><td>Open-weight / Open-source</td><td>Model công bố trọng số để tự chạy (Llama, Qwen, Mistral); rẻ, riêng tư, cần máy mạnh</td><td>OpenRouter</td></tr>
+          <tr><td>Parameter</td><td>“Nút chỉnh” trong mạng nơ-ron; tính bằng tỉ (7B, 70B…)</td><td>LLM</td></tr>
+          <tr><td>Prompt / System prompt</td><td>Yêu cầu của bạn / chỉ dẫn nền đặt trước hội thoại</td><td>Prompt engineering</td></tr>
+          <tr><td>Prompt injection</td><td>Tấn công bằng cách giấu lệnh trong nội dung AI đọc</td><td>Agent</td></tr>
+          <tr><td>RAG</td><td>Tìm tài liệu rồi đưa vào prompt để trả lời có căn cứ</td><td>Tab này</td></tr>
+          <tr><td>Reasoning model</td><td>Model “nghĩ lâu” trước khi trả lời (o-series, Claude thinking, Gemini thinking); tốt cho việc khó, chậm hơn</td><td>Chọn model</td></tr>
+          <tr><td>RLHF</td><td>Tinh chỉnh theo phản hồi con người để model hữu ích, an toàn</td><td>LLM</td></tr>
+          <tr><td>Seed</td><td>Số khởi tạo ngẫu nhiên; cùng seed + cùng prompt → kết quả gần giống, dùng để tái tạo ảnh</td><td>Tab Ảnh</td></tr>
+          <tr><td>Skill</td><td>Gói hướng dẫn + script để AI lặp lại một quy trình chuẩn</td><td>Tab Video, Tự động hoá</td></tr>
+          <tr><td>SynthID / Watermark</td><td>Dấu ẩn (SynthID) hoặc logo nhìn thấy đánh dấu nội dung AI của Google</td><td>Tab Video → xoá logo Veo</td></tr>
+          <tr><td>Temperature</td><td>Độ ngẫu nhiên khi sinh chữ (0 ổn định → 1 sáng tạo)</td><td>AI Studio</td></tr>
+          <tr><td>Text-to-speech (TTS)</td><td>Chữ → giọng nói (Gemini TTS, ElevenLabs)</td><td>Tab Video → AI Studio</td></tr>
+          <tr><td>Text-to-video</td><td>Prompt chữ → clip video (Veo, Sora, Kling, Seedance)</td><td>Tab Video</td></tr>
+          <tr><td>Token</td><td>Mảnh chữ mô hình đọc; đơn vị tính tiền và độ dài</td><td>LLM</td></tr>
+          <tr><td>Tool use / Function calling</td><td>Model gọi hàm/công cụ ngoài thay vì chỉ trả lời chữ; nền của agent và MCP</td><td>Agent</td></tr>
+          <tr><td>Vector database</td><td>Kho lưu embedding để tìm nhanh theo nghĩa (Pinecone, pgvector)</td><td>RAG</td></tr>
+          <tr><td>Workflow (multi-agent)</td><td>Nhiều agent chia việc song song rồi tổng hợp</td><td>Tab Tự động hoá</td></tr>
+        </tbody></table></div>
+      </div>
+
+      <!-- SUB 6: LEARN -->
+      <div class="subtab-panel" id="ai-learn">
+        <div class="lr-heading"><div><span class="vs-eyebrow">HỌC CÓ LỘ TRÌNH</span><h3>Lộ trình 4 tuần cho người làm web/marketing — 30 phút mỗi ngày</h3></div><span class="lr-badge">Toàn bộ nguồn miễn phí</span></div>
+        <div class="lr-roles ai-weeks">
+          <article><span>TUẦN 1 · NỀN</span><h4>Hiểu AI là gì</h4><p>Đọc hết tab này. Xem <b>3Blue1Brown – “But what is a neural network?”</b> và tập <b>“Transformers, visually explained”</b>. Làm bài <b>Google “Introduction to Generative AI”</b> (1 giờ, có chứng chỉ).</p></article>
+          <article><span>TUẦN 2 · PROMPT</span><h4>Viết brief cho máy</h4><p>Khoá <b>Anthropic Prompt Engineering Interactive Tutorial</b> (GitHub, miễn phí) hoặc <b>DeepLearning.AI – ChatGPT Prompt Engineering for Developers</b>. Mỗi ngày viết lại 1 prompt cũ theo khung 5 phần, so kết quả.</p></article>
+          <article><span>TUẦN 3 · TẠO SINH ĐA PHƯƠNG THỨC</span><h4>Ảnh · video · giọng</h4><p>Làm theo tab Ảnh và tab Video: một hero shot, một clip Flow 8 s, một đoạn TTS. Đọc <b>Google Flow Help Center</b> và <b>AI Studio docs (speech generation)</b>. Mục tiêu: một TVC 30 s theo quy trình 5 bước.</p></article>
+          <article><span>TUẦN 4 · AGENT</span><h4>Cho AI làm việc thật</h4><p>Đọc <b>Anthropic “Building effective agents”</b> và <b>MCP introduction (modelcontextprotocol.io)</b>. Cài Claude Code, chạy một skill có sẵn của HPB, rồi viết skill đầu tiên cho một việc bạn lặp lại hằng tuần.</p></article>
+        </div>
+        <section class="flow-section"><h3>Nguồn tin cậy để theo dõi dài hạn</h3>
+          <div class="flow-glossary">
+            <article><h4>Tài liệu chính hãng</h4><p><a href="https://ai.google.dev/gemini-api/docs" target="_blank" rel="noopener">ai.google.dev ↗</a> · <a href="https://docs.anthropic.com" target="_blank" rel="noopener">docs.anthropic.com ↗</a> · <a href="https://platform.openai.com/docs" target="_blank" rel="noopener">platform.openai.com ↗</a>. Đọc changelog mỗi tháng — model và giá đổi nhanh.</p></article>
+            <article><h4>Khoá học miễn phí</h4><p><a href="https://www.cloudskillsboost.google/paths/118" target="_blank" rel="noopener">Google Generative AI path ↗</a> · <a href="https://www.deeplearning.ai/short-courses/" target="_blank" rel="noopener">DeepLearning.AI short courses ↗</a> · <a href="https://github.com/anthropics/prompt-eng-interactive-tutorial" target="_blank" rel="noopener">Anthropic prompt tutorial ↗</a>.</p></article>
+            <article><h4>Giải thích trực quan</h4><p><a href="https://www.youtube.com/@3blue1brown" target="_blank" rel="noopener">3Blue1Brown ↗</a> (mạng nơ-ron, transformer) · <a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">The Illustrated Transformer ↗</a>.</p></article>
+            <article><h4>Bản tin không quá ồn</h4><p><a href="https://www.deeplearning.ai/the-batch/" target="_blank" rel="noopener">The Batch (Andrew Ng) ↗</a> hằng tuần · <a href="https://simonwillison.net" target="_blank" rel="noopener">Simon Willison’s blog ↗</a> cho góc nhìn thực dụng về LLM và agent.</p></article>
+            <article><h4>Thực hành ngay trong Hub này</h4><p>Mỗi tab bên cạnh là một bài lab: làm web mẫu (tab Website), TVC (tab Video), banner (tab Ảnh), giọng đọc (tab Giọng nói), automation (tab Tự động hoá).</p></article>
+            <article><h4>Cách đọc tin AI không bị cuốn</h4><p>Hỏi ba câu: <i>Tầng nào?</i> (AI/ML/DL/GenAI) · <i>Có dùng được hôm nay ở Việt Nam không?</i> · <i>Thay đổi quy trình HPB chỗ nào?</i> Không trả lời được câu 3 thì chỉ cần biết, chưa cần học.</p></article>
+          </div>
+        </section>
+        <div class="lr-speaking"><span>NGUYÊN TẮC HỌC CỦA HPB</span><blockquote>“Học nguyên lý một lần, học công cụ nhiều lần. Công cụ đổi tên mỗi quý; token, context, prompt, agent thì không.”</blockquote></div>
+      </div>
+    </section></div>
   </div>
 
   <!-- ================= TAB 1: TẠO WEBSITE AI (26 TOOLS) ================= -->
-  <div class="panel show" id="tab-website">
+  <div class="panel" id="tab-website">
     <div class="card">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px">
         <div>
@@ -2184,6 +2428,298 @@ Hãy tạo 1 phương án banner hoàn chỉnh, có bố cục đẹp, sẵn sà
     </div>
   </div>
 
+  <!-- ================= TAB 6: CONTENT YOUTUBE ================= -->
+  <div class="panel" id="tab-youtube">
+    <div class="card">
+      <section class="yt-hero">
+        <div>
+          <span class="vs-eyebrow">TỪ Ý TƯỞNG ĐẾN VIDEO ĐÃ ĐĂNG · CÓ AI HỖ TRỢ TỪNG BƯỚC</span>
+          <h2>Content YouTube</h2>
+          <p>Quy trình làm nội dung YouTube cho kênh HPB Media: chọn chủ đề có người tìm, viết kịch bản giữ chân người xem, sản xuất bằng các công cụ ở tab Video/Ảnh/Audio, rồi đăng đúng chuẩn (tiêu đề, mô tả, chapter, tag, thumbnail) và đọc số liệu để làm video sau tốt hơn.</p>
+        </div>
+        <div class="yt-formula">
+          <div><b>CTR</b><span>Thumbnail + tiêu đề<br>khiến người ta bấm</span></div>
+          <div><b>AVD</b><span>Kịch bản + dựng<br>khiến người ta xem tiếp</span></div>
+          <div><b>Tần suất</b><span>Lịch đăng đều<br>khiến YouTube đề xuất</span></div>
+        </div>
+      </section>
+
+      <div class="subtab-nav" role="tablist" aria-label="Content YouTube">
+        <button type="button" class="subtab-btn active" data-subtab="yt-workflow"><i class="fa-solid fa-route"></i> Quy trình 7 bước</button>
+        <button type="button" class="subtab-btn" data-subtab="yt-idea"><i class="fa-solid fa-lightbulb"></i> Ý tưởng &amp; định dạng</button>
+        <button type="button" class="subtab-btn" data-subtab="yt-script"><i class="fa-solid fa-pen-nib"></i> Kịch bản</button>
+        <button type="button" class="subtab-btn" data-subtab="yt-meta"><i class="fa-solid fa-tags"></i> Tiêu đề · Mô tả · Tag</button>
+        <button type="button" class="subtab-btn" data-subtab="yt-thumb"><i class="fa-solid fa-image"></i> Thumbnail</button>
+        <button type="button" class="subtab-btn" data-subtab="yt-publish"><i class="fa-brands fa-youtube"></i> Đăng &amp; đo lường</button>
+      </div>
+
+      <!-- SUB 1: QUY TRÌNH -->
+      <div class="subtab-panel show" id="yt-workflow">
+        <div class="vs-intro"><div><span class="vs-eyebrow">BƯỚC 01 → 07 · MỖI VIDEO ĐI ĐÚNG THỨ TỰ NÀY</span><h3>Quy trình 7 bước cho một video</h3><p>Mỗi bước có đầu ra rõ ràng. Không nhảy sang sản xuất khi chưa chốt tiêu đề và thumbnail — vì hai thứ đó quyết định video có được bấm hay không, phải nghĩ trước khi quay.</p></div><div class="lr-speaking"><span>NGUYÊN TẮC</span><blockquote>“Nghĩ tiêu đề và thumbnail trước, quay sau. Video hay mà không ai bấm thì cũng như chưa đăng.”</blockquote></div></div>
+        <div class="yt-steps">
+          <article><span>01 · Ý TƯỞNG</span><h4>Chọn chủ đề có người tìm</h4><p>Lấy từ câu hỏi khách hay hỏi, case vừa làm xong (TVC AI, web AI), hoặc video đối thủ đang chạy tốt. Kiểm tra gợi ý tìm kiếm YouTube.</p><small>Đầu ra: 1 dòng chủ đề + ai xem + họ được gì</small></article>
+          <article><span>02 · TIÊU ĐỀ + THUMB</span><h4>Chốt “bao bì” trước</h4><p>Viết 5 tiêu đề, chọn 1 (≤ 70 ký tự). Phác thumbnail: 1 hình chính + 3–5 chữ. Nếu không tự thấy muốn bấm → đổi góc nhìn.</p><small>Đầu ra: tiêu đề + phác thumbnail</small></article>
+          <article><span>03 · KỊCH BẢN</span><h4>Hook – Nội dung – CTA</h4><p>Dùng prompt ở tab <b>Kịch bản</b>: 15 giây đầu nêu vấn đề + hứa kết quả, thân bài theo bước, kết nhắc video tiếp theo.</p><small>Đầu ra: kịch bản có mốc thời gian từng cảnh</small></article>
+          <article><span>04 · SẢN XUẤT</span><h4>Quay / dựng bằng AI</h4><p>Giọng: AI Studio / Gemini TTS (tab Audio). Hình: Remotion, Vox collage, Google Flow, Canva (tab Video / Ảnh). Ráp trong CapCut.</p><small>Đầu ra: MP4 1080p + file phụ đề .srt</small></article>
+          <article><span>05 · METADATA</span><h4>Mô tả · chapter · tag</h4><p>Điền theo mẫu ở tab <b>Tiêu đề · Mô tả · Tag</b>. Chapter lấy từ mốc thời gian kịch bản. Bật khai báo nội dung có AI.</p><small>Đầu ra: khối mô tả dán thẳng vào YouTube Studio</small></article>
+          <article><span>06 · ĐĂNG</span><h4>Lên lịch, playlist, màn hình kết thúc</h4><p>Đăng khung giờ cố định, thêm vào playlist, gắn end screen + thẻ trỏ về video liên quan, ghim bình luận có link.</p><small>Đầu ra: video public / đã lên lịch</small></article>
+          <article><span>07 · ĐO &amp; RÚT KINH NGHIỆM</span><h4>Xem số sau 48 giờ &amp; 7 ngày</h4><p>CTR, thời gian xem trung bình, biểu đồ giữ chân. Ghi 1 bài học vào bảng ở tab <b>Đăng &amp; đo lường</b> rồi áp cho video sau.</p><small>Đầu ra: 1 dòng bài học</small></article>
+          <article><span>+ · TÁI SỬ DỤNG</span><h4>1 video dài → nhiều Shorts</h4><p>Cắt 2–3 đoạn 30–60 giây thành Shorts 9:16, đăng cách nhau vài ngày, mô tả trỏ về video dài. Bài đăng Facebook/TikTok dùng lại cùng file.</p><small>Đầu ra: 2–3 Shorts + 1 bài social</small></article>
+        </div>
+        <div class="lr-step-support" style="padding:0">
+          <div class="lr-sheet"><span>KẾT NỐI VỚI CÁC TAB KHÁC TRONG HUB</span>
+            <ul>
+              <li><b>Tạo Video AI</b> → Claude × Remotion, Vox collage, Google Flow, CapCut: dùng ở bước 04.</li>
+              <li><b>Tạo Hình Ảnh AI</b> → Canva MCP / ảnh AI: dùng làm thumbnail (bước 02) và hình minh họa.</li>
+              <li><b>Giọng Nói &amp; Âm Thanh</b> → Google AI Studio, ElevenLabs, Suno: giọng đọc và nhạc nền.</li>
+              <li><b>Tự Động Hóa</b> → Claude Code / n8n: sinh hàng loạt tiêu đề, mô tả, .srt từ kịch bản JSON.</li>
+            </ul>
+          </div>
+          <div class="lr-sheet"><span>THỜI GIAN THAM KHẢO · VIDEO HƯỚNG DẪN 5–8 PHÚT</span>
+            <p><b>Ý tưởng + tiêu đề + thumb:</b> 30 phút</p>
+            <p><b>Kịch bản (AI viết nháp, mình sửa):</b> 45 phút</p>
+            <p><b>Giọng đọc + hình + dựng:</b> 2–4 giờ (tuỳ cách làm)</p>
+            <p><b>Metadata + đăng:</b> 20 phút</p>
+            <small>Case 18/09/2026: video Vox collage 63 giây “Làm TVC thương hiệu bằng AI — 5 bước” đi trọn quy trình này, xem chi tiết ở tab Video AI → Claude × Remotion.</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB 2: Ý TƯỞNG -->
+      <div class="subtab-panel" id="yt-idea">
+        <div class="vs-intro"><div><span class="vs-eyebrow">BƯỚC 01 · KHÔNG BAO GIỜ THIẾU ĐỀ TÀI</span><h3>4 trụ nội dung &amp; 6 định dạng video</h3><p>Kênh cần vài “trụ” cố định để người xem biết mình sẽ nhận gì khi đăng ký. Mỗi trụ có 2–3 định dạng lặp lại được; mỗi định dạng có khung kịch bản riêng ở tab Kịch bản.</p></div><div class="lr-speaking"><span>CÂU HỎI LỌC Ý TƯỞNG</span><blockquote>“Ai tìm video này, họ gõ gì vào ô tìm kiếm, và xem xong họ làm được việc gì?”</blockquote></div></div>
+        <div class="lr-roles">
+          <article><span>TRỤ 1 · HƯỚNG DẪN AI</span><h4>Làm X bằng AI trong N bước</h4><p>Web AI, TVC AI, banner Canva, giọng đọc AI Studio… Đúng những gì hub này ghi lại — mỗi mục trong hub là 1 video.</p></article>
+          <article><span>TRỤ 2 · CASE THỰC TẾ</span><h4>Làm cho khách như thế nào</h4><p>Web cho spa / nhà hàng / bất động sản: từ brief đến bàn giao, có số liệu và lỗi gặp phải.</p></article>
+          <article><span>TRỤ 3 · SO SÁNH CÔNG CỤ</span><h4>A vs B, nên chọn gì</h4><p>Base44 vs Lovable, Veo vs Seedance, ElevenLabs vs AI Studio — dùng bảng ở tab tương ứng làm sườn.</p></article>
+          <article><span>TRỤ 4 · KIẾN THỨC WEB</span><h4>Giải thích cho khách không kỹ thuật</h4><p>Hosting là gì, vì sao web chậm, SEO cần gì — video ngắn, trả lời 1 câu hỏi.</p></article>
+        </div>
+        <table class="yt-table">
+          <thead><tr><th>Định dạng</th><th>Thời lượng</th><th>Cấu trúc cốt lõi</th><th>Hợp với trụ</th><th>Cách sản xuất nhanh nhất</th></tr></thead>
+          <tbody>
+            <tr><td><b>Hướng dẫn từng bước</b></td><td>5–12 phút</td><td>Kết quả cuối trước → bước 1..n → tổng kết</td><td>1, 2</td><td>Quay màn hình + giọng AI Studio, chapter theo bước</td></tr>
+            <tr><td><b>Explainer collage / hoạt hình</b></td><td>1–3 phút</td><td>Vấn đề → 3–5 ý → kết</td><td>1, 4</td><td>Skill <code>vox-collage-video</code> hoặc Claude × Remotion</td></tr>
+            <tr><td><b>Case study</b></td><td>6–10 phút</td><td>Brief → khó khăn → cách giải → kết quả → bài học</td><td>2</td><td>Ảnh chụp dự án + talking head hoặc giọng đọc</td></tr>
+            <tr><td><b>So sánh / review</b></td><td>8–15 phút</td><td>Tiêu chí → thử cùng 1 đề bài → bảng điểm → khuyến nghị</td><td>3</td><td>Quay màn hình 2 công cụ song song</td></tr>
+            <tr><td><b>Shorts</b></td><td>30–60 giây</td><td>1 mẹo / 1 câu hỏi / 1 kết quả bất ngờ</td><td>tất cả</td><td>Cắt từ video dài hoặc skill <code>video-quangcao-hpb</code></td></tr>
+            <tr><td><b>Danh sách công cụ</b></td><td>5–8 phút</td><td>Top N → mỗi mục: làm gì, giá, demo 20 giây</td><td>3</td><td>Lấy thẳng từ bảng công cụ trong hub</td></tr>
+          </tbody>
+        </table>
+        <div class="yt-grid-2">
+          <div class="lr-sheet"><span>NGUỒN Ý TƯỞNG · KIỂM TRA TRONG 10 PHÚT</span>
+            <ol>
+              <li><b>Ô tìm kiếm YouTube</b>: gõ “làm web bằng ai”, “tạo video ai” … và ghi lại các gợi ý tự động — đó là câu người ta thật sự tìm.</li>
+              <li><b>Tab Video → Lọc “Tải lên hôm nay / tuần này”</b> theo từ khoá: xem video mới nào đang lên nhanh ở kênh nhỏ.</li>
+              <li><b>Bình luận và inbox khách</b>: mỗi câu hỏi lặp lại 2 lần = 1 video.</li>
+              <li><b>Case vừa làm xong</b>: đang còn file, còn nhớ lỗi → quay ngay, đừng để nguội.</li>
+              <li><b>Google Trends / AnswerThePublic</b> cho chủ đề đang tăng.</li>
+            </ol>
+          </div>
+          <details class="lr-prompt" open><summary>Prompt · nhờ Claude/Gemini đề xuất 20 ý tưởng có điểm số</summary><p>Dán vào Claude, Gemini hoặc ChatGPT. Thay phần trong [ ].</p><textarea readonly>Bạn là chiến lược gia nội dung YouTube cho kênh HPB Media — công ty thiết kế website và làm video/ảnh bằng AI tại Việt Nam. Khán giả: chủ doanh nghiệp nhỏ, người làm marketing, freelancer muốn tự dùng AI làm web/video.
+
+Kênh có 4 trụ nội dung: (1) Hướng dẫn làm X bằng AI, (2) Case thực tế cho khách, (3) So sánh công cụ AI, (4) Kiến thức web cho người không kỹ thuật.
+
+Hãy đề xuất 20 ý tưởng video cho tháng tới về chủ đề [ví dụ: làm video quảng cáo bằng AI]. Với mỗi ý tưởng cho: tiêu đề gợi ý (≤70 ký tự, tiếng Việt tự nhiên, không giật gân sai sự thật), trụ nội dung, định dạng (hướng dẫn / explainer / case / so sánh / shorts), lý do người xem bấm, độ khó sản xuất (1–5), điểm tiềm năng (1–10). Sắp xếp theo điểm giảm dần và chọn 5 ý tưởng nên làm trước, giải thích ngắn vì sao.</textarea></details>
+        </div>
+      </div>
+
+      <!-- SUB 3: KỊCH BẢN -->
+      <div class="subtab-panel" id="yt-script">
+        <div class="vs-intro"><div><span class="vs-eyebrow">BƯỚC 03 · GIỮ NGƯỜI XEM Ở LẠI</span><h3>Kịch bản: Hook 15 giây – Thân bài theo bước – CTA</h3><p>YouTube xếp hạng theo thời gian xem. Kịch bản tốt không phải viết hay, mà là mỗi 30–60 giây có một lý do để xem tiếp. AI viết nháp rất nhanh; việc của mình là thêm trải nghiệm thật, số liệu thật và lỗi thật.</p></div><div class="lr-speaking"><span>HOOK MẪU · 15 GIÂY ĐẦU</span><blockquote>“Một TVC 30 giây từng tốn 50–100 triệu. Video này tôi làm bằng 5 công cụ AI trong một buổi chiều — và cuối video bạn sẽ có đúng quy trình đó, kèm prompt.”</blockquote></div></div>
+        <div class="yt-grid-3">
+          <div class="lr-sheet"><span>0:00–0:15 · HOOK</span><b>Vấn đề + lời hứa + bằng chứng</b>
+            <ul><li>Câu 1: nỗi đau hoặc kết quả bất ngờ (cho xem luôn kết quả cuối).</li><li>Câu 2: video này cho bạn cái gì, trong bao lâu.</li><li>Câu 3: vì sao tin tôi (đã làm cho khách / số liệu).</li><li>Không intro logo, không “xin chào các bạn” quá 3 giây.</li></ul></div>
+          <div class="lr-sheet"><span>0:15–END-30s · THÂN BÀI</span><b>Mỗi bước = 1 chapter</b>
+            <ul><li>Mở bước: nói kết quả của bước trước khi làm.</li><li>Làm: quay màn hình / hình minh hoạ, giọng đọc kể đang làm gì.</li><li>Đóng bước: 1 lỗi hay gặp + cách né (giữ chân tốt nhất).</li><li>Cầu nối: “nhưng có 1 thứ nếu bỏ qua thì bước sau hỏng…”.</li></ul></div>
+          <div class="lr-sheet"><span>30 GIÂY CUỐI · CTA</span><b>Một hành động, không phải ba</b>
+            <ul><li>Tóm 3 ý trong 1 câu.</li><li>Chỉ 1 CTA chính: xem video tiếp theo (end screen) hoặc tải tài liệu (link mô tả).</li><li>Nhắc đăng ký nhẹ, đặt ở giữa video hiệu quả hơn ở cuối.</li><li>Kết bằng câu mở sang video tiếp: “Bước tiếp theo — đưa video này lên web — tôi làm ở đây.”</li></ul></div>
+        </div>
+        <h3>Prompt viết kịch bản</h3>
+        <div class="yt-grid-2">
+          <details class="lr-prompt" open><summary>Prompt 1 · kịch bản video hướng dẫn 5–8 phút (có mốc thời gian)</summary><p>Đưa kèm ghi chú thật của bạn (các bước đã làm, lỗi gặp, số liệu) để AI không bịa.</p><textarea readonly>Viết kịch bản video YouTube tiếng Việt cho kênh HPB Media, giọng nói chuyện tự nhiên, xưng "tôi" – gọi "bạn", không dùng từ tiếng Anh khi có từ Việt tương đương, không giật gân.
+
+Chủ đề: [Làm TVC thương hiệu bằng AI trong 5 bước]
+Khán giả: [chủ shop, marketer nhỏ, chưa biết dựng video]
+Kết quả người xem đạt được: [tự làm 1 TVC 30 giây bằng Gemini + Google Flow + AI Studio + CapCut]
+Thời lượng mục tiêu: [6 phút]
+Ghi chú thật từ tôi (bắt buộc dùng, không bịa thêm): [dán các bước, lỗi đã gặp, thời gian tốn, chi phí…]
+
+Yêu cầu định dạng:
+1. Bảng cảnh: STT · mốc thời gian (m:ss) · lời đọc · hình trên màn hình (quay màn hình / hình minh hoạ / chữ) · ghi chú dựng.
+2. Hook 15 giây đầu: cho thấy kết quả cuối trước, nêu vấn đề, hứa kết quả.
+3. Mỗi bước là 1 chapter, kết mỗi bước bằng 1 lỗi hay gặp và cách tránh.
+4. Cứ 45–60 giây có 1 câu cầu nối để người xem muốn xem tiếp.
+5. CTA cuối: 1 hành động duy nhất là [xem video tiếp theo về …].
+6. Sau bảng cảnh, xuất thêm: danh sách chapter (mốc + tên) và 5 tiêu đề gợi ý ≤70 ký tự.</textarea></details>
+          <details class="lr-prompt"><summary>Prompt 2 · biến video dài thành 3 Shorts + bài đăng Facebook</summary><p>Dán kịch bản đã chốt vào cuối prompt.</p><textarea readonly>Từ kịch bản video dài dưới đây, hãy tạo:
+
+A. 3 Shorts 30–45 giây (dọc 9:16), mỗi Short chỉ 1 ý: hook 2 giây đầu bằng câu hỏi hoặc kết quả, lời đọc ≤ 90 từ, gợi ý chữ hiện trên màn hình (3–5 từ mỗi lần), câu cuối trỏ về video dài. Ghi rõ lấy từ mốc thời gian nào của video gốc.
+
+B. 1 bài Facebook 120–180 từ: mở bằng kết quả, 3 gạch đầu dòng bài học, kết bằng câu hỏi để người ta bình luận; kèm 5 hashtag tiếng Việt.
+
+C. Tiêu đề Shorts ≤ 50 ký tự có #Shorts.
+
+Kịch bản gốc:
+[dán vào đây]</textarea></details>
+        </div>
+        <div class="lr-sheet"><span>KIỂM TRA KỊCH BẢN TRƯỚC KHI THU GIỌNG</span>
+          <ul class="yt-check">
+            <li><input type="checkbox"> 15 giây đầu đã cho thấy kết quả cuối hoặc nêu đúng nỗi đau?</li>
+            <li><input type="checkbox"> Đọc thành tiếng: 150–170 từ/phút tiếng Việt — kịch bản 6 phút ≈ 900–1000 từ?</li>
+            <li><input type="checkbox"> Mỗi bước có ít nhất 1 chi tiết chỉ mình biết (lỗi, số, mẹo)?</li>
+            <li><input type="checkbox"> Mốc thời gian mỗi cảnh đã ghi để xuất chapter và cắt Shorts?</li>
+            <li><input type="checkbox"> Chỉ 1 CTA cuối, và câu cuối mở sang video tiếp theo?</li>
+            <li><input type="checkbox"> Nếu dùng giọng AI: câu ngắn, có dấu câu đầy đủ, số viết bằng chữ (“năm mươi triệu”)?</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SUB 4: METADATA -->
+      <div class="subtab-panel" id="yt-meta">
+        <div class="vs-intro"><div><span class="vs-eyebrow">BƯỚC 05 · ĐỂ YOUTUBE HIỂU VIDEO NÓI VỀ GÌ</span><h3>Tiêu đề · Mô tả · Chapter · Tag</h3><p>Tiêu đề và thumbnail quyết định bấm; mô tả, chapter, tag giúp YouTube và Google hiểu nội dung để đề xuất và xếp hạng tìm kiếm. Điền theo mẫu bên dưới là đủ, không cần “nhồi” từ khoá.</p></div><div class="lr-speaking"><span>QUY TẮC TIÊU ĐỀ</span><blockquote>“≤ 70 ký tự · từ khoá chính ở nửa đầu · có số hoặc kết quả · hứa đúng thứ video có.”</blockquote></div></div>
+        <div class="yt-grid-2">
+          <div class="lr-sheet"><span>TIÊU ĐỀ · 5 CÔNG THỨC DÙNG LẠI ĐƯỢC</span>
+            <ol>
+              <li><b>Làm [X] bằng AI trong [N] bước ([công cụ 1], [công cụ 2])</b><br><small>vd: Làm TVC thương hiệu bằng AI trong 5 bước (Gemini, Google Flow, CapCut)</small></li>
+              <li><b>Tôi làm [X] cho khách [ngành] trong [thời gian] — quy trình đầy đủ</b></li>
+              <li><b>[A] vs [B]: nên dùng cái nào để [mục tiêu]? (thử cùng 1 đề bài)</b></li>
+              <li><b>[N] lỗi khiến [X] thất bại (và cách sửa trong 5 phút)</b></li>
+              <li><b>[X] là gì? Giải thích cho người không rành kỹ thuật</b></li>
+            </ol>
+            <small>Tránh: VIẾT HOA TOÀN BỘ, “gây sốc”, hứa thứ video không có. Kiểm tra độ dài: tiêu đề bị cắt ở ~70 ký tự trên điện thoại.</small>
+          </div>
+          <div class="lr-sheet"><span>TAG &amp; CÀI ĐẶT</span>
+            <p><b>Tag (10–15 tag, tiếng Việt có dấu + không dấu cho từ chính):</b> từ khoá chính · biến thể · tên công cụ · tên kênh. vd: <i>làm tvc bằng ai, tvc ai, google flow, veo 3, gemini tts, capcut, làm video bằng ai, hpb media</i>.</p>
+            <p><b>Hashtag:</b> 3–5 cái ở cuối mô tả, 3 cái đầu hiện trên tiêu đề.</p>
+            <p><b>Danh mục:</b> Giáo dục (hướng dẫn) hoặc Khoa học &amp; Công nghệ.</p>
+            <p><b>Ngôn ngữ:</b> Tiếng Việt · tải phụ đề .srt (tăng tìm kiếm + người xem tắt tiếng).</p>
+            <p><b>Nội dung có AI:</b> bật khai báo <i>Altered or synthetic content</i> khi giọng/hình do AI tạo — bắt buộc, không ảnh hưởng đề xuất.</p>
+            <p><b>Playlist:</b> mỗi trụ nội dung 1 playlist; thêm ngay khi đăng.</p>
+          </div>
+        </div>
+        <details class="lr-prompt" open><summary>Mẫu mô tả · dán vào YouTube Studio rồi thay phần trong [ ]</summary><p>Đây là mẫu đã dùng cho video Vox collage 18/09/2026. 2 dòng đầu hiện trước nút “xem thêm” — phải chứa từ khoá và lý do xem.</p><textarea readonly>[1 câu tóm tắt có từ khoá chính: Làm TVC thương hiệu bằng AI chỉ với 5 công cụ — quy trình HPB Media đang dùng cho khách.]
+[1 câu: xem xong bạn làm được gì.]
+
+⏱ Nội dung
+0:00 [Tên chapter 1 — hook]
+0:05 [Chapter 2]
+0:11 [Bước 1 — …]
+0:18 [Bước 2 — …]
+0:25 [Bước 3 — …]
+0:37 [Bước 4 — …]
+0:44 [Bước 5 — …]
+0:51 [Mẹo / lỗi hay gặp]
+0:57 [Kết]
+
+🧰 Công cụ trong video: [Gemini · Google Flow (Veo) · Flow Music · Google AI Studio · CapCut · ffmpeg]
+📄 Tài liệu đầy đủ, prompt mẫu, checklist: [link hub / bài viết]
+🎬 Video này cũng làm bằng AI: [giọng Gemini TTS, ảnh Pexels, dựng bằng Remotion].
+
+▶ Xem tiếp: [tên video liên quan] — [link]
+📩 Cần [website / TVC / video AI] cho thương hiệu? HPB Media: [website] · [SĐT] · [email]
+
+#TVC #AIVideo #GoogleFlow #Gemini #CapCut</textarea></details>
+        <details class="lr-prompt"><summary>Prompt · sinh trọn bộ metadata từ kịch bản</summary><p>Dán kịch bản có mốc thời gian; AI trả về tiêu đề, mô tả, chapter, tag theo đúng mẫu trên.</p><textarea readonly>Từ kịch bản video YouTube tiếng Việt dưới đây (có mốc thời gian từng cảnh), hãy tạo:
+1. 5 tiêu đề ≤70 ký tự, từ khoá chính "[từ khoá]" nằm ở nửa đầu, có số hoặc kết quả, không giật gân; đánh dấu tiêu đề bạn khuyên chọn.
+2. Mô tả theo đúng mẫu: 2 dòng đầu có từ khoá + lợi ích; khối "⏱ Nội dung" liệt kê chapter (mốc m:ss + tên ≤ 8 từ, chapter đầu bắt buộc 0:00, mỗi chapter ≥ 10 giây); khối công cụ; link tài liệu [link]; dòng "video này làm bằng AI" nếu có; CTA HPB Media; 5 hashtag.
+3. 12 tag tiếng Việt (có dấu, thêm bản không dấu cho 3 từ chính), cách nhau bằng dấu phẩy.
+4. 3 câu bình luận ghim gợi ý (1 câu hỏi cho người xem + link tài liệu).
+
+Kịch bản:
+[dán vào đây]</textarea></details>
+      </div>
+
+      <!-- SUB 5: THUMBNAIL -->
+      <div class="subtab-panel" id="yt-thumb">
+        <div class="vs-intro"><div><span class="vs-eyebrow">BƯỚC 02 · THỨ ĐẦU TIÊN NGƯỜI XEM THẤY</span><h3>Thumbnail: 1 hình · 3–5 chữ · đọc được ở kích thước ngón tay</h3><p>Thumbnail hiện ở 1280×720 nhưng người ta thấy nó ở cỡ 160 px trên điện thoại. Mọi quyết định thiết kế đều phải kiểm tra ở cỡ nhỏ. Làm 2–3 phương án, để YouTube tự A/B (tính năng “Test &amp; compare”).</p></div><div class="lr-speaking"><span>KIỂM TRA 1 GIÂY</span><blockquote>“Thu nhỏ còn bằng con tem. Còn đọc được chữ, còn hiểu hình nói gì → đạt.”</blockquote></div></div>
+        <div class="yt-grid-3">
+          <div class="lr-sheet"><span>THÔNG SỐ</span><ul><li>1280×720 px, tỉ lệ 16:9, JPG/PNG ≤ 2 MB.</li><li>Vùng an toàn: né góc dưới phải (đè thời lượng).</li><li>Chữ ≥ 90 px ở kích thước gốc, font đậm, có viền/nền.</li><li>Tối đa 2 màu chủ đạo + 1 màu nhấn; giữ đúng màu HPB Media để nhận ra kênh.</li></ul></div>
+          <div class="lr-sheet"><span>3 BỐ CỤC DÙNG LẠI ĐƯỢC</span><ul><li><b>Trước / Sau:</b> nửa trái “kịch bản giấy”, nửa phải khung hình TVC — hợp video hướng dẫn.</li><li><b>Người + kết quả:</b> mặt người (biểu cảm rõ) chiếm 1/3, sản phẩm/màn hình 2/3 — hợp case study.</li><li><b>Logo A vs Logo B:</b> hai logo đối đầu, chữ “Chọn gì?” — hợp so sánh công cụ.</li></ul></div>
+          <div class="lr-sheet"><span>CHỮ TRÊN THUMB ≠ TIÊU ĐỀ</span><ul><li>Tiêu đề nói <i>cái gì</i>, thumbnail nói <i>vì sao bấm</i>: tiêu đề “Làm TVC bằng AI trong 5 bước” → thumb “0 ĐỒNG QUAY PHIM”.</li><li>3–5 từ, không lặp tiêu đề.</li><li>Số, tiền, thời gian đọc nhanh nhất: “5 BƯỚC”, “1 BUỔI CHIỀU”.</li></ul></div>
+        </div>
+        <h3>Làm thumbnail bằng AI</h3>
+        <div class="yt-grid-2">
+          <div class="lr-sheet"><span>CÁCH 1 · CANVA MCP (KHUYÊN DÙNG, CÓ CHỮ TIẾNG VIỆT CHUẨN)</span>
+            <ol><li>Xuất 1 frame đẹp từ video (CapCut: Export frame; hoặc Remotion still).</li><li>Trong Claude Code: “Tạo thumbnail YouTube 1280×720 từ ảnh này, chữ ‘…’, màu thương hiệu HPB Media” — Canva MCP dựng, chữ Việt không lỗi font.</li><li>Xuất PNG, kiểm tra ở cỡ nhỏ, tải lên.</li></ol>
+            <small>Chi tiết tab Tạo Hình Ảnh AI → Canva MCP.</small>
+          </div>
+          <details class="lr-prompt" open><summary>Cách 2 · Prompt tạo nền thumbnail bằng ảnh AI (Gemini / Ideogram), chữ ghép sau</summary><p>Ảnh AI hay sai chữ tiếng Việt — tạo nền trống chữ rồi thêm chữ trong Canva/CapCut.</p><textarea readonly>Tạo ảnh nền thumbnail YouTube 16:9, không có chữ, không watermark.
+Chủ đề: [làm TVC quảng cáo bằng AI].
+Bố cục: [bên trái một người ngồi trước laptop nhìn hứng thú, bên phải màn hình lớn đang phát TVC sản phẩm nước uống, ánh sáng studio]. Để trống vùng [bên trên phải] cho chữ.
+Phong cách: ảnh thật, sáng, tương phản cao, màu chủ đạo [xanh đậm #122745 và cam nhấn], nét sắc, nhân vật chiếm 1/3 khung.
+Không: chữ, logo, tay 6 ngón, nền rối.</textarea></details>
+        </div>
+        <div class="lr-sheet"><span>CHECKLIST TRƯỚC KHI TẢI LÊN</span>
+          <ul class="yt-check">
+            <li><input type="checkbox"> Thu nhỏ còn 160 px: vẫn đọc được chữ và hiểu hình?</li>
+            <li><input type="checkbox"> Chữ trên thumb không lặp lại tiêu đề?</li>
+            <li><input type="checkbox"> Đặt cạnh 5 video đối thủ cùng chủ đề: có nổi bật (màu, biểu cảm, khoảng trống)?</li>
+            <li><input type="checkbox"> Không đè lên góc dưới phải; không dùng ảnh/logo bên thứ ba chưa được phép?</li>
+            <li><input type="checkbox"> Đã làm phương án thứ 2 để bật Test &amp; compare?</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SUB 6: ĐĂNG & ĐO -->
+      <div class="subtab-panel" id="yt-publish">
+        <div class="vs-intro"><div><span class="vs-eyebrow">BƯỚC 06–07 · ĐĂNG ĐÚNG CHUẨN, ĐỌC SỐ, LÀM VIDEO SAU TỐT HƠN</span><h3>Đăng &amp; đo lường</h3><p>Video hướng dẫn sống lâu nhờ tìm kiếm, nên khung giờ không quan trọng bằng đều đặn. Sau khi đăng, chỉ cần theo dõi 3 con số và ghi lại 1 bài học mỗi video.</p></div><div class="lr-speaking"><span>LỊCH ĐĂNG ĐỀ XUẤT</span><blockquote>“1 video dài / tuần (thứ Tư 19:00) + 2–3 Shorts cắt từ video đó (thứ Sáu, Chủ nhật, thứ Ba). Nửa năm là 26 video dài + 70 Shorts.”</blockquote></div></div>
+        <div class="yt-grid-2">
+          <div class="lr-sheet"><span>CHECKLIST ĐĂNG · YOUTUBE STUDIO</span>
+            <ul class="yt-check">
+              <li><input type="checkbox"> Tiêu đề ≤70 ký tự, mô tả theo mẫu, chapter bắt đầu 0:00 và ≥ 3 chapter.</li>
+              <li><input type="checkbox"> Thumbnail tuỳ chỉnh + phương án 2 cho Test &amp; compare.</li>
+              <li><input type="checkbox"> Playlist, tag, danh mục, ngôn ngữ Tiếng Việt, phụ đề .srt.</li>
+              <li><input type="checkbox"> Khai báo nội dung AI (nếu có giọng/hình AI). Đối tượng: không dành cho trẻ em.</li>
+              <li><input type="checkbox"> Màn hình kết thúc 20 giây cuối: 1 video liên quan + nút đăng ký. Thẻ (card) ở phút 2–3 trỏ video liên quan.</li>
+              <li><input type="checkbox"> Bình luận ghim: link tài liệu + 1 câu hỏi cho người xem.</li>
+              <li><input type="checkbox"> Lên lịch (Schedule) đúng khung giờ; chia sẻ Facebook/Zalo sau 1 giờ đăng.</li>
+              <li><input type="checkbox"> Shorts: 9:16, ≤ 60 giây, tiêu đề có #Shorts, mô tả trỏ về video dài (link video liên quan).</li>
+            </ul>
+          </div>
+          <div>
+            <div class="lr-sheet"><span>3 SỐ CẦN NHÌN · YOUTUBE STUDIO → ANALYTICS</span>
+              <div class="yt-kpi">
+                <div><b>CTR</b><span>Tỉ lệ bấm hiển thị. Kênh mới 4–6% là ổn, &lt; 3% → đổi thumbnail/tiêu đề (Test &amp; compare).</span></div>
+                <div><b>AVD</b><span>Thời gian xem trung bình. Mục tiêu ≥ 40–50% thời lượng; thấp → hook yếu hoặc thân bài dài dòng.</span></div>
+                <div><b>Retention</b><span>Biểu đồ giữ chân: dốc mạnh ở 30 giây đầu = intro thừa; đỉnh nhô lên = đoạn hay, cắt thành Shorts.</span></div>
+                <div><b>Nguồn lượt xem</b><span>Tìm kiếm cao = tiêu đề/mô tả đúng; Đề xuất cao = giữ chân tốt; Bên ngoài = link Facebook đang chạy.</span></div>
+              </div>
+              <small>Xem sau 48 giờ (phản ứng ban đầu) và 7 ngày (tìm kiếm bắt đầu vào). Video hướng dẫn thường tăng đều sau tuần 2–3.</small>
+            </div>
+          </div>
+        </div>
+        <h3>Sổ tay video đã đăng · ghi 1 bài học mỗi video</h3>
+        <table class="yt-table">
+          <thead><tr><th>Ngày</th><th>Video</th><th>Trụ / định dạng</th><th>CTR</th><th>AVD</th><th>Lượt xem 7 ngày</th><th>Bài học áp cho video sau</th></tr></thead>
+          <tbody>
+            <tr><td>18/09/2026</td><td>Làm TVC thương hiệu bằng AI trong 5 bước (Gemini, Google Flow, CapCut)</td><td>Hướng dẫn / explainer collage 63 s</td><td>—</td><td>—</td><td>—</td><td>Tạo giọng trước rồi mới đặt thời lượng cảnh; chapter tính từ duration storyboard (frame ÷ 30). Điền số sau 7 ngày.</td></tr>
+            <tr><td><small>…</small></td><td><small>Thêm dòng cho mỗi video mới</small></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+        <div class="yt-grid-2">
+          <div class="lr-sheet"><span>LỊCH 1 TUẦN · MẪU</span>
+            <table class="yt-table" style="margin:0">
+              <tbody>
+                <tr><td><b>Thứ 2</b></td><td>Chốt chủ đề + tiêu đề + phác thumbnail tuần này (30 phút)</td></tr>
+                <tr><td><b>Thứ 3</b></td><td>Kịch bản (AI nháp → sửa) · đăng Shorts #3 tuần trước</td></tr>
+                <tr><td><b>Thứ 4</b></td><td>Sản xuất: giọng, hình, dựng · <b>19:00 đăng video dài</b></td></tr>
+                <tr><td><b>Thứ 5</b></td><td>Cắt 3 Shorts · trả lời bình luận · xem CTR 24 giờ</td></tr>
+                <tr><td><b>Thứ 6</b></td><td>Đăng Shorts #1 · chia sẻ Facebook/Zalo</td></tr>
+                <tr><td><b>CN</b></td><td>Đăng Shorts #2 · ghi bài học video tuần này vào sổ tay</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="lr-sheet"><span>LỖI HAY GẶP KHI ĐĂNG</span>
+            <ul>
+              <li><b>Chapter không hiện:</b> mốc đầu phải đúng “0:00”, ≥ 3 mốc, mỗi mốc ≥ 10 giây, thứ tự tăng dần.</li><li><b>Shorts bị tính là video thường:</b> phải dọc 9:16 (hoặc vuông) và ≤ 60 giây (YouTube đã mở lên 3 phút với video dọc; vẫn nên ≤ 60 s để lan toả).</li><li><b>Thumbnail bị từ chối:</b> tài khoản chưa xác minh số điện thoại → Studio → Cài đặt → Kênh → Tính năng.</li><li><b>Giọng AI bị hạn chế kiếm tiền:</b> cần thêm giá trị riêng (màn hình thật, số liệu, giọng người ở hook) — không đăng nội dung “lặp lại hàng loạt”.</li><li><b>Nhạc nền bị claim bản quyền:</b> dùng Flow Music / Suno / thư viện âm thanh YouTube, giữ file chứng minh.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div><!-- .wrap -->
 
 <div class="toast" id="toast">📋 Đã lưu!</div>
@@ -2274,7 +2810,7 @@ Hãy tạo 1 phương án banner hoàn chỉnh, có bố cục đẹp, sẵn sà
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // ================= 1. TAB SWITCHING (với link riêng theo #hash) =================
-  var defaultTab = 'tab-website';
+  var defaultTab = 'tab-ai';
   function activateTab(targetId, opts){
     opts = opts || {};
     var btn = document.querySelector('.tab-btn[data-tab="' + targetId + '"]');
