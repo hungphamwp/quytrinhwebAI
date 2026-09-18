@@ -2770,7 +2770,7 @@ document.querySelectorAll('[data-video-step]').forEach(function(button){
   (function(){
     var KEY='master_ai_youtube_list_v1';
     var body=document.getElementById('yt-body'); if(!body) return;
-    var SEED=[{date:'19/09/2026',title:'Tạo video từ tài liệu bằng Gemini Notebook (NotebookLM) — Video Overview',link:'https://notebook.google.com/notebook/fbb0f1fd-74c0-4bb2-8544-de813fd525bb',status:'idea',note:'Phải Add sources trước thì Studio → Video Overview mới tạo được (0 sources = không làm gì). Đặt Output language = Tiếng Việt.'}];
+    var SEED=[{date:'19/09/2026',title:'Tạo video từ tài liệu bằng Gemini Notebook (NotebookLM) — Video Overview',link:'https://notebook.google.com/notebook/fbb0f1fd-74c0-4bb2-8544-de813fd525bb',status:'idea',note:'Phải Add sources trước thì Studio → Video Overview mới tạo được (0 sources = không làm gì). Đặt Output language = Tiếng Việt.'},{date:'',title:'Phân biệt nhanh LLM, RAG, AI Agent và MCP (giải thích bằng sơ đồ)',link:'',status:'idea',note:'Ý tưởng từ bài Facebook 17/09 (sơ đồ 4 tầng, credit Everyday by Pol & David Andrés). Làm dạng explainer 2–3 phút: LLM = trả lời từ prompt · RAG = tra tài liệu trước khi trả lời · Agent = tự lập kế hoạch, nhớ, gọi tool · MCP = cổng chuẩn nối AI với GitHub/Slack/file. Có sẵn nội dung ở tab Kiến Thức AI.'}];
     var STATUS={idea:['💡 Ý tưởng','tag-free'],doing:['🎬 Đang làm','tag-recommended'],done:['✅ Đã đăng','tag-top']};
     var list; try{ list=JSON.parse(localStorage.getItem(KEY)||'null'); }catch(e){ list=null; }
     if(!Array.isArray(list)) list=SEED.slice();

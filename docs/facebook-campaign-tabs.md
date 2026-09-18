@@ -560,6 +560,7 @@ Tab này chỉ là **danh sách video sẽ làm** (ý tưởng → đang làm �
 | # | Ngày làm | Video sẽ làm | Link / nguồn | Trạng thái | Ghi chú |
 |---|----------|--------------|--------------|-----------|---------|
 | 1 | 19/09/2026 | Tạo video từ tài liệu bằng Gemini Notebook (NotebookLM) — Video Overview | notebook.google.com/notebook/fbb0f1fd-… | 💡 Ý tưởng | Phải Add sources trước thì Studio → Video Overview mới tạo được (0 sources = không làm gì). Đặt Output language = Tiếng Việt. |
+| 2 | — | Phân biệt nhanh LLM, RAG, AI Agent và MCP (giải thích bằng sơ đồ) | Bài Facebook 17/09, sơ đồ 4 tầng (credit Everyday by Pol & David Andrés) | 💡 Ý tưởng | Explainer 2–3 phút: LLM trả lời từ prompt · RAG tra tài liệu trước · Agent tự lập kế hoạch/nhớ/gọi tool · MCP cổng chuẩn nối AI với GitHub/Slack/file. Nội dung có sẵn ở tab Kiến Thức AI. |
 
 ---
 
