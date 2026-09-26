@@ -8,7 +8,7 @@
 
 0. [Kiến thức AI chuyên sâu](#0-kiến-thức-ai-chuyên-sâu)
 1. [26 Nền tảng Tạo Website AI](#1-26-nền-tảng-tạo-website-ai-free--pro)
-2. [Video AI — Từ ý tưởng đến video hoàn chỉnh (5 cách làm)](#2-video-ai--từ-ý-tưởng-đến-video-hoàn-chỉnh)
+2. [Video AI — Từ ý tưởng đến video hoàn chỉnh (5 cách làm + case video giảng dạy Toán 12)](#2-video-ai--từ-ý-tưởng-đến-video-hoàn-chỉnh)
 3. [10 Công cụ Sinh Ảnh AI & Công thức Prompt](#3-10-công-cụ-sinh-ảnh-ai--công-thức-prompt)
 4. [8 Công cụ Giọng Đọc & Sáng Tác Nhạc AI](#4-8-công-cụ-giọng-đọc--sáng-tác-nhạc-ai)
 5. [Tự Động Hóa & AI Agents](#5-tự-động-hóa--ai-agents)
@@ -449,6 +449,37 @@ Luồng: Bạn/script → API gateway → Phiên trình duyệt Dola → Tạo v
 > Nguồn: đã đọc README.md và code công khai ngày 07/09/2026; chưa cài gateway, đăng nhập Dola hoặc chạy thử tạo video thật.
 
 ---
+
+### Cách 06 · Case thực tế: Video giảng dạy Toán 12 (hệ thống trường 10 cơ sở, từ 21/09/2026)
+
+Video học online theo từng bài SGK Toán 12 (Kết nối tri thức). Học sinh xem là hiểu, có bài tập sau mỗi bài. Bài mẫu: HĐ1 · Bài 1 "Tính đơn điệu của hàm số". Claude điều phối toàn bộ: kịch bản, hình, giọng, dựng Remotion. Skill: [vox-collage-video](https://github.com/hungphamwp/claude-skills/tree/main/vox-collage-video).
+
+**Yêu cầu của khách:** xem một lần là hiểu, đúng Toán là trên hết · chữ to, tối đa 2 dòng, mỗi khung chỉ một khối chữ · 60% lời giảng + ví dụ đời thực, 40% đọc hình/số, mỗi ý nói lại 2 lần · cuối bài có bài tập, dừng cho làm, rồi hiện đáp án.
+
+**3 hướng đã thử:**
+
+| Hướng | Thời gian | Cách làm | Kết quả |
+|---|---|---|---|
+| ① Slide collage + giọng cô giáo | 21/09 | Vox paper collage, đồ thị vẽ dần theo lời, giọng AI nữ | Video mẫu ~10' |
+| ② 3 học sinh thật giảng cho nhau | 23–24/09 | Ảnh thật → khung đầu Nano Banana 2 → Flow/Aurora → ElevenLabs → Remotion | HD1 v1 ~38' (giảng 15'13" + bài tập 22'50") |
+| ③ Slide, giảng như thầy thật | 25/09 → nay | Học nhịp giảng (không dùng giọng/lời của thầy), giọng thầy giáo ElevenLabs Voice Design | Mẫu 20s chờ duyệt |
+
+**Chuỗi công cụ:** SGK + SGV gốc → Claude viết kịch bản → Nano Banana 2 làm khung hình đầu (0 credit) → Flow (Veo, khung hình đầu, 8s ~12 credit) hoặc ElevenLabs `creatify-aurora` (lip sync ảnh + giọng) → ElevenLabs (Voice Design, Speech-to-Speech, Scribe kiểm lời) → Remotion (chữ lớn, đồ thị vẽ dần, đồng hồ, bảng điểm) → MP4 1920×1080.
+
+**Chi phí thực tế HD1 bản học sinh:** Flow ~640 credit cho 53 clip; ElevenLabs ~127.000 credit riêng phần mở đầu 4' (Aurora ~848 credit/giây).
+
+**Bẫy & bài học:**
+
+- Claude không được tự tải ảnh học sinh lên Flow; người làm tự tải.
+- Flow chặn từ tả cơ thể trẻ vị thành niên ("nhỏ con", "mập mạp").
+- Character của Flow không giữ được mặt, Veo còn đảo chỗ các bạn. Dùng "khung hình đầu" thì mặt ổn định suốt 8 giây.
+- Ảnh 2 người chỉ gắn đúng 2 portrait, gắn thừa bị trộn mặt.
+- Nút ↺ trên thẻ lỗi là tạo lại, tốn credit. Agent Flow đôi khi bỏ sót lệnh khi giao hàng loạt.
+- Remotion trộn nhiều tiếng cần vài GB file tạm → xuất `--muted`, trộn âm riêng, xuất theo đoạn 1.500 frame.
+- Thời lượng thực tế ngắn hơn ước tính (mở đầu dự tính 10', ra 4'). Đo WAV rồi mới chốt số cảnh.
+- Luôn đối chiếu đáp án với SGK gốc; làm đúng trước, sáng tạo sau.
+
+**Tài liệu:** hồ sơ `~/Project/02. Dự án/45-video-giang-day-toan/` · code dựng `~/websites/video-giang-day-toan` · key API chỉ để trong `.env` local. Video thành phẩm và ảnh học sinh chỉ lưu nội bộ.
 
 ### Thư viện công cụ Video AI — 11 công cụ tạo Video AI đỉnh cao 2026
 
