@@ -1523,6 +1523,36 @@
 @media(max-width:1000px){#tab-ai .subtab-nav{grid-template-columns:1fr 1fr}.ai-hier{grid-template-columns:1fr}#tab-ai .ai-layers,#tab-ai .ai-concepts,#tab-ai .ai-weeks{grid-template-columns:1fr 1fr}#tab-ai .ai-prompt-frame{grid-template-columns:repeat(3,minmax(0,1fr))}#tab-ai .ai-four{grid-template-columns:1fr}}
 @media(max-width:680px){#tab-ai .subtab-nav{grid-template-columns:1fr}#tab-ai .ai-layers,#tab-ai .ai-concepts,#tab-ai .ai-weeks,#tab-ai .ai-prompt-frame{grid-template-columns:1fr}.ai-ring{padding:14px}}
 #yt-table td[contenteditable]:focus{outline:2px solid var(--brand);outline-offset:-2px;border-radius:4px}
+
+  /* ================= TAB TẦM NHÌN ================= */
+  .vz-hero{padding:34px 32px;border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(99,102,241,.22),rgba(59,130,246,.10));border:1px solid var(--brand-border)}
+  .vz-hero h2{margin:8px 0 12px;font-size:30px;line-height:1.25;color:var(--ink)}
+  .vz-hero p{margin:0;font-size:16px;line-height:1.75;color:var(--ink-light);max-width:70ch}
+  .vz-tag{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:10px 16px;border-radius:var(--radius-full);background:var(--brand-soft);border:1px solid var(--brand-border);color:var(--ink);font-weight:700;font-size:15px}
+  .vz-sec{margin-top:30px}
+  .vz-sec>h3{margin:0 0 6px;font-size:20px;color:var(--ink)}
+  .vz-sec>p.vz-lead{margin:0 0 16px;color:var(--muted);font-size:14.5px;line-height:1.65;max-width:75ch}
+  .vz-grid{display:grid;gap:14px}
+  .vz-g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .vz-g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .vz-g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vz-card{padding:18px 18px 20px;border-radius:var(--radius-md);background:var(--card);border:1px solid var(--line)}
+  .vz-card i.vz-ic{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;margin-bottom:12px;background:var(--red-soft);color:var(--red);font-size:16px}
+  .vz-card b{display:block;font-size:15px;color:var(--ink);margin-bottom:6px;line-height:1.4}
+  .vz-card span.vz-t{font-size:13.5px;line-height:1.6;color:var(--muted)}
+  .vz-step{position:relative;padding:20px;border-radius:var(--radius-md);background:var(--card);border:1px solid var(--line)}
+  .vz-step .vz-n{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--brand-gradient);color:#fff;font-weight:800;font-size:14px;margin-bottom:12px}
+  .vz-step h4{margin:0 0 4px;font-size:16px;color:var(--ink)}
+  .vz-step .vz-role{display:inline-block;margin-bottom:10px;padding:2px 10px;border-radius:var(--radius-full);font-size:11.5px;font-weight:700;background:var(--ok-soft);border:1px solid var(--ok-border);color:var(--ok)}
+  .vz-step p{margin:0;font-size:13.5px;line-height:1.65;color:var(--ink-light)}
+  .vz-step ul{margin:10px 0 0;padding-left:18px;font-size:13px;line-height:1.6;color:var(--muted)}
+  .vz-note{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;border-radius:var(--radius-md);background:var(--warn-soft);border:1px solid var(--warn-border)}
+  .vz-note i{color:var(--warn);font-size:18px;margin-top:2px}
+  .vz-note b{color:var(--ink)} .vz-note div{font-size:14px;line-height:1.65;color:var(--ink-light)}
+  .vz-check{padding:16px 18px;border-radius:var(--radius-md);background:var(--card);border:1px dashed var(--brand-border)}
+  .vz-check b{display:block;color:var(--ink);margin-bottom:4px;font-size:14.5px} .vz-check span{font-size:13.5px;line-height:1.6;color:var(--muted)}
+  @media (max-width:900px){.vz-g4,.vz-g3{grid-template-columns:repeat(2,minmax(0,1fr))}.vz-hero h2{font-size:24px}}
+  @media (max-width:560px){.vz-g4,.vz-g3,.vz-g2{grid-template-columns:1fr}.vz-hero{padding:24px 20px}}
 </style>
 </head>
 <body>
@@ -1557,6 +1587,7 @@
 
   <!-- MAIN TABS -->
   <div class="tabs">
+    <button class="tab-btn" data-tab="tab-vision"><i class="fa-solid fa-compass"></i> Tầm Nhìn</button>
     <button class="tab-btn active" data-tab="tab-ai"><i class="fa-solid fa-lightbulb"></i> Kiến Thức AI</button>
     <button class="tab-btn" data-tab="tab-website"><i class="fa-solid fa-globe"></i> Tạo Website AI</button>
     <button class="tab-btn" data-tab="tab-video"><i class="fa-solid fa-clapperboard"></i> Tạo Video AI</button>
@@ -1564,6 +1595,58 @@
     <button class="tab-btn" data-tab="tab-audio"><i class="fa-solid fa-microphone-lines"></i> Giọng Nói &amp; Âm Thanh</button>
     <button class="tab-btn" data-tab="tab-automation"><i class="fa-solid fa-bolt-lightning"></i> Tự Động Hóa &amp; Agent</button>
     <button class="tab-btn" data-tab="tab-youtube"><i class="fa-brands fa-youtube"></i> Content YouTube</button>
+  </div>
+
+  <!-- ================= TAB: TẦM NHÌN ================= -->
+  <div class="panel" id="tab-vision">
+    <div class="card">
+      <section class="vz-hero">
+        <span class="vs-eyebrow">TẦM NHÌN HPB MEDIA</span>
+        <h2>AI giúp ai cũng làm ra được sản phẩm. HPB giúp sản phẩm đó chạy bền.</h2>
+        <p>Từ &ldquo;làm ra được&rdquo; đến &ldquo;chạy bền, an toàn, lớn được&rdquo; vẫn còn một khoảng trống, và khách cần một người đứng ra chịu trách nhiệm cho khoảng đó. HPB chọn đứng ở chỗ này.</p>
+        <span class="vz-tag"><i class="fa-solid fa-quote-left"></i> AI làm nhanh. HPB làm cho chạy bền.</span>
+      </section>
+
+      <section class="vz-sec">
+        <h3>Khoảng trống: khách đang gặp gì</h3>
+        <p class="vz-lead">Nhiều chủ doanh nghiệp đã tự dựng sản phẩm hoặc website bằng AI (vibe code). Chạy được rồi thì họ bị kẹt ở bốn chỗ này.</p>
+        <div class="vz-grid vz-g4">
+          <div class="vz-card"><i class="vz-ic fa-solid fa-file-code"></i><b>Không ai hiểu code bên trong</b><span class="vz-t">Sửa một chỗ thì hỏng một chỗ. Càng vá càng rối.</span></div>
+          <div class="vz-card"><i class="vz-ic fa-solid fa-link"></i><b>Lệ thuộc vào AI</b><span class="vz-t">Muốn đổi gì cũng phải nhờ AI viết lại, không tự chỉnh được.</span></div>
+          <div class="vz-card"><i class="vz-ic fa-solid fa-shield-halved"></i><b>Chưa ai kiểm tra</b><span class="vz-t">Bảo mật, tốc độ, sao lưu, SEO đều chưa có người xem qua.</span></div>
+          <div class="vz-card"><i class="vz-ic fa-solid fa-phone-slash"></i><b>Sự cố không có ai để gọi</b><span class="vz-t">Web sập hoặc lỗi lúc đang bán hàng, không biết hỏi ai.</span></div>
+        </div>
+      </section>
+
+      <section class="vz-sec">
+        <h3>Giải pháp: ba tầng, bán theo thứ tự</h3>
+        <p class="vz-lead">Khách đi từ tầng nhẹ nhất. Mỗi tầng tự đứng được, và tầng sau là lý do khách ở lại.</p>
+        <div class="vz-grid vz-g3">
+          <div class="vz-step"><div class="vz-n">1</div><h4>Khám sức khoẻ</h4><span class="vz-role">Cửa vào · giá cố định</span>
+            <p>Kiểm tra sản phẩm AI đã làm, ra báo cáo rủi ro và danh sách việc cần sửa.</p>
+            <ul><li>Bảo mật, tốc độ, sao lưu, SEO</li><li>Báo cáo dễ đọc cho người không rành kỹ thuật</li><li>Dễ chốt vì phạm vi rõ ràng</li></ul></div>
+          <div class="vz-step"><div class="vz-n">2</div><h4>Gia cố hoặc dựng lại trên nền bền</h4><span class="vz-role">Dự án</span>
+            <p>WordPress với UX Builder cho web và nội dung, để khách tự chỉnh được mà không cần nhờ AI hay nhờ thợ.</p>
+            <ul><li>Phần cần code riêng thì giữ lại, có người hiểu</li><li>Có tài liệu bàn giao</li><li>Khách làm chủ sản phẩm của mình</li></ul></div>
+          <div class="vz-step"><div class="vz-n">3</div><h4>Vận hành và bảo hành</h4><span class="vz-role">Thu nhập đều</span>
+            <p>Có người theo dõi và sửa lỗi theo cam kết, khách không phải tự lo.</p>
+            <ul><li>Sao lưu, giám sát</li><li>Sửa lỗi theo thời gian cam kết</li><li>Báo cáo hàng tháng</li></ul></div>
+        </div>
+      </section>
+
+      <section class="vz-sec">
+        <h3>Vai trò của AI ở HPB</h3>
+        <div class="vz-note"><i class="fa-solid fa-robot"></i><div><b>AI và tự động hoá là công cụ làm việc của HPB.</b> Dùng để làm nhanh và làm rẻ phần việc lặp lại. Con người vẫn là bên ký tên và chịu trách nhiệm với khách.</div></div>
+      </section>
+
+      <section class="vz-sec">
+        <h3>Cần kiểm chứng trước khi nói rộng</h3>
+        <div class="vz-grid vz-g2">
+          <div class="vz-check"><b>Nhu cầu có thật không</b><span>Hỏi thử 5 đến 10 khách xem bao nhiêu người đang kẹt kiểu này. Hiện mới là cảm nhận từ các cuộc trò chuyện.</span></div>
+          <div class="vz-check"><b>Ca thật đầu tiên</b><span>Khám cho một khách với giá thấp hoặc miễn phí, đổi lại xin phép kể lại kết quả. Có ca thật rồi mới dùng làm bằng chứng.</span></div>
+        </div>
+      </section>
+    </div>
   </div>
 
   <!-- ================= TAB 0: KIẾN THỨC AI CHUYÊN SÂU ================= -->

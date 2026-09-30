@@ -6,6 +6,7 @@
 
 ## Mục lục
 
+00. [Tầm nhìn HPB Media](#00-tầm-nhìn-hpb-media)
 0. [Kiến thức AI chuyên sâu](#0-kiến-thức-ai-chuyên-sâu)
 1. [26 Nền tảng Tạo Website AI](#1-26-nền-tảng-tạo-website-ai-free--pro)
 2. [Video AI — Từ ý tưởng đến video hoàn chỉnh (5 cách làm + case video giảng dạy Toán 12)](#2-video-ai--từ-ý-tưởng-đến-video-hoàn-chỉnh)
@@ -13,6 +14,33 @@
 4. [8 Công cụ Giọng Đọc & Sáng Tác Nhạc AI](#4-8-công-cụ-giọng-đọc--sáng-tác-nhạc-ai)
 5. [Tự Động Hóa & AI Agents](#5-tự-động-hóa--ai-agents)
 6. [Content YouTube — danh sách video sẽ làm](#6-content-youtube--danh-sách-video-sẽ-làm)
+
+---
+
+## 00. Tầm nhìn HPB Media
+
+**AI giúp ai cũng làm ra được sản phẩm. HPB giúp sản phẩm đó chạy bền.**
+
+Từ "làm ra được" đến "chạy bền, an toàn, lớn được" vẫn còn một khoảng trống, và khách cần một người đứng ra chịu trách nhiệm cho khoảng đó. HPB chọn đứng ở chỗ này. Thông điệp: *AI làm nhanh. HPB làm cho chạy bền.*
+
+### Khoảng trống: khách đang gặp gì
+Nhiều chủ doanh nghiệp đã tự dựng sản phẩm hoặc website bằng AI (vibe code). Chạy được rồi thì họ bị kẹt:
+- Không ai hiểu code bên trong. Sửa một chỗ thì hỏng một chỗ.
+- Lệ thuộc vào AI: muốn đổi gì cũng phải nhờ AI, không tự chỉnh được.
+- Chưa ai kiểm tra bảo mật, tốc độ, sao lưu, SEO.
+- Sự cố xảy ra, không có ai để gọi.
+
+### Giải pháp: ba tầng, bán theo thứ tự
+1. **Khám sức khoẻ** (cửa vào, giá cố định): kiểm tra sản phẩm AI đã làm, ra báo cáo rủi ro và việc cần sửa.
+2. **Gia cố hoặc dựng lại trên nền bền**: WordPress với UX Builder cho web và nội dung, để khách tự chỉnh được. Phần cần code riêng thì giữ lại, có người hiểu và có tài liệu.
+3. **Vận hành và bảo hành** (thu nhập đều): sao lưu, giám sát, sửa lỗi theo cam kết, báo cáo hàng tháng.
+
+### Vai trò của AI ở HPB
+AI và tự động hoá là công cụ để làm nhanh, làm rẻ phần việc lặp lại. Con người vẫn là bên ký tên và chịu trách nhiệm với khách.
+
+### Cần kiểm chứng trước khi nói rộng
+- Hỏi thử 5 đến 10 khách xem bao nhiêu người đang kẹt kiểu này (hiện mới là cảm nhận).
+- Làm một ca khám đầu tiên với giá thấp hoặc miễn phí, xin phép kể lại kết quả để có bằng chứng thật.
 
 ---
 
