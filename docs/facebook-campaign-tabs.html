@@ -1581,6 +1581,22 @@
   .vz-chan>div:nth-child(odd){font-weight:700;color:var(--ink);background:var(--line-subtle)}
   @media (max-width:980px){.vz-ladder,.vz-tl{grid-template-columns:repeat(2,minmax(0,1fr))}.vz-rung:nth-child(n){margin-top:0}}
   @media (max-width:560px){.vz-ladder,.vz-tl{grid-template-columns:1fr}.vz-chan{grid-template-columns:1fr}.vz-chan>div:nth-child(odd){border-bottom:0;padding-bottom:0;background:none}}
+
+  /* ================= CHIẾN LƯỢC YOUTUBE ================= */
+  .vz-flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .vz-flow span{padding:8px 14px;border-radius:var(--radius-full);background:var(--brand-soft);border:1px solid var(--brand-border);font-size:13px;font-weight:600;color:var(--ink)}
+  .vz-flow i{color:var(--muted);font-size:12px}
+  .vz-first{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+  .vz-first>div{padding:16px 18px;border-radius:var(--radius-md);background:var(--card);border:1px solid var(--line)}
+  .vz-first .vz-n{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--brand-gradient);color:#fff;font-weight:800;font-size:13px;margin-bottom:10px}
+  .vz-first b{display:block;font-size:14.5px;color:var(--ink);margin-bottom:4px;line-height:1.4} .vz-first span{font-size:13px;line-height:1.55;color:var(--muted)}
+  .vz-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .vz-col{padding:18px 20px;border-radius:var(--radius-md);background:var(--card);border:1px solid var(--line)}
+  .vz-col h4{margin:0 0 10px;font-size:15px;color:var(--ink)} .vz-col ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.7;color:var(--ink-light)}
+  .vz-col.me{border-top:3px solid var(--brand)} .vz-col.ai{border-top:3px solid var(--ok)}
+  .vz-divider{margin:34px 0 18px;padding-top:22px;border-top:1px solid var(--line)}
+  @media (max-width:980px){.vz-first{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:640px){.vz-first,.vz-two{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -2602,6 +2618,106 @@ Hãy tạo 1 phương án banner hoàn chỉnh, có bố cục đẹp, sẵn sà
   <!-- ================= TAB 6: CONTENT YOUTUBE (DANH SÁCH VIDEO SẼ LÀM) ================= -->
   <div class="panel" id="tab-youtube">
     <div class="card">
+      <!-- ===== CHIẾN LƯỢC VIDEO DÀI HƯỚNG DẪN ===== -->
+      <section class="vz-hero">
+        <span class="vs-eyebrow">CHIẾN LƯỢC KÊNH YOUTUBE</span>
+        <h2>Video dài hướng dẫn: làm thật, có kết quả, để người xem tin và tìm đến HPB.</h2>
+        <p>Kênh này làm hai việc: chứng minh HPB làm được thật, và đưa người xem đến bước khám sức khoẻ. Mỗi video phải giải quyết một vấn đề và cho một kết quả nhìn thấy được.</p>
+        <span class="vz-tag"><i class="fa-solid fa-video"></i> Mỗi tuần một video dài, cắt thành 3 đến 5 video ngắn</span>
+      </section>
+
+      <section class="vz-sec">
+        <h3>1. Vai trò của kênh</h3>
+        <div class="vz-note"><i class="fa-solid fa-bullseye"></i><div><b>Kênh không chạy theo lượt xem.</b> Mỗi video tự hỏi: người xem xong rồi làm gì tiếp với HPB? Kênh còn nhỏ, nên 12 tuần đầu nhằm có nhịp đăng ổn định và dữ liệu thật, chưa nhằm bùng nổ.</div></div>
+      </section>
+
+      <section class="vz-sec">
+        <h3>2. Người xem mục tiêu</h3>
+        <p class="vz-lead">Video hướng dẫn cho hai nhóm khác nhau thì khó làm cùng lúc. Cần chọn một nhóm chiếm phần lớn.</p>
+        <div class="vz-grid vz-g2">
+          <div class="vz-card"><b>Người làm web, WordPress, freelancer</b><span class="vz-t">Hay tìm &ldquo;cách làm X&rdquo; nên dễ có lượt xem. Có sẵn chỗ phân phối trong nhóm cộng đồng WordPress đang quản trị. Ít là người mua, nhưng là nguồn uy tín.</span></div>
+          <div class="vz-card"><b>Chủ doanh nghiệp nhỏ muốn tự động hoá</b><span class="vz-t">Ít tìm kiếm hơn, nhưng là người mua thật cho bậc hệ thống tự động.</span></div>
+        </div>
+        <p class="vz-lead" style="margin-top:12px">Đề xuất: làm kiểu nối hai nhóm. Video xoay quanh một việc thật, giải thích đủ dễ để chủ doanh nghiệp hiểu, đủ thật để người làm web tin.</p>
+      </section>
+
+      <section class="vz-sec">
+        <h3>3. Ba trụ cột nội dung</h3>
+        <div class="vz-grid vz-g3">
+          <div class="vz-step"><div class="vz-n">A</div><h4>Cứu web</h4><span class="vz-role">Cửa vào · bậc 1</span><ul><li>Dọn mã độc, tìm admin cửa hậu còn sót</li><li>Tăng tốc WordPress</li><li>Dọn spam hàng loạt</li><li>Chuyển sản phẩm từ công cụ AI sang WordPress</li></ul></div>
+          <div class="vz-step"><div class="vz-n">B</div><h4>Tự động hoá và AI</h4><span class="vz-role">Bậc 3</span><ul><li>Hệ thống tự quét khách từ Facebook</li><li>n8n trên VPS nhỏ</li><li>Chatbot Zalo AI</li></ul></div>
+          <div class="vz-step"><div class="vz-n">C</div><h4>Ca thật trước và sau</h4><span class="vz-role">Bằng chứng</span><ul><li>Mỗi ca chốt bằng số: mất bao nhiêu giờ, còn bao nhiêu</li><li>Có xin phép và che thông tin khách</li></ul></div>
+        </div>
+      </section>
+
+      <section class="vz-sec">
+        <h3>4. Định dạng mỗi video</h3>
+        <p class="vz-lead">Khung cố định để người xem quen nhịp và dễ sản xuất lặp lại.</p>
+        <div class="vz-flow"><span>30 giây đầu: kết quả</span><i class="fa-solid fa-chevron-right"></i><span>Bối cảnh</span><i class="fa-solid fa-chevron-right"></i><span>Làm từng bước</span><i class="fa-solid fa-chevron-right"></i><span>Số trước và sau</span><i class="fa-solid fa-chevron-right"></i><span>Cách tự kiểm tra</span><i class="fa-solid fa-chevron-right"></i><span>Lời mời</span></div>
+        <div class="vz-grid vz-g2" style="margin-top:14px">
+          <div class="vz-rule"><i class="fa-solid fa-display"></i><div><b>Quay màn hình làm thật, giọng của mình</b><span>Mặt ở góc nếu được. Không dùng giọng AI cho video dài: người xem bỏ sớm và YouTube không trả tiền tốt cho nội dung sản xuất hàng loạt.</span></div></div>
+          <div class="vz-rule"><i class="fa-solid fa-stopwatch"></i><div><b>Độ dài 10 đến 20 phút</b><span>Đủ sâu cho video hướng dẫn mà không lê thê. Có chia chương để người xem nhảy tới phần cần.</span></div></div>
+          <div class="vz-rule"><i class="fa-solid fa-eye-slash"></i><div><b>Che thông tin khách</b><span>Tên miền, tài khoản, dữ liệu thật phải che hoặc dùng bản tái dựng. Đây là rủi ro lớn nhất với video ca thật.</span></div></div>
+          <div class="vz-rule"><i class="fa-solid fa-flag-checkered"></i><div><b>Một video, một vấn đề</b><span>Nếu có hai vấn đề thì tách thành hai video.</span></div></div>
+        </div>
+      </section>
+
+      <section class="vz-sec">
+        <h3>5. Đặt tên và thumbnail</h3>
+        <div class="vz-grid vz-g2">
+          <div class="vz-check"><b>Tiêu đề</b><span>Cụm từ người ta tìm kiếm cộng với kết quả. Ví dụ: &ldquo;Web WordPress bị hack: cách tìm và xoá tài khoản admin lạ&rdquo;. Dùng trang Nghiên cứu nội dung để xem đối thủ đang ăn view với đề nào trước khi chọn.</span></div>
+          <div class="vz-check"><b>Thumbnail</b><span>Chỉ ba thứ: một câu ngắn, một hình thấy rõ vấn đề, một mặt người.</span></div>
+        </div>
+      </section>
+
+      <section class="vz-sec">
+        <h3>6. Nhịp đăng và hệ thống sản xuất</h3>
+        <p class="vz-lead">Mỗi video dài mất Hưng khoảng 2 đến 3 giờ. Phần còn lại giao cho máy.</p>
+        <div class="vz-two">
+          <div class="vz-col me"><h4>Hưng làm</h4><ul><li>Chọn đề và làm thật trên màn hình</li><li>Nói và quay</li><li>Duyệt bản cuối trước khi đăng</li></ul></div>
+          <div class="vz-col ai"><h4>Máy lo</h4><ul><li>Cắt chỗ im lặng</li><li>Phụ đề tiếng Việt</li><li>Chia chương, viết mô tả</li><li>Thumbnail</li><li>Cắt 3 đến 5 video ngắn</li><li>Đăng lên YouTube và kênh video ngắn</li></ul></div>
+        </div>
+      </section>
+
+      <section class="vz-sec">
+        <h3>7. Phân phối và chuyển đổi</h3>
+        <div class="vz-grid vz-g3">
+          <div class="vz-check"><b>Đăng lại đúng chỗ</b><span>Đăng trong nhóm Facebook đúng nội quy, kèm một câu hỏi thật chứ không chỉ gắn link.</span></div>
+          <div class="vz-check"><b>Tài nguyên kèm video</b><span>Mỗi video có một checklist hoặc file mẫu miễn phí, người xem để lại liên lạc để nhận.</span></div>
+          <div class="vz-check"><b>Lời mời cuối video</b><span>Luôn dẫn về bước khám sức khoẻ (bậc 1).</span></div>
+        </div>
+      </section>
+
+      <section class="vz-sec">
+        <h3>8. Lịch 12 tuần và cách điều chỉnh</h3>
+        <div class="vz-tl">
+          <div class="vz-ph"><span class="vz-d">Tuần 1 đến 2</span><h4>Dựng quy trình</h4><p>Làm video 1 và 2, chạy thử toàn bộ chuỗi từ quay đến đăng.</p></div>
+          <div class="vz-ph"><span class="vz-d">Tuần 3 đến 8</span><h4>Mỗi tuần một video</h4><p>Xem lại số liệu ở tuần 4 và tuần 8: tỉ lệ bấm vào thumbnail, phần trăm xem hết, số người nhắn tin.</p></div>
+          <div class="vz-ph"><span class="vz-d">Tuần 9 đến 12</span><h4>Làm nhiều hơn cái đang chạy</h4><p>Nhóm chủ đề nào ra khách thì làm tiếp, nhóm nào không ra thì bỏ.</p></div>
+        </div>
+        <p class="vz-lead" style="margin-top:12px">Chưa đặt ngưỡng số liệu cứng vì kênh còn nhỏ. Lấy số của 4 video đầu làm mốc rồi so sánh.</p>
+      </section>
+
+      <section class="vz-sec">
+        <h3>9. Thứ tự bốn video đầu</h3>
+        <div class="vz-first">
+          <div><div class="vz-n">1</div><b>Dọn mã độc và tìm admin cửa hậu còn sót</b><span>Nhiều người tìm, là ca thật, cửa vào bậc 1.</span></div>
+          <div><div class="vz-n">2</div><b>Tăng tốc WordPress</b><span>Nhiều người tìm, kết quả đo được bằng số.</span></div>
+          <div><div class="vz-n">3</div><b>n8n trên VPS nhỏ</b><span>Chuyển sang mảng tự động hoá.</span></div>
+          <div><div class="vz-n">4</div><b>Hệ thống tự quét khách từ Facebook</b><span>Ca thật cho bậc hệ thống tự động.</span></div>
+        </div>
+      </section>
+
+      <section class="vz-sec">
+        <h3>Cần chốt trước khi bắt đầu</h3>
+        <div class="vz-grid vz-g2">
+          <div class="vz-check"><b>Có tự quay màn hình và nói không?</b><span>Chiến lược này dựa trên giọng người thật.</span></div>
+          <div class="vz-check"><b>Video đầu tiên chọn chủ đề nào?</b><span>Đề xuất video 1 hoặc video 4 ở trên.</span></div>
+        </div>
+      </section>
+
+      <div class="vz-divider"></div>
+
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px">
         <div>
           <h2 style="margin:0;font-size:20px;font-family:'Outfit',sans-serif;color:var(--ink)"><i class="fa-brands fa-youtube" style="color:#ff0000;margin-right:6px"></i> Content YouTube — Danh sách video sẽ làm</h2>

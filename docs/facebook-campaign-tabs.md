@@ -644,6 +644,21 @@ Hệ thống ứng dụng làm việc hiệu quả với AI (Obsidian, Orca, Cur
 
 ## 6. Content YouTube — Danh sách video sẽ làm
 
+### Chiến lược kênh: video dài hướng dẫn
+
+Kênh làm hai việc: chứng minh HPB làm được thật, và đưa người xem đến bước khám sức khoẻ. Mỗi video giải quyết một vấn đề và cho một kết quả nhìn thấy được. Mỗi tuần một video dài, cắt thành 3 đến 5 video ngắn.
+
+- **Người xem:** chọn một nhóm chính. Người làm web và WordPress (dễ có lượt xem, nguồn uy tín) hoặc chủ doanh nghiệp nhỏ (người mua thật). Đề xuất làm kiểu nối hai nhóm.
+- **Ba trụ cột:** Cứu web (mã độc, tăng tốc, dọn spam) · Tự động hoá và AI (quét khách Facebook, n8n, chatbot Zalo) · Ca thật trước và sau.
+- **Định dạng:** quay màn hình làm thật, giọng mình, 10 đến 20 phút. Khung: 30 giây kết quả, bối cảnh, làm từng bước, số trước và sau, cách tự kiểm tra, lời mời. Che thông tin khách.
+- **Tiêu đề và thumbnail:** cụm từ tìm kiếm cộng kết quả; thumbnail có một câu ngắn, một hình vấn đề, một mặt người.
+- **Sản xuất:** Hưng làm thật và nói (2 đến 3 giờ mỗi video); máy cắt lặng, phụ đề, chia chương, mô tả, thumbnail, cắt video ngắn, đăng.
+- **Phân phối:** đăng lại trong nhóm đúng nội quy, tài nguyên miễn phí kèm video, lời mời về bước khám sức khoẻ.
+- **12 tuần:** tuần 1 đến 2 dựng quy trình; tuần 3 đến 8 mỗi tuần một video, xem số liệu ở tuần 4 và 8; tuần 9 đến 12 làm nhiều hơn cái đang chạy.
+- **Bốn video đầu:** (1) dọn mã độc và admin cửa hậu, (2) tăng tốc WordPress, (3) n8n trên VPS nhỏ, (4) hệ thống tự quét khách Facebook.
+
+---
+
 Tab này chỉ là **danh sách video sẽ làm** (ý tưởng → đang làm → đã đăng), sửa trực tiếp trên trang, lưu trên trình duyệt. Quy trình sản xuất xem ở mục Video AI.
 
 | # | Ngày làm | Video sẽ làm | Link / nguồn | Trạng thái | Ghi chú |
