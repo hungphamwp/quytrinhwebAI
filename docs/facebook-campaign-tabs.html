@@ -1553,6 +1553,34 @@
   .vz-check b{display:block;color:var(--ink);margin-bottom:4px;font-size:14.5px} .vz-check span{font-size:13.5px;line-height:1.6;color:var(--muted)}
   @media (max-width:900px){.vz-g4,.vz-g3{grid-template-columns:repeat(2,minmax(0,1fr))}.vz-hero h2{font-size:24px}}
   @media (max-width:560px){.vz-g4,.vz-g3,.vz-g2{grid-template-columns:1fr}.vz-hero{padding:24px 20px}}
+
+  /* ================= TAB CHIẾN LƯỢC ================= */
+  .vz-ladder{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:end}
+  .vz-rung{padding:18px;border-radius:var(--radius-md);background:var(--card);border:1px solid var(--line);position:relative}
+  .vz-rung:nth-child(1){margin-top:66px}.vz-rung:nth-child(2){margin-top:44px}.vz-rung:nth-child(3){margin-top:22px}
+  .vz-rung .vz-lv{display:inline-block;margin-bottom:10px;padding:2px 10px;border-radius:var(--radius-full);font-size:11px;font-weight:800;letter-spacing:.06em;background:var(--brand-soft);border:1px solid var(--brand-border);color:var(--ink)}
+  .vz-rung h4{margin:0 0 6px;font-size:16px;color:var(--ink)}
+  .vz-rung p{margin:0 0 10px;font-size:13px;line-height:1.6;color:var(--muted)}
+  .vz-rung .vz-who{font-size:12.5px;line-height:1.55;color:var(--ink-light);padding-top:10px;border-top:1px solid var(--line)}
+  .vz-rung .vz-who b{color:var(--ink)}
+  .vz-rung:nth-child(4){border-color:var(--brand-border);background:linear-gradient(160deg,rgba(99,102,241,.22),rgba(59,130,246,.08))}
+  .vz-tl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  .vz-ph{padding:20px;border-radius:var(--radius-md);background:var(--card);border:1px solid var(--line);border-top:3px solid var(--brand)}
+  .vz-ph:nth-child(2){border-top-color:#8b5cf6}.vz-ph:nth-child(3){border-top-color:var(--ok)}
+  .vz-ph .vz-d{font-size:11.5px;font-weight:800;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+  .vz-ph h4{margin:4px 0 8px;font-size:16.5px;color:var(--ink)}
+  .vz-ph p{margin:0 0 10px;font-size:13.5px;line-height:1.6;color:var(--ink-light)}
+  .vz-ph ul{margin:0;padding-left:18px;font-size:13px;line-height:1.65;color:var(--muted)}
+  .vz-ph .vz-goal{margin-top:12px;padding:8px 12px;border-radius:var(--radius-sm);background:var(--ok-soft);border:1px solid var(--ok-border);font-size:12.5px;color:var(--ink-light)}
+  .vz-rule{display:flex;gap:14px;padding:16px 18px;border-radius:var(--radius-md);background:var(--card);border:1px solid var(--line)}
+  .vz-rule>i{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--brand-soft);color:var(--brand);font-size:15px}
+  .vz-rule b{display:block;color:var(--ink);font-size:14.5px;margin-bottom:3px} .vz-rule span{font-size:13.5px;line-height:1.6;color:var(--muted)}
+  .vz-chan{display:grid;grid-template-columns:150px minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;background:var(--card)}
+  .vz-chan>div{padding:13px 16px;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.55;color:var(--ink-light)}
+  .vz-chan>div:nth-last-child(-n+2){border-bottom:0}
+  .vz-chan>div:nth-child(odd){font-weight:700;color:var(--ink);background:var(--line-subtle)}
+  @media (max-width:980px){.vz-ladder,.vz-tl{grid-template-columns:repeat(2,minmax(0,1fr))}.vz-rung:nth-child(n){margin-top:0}}
+  @media (max-width:560px){.vz-ladder,.vz-tl{grid-template-columns:1fr}.vz-chan{grid-template-columns:1fr}.vz-chan>div:nth-child(odd){border-bottom:0;padding-bottom:0;background:none}}
 </style>
 </head>
 <body>
@@ -1588,6 +1616,7 @@
   <!-- MAIN TABS -->
   <div class="tabs">
     <button class="tab-btn" data-tab="tab-vision"><i class="fa-solid fa-compass"></i> Tầm Nhìn</button>
+    <button class="tab-btn" data-tab="tab-strategy"><i class="fa-solid fa-chess-knight"></i> Chiến Lược</button>
     <button class="tab-btn active" data-tab="tab-ai"><i class="fa-solid fa-lightbulb"></i> Kiến Thức AI</button>
     <button class="tab-btn" data-tab="tab-website"><i class="fa-solid fa-globe"></i> Tạo Website AI</button>
     <button class="tab-btn" data-tab="tab-video"><i class="fa-solid fa-clapperboard"></i> Tạo Video AI</button>
@@ -1644,6 +1673,68 @@
         <div class="vz-grid vz-g2">
           <div class="vz-check"><b>Nhu cầu có thật không</b><span>Hỏi thử 5 đến 10 khách xem bao nhiêu người đang kẹt kiểu này. Hiện mới là cảm nhận từ các cuộc trò chuyện.</span></div>
           <div class="vz-check"><b>Ca thật đầu tiên</b><span>Khám cho một khách với giá thấp hoặc miễn phí, đổi lại xin phép kể lại kết quả. Có ca thật rồi mới dùng làm bằng chứng.</span></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ================= TAB: CHIẾN LƯỢC ================= -->
+  <div class="panel" id="tab-strategy">
+    <div class="card">
+      <section class="vz-hero">
+        <span class="vs-eyebrow">CHIẾN LƯỢC HPB MEDIA</span>
+        <h2>Đi từ làm web đến xây hệ thống vận hành cho doanh nghiệp, từng bậc một.</h2>
+        <p>Web là cửa vào và nguồn tiền mặt. Đích đến là tư vấn hệ thống: đưa AI vào vận hành, tự động hoá, tối ưu quy trình. Mỗi bậc phải có khách thật và kết quả đo được trước khi lên bậc tiếp theo.</p>
+        <span class="vz-tag"><i class="fa-solid fa-stairs"></i> Trách nhiệm + kết quả, không bán giá rẻ</span>
+      </section>
+
+      <section class="vz-sec">
+        <h3>Cầu thang bốn bậc</h3>
+        <p class="vz-lead">Khách đi từ việc nhỏ, rõ, dễ tin. Mỗi bậc tạo ra lý do để họ bước lên bậc sau.</p>
+        <div class="vz-ladder">
+          <div class="vz-rung"><span class="vz-lv">BẬC 1</span><h4>Cứu web</h4><p>Sửa lỗi, xử lý mã độc, tăng tốc, khám sức khoẻ sản phẩm đã làm. Việc gấp, phạm vi rõ.</p><div class="vz-who"><b>Khách:</b> người đang có sự cố hoặc đang kẹt với sản phẩm AI làm.</div></div>
+          <div class="vz-rung"><span class="vz-lv">BẬC 2</span><h4>Chăm sóc theo tháng</h4><p>Sao lưu, giám sát, sửa lỗi theo cam kết, báo cáo hàng tháng. Thu nhập đều.</p><div class="vz-who"><b>Khách:</b> người đã được cứu và không muốn gặp lại sự cố.</div></div>
+          <div class="vz-rung"><span class="vz-lv">BẬC 3</span><h4>Hệ thống tự động</h4><p>Nối dữ liệu, tự động hoá việc lặp lại, chatbot, báo cáo tự chạy cho đội của khách.</p><div class="vz-who"><b>Khách:</b> người đã tin và thấy việc vận hành đang ngốn thời gian.</div></div>
+          <div class="vz-rung"><span class="vz-lv">BẬC 4</span><h4>Cố vấn và đào tạo AI</h4><p>Đào tạo đội ngũ, thiết kế quy trình dùng AI, đồng hành dài hạn.</p><div class="vz-who"><b>Khách:</b> doanh nghiệp muốn cả đội làm việc với AI một cách có kiểm soát.</div></div>
+        </div>
+      </section>
+
+      <section class="vz-sec">
+        <h3>Lộ trình 90 ngày</h3>
+        <p class="vz-lead">Thứ tự không đổi: có tiền mặt, rồi có bằng chứng, rồi mới đóng gói để bán rộng.</p>
+        <div class="vz-tl">
+          <div class="vz-ph"><span class="vz-d">Ngày 1 đến 30</span><h4>Tạo tiền mặt</h4><p>Bán những gì đã có khách chắc chắn: bậc 1 và bậc 2.</p><ul><li>Chào bậc 1 cho khách cũ và khách đang hỏi</li><li>Chuyển khách đã cứu sang gói chăm sóc tháng</li><li>Tự động hoá việc lặp lại của chính HPB</li></ul><div class="vz-goal">Kết quả: dòng tiền ổn định, danh sách khách tin tưởng.</div></div>
+          <div class="vz-ph"><span class="vz-d">Ngày 31 đến 60</span><h4>Lấy ba ca thật có số</h4><p>Chọn ba khách làm thí điểm bậc 3, đo trước và sau.</p><ul><li>Mỗi ca ghi rõ mất bao nhiêu giờ trước, bao nhiêu sau</li><li>Xin phép kể lại kết quả công khai</li><li>Ghi lại quy trình đã làm</li></ul><div class="vz-goal">Kết quả: ba ca có số liệu thật để làm bằng chứng.</div></div>
+          <div class="vz-ph"><span class="vz-d">Ngày 61 đến 90</span><h4>Đóng gói và nhân bản</h4><p>Biến ba ca thành gói dịch vụ có giá và phạm vi rõ.</p><ul><li>Đặt tên và định giá gói bậc 3</li><li>Dùng ca thật làm nội dung và trang bán</li><li>Bắt đầu nói chuyện đào tạo (bậc 4)</li></ul><div class="vz-goal">Kết quả: gói dịch vụ bán lặp lại được.</div></div>
+        </div>
+      </section>
+
+      <section class="vz-sec">
+        <h3>Nguyên tắc làm việc</h3>
+        <div class="vz-grid vz-g2">
+          <div class="vz-rule"><i class="fa-solid fa-scale-balanced"></i><div><b>Bằng chứng trước nội dung</b><span>Uy tín đến từ ca thật có số, không đến từ số lượng bài đăng.</span></div></div>
+          <div class="vz-rule"><i class="fa-solid fa-filter"></i><div><b>Ba điều kiện để nhận một nỗi đau</b><span>HPB giải quyết được, đã có ca thật, và người chịu đau có tiền trả.</span></div></div>
+          <div class="vz-rule"><i class="fa-solid fa-gears"></i><div><b>Tự động hoá việc lặp lại</b><span>Việc nào làm tay từ lần thứ ba thì cho chạy theo lịch và báo kết quả. Thời gian của chủ là nút thắt.</span></div></div>
+          <div class="vz-rule"><i class="fa-solid fa-user-shield"></i><div><b>Con người chịu trách nhiệm</b><span>AI làm nhanh, nhưng người ký tên và đứng ra xử lý với khách vẫn là HPB.</span></div></div>
+        </div>
+      </section>
+
+      <section class="vz-sec">
+        <h3>Kênh và vai trò của từng kênh</h3>
+        <div class="vz-chan">
+          <div>Facebook và nhóm</div><div>Hiện diện trong cộng đồng để người có nhu cầu tự tìm đến. Bình luận như người thật, không chào hàng. Mục tiêu là người nhắn tin vào.</div>
+          <div>Video ngắn</div><div>Series &ldquo;Bắt bệnh doanh nghiệp&rdquo;: chỉ ra nguyên nhân gốc của một nỗi đau, cái giá của nó và cách tự kiểm tra. Kéo người mới tới.</div>
+          <div>Tin AI</div><div>Tin AI có kiểm chứng, nói dễ hiểu, giữ người xem quay lại và cho thấy HPB hiểu công nghệ.</div>
+          <div>Khám sức khoẻ</div><div>Bậc 1 làm cửa vào chung cho mọi kênh: giá cố định, phạm vi rõ, dễ chốt.</div>
+        </div>
+      </section>
+
+      <section class="vz-sec">
+        <h3>Đo gì để biết đang đi đúng</h3>
+        <div class="vz-grid vz-g3">
+          <div class="vz-check"><b>Khách vào từ đâu</b><span>Mỗi khách mới ghi nguồn: Facebook, video hay giới thiệu. Kênh nào ra khách thì làm nhiều hơn.</span></div>
+          <div class="vz-check"><b>Tỷ lệ doanh thu định kỳ</b><span>Mục tiêu dài hạn là hơn một nửa doanh thu đến từ thu nhập định kỳ, không phụ thuộc dự án lẻ.</span></div>
+          <div class="vz-check"><b>Số ca có bằng chứng</b><span>Đếm số ca có số liệu trước và sau và được phép kể lại. Đây là tài sản chính của giai đoạn này.</span></div>
         </div>
       </section>
     </div>

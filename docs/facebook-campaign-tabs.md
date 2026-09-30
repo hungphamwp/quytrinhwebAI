@@ -7,6 +7,7 @@
 ## Mục lục
 
 00. [Tầm nhìn HPB Media](#00-tầm-nhìn-hpb-media)
+000. [Chiến lược HPB Media](#000-chiến-lược-hpb-media)
 0. [Kiến thức AI chuyên sâu](#0-kiến-thức-ai-chuyên-sâu)
 1. [26 Nền tảng Tạo Website AI](#1-26-nền-tảng-tạo-website-ai-free--pro)
 2. [Video AI — Từ ý tưởng đến video hoàn chỉnh (5 cách làm + case video giảng dạy Toán 12)](#2-video-ai--từ-ý-tưởng-đến-video-hoàn-chỉnh)
@@ -14,6 +15,35 @@
 4. [8 Công cụ Giọng Đọc & Sáng Tác Nhạc AI](#4-8-công-cụ-giọng-đọc--sáng-tác-nhạc-ai)
 5. [Tự Động Hóa & AI Agents](#5-tự-động-hóa--ai-agents)
 6. [Content YouTube — danh sách video sẽ làm](#6-content-youtube--danh-sách-video-sẽ-làm)
+
+---
+
+## 000. Chiến lược HPB Media
+
+**Đi từ làm web đến xây hệ thống vận hành cho doanh nghiệp, từng bậc một.** Web là cửa vào và nguồn tiền mặt. Đích đến là tư vấn hệ thống: đưa AI vào vận hành, tự động hoá, tối ưu quy trình.
+
+### Cầu thang bốn bậc
+1. **Cứu web:** sửa lỗi, xử lý mã độc, tăng tốc, khám sức khoẻ sản phẩm đã làm. Khách đang có sự cố hoặc kẹt với sản phẩm AI làm.
+2. **Chăm sóc theo tháng:** sao lưu, giám sát, sửa lỗi theo cam kết, báo cáo hàng tháng. Thu nhập đều.
+3. **Hệ thống tự động:** nối dữ liệu, tự động hoá việc lặp lại, chatbot, báo cáo tự chạy.
+4. **Cố vấn và đào tạo AI:** đào tạo đội ngũ, thiết kế quy trình dùng AI, đồng hành dài hạn.
+
+### Lộ trình 90 ngày
+- **Ngày 1 đến 30, tạo tiền mặt:** bán bậc 1 và 2 cho khách cũ và khách đang hỏi, chuyển khách đã cứu sang gói chăm sóc tháng.
+- **Ngày 31 đến 60, lấy ba ca thật có số:** làm thí điểm bậc 3, đo giờ làm trước và sau, xin phép kể lại.
+- **Ngày 61 đến 90, đóng gói và nhân bản:** đặt tên và định giá gói bậc 3, dùng ca thật làm nội dung và trang bán, bắt đầu nói chuyện đào tạo.
+
+### Nguyên tắc làm việc
+- Bằng chứng trước nội dung.
+- Chỉ nhận nỗi đau thoả ba điều kiện: HPB giải quyết được, đã có ca thật, người chịu đau có tiền trả.
+- Việc nào làm tay từ lần thứ ba thì tự động hoá.
+- AI làm nhanh, con người chịu trách nhiệm.
+
+### Kênh
+Facebook và nhóm (người nhắn tin vào) · Video ngắn "Bắt bệnh doanh nghiệp" (kéo người mới) · Tin AI (giữ người xem, cho thấy HPB hiểu công nghệ) · Khám sức khoẻ (cửa vào chung).
+
+### Đo gì
+Khách vào từ đâu · tỷ lệ doanh thu định kỳ (mục tiêu dài hạn: hơn một nửa) · số ca có bằng chứng.
 
 ---
 
